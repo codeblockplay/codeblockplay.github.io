@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <title>Robot Path</title>
+  <style>
+    .grid-line {
+      stroke: #ccc;
+      stroke-width: 1;
+    }
+    .path {
+      fill: #e9ecef;
+      stroke: #adb5bd;
+      stroke-width: 2;
+    }
+    .robot {
+      fill: #4361ee;
+      stroke: #3a56d4;
+      stroke-width: 2;
+    }
+    .finish {
+      fill: #f72585;
+      stroke: #e91e63;
+      stroke-width: 2;
+    }
+    .arrow {
+      fill: #ff9e00;
+      stroke: #fb8500;
+      stroke-width: 1;
+    }
+    .text {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      fill: #333;
+    }
+    .repeat {
+      fill: none;
+      stroke: #f72585;
+      stroke-width: 2;
+      stroke-dasharray: 5,5;
+    }
+  </style>
+
+  <!-- Background with grid -->
+  <rect width="300" height="300" fill="#f5f7fa" />
+  
+  <!-- Grid lines -->
+  <g id="grid" opacity="0.5">
+    <line class="grid-line" x1="50" y1="0" x2="50" y2="300" />
+    <line class="grid-line" x1="100" y1="0" x2="100" y2="300" />
+    <line class="grid-line" x1="150" y1="0" x2="150" y2="300" />
+    <line class="grid-line" x1="200" y1="0" x2="200" y2="300" />
+    <line class="grid-line" x1="250" y1="0" x2="250" y2="300" />
+    
+    <line class="grid-line" x1="0" y1="50" x2="300" y2="50" />
+    <line class="grid-line" x1="0" y1="100" x2="300" y2="100" />
+    <line class="grid-line" x1="0" y1="150" x2="300" y2="150" />
+    <line class="grid-line" x1="0" y1="200" x2="300" y2="200" />
+    <line class="grid-line" x1="0" y1="250" x2="300" y2="250" />
+  </g>
+  
+  <!-- Path -->
+  <path class="path" d="M50,50 h50 v50 h50 v50 h50" />
+  
+  <!-- Robot -->
+  <g id="robot" transform="translate(50, 50)">
+    <rect class="robot" x="-15" y="-15" width="30" height="30" rx="5" />
+    <circle fill="white" cx="-5" cy="-5" r="5" />
+    <circle fill="white" cx="5" cy="-5" r="5" />
+    <circle fill="black" cx="-5" cy="-5" r="2" />
+    <circle fill="black" cx="5" cy="-5" r="2" />
+    <rect fill="black" x="-7" y="5" width="14" height="2" rx="1" />
+  </g>
+  
+  <!-- Finish line -->
+  <rect class="finish" x="195" y="145" width="10" height="10" />
+  <text x="205" y="170" class="text" text-anchor="middle">Finish</text>
+  
+  <!-- Loop indicators -->
+  <g id="loops">
+    <!-- Repeat 3 zigzag indicator -->
+    <path class="repeat" d="M50,50 h50 v50 h50 v50 h50" />
+    <text x="80" y="40" class="text" font-weight="bold">Repeat 3 times</text>
+    <path class="arrow" d="M60,35 l10,5 l-10,5 z" />
+  </g>
+  
+  <!-- Title and instructions -->
+  <text x="150" y="30" class="text" text-anchor="middle" font-weight="bold" font-size="16">Robot Path Challenge</text>
+  <text x="150" y="260" class="text" text-anchor="middle">Use loops to move efficiently</text>
+  <text x="150" y="280" class="text" text-anchor="middle">Repeat 3 times: Move forward, turn right, move forward, turn left</text>
+</svg>

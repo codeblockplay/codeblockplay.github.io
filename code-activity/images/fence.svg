@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="400" height="200" fill="#e8f5e9"/>
+  
+  <!-- Grass -->
+  <rect x="0" y="150" width="400" height="50" fill="#81c784"/>
+  
+  <!-- Fence posts -->
+  <g>
+    <rect x="50" y="80" width="20" height="90" fill="#8d6e63" stroke="#5d4037" stroke-width="2"/>
+    <rect x="50" y="70" width="20" height="10" fill="#a1887f" stroke="#5d4037" stroke-width="1"/>
+  </g>
+  <g>
+    <rect x="110" y="80" width="20" height="90" fill="#8d6e63" stroke="#5d4037" stroke-width="2"/>
+    <rect x="110" y="70" width="20" height="10" fill="#a1887f" stroke="#5d4037" stroke-width="1"/>
+  </g>
+  <g>
+    <rect x="170" y="80" width="20" height="90" fill="#8d6e63" stroke="#5d4037" stroke-width="2"/>
+    <rect x="170" y="70" width="20" height="10" fill="#a1887f" stroke="#5d4037" stroke-width="1"/>
+  </g>
+  <g>
+    <rect x="230" y="80" width="20" height="90" fill="#8d6e63" stroke="#5d4037" stroke-width="2"/>
+    <rect x="230" y="70" width="20" height="10" fill="#a1887f" stroke="#5d4037" stroke-width="1"/>
+  </g>
+  <g>
+    <rect x="290" y="80" width="20" height="90" fill="#8d6e63" stroke="#5d4037" stroke-width="2"/>
+    <rect x="290" y="70" width="20" height="10" fill="#a1887f" stroke="#5d4037" stroke-width="1"/>
+  </g>
+  
+  <!-- Paintbrush -->
+  <g transform="translate(340, 50) rotate(45)">
+    <rect x="0" y="0" width="30" height="8" fill="#f44336" stroke="#d32f2f" stroke-width="1" rx="4"/>
+    <rect x="30" y="0" width="20" height="8" fill="#a1887f" stroke="#5d4037" stroke-width="1"/>
+  </g>
+</svg>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+  <rect width="300" height="300" fill="#f5f5f5"/>
+  
+  <text x="150" y="30" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" font-weight="bold">Temperature Advisor</text>
+  
+  <!-- Thermometer - Simplified -->
+  <g transform="translate(100, 70)">
+    <rect x="10" y="0" width="20" height="120" rx="10" ry="10" fill="white" stroke="#333" stroke-width="2"/>
+    <circle cx="20" cy="120" r="15" fill="white" stroke="#333" stroke-width="2"/>
+    <rect x="15" y="10" width="10" height="100" rx="5" ry="5" fill="#dc3545"/>
+    
+    <!-- Temperature markings -->
+    <line x1="35" y1="20" x2="45" y2="20" stroke="#333" stroke-width="2"/>
+    <text x="50" y="25" font-family="Arial, sans-serif" font-size="12">30°C</text>
+    
+    <line x1="35" y1="60" x2="45" y2="60" stroke="#333" stroke-width="2"/>
+    <text x="50" y="65" font-family="Arial, sans-serif" font-size="12">15°C</text>
+    
+    <line x1="35" y1="100" x2="45" y2="100" stroke="#333" stroke-width="2"/>
+    <text x="50" y="105" font-family="Arial, sans-serif" font-size="12">0°C</text>
+  </g>
+  
+  <!-- Clothing Recommendations - Simplified -->
+  <g transform="translate(175, 70)">
+    <!-- Hot Weather -->
+    <rect x="0" y="0" width="80" height="40" rx="5" ry="5" fill="#FFDDC1" stroke="#FF9800" stroke-width="2" />
+    <text x="40" y="25" font-family="Arial" font-size="10" font-weight="bold" text-anchor="middle" fill="#333">HOT: T-Shirt</text>
+    
+    <!-- Warm Weather -->
+    <rect x="0" y="50" width="80" height="40" rx="5" ry="5" fill="#C8E6C9" stroke="#4CAF50" stroke-width="2" />
+    <text x="40" y="75" font-family="Arial" font-size="10" font-weight="bold" text-anchor="middle" fill="#333">WARM: Light Jacket</text>
+    
+    <!-- Cold Weather -->
+    <rect x="0" y="100" width="80" height="40" rx="5" ry="5" fill="#BBDEFB" stroke="#2196F3" stroke-width="2" />
+    <text x="40" y="125" font-family="Arial" font-size="10" font-weight="bold" text-anchor="middle" fill="#333">COLD: Heavy Coat</text>
+  </g>
+</svg>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title id="title">Plant a Flower</title>
+  <desc id="desc">A clean kid-friendly guide showing flower planting steps and the final blooming flower.</desc>
+
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8f8ff"/>
+      <stop offset="100%" stop-color="#f4fcff"/>
+    </linearGradient>
+    <linearGradient id="titleBar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4fb784"/>
+      <stop offset="100%" stop-color="#4f8bff"/>
+    </linearGradient>
+    <style>
+      text {
+        font-family: "Trebuchet MS", "Arial Rounded MT Bold", Arial, sans-serif;
+      }
+    </style>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#sky)"/>
+  <rect x="0" y="430" width="800" height="170" fill="#e9f0dc"/>
+  <ellipse cx="120" cy="462" rx="150" ry="30" fill="#f6fbef"/>
+  <ellipse cx="400" cy="456" rx="230" ry="34" fill="#f6fbef"/>
+  <ellipse cx="710" cy="460" rx="130" ry="28" fill="#f6fbef"/>
+
+  <circle cx="720" cy="84" r="38" fill="#ffe277" stroke="#efb83d" stroke-width="4"/>
+  <line x1="720" y1="27" x2="720" y2="12" stroke="#ffd257" stroke-width="4"/>
+  <line x1="720" y1="141" x2="720" y2="156" stroke="#ffd257" stroke-width="4"/>
+  <line x1="663" y1="84" x2="648" y2="84" stroke="#ffd257" stroke-width="4"/>
+  <line x1="777" y1="84" x2="792" y2="84" stroke="#ffd257" stroke-width="4"/>
+
+  <rect x="28" y="24" width="744" height="84" rx="20" fill="url(#titleBar)"/>
+  <text x="400" y="73" font-size="40" font-weight="900" text-anchor="middle" fill="#ffffff">Plant a Flower</text>
+  <text x="400" y="96" font-size="18" font-weight="700" text-anchor="middle" fill="#eaf4ff">Follow each step to grow your flower buddy</text>
+
+  <!-- Left panel: steps -->
+  <g transform="translate(34 128)">
+    <rect width="418" height="432" rx="18" fill="#ffffff" stroke="#2f5d95" stroke-width="4"/>
+    <rect x="0" y="0" width="418" height="56" rx="16" fill="#eaf7ef"/>
+    <text x="209" y="37" font-size="24" font-weight="900" text-anchor="middle" fill="#2f7b50">Flower Steps</text>
+
+    <g transform="translate(18 76)">
+      <!-- 1 -->
+      <rect x="0" y="0" width="382" height="52" rx="12" fill="#eef8ff" stroke="#a7c5ea" stroke-width="2"/>
+      <circle cx="24" cy="26" r="15" fill="#4f95ff"/><text x="24" y="32" font-size="18" font-weight="900" text-anchor="middle" fill="#fff">1</text>
+      <path d="M53 33 L71 15 L78 22 L60 40 Z" fill="#8d6e63" stroke="#5d4037" stroke-width="2"/>
+      <rect x="70" y="10" width="6" height="30" rx="3" fill="#9f7f54"/>
+      <text x="90" y="33" font-size="19" font-weight="900" fill="#2f5d95">Dig a Hole</text>
+
+      <!-- 2 -->
+      <rect x="0" y="62" width="382" height="52" rx="12" fill="#f2ffec" stroke="#b5dba2" stroke-width="2"/>
+      <circle cx="24" cy="88" r="15" fill="#58b668"/><text x="24" y="94" font-size="18" font-weight="900" text-anchor="middle" fill="#fff">2</text>
+      <ellipse cx="64" cy="89" rx="8" ry="5" fill="#7f5f3f" stroke="#5d4037" stroke-width="2"/>
+      <text x="90" y="95" font-size="19" font-weight="900" fill="#2f7b42">Place Seed</text>
+
+      <!-- 3 -->
+      <rect x="0" y="124" width="382" height="52" rx="12" fill="#fff7ee" stroke="#e5c89f" stroke-width="2"/>
+      <circle cx="24" cy="150" r="15" fill="#f0a54a"/><text x="24" y="156" font-size="18" font-weight="900" text-anchor="middle" fill="#fff">3</text>
+      <ellipse cx="64" cy="152" rx="14" ry="8" fill="#8d6e63" stroke="#5d4037" stroke-width="2"/>
+      <text x="90" y="157" font-size="19" font-weight="900" fill="#8a5f24">Cover with Soil</text>
+
+      <!-- 4 -->
+      <rect x="0" y="186" width="382" height="52" rx="12" fill="#ecf9ff" stroke="#aad4e7" stroke-width="2"/>
+      <circle cx="24" cy="212" r="15" fill="#4aa8d8"/><text x="24" y="218" font-size="18" font-weight="900" text-anchor="middle" fill="#fff">4</text>
+      <path d="M58 198 L68 198 L72 214 Q63 220 54 214 Z" fill="#6ec7ef" stroke="#3788b4" stroke-width="2"/>
+      <circle cx="74" cy="218" r="3" fill="#5ca8de"/>
+      <circle cx="80" cy="223" r="2.5" fill="#5ca8de"/>
+      <text x="90" y="219" font-size="19" font-weight="900" fill="#2f6388">Water the Seed</text>
+
+      <!-- 5 -->
+      <rect x="0" y="248" width="382" height="52" rx="12" fill="#fffce8" stroke="#e0d29e" stroke-width="2"/>
+      <circle cx="24" cy="274" r="15" fill="#f4c84f"/><text x="24" y="280" font-size="18" font-weight="900" text-anchor="middle" fill="#fff">5</text>
+      <circle cx="64" cy="274" r="9" fill="#ffe277" stroke="#efb83d" stroke-width="2"/>
+      <text x="90" y="281" font-size="19" font-weight="900" fill="#8a7127">Wait for Sunshine</text>
+
+      <!-- 6 -->
+      <rect x="0" y="310" width="382" height="52" rx="12" fill="#f2f4ff" stroke="#bec3ee" stroke-width="2"/>
+      <circle cx="24" cy="336" r="15" fill="#7b7fe6"/><text x="24" y="342" font-size="18" font-weight="900" text-anchor="middle" fill="#fff">6</text>
+      <circle cx="60" cy="334" r="5" fill="#2a3340"/>
+      <path d="M60 345 Q69 353 78 345" fill="none" stroke="#2a3340" stroke-width="2.2"/>
+      <text x="90" y="343" font-size="19" font-weight="900" fill="#4f56a7">Watch it Grow</text>
+    </g>
+  </g>
+
+  <!-- Right panel: final flower -->
+  <g transform="translate(470 128)">
+    <rect width="296" height="432" rx="18" fill="#ffffff" stroke="#2f5d95" stroke-width="4"/>
+    <rect x="0" y="0" width="296" height="56" rx="16" fill="#ecfff4"/>
+    <text x="148" y="37" font-size="24" font-weight="900" text-anchor="middle" fill="#2f7d53">Final Flower</text>
+
+    <!-- Pot and soil -->
+    <rect x="96" y="298" width="104" height="84" rx="12" fill="#d49a6a" stroke="#9e6c43" stroke-width="3"/>
+    <ellipse cx="148" cy="298" rx="52" ry="13" fill="#8d6e63" stroke="#5d4037" stroke-width="2"/>
+
+    <!-- Stem -->
+    <rect x="143" y="176" width="10" height="122" rx="5" fill="#4caf50"/>
+    <path d="M148 236 C131 226, 120 234, 114 250 C126 254, 139 248, 148 236 Z" fill="#7bc96f" stroke="#4f9852" stroke-width="2"/>
+    <path d="M148 266 C166 256, 176 264, 183 280 C169 284, 157 278, 148 266 Z" fill="#7bc96f" stroke="#4f9852" stroke-width="2"/>
+
+    <!-- Flower petals -->
+    <circle cx="148" cy="154" r="16" fill="#ffd75a" stroke="#e0b33c" stroke-width="3"/>
+    <circle cx="148" cy="122" r="14" fill="#ff6fa3" stroke="#d94d80" stroke-width="2.5"/>
+    <circle cx="178" cy="142" r="14" fill="#ff6fa3" stroke="#d94d80" stroke-width="2.5"/>
+    <circle cx="166" cy="176" r="14" fill="#ff6fa3" stroke="#d94d80" stroke-width="2.5"/>
+    <circle cx="130" cy="176" r="14" fill="#ff6fa3" stroke="#d94d80" stroke-width="2.5"/>
+    <circle cx="118" cy="142" r="14" fill="#ff6fa3" stroke="#d94d80" stroke-width="2.5"/>
+
+    <!-- Little buds -->
+    <circle cx="96" cy="224" r="6" fill="#f2cf5f"/>
+    <circle cx="202" cy="240" r="6" fill="#f2cf5f"/>
+
+    <text x="148" y="418" font-size="18" font-weight="900" text-anchor="middle" fill="#3b679d">Seed + soil + water + sun = flower</text>
+  </g>
+</svg>

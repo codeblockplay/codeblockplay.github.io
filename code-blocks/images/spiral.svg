@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <title>Spiral Drawing</title>
+  <style>
+    .spiral {
+      fill: none;
+      stroke: #f72585;
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+    .grid {
+      stroke: #ccc;
+      stroke-width: 0.5;
+    }
+    .pen {
+      fill: #3a0ca3;
+    }
+    .text {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      fill: #333;
+    }
+    .arrow {
+      fill: #4361ee;
+      stroke: #3a56d4;
+      stroke-width: 1;
+    }
+  </style>
+
+  <!-- Background with grid -->
+  <rect width="300" height="300" fill="#f5f7fa" />
+  
+  <g id="grid" opacity="0.2">
+    <line class="grid" x1="0" y1="30" x2="300" y2="30" />
+    <line class="grid" x1="0" y1="60" x2="300" y2="60" />
+    <line class="grid" x1="0" y1="90" x2="300" y2="90" />
+    <line class="grid" x1="0" y1="120" x2="300" y2="120" />
+    <line class="grid" x1="0" y1="150" x2="300" y2="150" />
+    <line class="grid" x1="0" y1="180" x2="300" y2="180" />
+    <line class="grid" x1="0" y1="210" x2="300" y2="210" />
+    <line class="grid" x1="0" y1="240" x2="300" y2="240" />
+    <line class="grid" x1="0" y1="270" x2="300" y2="270" />
+    <line class="grid" x1="30" y1="0" x2="30" y2="300" />
+    <line class="grid" x1="60" y1="0" x2="60" y2="300" />
+    <line class="grid" x1="90" y1="0" x2="90" y2="300" />
+    <line class="grid" x1="120" y1="0" x2="120" y2="300" />
+    <line class="grid" x1="150" y1="0" x2="150" y2="300" />
+    <line class="grid" x1="180" y1="0" x2="180" y2="300" />
+    <line class="grid" x1="210" y1="0" x2="210" y2="300" />
+    <line class="grid" x1="240" y1="0" x2="240" y2="300" />
+    <line class="grid" x1="270" y1="0" x2="270" y2="300" />
+  </g>
+  
+  <!-- Spiral pattern -->
+  <path class="spiral" d="M150,150 
+                         L180,150 
+                         L180,180 
+                         L150,180 
+                         L120,180 
+                         L120,150 
+                         L120,120 
+                         L150,120 
+                         L180,120 
+                         L210,120 
+                         L210,150 
+                         L210,180 
+                         L210,210 
+                         L180,210 
+                         L150,210 
+                         L120,210 
+                         L90,210 
+                         L90,180 
+                         L90,150 
+                         L90,120 
+                         L90,90 
+                         L120,90 
+                         L150,90 
+                         L180,90 
+                         L210,90 
+                         L240,90 
+                         L240,120 
+                         L240,150 
+                         L240,180 
+                         L240,210 
+                         L240,240" />
+  
+  <!-- Drawing pen -->
+  <circle class="pen" cx="240" cy="240" r="5" />
+  
+  <!-- Direction arrows -->
+  <path class="arrow" d="M255,240 L240,225 L225,240 Z" />
+  
+  <!-- Labels -->
+  <text x="150" y="40" class="text" text-anchor="middle" font-weight="bold" font-size="16">Spiral Drawing</text>
+  <text x="150" y="270" class="text" text-anchor="middle">Create a spiral with increasing line lengths</text>
+  <text x="240" y="265" class="text" text-anchor="middle">Repeat 10 times:</text>
+  <text x="240" y="285" class="text" text-anchor="middle">Draw line, turn, increase length</text>
+</svg>

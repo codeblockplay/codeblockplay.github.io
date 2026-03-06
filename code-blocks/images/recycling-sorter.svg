@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <!-- Background -->
+  <rect x="0" y="0" width="300" height="300" fill="#f5f5f5" />
+  
+  <!-- Recycling Center Background -->
+  <rect x="30" y="30" width="240" height="150" rx="10" ry="10" fill="#fff" stroke="#ccc" stroke-width="2" />
+  
+  <!-- Title -->
+  <text x="150" y="20" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#333">RECYCLING SORTER</text>
+  
+  <!-- Items to Sort -->
+  <g transform="translate(0, 50)">
+    <!-- Paper -->
+    <g transform="translate(60, 0)">
+      <rect x="-15" y="0" width="30" height="40" fill="#fff" stroke="#333" stroke-width="1" />
+      <line x1="-10" y1="10" x2="10" y2="10" stroke="#333" stroke-width="1" />
+      <line x1="-10" y1="15" x2="10" y2="15" stroke="#333" stroke-width="1" />
+      <line x1="-10" y1="20" x2="10" y2="20" stroke="#333" stroke-width="1" />
+      <line x1="-10" y1="25" x2="5" y2="25" stroke="#333" stroke-width="1" />
+      <text x="0" y="60" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">PAPER</text>
+    </g>
+    
+    <!-- Plastic Bottle -->
+    <g transform="translate(150, 0)">
+      <path d="M-10,0 L-5,0 L-5,5 A5,5 0 0,0 5,5 L5,0 L10,0 L10,35 A10,10 0 0,1 -10,35 Z" fill="#fff" stroke="#333" stroke-width="1" />
+      <ellipse cx="0" cy="35" rx="10" ry="3" fill="#fff" stroke="#333" stroke-width="1" />
+      <text x="0" y="60" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">PLASTIC</text>
+    </g>
+    
+    <!-- Glass Bottle -->
+    <g transform="translate(240, 0)">
+      <path d="M-5,0 L5,0 L5,5 L7,10 L7,35 A7,3 0 0,1 -7,35 L-7,10 L-5,5 Z" fill="none" stroke="#333" stroke-width="1" />
+      <path d="M-5,0 L5,0 L5,5 L-5,5 Z" fill="#fff" stroke="#333" stroke-width="1" />
+      <text x="0" y="60" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">GLASS</text>
+    </g>
+  </g>
+  
+  <!-- Recycling Bins -->
+  <g transform="translate(0, 170)">
+    <!-- Blue Bin (Paper) -->
+    <g transform="translate(60, 0)">
+      <path d="M-25,0 L25,0 L20,50 L-20,50 Z" fill="#2196f3" stroke="#333" stroke-width="1" />
+      <text x="0" y="25" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#fff">PAPER</text>
+      <text x="0" y="70" font-family="Arial" font-size="10" text-anchor="middle" fill="#333">BLUE BIN</text>
+    </g>
+    
+    <!-- Green Bin (Plastic) -->
+    <g transform="translate(150, 0)">
+      <path d="M-25,0 L25,0 L20,50 L-20,50 Z" fill="#4caf50" stroke="#333" stroke-width="1" />
+      <text x="0" y="25" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#fff">PLASTIC</text>
+      <text x="0" y="70" font-family="Arial" font-size="10" text-anchor="middle" fill="#333">GREEN BIN</text>
+    </g>
+    
+    <!-- Clear Bin (Glass) -->
+    <g transform="translate(240, 0)">
+      <path d="M-25,0 L25,0 L20,50 L-20,50 Z" fill="#eceff1" stroke="#333" stroke-width="1" />
+      <text x="0" y="25" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">GLASS</text>
+      <text x="0" y="70" font-family="Arial" font-size="10" text-anchor="middle" fill="#333">CLEAR BIN</text>
+    </g>
+  </g>
+  
+  <!-- Arrows -->
+  <g stroke="#333" stroke-width="1" fill="none">
+    <path d="M60,100 L60,160" marker-end="url(#arrowhead)" />
+    <path d="M150,100 L150,160" marker-end="url(#arrowhead)" />
+    <path d="M240,100 L240,160" marker-end="url(#arrowhead)" />
+  </g>
+  
+  <!-- Recycle Symbol -->
+  <g transform="translate(150, 260) scale(0.7)">
+    <path d="M0,-15 L-13,7.5 L-6,7.5 L-11,17.5 L2,0 L-5,0 Z" fill="#4caf50" />
+    <path d="M13,7.5 L0,-15 L-6,-15 L4.5,-5 L-2,12.5 L5,12.5 Z" fill="#4caf50" />
+    <path d="M-11,17.5 L13,17.5 L16,7.5 L4.5,7.5 L9,-2.5 L2,-2.5 Z" fill="#4caf50" />
+  </g>
+  
+  <!-- Arrow Marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+    </marker>
+  </defs>
+</svg>

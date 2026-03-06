@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Code Blocks Adventure</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./block-coding.css">
+    <link rel="stylesheet" href="../shared/shell.css">
+</head>
+<body class="kp-shell-enabled" data-page="block-coding" data-age="Age 7-10">
+    <header class="bg-primary text-white py-3">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="mb-0"><i class="fas fa-puzzle-piece"></i> Code Blocks Adventure</h1>
+                <nav>
+                    <a href="../index.html" class="btn btn-light btn-sm me-2"><i class="fas fa-home"></i></a>
+                    <a href="../brainy-blocks/index.html" class="btn btn-light btn-sm"><i class="fas fa-brain"></i> Brainy Blocks</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="coding-main">
+        <section class="coding-topbar">
+            <div class="coding-topbar-left">
+                <h2 class="mb-0 track-heading"><i class="fas fa-compass"></i> <span id="challenge-title">Sequence</span></h2>
+            </div>
+            <div class="kid-mission-strip" aria-live="polite">
+                <div class="mission-pill mission-track"><i class="fas fa-compass"></i> Track: <strong id="mission-category">Sequence</strong></div>
+                <div class="mission-pill mission-level"><i class="fas fa-layer-group"></i> Level: <strong id="mission-level">1</strong></div>
+                <div class="mission-pill mission-stars"><i class="fas fa-star"></i> Stars: <strong id="mission-stars">0</strong></div>
+                <div class="mission-pill mission-streak"><i class="fas fa-fire"></i> Streak: <strong id="mission-streak">0</strong></div>
+                <div class="mission-pill mission-tries"><i class="fas fa-heart"></i> Tries: <strong id="mission-tries">3</strong></div>
+            </div>
+        </section>
+
+        <section class="coding-stage">
+            <aside class="visual-column card">
+                <div class="challenge-description compact">
+                    <h3 id="task-title">Robo Treasure Hunt</h3>
+                    <p id="task-description" class="mb-2">Use North, South, East, West to move one step at a time and reach the treasure.</p>
+                    <p id="task-goal" class="task-goal"><strong>Goal:</strong> Move to the treasure tile, then use Pick Up Treasure.</p>
+                </div>
+
+                <div class="visual-image-wrap">
+                    <img id="challenge-image" src="./images/robot-maze.svg" alt="Challenge Visualization" class="challenge-img"
+                        data-bs-toggle="modal" data-bs-target="#imageModal">
+                    <div id="mission-story-layer" class="mission-story-layer" aria-live="polite">
+                        <div class="mission-story-head">
+                            <span id="mission-story-status" class="mission-story-status"></span>
+                        </div>
+                        <div id="mission-playfield" class="mission-playfield">
+                            <div id="mission-grid" class="mission-grid" aria-hidden="true"></div>
+                            <div id="mission-target" class="mission-target" aria-hidden="true"><i class="fas fa-gem"></i></div>
+                            <div id="mission-mascot" class="mission-mascot" aria-hidden="true"><i class="fas fa-robot"></i></div>
+                        </div>
+                        <div id="mission-step-track" class="mission-step-track"></div>
+                    </div>
+                    <div id="visual-overlay" class="visual-overlay"></div>
+                </div>
+                <div id="image-hint-strip" class="image-hint-strip"></div>
+
+                <div class="control-row">
+                    <button id="reset-btn" class="action-icon-btn" title="Reset" aria-label="Reset"><i class="fas fa-redo"></i></button>
+                    <button id="run-btn" class="action-icon-btn" title="Run" aria-label="Run"><i class="fas fa-play"></i></button>
+                    <button id="help-btn" class="action-icon-btn" title="Help" aria-label="Help"><i class="fas fa-question-circle"></i></button>
+                    <div id="delete-bin" class="delete-bin action-icon-btn" aria-label="Dustbin drop zone" title="Drop blocks here">
+                        <i class="fas fa-trash-can"></i>
+                    </div>
+                </div>
+
+                <div class="progress-wrap left-progress">
+                    <div class="progress mb-2">
+                        <div class="progress-bar bg-success" id="challenge-progress" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>Challenge Progress</span>
+                        <span id="progress-text">0 / 3 completed</span>
+                    </div>
+                </div>
+
+            </aside>
+
+            <section class="builder-column">
+                <div class="palette-card card">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0 fs-5"><i class="fas fa-cubes"></i> Blocks</h4>
+                    </div>
+                    <div class="card-body block-palette p-2" id="block-palette"></div>
+                </div>
+
+                <div class="workspace-card card">
+                    <div class="card-header bg-success text-white">
+                        <h4 class="mb-0 fs-5"><i class="fas fa-code"></i> Code Area</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="workspace p-2 border rounded bg-light" id="workspace">
+                            <div id="program-start" class="program-start">
+                                <i class="fas fa-play-circle"></i> Start
+                            </div>
+                            <div id="blocks-container" class="blocks-container">
+                                <div id="workspace-drop-placeholder" class="workspace-drop-placeholder">
+                                    <i class="fas fa-hand-pointer"></i>
+                                    <span>Drag blocks here</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <aside class="levels-column card">
+                <div class="card-header bg-success text-white levels-header">
+                    <h3 class="mb-0 fs-6 levels-title"><i class="fas fa-layer-group"></i> Track Picker</h3>
+                    <div id="track-picker" class="track-picker">
+                        <button id="track-picker-btn" class="track-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+                            <span id="track-picker-label">Sequence</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="track-picker-menu" class="track-picker-menu" role="listbox">
+                            <button type="button" class="track-option active" data-value="sequencing"><i class="fas fa-arrow-right-long"></i> Sequence</button>
+                            <button type="button" class="track-option" data-value="loops"><i class="fas fa-rotate"></i> Loops</button>
+                            <button type="button" class="track-option" data-value="conditions"><i class="fas fa-code-branch"></i> Conditions</button>
+                            <button type="button" class="track-option" data-value="procedures"><i class="fas fa-sitemap"></i> Procedures</button>
+                        </div>
+                    </div>
+                    <select id="challenge-category-select" class="form-select form-select-sm challenge-select levels-track-select d-none" aria-label="Select track">
+                        <option value="sequencing">Sequence</option>
+                        <option value="loops">Loops</option>
+                        <option value="conditions">Conditions</option>
+                        <option value="procedures">Procedures</option>
+                    </select>
+                </div>
+                <div class="card-body p-2">
+                    <div id="levels-panel" class="levels-panel" aria-label="Level selection"></div>
+                </div>
+                <button id="levels-toggle-btn" class="levels-toggle-btn" type="button" aria-label="Hide or show levels" aria-expanded="true" aria-controls="levels-panel">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </aside>
+        </section>
+
+        <!-- Hidden legacy containers retained for compatibility -->
+        <div class="legacy-hidden" aria-hidden="true">
+            <ul class="challenges-list">
+                <li class="list-group-item active" data-category="sequencing"></li>
+                <li class="list-group-item" data-category="loops"></li>
+                <li class="list-group-item" data-category="conditions"></li>
+                <li class="list-group-item" data-category="procedures"></li>
+            </ul>
+            <div class="sequencing-levels">
+                <button class="list-group-item active" data-level="1">1</button>
+            </div>
+            <div class="loops-levels"></div>
+            <div class="conditions-levels"></div>
+            <div class="procedures-levels"></div>
+        </div>
+    </main>
+
+    <footer class="footer mt-5">
+        <div class="container text-center">
+            <p class="mb-0">© 2025 Code Blocks Adventure | Designed with <i class="fas fa-heart text-danger"></i> for creative minds</p>
+        </div>
+    </footer>
+
+    <!-- Image Modal for enlarged view - Enhanced version -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel">Challenge Image</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <!-- Loading indicator that shows while image loads -->
+                    <div id="modal-loading" class="mb-3">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-2">Loading image...</p>
+                    </div>
+                    
+                    <!-- The actual image -->
+                    <img id="modal-challenge-image" src="" alt="Enlarged Challenge Image" class="img-fluid" 
+                         onload="document.getElementById('modal-loading').style.display = 'none'; this.style.display = 'block';"
+                         onerror="this.onerror=null; this.src='./images/image-error.svg'; document.getElementById('modal-loading').style.display = 'none'; document.getElementById('modal-error').style.display = 'block';">
+                    
+                    <!-- Fallback message if image fails to load -->
+                    <div id="modal-error" class="alert alert-danger mt-3" style="display: none;">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        The image could not be loaded. Please try another level or refresh the page.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Output Modal -->
+    <div class="modal fade" id="outputModal" tabindex="-1" aria-labelledby="outputModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="outputModalLabel">Program Output</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-2">
+                    <div class="animation-area p-3 border rounded" id="animation-area">
+                        <div class="text-center text-muted">
+                            <i class="fas fa-film fa-3x mb-2"></i>
+                            <p>Your program's output will be shown here when you run it.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer output-modal-footer">
+                    <span id="run-modal-status" class="run-modal-status">
+                        <i class="fas fa-gamepad"></i> Run your code, then check your answer.
+                    </span>
+                    <div class="run-modal-actions">
+                        <button type="button" id="run-modal-check-btn" class="btn btn-success" disabled>
+                            <i class="fas fa-check-circle"></i> Check Result
+                        </button>
+                        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">
+                            <i class="fas fa-xmark"></i> Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Result Modal -->
+    <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content result-modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resultModalLabel">Result</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body result-modal-body">
+                    <div id="result-modal-celebration" class="result-modal-celebration"></div>
+                    <p id="result-modal-message" class="mb-0"></p>
+                </div>
+                <div class="modal-footer" id="result-modal-actions">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SortableJS - for drag and drop -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <script src="../shared/shell.js" defer></script>
+    <!-- Sound Management -->
+    <script src="../sounds.js"></script>
+    <script src="../sounds/soundGenerator.js"></script>
+    <script src="./sounds.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="./block-coding.js"></script>
+    <!-- Image and Modal Fix Scripts -->
+    <script src="./image-debugger.js"></script>
+    <script src="./fixmodal.js"></script>
+</body>
+</html>

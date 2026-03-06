@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Treasure Trail Explorer | Code Blocks Playground</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../shared/shell.css">
+    <link rel="stylesheet" href="./grid-explorer.css">
+</head>
+<body class="kp-shell-enabled" data-page="brainy-puzzles" data-age="Grid Challenge">
+    <header>
+        <h1>Treasure Trail Explorer</h1>
+    </header>
+
+    <main class="grid-main">
+        <section class="grid-card" aria-label="Grid Explorer Puzzle Game">
+            <div class="grid-title-row">
+                <div>
+                    <h1>Treasure Trail Explorer</h1>
+                    <p>Find the hidden gem with smart clues before 3 misses.</p>
+                </div>
+                <p id="map-counter" class="map-counter" aria-live="polite">Map 1</p>
+            </div>
+
+            <div class="quality-panel">
+                <div class="quality-row">
+                    <div class="mode-switch" id="age-mode-buttons" role="tablist" aria-label="Age modes">
+                        <button class="mode-btn" data-mode="easy" aria-selected="false">Age 5-6</button>
+                        <button class="mode-btn active" data-mode="medium" aria-selected="true">Age 7-8</button>
+                        <button class="mode-btn" data-mode="hard" aria-selected="false">Age 9-10</button>
+                    </div>
+                    <div class="score-strip" aria-live="polite">
+                        <span>Score: <strong id="score-value">0</strong></span>
+                        <span>Level: <strong id="level-value">1</strong></span>
+                        <span>Solved: <strong id="solved-value">0</strong></span>
+                        <span>Streak: <strong id="streak-value">0</strong></span>
+                        <span>Hints: <strong id="hints-value">0</strong></span>
+                        <span>Attempts Left: <strong id="attempts-value">3</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="play-area">
+                <div class="map-stage">
+                    <div class="clue-wrap" aria-live="polite">
+                        <span class="clue-label"><i class="fas fa-map-signs"></i> Clue</span>
+                        <p id="treasure-clue" class="treasure-clue"></p>
+                    </div>
+                    <div id="grid-board" class="grid-board" role="grid" aria-label="Treasure map board"></div>
+                </div>
+
+                <aside class="side-panel" aria-label="Game controls and feedback">
+                    <button id="hint-btn" class="hint-btn" type="button" title="Get hint" aria-label="Get hint">
+                        <i class="fas fa-lightbulb"></i>
+                    </button>
+                    <p id="hint-message" class="hint-message" aria-live="polite">Use hint if you get stuck.</p>
+
+                    <div id="grid-result" class="result-message" aria-live="polite"></div>
+                    <div id="grid-explanation" class="explanation-message" aria-live="polite"></div>
+
+                    <div class="control-row" aria-label="Map navigation controls">
+                        <button id="grid-prev" class="icon-btn" type="button" title="Previous map" aria-label="Previous map">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button id="grid-reset" class="icon-btn" type="button" title="Reset this map" aria-label="Reset this map">
+                            <i class="fas fa-rotate-left"></i>
+                        </button>
+                        <button id="grid-check" class="icon-btn check-btn" type="button" title="Check selection" aria-label="Check selection">
+                            <i class="fas fa-check"></i>
+                        </button>
+                        <button id="grid-next" class="icon-btn" type="button" title="Next map" aria-label="Next map">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <script src="../shared/shell.js" defer></script>
+    <script src="./grid-explorer.js" defer></script>
+</body>
+</html>

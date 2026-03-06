@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <title>Music Beats</title>
+  <style>
+    .drums {
+      fill: #4361ee;
+      stroke: #3a56d4;
+      stroke-width: 2;
+    }
+    .piano {
+      fill: #f72585;
+      stroke: #e91e63;
+      stroke-width: 1;
+    }
+    .note {
+      fill: #ff9e00;
+      stroke: #fb8500;
+      stroke-width: 1;
+    }
+    .sound-wave {
+      fill: none;
+      stroke: #2b9348;
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+    .loop {
+      fill: none;
+      stroke: #f72585;
+      stroke-width: 2;
+      stroke-dasharray: 5,5;
+    }
+    .text {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      fill: #333;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="300" height="300" fill="#f5f7fa" />
+  
+  <!-- Drums -->
+  <g id="drums" transform="translate(80, 120)">
+    <ellipse class="drums" cx="0" cy="0" rx="40" ry="20" />
+    <ellipse class="drums" cx="0" cy="0" rx="35" ry="15" fill="white" stroke-dasharray="2,2" />
+    <rect class="drums" x="-5" y="-30" width="10" height="30" />
+    <line x1="-40" y1="0" x2="-40" y2="-50" stroke="#3a56d4" stroke-width="2" />
+    <circle class="drums" cx="-40" cy="-50" r="10" />
+  </g>
+  
+  <!-- Piano -->
+  <g id="piano" transform="translate(200, 120)">
+    <rect class="piano" x="-40" y="-15" width="80" height="30" rx="2" />
+    <!-- White keys -->
+    <rect x="-38" y="-13" width="10" height="26" fill="white" stroke="#e91e63" />
+    <rect x="-27" y="-13" width="10" height="26" fill="white" stroke="#e91e63" />
+    <rect x="-16" y="-13" width="10" height="26" fill="white" stroke="#e91e63" />
+    <rect x="-5" y="-13" width="10" height="26" fill="white" stroke="#e91e63" />
+    <rect x="6" y="-13" width="10" height="26" fill="white" stroke="#e91e63" />
+    <rect x="17" y="-13" width="10" height="26" fill="white" stroke="#e91e63" />
+    <rect x="28" y="-13" width="10" height="26" fill="white" stroke="#e91e63" />
+    <!-- Black keys -->
+    <rect x="-33" y="-13" width="6" height="16" fill="black" />
+    <rect x="-22" y="-13" width="6" height="16" fill="black" />
+    <rect x="0" y="-13" width="6" height="16" fill="black" />
+    <rect x="11" y="-13" width="6" height="16" fill="black" />
+    <rect x="22" y="-13" width="6" height="16" fill="black" />
+  </g>
+  
+  <!-- Music notes -->
+  <g id="notes">
+    <!-- Drum notes -->
+    <g transform="translate(60, 50)">
+      <path class="note" d="M0,0 L5,0 L5,15 C5,18.3 2.3,21 -1,21 C-4.3,21 -7,18.3 -7,15 C-7,11.7 -4.3,9 -1,9 C0,9 0.7,9.4 1.5,9.8 L1.5,0" />
+      <path class="sound-wave" d="M10,10 C13,8 16,14 19,12 C22,10 25,16 28,14" />
+    </g>
+    <g transform="translate(90, 70)">
+      <path class="note" d="M0,0 L5,0 L5,15 C5,18.3 2.3,21 -1,21 C-4.3,21 -7,18.3 -7,15 C-7,11.7 -4.3,9 -1,9 C0,9 0.7,9.4 1.5,9.8 L1.5,0" />
+      <path class="sound-wave" d="M10,10 C13,8 16,14 19,12 C22,10 25,16 28,14" />
+    </g>
+    
+    <!-- Piano notes -->
+    <g transform="translate(180, 60)">
+      <path class="note" d="M0,0 L5,0 L5,15 C5,18.3 2.3,21 -1,21 C-4.3,21 -7,18.3 -7,15 C-7,11.7 -4.3,9 -1,9 C0,9 0.7,9.4 1.5,9.8 L1.5,0" />
+      <path class="sound-wave" d="M10,10 C13,5 16,15 19,10 C22,5 25,15 28,10" opacity="0.5" />
+    </g>
+    <g transform="translate(210, 40)">
+      <path class="note" d="M0,0 L5,0 L5,15 C5,18.3 2.3,21 -1,21 C-4.3,21 -7,18.3 -7,15 C-7,11.7 -4.3,9 -1,9 C0,9 0.7,9.4 1.5,9.8 L1.5,0" />
+      <path class="sound-wave" d="M10,10 C13,5 16,15 19,10 C22,5 25,15 28,10" opacity="0.5" />
+    </g>
+  </g>
+  
+  <!-- Loop indicators -->
+  <g id="loops">
+    <path class="loop" d="M40,180 h80 v-20 a40,40 0 0 0 -40,-40 a40,40 0 0 0 -40,40" />
+    <text x="80" y="190" class="text" text-anchor="middle">Repeat 4 times</text>
+    
+    <path class="loop" d="M160,180 h80 v-20 a40,40 0 0 0 -40,-40 a40,40 0 0 0 -40,40" />
+    <text x="200" y="190" class="text" text-anchor="middle">Repeat 2 times</text>
+  </g>
+  
+  <!-- Title and instructions -->
+  <text x="150" y="30" class="text" text-anchor="middle" font-weight="bold" font-size="16">Music Beats</text>
+  <text x="150" y="230" class="text" text-anchor="middle">Create a rhythm with repeated patterns:</text>
+  <text x="150" y="250" class="text" text-anchor="middle">4 drum beats followed by 2 piano notes</text>
+  <text x="150" y="270" class="text" text-anchor="middle">Use loops to make your music efficient!</text>
+</svg>

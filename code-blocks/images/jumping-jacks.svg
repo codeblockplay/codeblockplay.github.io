@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <title>Jumping Jacks</title>
+  <style>
+    .figure {
+      fill: #4361ee;
+      stroke: #3a56d4;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .figure-closed {
+      fill: #4361ee;
+      stroke: #3a56d4;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: 0.4;
+    }
+    .counter {
+      fill: #f72585;
+      stroke: #e91e63;
+      stroke-width: 2;
+    }
+    .text {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      fill: #333;
+    }
+    .number {
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      fill: white;
+    }
+    .arrow {
+      fill: #ff9e00;
+      stroke: none;
+    }
+    .repeat {
+      fill: none;
+      stroke: #f72585;
+      stroke-width: 2;
+      stroke-dasharray: 5,5;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="300" height="300" fill="#f5f7fa" />
+  
+  <!-- Jumping jack figures - "in" position -->
+  <g id="figure-in" transform="translate(100, 150)">
+    <!-- Head -->
+    <circle class="figure" cx="0" cy="-40" r="10" />
+    <!-- Body -->
+    <line class="figure" x1="0" y1="-30" x2="0" y2="10" />
+    <!-- Arms -->
+    <line class="figure" x1="0" y1="-20" x2="-10" y2="-10" />
+    <line class="figure" x1="0" y1="-20" x2="10" y2="-10" />
+    <!-- Legs -->
+    <line class="figure" x1="0" y1="10" x2="-10" y2="30" />
+    <line class="figure" x1="0" y1="10" x2="10" y2="30" />
+  </g>
+  
+  <!-- Jumping jack figures - "out" position -->
+  <g id="figure-out" transform="translate(200, 150)">
+    <!-- Head -->
+    <circle class="figure" cx="0" cy="-40" r="10" />
+    <!-- Body -->
+    <line class="figure" x1="0" y1="-30" x2="0" y2="10" />
+    <!-- Arms -->
+    <line class="figure" x1="0" y1="-20" x2="-20" y2="-30" />
+    <line class="figure" x1="0" y1="-20" x2="20" y2="-30" />
+    <!-- Legs -->
+    <line class="figure" x1="0" y1="10" x2="-20" y2="30" />
+    <line class="figure" x1="0" y1="10" x2="20" y2="30" />
+  </g>
+  
+  <!-- Previous positions (faded) -->
+  <g opacity="0.3">
+    <!-- Position 1 (faded) -->
+    <g transform="translate(70, 150)">
+      <circle class="figure-closed" cx="0" cy="-40" r="10" />
+      <line class="figure-closed" x1="0" y1="-30" x2="0" y2="10" />
+      <line class="figure-closed" x1="0" y1="-20" x2="-10" y2="-10" />
+      <line class="figure-closed" x1="0" y1="-20" x2="10" y2="-10" />
+      <line class="figure-closed" x1="0" y1="10" x2="-10" y2="30" />
+      <line class="figure-closed" x1="0" y1="10" x2="10" y2="30" />
+    </g>
+    
+    <!-- Position 2 (faded) -->
+    <g transform="translate(40, 150)">
+      <circle class="figure-closed" cx="0" cy="-40" r="10" />
+      <line class="figure-closed" x1="0" y1="-30" x2="0" y2="10" />
+      <line class="figure-closed" x1="0" y1="-20" x2="-20" y2="-30" />
+      <line class="figure-closed" x1="0" y1="-20" x2="20" y2="-30" />
+      <line class="figure-closed" x1="0" y1="10" x2="-20" y2="30" />
+      <line class="figure-closed" x1="0" y1="10" x2="20" y2="30" />
+    </g>
+  </g>
+  
+  <!-- Counter display -->
+  <rect class="counter" x="100" y="60" width="100" height="40" rx="5" />
+  <text x="150" y="85" class="number" text-anchor="middle">12x</text>
+  
+  <!-- Movement arrows -->
+  <path class="arrow" d="M130,120 L170,120 L170,115 L180,125 L170,135 L170,130 L130,130 L130,135 L120,125 L130,115 Z" />
+  
+  <!-- Loop indicator -->
+  <path class="repeat" d="M150,30 v10 h-80 v180 h160 v-180 h-80" />
+  <text x="150" y="250" class="text" text-anchor="middle" font-weight="bold">Repeat 12 times</text>
+  
+  <!-- Title and instructions -->
+  <text x="150" y="30" class="text" text-anchor="middle" font-weight="bold" font-size="16">Jumping Jacks</text>
+  <text x="150" y="280" class="text" text-anchor="middle">Loop: Jump Out → Jump In → Count</text>
+</svg>

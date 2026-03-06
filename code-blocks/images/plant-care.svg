@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <!-- Background -->
+  <rect x="0" y="0" width="300" height="300" fill="#e8f5e9" />
+  
+  <!-- Garden Environment -->
+  <rect x="0" y="200" width="300" height="100" fill="#795548" />
+  
+  <!-- Plants -->
+  <g transform="translate(40, 0)">
+    <!-- Cactus -->
+    <g transform="translate(0, 0)">
+      <rect x="20" y="180" width="20" height="20" fill="#8d6e63" /> <!-- Pot -->
+      <path d="M30,180 L30,140 M20,160 L30,150 L40,160" fill="none" stroke="#66bb6a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+      <text x="30" y="220" font-family="Arial" font-size="12" text-anchor="middle" fill="#fff">CACTUS</text>
+      <rect x="10" y="225" width="40" height="10" fill="#ffeb3b" fill-opacity="0.7" />
+      <text x="30" y="233" font-family="Arial" font-size="8" text-anchor="middle" fill="#333">Little Water</text>
+    </g>
+    
+    <!-- Flower -->
+    <g transform="translate(80, 0)">
+      <rect x="20" y="180" width="20" height="20" fill="#8d6e63" /> <!-- Pot -->
+      <line x1="30" y1="180" x2="30" y2="150" stroke="#7cb342" stroke-width="3" />
+      <circle cx="30" cy="140" r="10" fill="#f06292" />
+      <circle cx="20" cy="145" r="5" fill="#f06292" />
+      <circle cx="40" cy="145" r="5" fill="#f06292" />
+      <circle cx="25" cy="135" r="5" fill="#f06292" />
+      <circle cx="35" cy="135" r="5" fill="#f06292" />
+      <circle cx="30" cy="140" r="5" fill="#ffeb3b" />
+      <text x="30" y="220" font-family="Arial" font-size="12" text-anchor="middle" fill="#fff">FLOWER</text>
+      <rect x="10" y="225" width="40" height="10" fill="#2196f3" />
+      <text x="30" y="233" font-family="Arial" font-size="8" text-anchor="middle" fill="#fff">Plenty Water</text>
+    </g>
+    
+    <!-- Fern -->
+    <g transform="translate(160, 0)">
+      <rect x="20" y="180" width="20" height="20" fill="#8d6e63" /> <!-- Pot -->
+      <path d="M30,180 Q40,170 45,160 T50,140 M30,180 Q35,160 32,150 T30,120 M30,180 Q20,170 15,160 T10,140" fill="none" stroke="#43a047" stroke-width="2" stroke-linecap="round" />
+      <text x="30" y="220" font-family="Arial" font-size="12" text-anchor="middle" fill="#fff">FERN</text>
+      <rect x="10" y="225" width="40" height="10" fill="#29b6f6" fill-opacity="0.7" />
+      <text x="30" y="233" font-family="Arial" font-size="8" text-anchor="middle" fill="#333">Medium Water</text>
+    </g>
+  </g>
+  
+  <!-- Watering Can -->
+  <g transform="translate(200, 60)">
+    <path d="M20,20 H60 V40 Q70,30 80,40 V50 Q60,55 40,50 V40 H20 V20 Z" fill="#78909c" stroke="#546e7a" stroke-width="2" />
+    <path d="M30,20 V0" stroke="#546e7a" stroke-width="3" />
+    <path d="M40,50 Q35,70 30,80" stroke="#2196f3" stroke-width="2" stroke-dasharray="2,2" />
+    <path d="M50,50 Q45,80 40,90" stroke="#2196f3" stroke-width="2" stroke-dasharray="2,2" />
+    <path d="M60,50 Q55,75 50,85" stroke="#2196f3" stroke-width="2" stroke-dasharray="2,2" />
+  </g>
+  
+  <!-- Water Droplets -->
+  <g transform="translate(0, 0)">
+    <path d="M40,240 Q40,235 35,240 T30,240 Q30,245 35,245 T40,240 Z" fill="#2196f3" />
+    <path d="M120,230 Q120,225 115,230 T110,230 Q110,235 115,235 T120,230 Z" fill="#2196f3" />
+    <path d="M200,240 Q200,235 195,240 T190,240 Q190,245 195,245 T200,240 Z" fill="#2196f3" />
+  </g>
+  
+  <!-- Sun -->
+  <g transform="translate(250, 30)">
+    <circle cx="0" cy="0" r="15" fill="#ffeb3b" />
+    <line x1="0" y1="-20" x2="0" y2="-25" stroke="#ffeb3b" stroke-width="2" />
+    <line x1="0" y1="20" x2="0" y2="25" stroke="#ffeb3b" stroke-width="2" />
+    <line x1="-20" y1="0" x2="-25" y2="0" stroke="#ffeb3b" stroke-width="2" />
+    <line x1="20" y1="0" x2="25" y2="0" stroke="#ffeb3b" stroke-width="2" />
+    <line x1="-14" y1="-14" x2="-18" y2="-18" stroke="#ffeb3b" stroke-width="2" />
+    <line x1="14" y1="-14" x2="18" y2="-18" stroke="#ffeb3b" stroke-width="2" />
+    <line x1="-14" y1="14" x2="-18" y2="18" stroke="#ffeb3b" stroke-width="2" />
+    <line x1="14" y1="14" x2="18" y2="18" stroke="#ffeb3b" stroke-width="2" />
+  </g>
+</svg>

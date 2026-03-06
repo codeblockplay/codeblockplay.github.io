@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title id="title">Morning Routine Steps</title>
+  <desc id="desc">Five routine cards are shuffled so kids can find the best morning order.</desc>
+
+  <defs>
+    <linearGradient id="pageBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f2f8ff"/>
+      <stop offset="100%" stop-color="#e8f2ff"/>
+    </linearGradient>
+    <linearGradient id="headerBg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#56a9ff"/>
+      <stop offset="100%" stop-color="#4f79ff"/>
+    </linearGradient>
+    <style>
+      text {
+        font-family: "Trebuchet MS", "Arial Rounded MT Bold", Arial, sans-serif;
+      }
+    </style>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#pageBg)"/>
+  <rect x="30" y="26" width="740" height="78" rx="20" fill="url(#headerBg)"/>
+  <text x="400" y="72" font-size="40" font-weight="900" text-anchor="middle" fill="#ffffff">Morning Routine</text>
+  <text x="400" y="96" font-size="18" font-weight="700" text-anchor="middle" fill="#dff1ff">Cards are mixed. Build the best morning order.</text>
+
+  <!-- Step 1 -->
+  <g id="step-1-wake-card" transform="translate(336 130)">
+    <rect width="132" height="320" rx="20" fill="#ffffff" stroke="#315a94" stroke-width="4"/>
+    <rect x="0" y="0" width="132" height="54" rx="20" fill="#ffd9e3"/>
+    <circle cx="24" cy="24" r="16" fill="#ff5f84" stroke="#ffffff" stroke-width="3"/>
+    <text x="24" y="30" font-size="20" font-weight="900" text-anchor="middle" fill="#ffffff">A</text>
+
+    <rect x="18" y="72" width="96" height="170" rx="14" fill="#f5f9ff" stroke="#bfd7ff" stroke-width="2"/>
+    <rect x="26" y="168" width="80" height="34" rx="8" fill="#71b8ff" stroke="#2d5f95" stroke-width="3"/>
+    <rect x="26" y="154" width="80" height="16" rx="7" fill="#9ad1ff" stroke="#2d5f95" stroke-width="3"/>
+    <rect x="30" y="158" width="24" height="10" rx="4" fill="#ffffff"/>
+    <circle cx="79" cy="162" r="7" fill="#ffd4a8" stroke="#2d5f95" stroke-width="2"/>
+    <circle cx="95" cy="126" r="12" fill="#ffe776" stroke="#2d5f95" stroke-width="3"/>
+    <line x1="95" y1="126" x2="95" y2="118" stroke="#2d5f95" stroke-width="2"/>
+    <line x1="95" y1="126" x2="102" y2="129" stroke="#2d5f95" stroke-width="2"/>
+    <text x="44" y="118" font-size="16" font-weight="900" fill="#4f79ff">Zz</text>
+
+    <rect x="12" y="262" width="108" height="44" rx="12" fill="#edf5ff" stroke="#c1d9ff" stroke-width="2"/>
+    <text x="66" y="291" font-size="22" font-weight="900" text-anchor="middle" fill="#294a7e">Wake Up</text>
+  </g>
+
+  <!-- Step 2 -->
+  <g id="step-2-brush-card" transform="translate(632 130)">
+    <rect width="132" height="320" rx="20" fill="#ffffff" stroke="#315a94" stroke-width="4"/>
+    <rect x="0" y="0" width="132" height="54" rx="20" fill="#dff8da"/>
+    <circle cx="24" cy="24" r="16" fill="#5fbf56" stroke="#ffffff" stroke-width="3"/>
+    <text x="24" y="30" font-size="20" font-weight="900" text-anchor="middle" fill="#ffffff">B</text>
+
+    <rect x="18" y="72" width="96" height="170" rx="14" fill="#f6fff4" stroke="#c4e9bc" stroke-width="2"/>
+    <path d="M46 122 Q44 97 58 92 Q65 88 72 92 Q79 88 86 92 Q100 97 98 122 Q95 148 72 167 Q49 148 46 122 Z"
+      fill="#ffffff" stroke="#2d5f95" stroke-width="3"/>
+    <g transform="translate(28 185) rotate(-17)">
+      <rect x="0" y="0" width="72" height="12" rx="6" fill="#ff6d8c" stroke="#2d5f95" stroke-width="2"/>
+      <rect x="56" y="-5" width="18" height="8" rx="3" fill="#8cd37f" stroke="#2d5f95" stroke-width="2"/>
+      <rect x="60" y="-10" width="2" height="6" fill="#ffffff"/>
+      <rect x="64" y="-10" width="2" height="6" fill="#ffffff"/>
+      <rect x="68" y="-10" width="2" height="6" fill="#ffffff"/>
+    </g>
+    <circle cx="89" cy="171" r="5" fill="#d9f7ff" stroke="#2d5f95" stroke-width="1.5"/>
+    <circle cx="98" cy="164" r="4" fill="#d9f7ff" stroke="#2d5f95" stroke-width="1.5"/>
+
+    <rect x="12" y="262" width="108" height="44" rx="12" fill="#edf5ff" stroke="#c1d9ff" stroke-width="2"/>
+    <text x="66" y="291" font-size="22" font-weight="900" text-anchor="middle" fill="#294a7e">Brush</text>
+  </g>
+
+  <!-- Step 3 -->
+  <g id="step-3-dress-card" transform="translate(40 130)">
+    <rect width="132" height="320" rx="20" fill="#ffffff" stroke="#315a94" stroke-width="4"/>
+    <rect x="0" y="0" width="132" height="54" rx="20" fill="#eee1ff"/>
+    <circle cx="24" cy="24" r="16" fill="#8d67ff" stroke="#ffffff" stroke-width="3"/>
+    <text x="24" y="30" font-size="20" font-weight="900" text-anchor="middle" fill="#ffffff">C</text>
+
+    <rect x="18" y="72" width="96" height="170" rx="14" fill="#f9f5ff" stroke="#d9cbf9" stroke-width="2"/>
+    <path d="M50 98 L34 126 L46 136 L53 124 L53 182 L91 182 L91 124 L98 136 L110 126 L94 98 L80 107 L71 95 L73 95 L64 95 L55 107 Z"
+      fill="#a87cff" stroke="#2d5f95" stroke-width="3"/>
+    <circle cx="72" cy="132" r="3.5" fill="#f4e9ff"/>
+    <circle cx="72" cy="146" r="3.5" fill="#f4e9ff"/>
+    <circle cx="72" cy="160" r="3.5" fill="#f4e9ff"/>
+    <path d="M50 96 Q72 74 95 96" fill="none" stroke="#2d5f95" stroke-width="4" stroke-linecap="round"/>
+
+    <rect x="12" y="262" width="108" height="44" rx="12" fill="#edf5ff" stroke="#c1d9ff" stroke-width="2"/>
+    <text x="66" y="291" font-size="22" font-weight="900" text-anchor="middle" fill="#294a7e">Dress</text>
+  </g>
+
+  <!-- Step 4 -->
+  <g id="step-4-eat-card" transform="translate(188 130)">
+    <rect width="132" height="320" rx="20" fill="#ffffff" stroke="#315a94" stroke-width="4"/>
+    <rect x="0" y="0" width="132" height="54" rx="20" fill="#ffe9cb"/>
+    <circle cx="24" cy="24" r="16" fill="#ffa63c" stroke="#ffffff" stroke-width="3"/>
+    <text x="24" y="30" font-size="20" font-weight="900" text-anchor="middle" fill="#ffffff">D</text>
+
+    <rect x="18" y="72" width="96" height="170" rx="14" fill="#fff9ef" stroke="#f3deb9" stroke-width="2"/>
+    <ellipse cx="66" cy="150" rx="40" ry="28" fill="#fff4de" stroke="#2d5f95" stroke-width="3"/>
+    <ellipse cx="66" cy="150" rx="24" ry="14" fill="#ffe29e" stroke="#2d5f95" stroke-width="2"/>
+    <circle cx="56" cy="148" r="4" fill="#ffaf5f"/>
+    <circle cx="68" cy="144" r="4" fill="#ffaf5f"/>
+    <circle cx="77" cy="151" r="4" fill="#ffaf5f"/>
+    <rect x="94" y="126" width="7" height="50" rx="3" fill="#9cc2f7" stroke="#2d5f95" stroke-width="2"/>
+    <ellipse cx="97.5" cy="120" rx="11" ry="9" fill="#d8e8ff" stroke="#2d5f95" stroke-width="2"/>
+    <line x1="28" y1="190" x2="104" y2="190" stroke="#2d5f95" stroke-width="3" stroke-linecap="round"/>
+
+    <rect x="12" y="262" width="108" height="44" rx="12" fill="#edf5ff" stroke="#c1d9ff" stroke-width="2"/>
+    <text x="66" y="291" font-size="22" font-weight="900" text-anchor="middle" fill="#294a7e">Eat</text>
+  </g>
+
+  <!-- Step 5 -->
+  <g id="step-5-pack-card" transform="translate(484 130)">
+    <rect width="132" height="320" rx="20" fill="#ffffff" stroke="#315a94" stroke-width="4"/>
+    <rect x="0" y="0" width="132" height="54" rx="20" fill="#ffd8d8"/>
+    <circle cx="24" cy="24" r="16" fill="#ff6a6a" stroke="#ffffff" stroke-width="3"/>
+    <text x="24" y="30" font-size="20" font-weight="900" text-anchor="middle" fill="#ffffff">E</text>
+
+    <rect x="18" y="72" width="96" height="170" rx="14" fill="#fff6f6" stroke="#f2cccc" stroke-width="2"/>
+    <path d="M52 114 Q52 96 66 96 Q80 96 80 114" fill="none" stroke="#2d5f95" stroke-width="4"/>
+    <rect x="39" y="114" width="54" height="82" rx="13" fill="#ff7b7b" stroke="#2d5f95" stroke-width="3"/>
+    <rect x="46" y="127" width="40" height="19" rx="7" fill="#ffb4b4" stroke="#2d5f95" stroke-width="2"/>
+    <line x1="66" y1="146" x2="66" y2="184" stroke="#2d5f95" stroke-width="2"/>
+    <circle cx="66" cy="165" r="4" fill="#ffffff" stroke="#2d5f95" stroke-width="1.5"/>
+    <path d="M39 126 Q30 144 39 162" fill="none" stroke="#2d5f95" stroke-width="3" stroke-linecap="round"/>
+    <path d="M93 126 Q102 144 93 162" fill="none" stroke="#2d5f95" stroke-width="3" stroke-linecap="round"/>
+
+    <rect x="12" y="262" width="108" height="44" rx="12" fill="#edf5ff" stroke="#c1d9ff" stroke-width="2"/>
+    <text x="66" y="291" font-size="20" font-weight="900" text-anchor="middle" fill="#294a7e">Pack Bag</text>
+  </g>
+</svg>

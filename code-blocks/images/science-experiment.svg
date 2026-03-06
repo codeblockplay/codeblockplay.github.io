@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#E3F2FD"/>
+  
+  <!-- Science Lab Table -->
+  <rect x="100" y="400" width="600" height="30" rx="5" fill="#795548"/>
+  <rect x="120" y="430" width="20" height="100" fill="#5D4037"/>
+  <rect x="660" y="430" width="20" height="100" fill="#5D4037"/>
+  
+  <!-- Science Experiment Setup -->
+  
+  <!-- Flask -->
+  <path d="M300 300 L330 400 L470 400 L500 300 Z" fill="#BBDEFB" opacity="0.7"/>
+  <path d="M320 300 L340 300 L330 320 Z" fill="#90CAF9"/>
+  <path d="M460 300 L480 300 L470 320 Z" fill="#90CAF9"/>
+  <rect x="325" y="250" width="150" height="50" rx="5" fill="#BBDEFB" opacity="0.7"/>
+  <ellipse cx="400" cy="250" rx="75" ry="15" fill="#BBDEFB" opacity="0.7"/>
+  
+  <!-- Baking Soda -->
+  <rect x="150" y="200" width="80" height="100" rx="5" fill="#ECEFF1"/>
+  <rect x="155" y="205" width="70" height="90" rx="3" fill="#CFD8DC"/>
+  <text x="190" y="250" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Baking</text>
+  <text x="190" y="270" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Soda</text>
+  
+  <!-- Food Coloring -->
+  <rect x="260" y="220" width="30" height="60" rx="3" fill="#2196F3"/>
+  <rect x="265" y="210" width="20" height="10" rx="2" fill="#1976D2"/>
+  <ellipse cx="275" cy="210" rx="10" ry="3" fill="#1976D2"/>
+  <rect x="272" y="190" width="6" height="20" fill="#1976D2"/>
+  <text x="275" y="300" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">Color</text>
+  
+  <!-- Vinegar -->
+  <rect x="520" y="180" width="80" height="120" rx="5" fill="#B3E5FC"/>
+  <rect x="525" y="185" width="70" height="110" rx="3" fill="#81D4FA"/>
+  <text x="560" y="240" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Vinegar</text>
+  
+  <!-- Magnifying Glass (Observe) -->
+  <circle cx="650" cy="250" r="40" fill="#E1F5FE" opacity="0.5" stroke="#29B6F6" stroke-width="5"/>
+  <rect x="675" y="280" width="10" height="50" rx="5" transform="rotate(45, 675, 280)" fill="#29B6F6"/>
+  <text x="650" y="320" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Observe</text>
+  
+  <!-- Bubbles Effect -->
+  <circle cx="400" cy="330" r="15" fill="white" opacity="0.8"/>
+  <circle cx="375" cy="350" r="10" fill="white" opacity="0.8"/>
+  <circle cx="420" cy="360" r="12" fill="white" opacity="0.8"/>
+  <circle cx="390" cy="370" r="8" fill="white" opacity="0.8"/>
+  <circle cx="430" cy="340" r="13" fill="white" opacity="0.8"/>
+  
+  <!-- Kid Scientist -->
+  <circle cx="100" cy="300" r="30" fill="#FFCCBC"/>
+  <circle cx="90" cy="290" r="5" fill="#263238"/>
+  <circle cx="110" cy="290" r="5" fill="#263238"/>
+  <path d="M90 310 Q100 320 110 310" stroke="#263238" stroke-width="2" fill="none"/>
+  <rect x="80" y="330" width="40" height="50" rx="5" fill="#81C784"/>
+  <path d="M70 330 L130 330 L100 290 Z" fill="#BBDEFB"/>
+  <text x="100" y="350" font-family="Arial" font-size="14" text-anchor="middle" fill="white">Lab</text>
+  
+  <!-- Title -->
+  <text x="400" y="80" font-family="Arial" font-size="30" font-weight="bold" text-anchor="middle" fill="#0D47A1">Science Experiment</text>
+  
+  <!-- Instructions -->
+  <rect x="150" y="500" width="500" height="60" rx="10" fill="white" stroke="#0D47A1" stroke-width="2"/>
+  <text x="400" y="530" font-family="Arial" font-size="16" text-anchor="middle" fill="#333">Put the science experiment steps in the correct order!</text>
+  
+  <!-- Numbers for sequence -->
+  <circle cx="190" cy="160" r="18" fill="#0D47A1"/>
+  <text x="190" y="166" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle" fill="white">1</text>
+  
+  <circle cx="275" cy="160" r="18" fill="#0D47A1"/>
+  <text x="275" y="166" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle" fill="white">3</text>
+  
+  <circle cx="560" cy="160" r="18" fill="#0D47A1"/>
+  <text x="560" y="166" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle" fill="white">4</text>
+  
+  <circle cx="650" cy="210" r="18" fill="#0D47A1"/>
+  <text x="650" y="216" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle" fill="white">5</text>
+  
+  <circle cx="400" cy="210" r="18" fill="#0D47A1"/>
+  <text x="400" y="216" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle" fill="white">2</text>
+</svg>

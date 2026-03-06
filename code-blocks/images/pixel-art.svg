@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <title>Pixel Art</title>
+  <style>
+    .pixel {
+      stroke: #ccc;
+      stroke-width: 0.5;
+    }
+    .filled-pixel {
+      stroke: #ccc;
+      stroke-width: 0.5;
+    }
+    .text {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      fill: #333;
+    }
+    .cursor {
+      fill: none;
+      stroke: #f72585;
+      stroke-width: 3;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="300" height="300" fill="#f5f7fa" />
+  
+  <!-- Pixel grid 8x8 -->
+  <g id="pixel-grid" transform="translate(75, 75)">
+    <!-- Row 1 -->
+    <rect class="pixel" x="0" y="0" width="20" height="20" fill="#ffb703" />
+    <rect class="pixel" x="20" y="0" width="20" height="20" fill="#ffb703" />
+    <rect class="pixel" x="40" y="0" width="20" height="20" fill="#ffb703" />
+    <rect class="pixel" x="60" y="0" width="20" height="20" fill="#ffb703" />
+    <rect class="pixel" x="80" y="0" width="20" height="20" fill="#ffb703" />
+    <rect class="pixel" x="100" y="0" width="20" height="20" fill="#ffb703" />
+    <rect class="pixel" x="120" y="0" width="20" height="20" fill="#ffb703" />
+    <rect class="pixel" x="140" y="0" width="20" height="20" fill="#ffb703" />
+    
+    <!-- Row 2 -->
+    <rect class="pixel" x="0" y="20" width="20" height="20" fill="#ffb703" />
+    <rect class="pixel" x="20" y="20" width="20" height="20" fill="#000000" />
+    <rect class="pixel" x="40" y="20" width="20" height="20" fill="#000000" />
+    <rect class="pixel" x="60" y="20" width="20" height="20" fill="#000000" />
+    <rect class="pixel" x="80" y="20" width="20" height="20" fill="#000000" />
+    <rect class="pixel" x="100" y="20" width="20" height="20" fill="#000000" />
+    <rect class="pixel" x="120" y="20" width="20" height="20" fill="#000000" />
+    <rect class="pixel" x="140" y="20" width="20" height="20" fill="#ffb703" />
+    
+    <!-- Row 3 -->
+    <rect class="pixel" x="0" y="40" width="20" height="20" fill="#ffb703" />
+    <rect class="pixel" x="20" y="40" width="20" height="20" fill="#000000" />
+    <rect class="pixel" x="40" y="40" width="20" height="20" fill="#fb8500" />
+    <rect class="pixel" x="60" y="40" width="20" height="20" fill="#fb8500" />
+    <rect class="pixel" x="80" y="40" width="20" height="20" fill="#fb8500" />
+    <rect class="pixel" x="100" y="40" width="20" height="20" fill="#fb8500" />
+    <rect class="pixel" x="120" y="40" width="20" height="20" fill="#000000" />
+    <rect class="pixel" x="140" y="40" width="20" height="20" fill="#ffb703" />
+    
+    <!-- Row 4 -->
+    <rect class="pixel" x="0" y="60" width="20" height="20" fill="#ffb703" />
+    <rect class="pixel" x="20" y="60" width="20" height="20" fill="#000000" />
+    <rect class="pixel" x="40" y="60" width="20" height="20" fill="#fb8500" />
+    <rect class="pixel" x="60" y="60" width="20" height="20" fill="#fb8500" />
+    <rect class="pixel" x="80" y="60" width="20" height="20" fill="#fb8500" />
+    <rect class="pixel" x="100" y="60" width="20" height="20" fill="#fb8500" />
+    <rect class="pixel" x="120" y="60" width="20" height="20" fill="#000000" />
+    <rect class="pixel" x="140" y="60" width="20" height="20" fill="#ffb703" />
+    
+    <!-- Row 5 -->
+    <rect class="pixel" x="0" y="80" width="20" height="20" fill="#ffb703" />
+    <rect class="pixel" x="20" y="80" width="20" height="20" fill="#000000" />
+    <rect class="pixel" x="40" y="80" width="20" height="20" fill="#fb8500" />
+    <rect class="pixel" x="60" y="80" width="20" height="20" fill="#fb8500" />
+    <rect class="pixel" x="80" y="80" width="20" height="20" fill="#fb8500" />
+    <rect class="pixel" x="100" y="80" width="20" height="20" fill="#fb8500" />
+    <rect class="pixel" x="120" y="80" width="20" height="20" fill="#000000" />
+    <rect class="pixel" x="140" y="80" width="20" height="20" fill="#ffb703" />
+    
+    <!-- Row 6 -->
+    <rect class="pixel" x="0" y="100" width="20" height="20" fill="#ffb703" />
+    <rect class="pixel" x="20" y="100" width="20" height="20" fill="#000000" />
+    <rect class="pixel" x="40" y="100" width="20" height="20" fill="#000000" />
+    <rect class="pixel" x="60" y="100" width="20" height="20" fill="#000000" />
+    <rect class="pixel" x="80" y="100" width="20" height="20" fill="#000000" />
+    <rect class="pixel" x="100" y="100" width="20" height="20" fill="#000000" />
+    <rect class="pixel" x="120" y="100" width="20" height="20" fill="#000000" />
+    <rect class="pixel" x="140" y="100" width="20" height="20" fill="#ffb703" />
+    
+    <!-- Row 7 -->
+    <rect class="pixel" x="0" y="120" width="20" height="20" fill="#ffb703" />
+    <rect class="pixel" x="20" y="120" width="20" height="20" fill="#ffb703" />
+    <rect class="pixel" x="40" y="120" width="20" height="20" fill="#ffb703" />
+    <rect class="pixel" x="60" y="120" width="20" height="20" fill="#ffb703" />
+    <rect class="pixel" x="80" y="120" width="20" height="20" fill="#ffb703" />
+    <rect class="pixel" x="100" y="120" width="20" height="20" fill="#ffb703" />
+    <rect class="pixel" x="120" y="120" width="20" height="20" fill="#ffb703" />
+    <rect class="pixel" x="140" y="120" width="20" height="20" fill="#ffb703" />
+    
+    <!-- Row 8 (empty row) -->
+    <rect class="pixel" x="0" y="140" width="20" height="20" fill="#ffffff" />
+    <rect class="pixel" x="20" y="140" width="20" height="20" fill="#ffffff" />
+    <rect class="pixel" x="40" y="140" width="20" height="20" fill="#ffffff" />
+    <rect class="pixel" x="60" y="140" width="20" height="20" fill="#ffffff" />
+    <rect class="pixel" x="80" y="140" width="20" height="20" fill="#ffffff" />
+    <rect class="pixel" x="100" y="140" width="20" height="20" fill="#ffffff" />
+    <rect class="pixel" x="120" y="140" width="20" height="20" fill="#ffffff" />
+    <rect class="pixel" x="140" y="140" width="20" height="20" fill="#ffffff" />
+  </g>
+  
+  <!-- Current pixel cursor -->
+  <rect class="cursor" x="115" y="215" width="20" height="20" />
+  
+  <!-- Labels -->
+  <text x="150" y="40" class="text" text-anchor="middle" font-weight="bold" font-size="16">Pixel Art</text>
+  <text x="150" y="240" class="text" text-anchor="middle">Create pixel art using nested loops</text>
+  <text x="150" y="260" class="text" text-anchor="middle">Outer loop: change row</text>
+  <text x="150" y="280" class="text" text-anchor="middle">Inner loop: set pixel, change column</text>
+</svg>

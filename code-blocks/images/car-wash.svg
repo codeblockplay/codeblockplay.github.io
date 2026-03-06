@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#E3F2FD"/>
+  
+  <!-- Car Wash Station -->
+  <rect x="200" y="100" width="400" height="300" fill="#90CAF9"/>
+  <rect x="200" y="400" width="400" height="100" fill="#42A5F5"/>
+  
+  <!-- Car Wash Entrance -->
+  <rect x="250" y="150" width="300" height="250" fill="#1976D2"/>
+  
+  <!-- Car -->
+  <g transform="translate(400, 350)">
+    <!-- Car body -->
+    <rect x="-120" y="-30" width="240" height="60" rx="15" fill="#FF9800"/>
+    
+    <!-- Car windows -->
+    <rect x="-80" y="-60" width="160" height="30" rx="10" fill="#E1F5FE"/>
+    
+    <!-- Car roof -->
+    <path d="M-80,-30 L-100,-60 L100,-60 L80,-30 Z" fill="#EF6C00"/>
+    
+    <!-- Car wheels -->
+    <circle cx="-70" cy="30" r="20" fill="#424242"/>
+    <circle cx="-70" cy="30" r="10" fill="#9E9E9E"/>
+    <circle cx="70" cy="30" r="20" fill="#424242"/>
+    <circle cx="70" cy="30" r="10" fill="#9E9E9E"/>
+    
+    <!-- Car details -->
+    <rect x="-110" y="-15" width="20" height="10" rx="2" fill="#FFEB3B"/>
+    <rect x="90" y="-15" width="20" height="10" rx="2" fill="#FFEB3B"/>
+  </g>
+  
+  <!-- Water Sprayers -->
+  <g id="sprayers">
+    <rect x="260" y="170" width="10" height="40" fill="#757575"/>
+    <rect x="350" y="170" width="10" height="40" fill="#757575"/>
+    <rect x="450" y="170" width="10" height="40" fill="#757575"/>
+    <rect x="530" y="170" width="10" height="40" fill="#757575"/>
+  </g>
+  
+  <!-- Water Droplets -->
+  <g id="droplets" fill="#29B6F6" opacity="0.8">
+    <circle cx="265" cy="220" r="5"/>
+    <circle cx="275" cy="230" r="4"/>
+    <circle cx="260" cy="240" r="6"/>
+    
+    <circle cx="355" cy="220" r="5"/>
+    <circle cx="365" cy="230" r="4"/>
+    <circle cx="350" cy="240" r="6"/>
+    
+    <circle cx="455" cy="220" r="5"/>
+    <circle cx="465" cy="230" r="4"/>
+    <circle cx="450" cy="240" r="6"/>
+    
+    <circle cx="535" cy="220" r="5"/>
+    <circle cx="545" cy="230" r="4"/>
+    <circle cx="530" cy="240" r="6"/>
+  </g>
+  
+  <!-- Soap Bubbles -->
+  <g id="bubbles" fill="white" opacity="0.8">
+    <circle cx="320" cy="300" r="15"/>
+    <circle cx="340" cy="270" r="10"/>
+    <circle cx="370" cy="290" r="12"/>
+    <circle cx="400" cy="270" r="8"/>
+    <circle cx="420" cy="300" r="14"/>
+    <circle cx="450" cy="280" r="9"/>
+  </g>
+  
+  <!-- Car Wash Sign -->
+  <g transform="translate(400, 80)">
+    <rect x="-100" y="-30" width="200" height="60" rx="10" fill="#1565C0"/>
+    <text x="0" y="5" font-family="Arial" font-size="24" font-weight="bold" fill="white" text-anchor="middle">CAR WASH</text>
+  </g>
+  
+  <!-- Ground/Driveway -->
+  <rect x="0" y="500" width="800" height="100" fill="#90A4AE"/>
+  
+  <!-- Water Puddles -->
+  <ellipse cx="300" cy="520" rx="80" ry="20" fill="#29B6F6" opacity="0.3"/>
+  <ellipse cx="500" cy="530" rx="60" ry="15" fill="#29B6F6" opacity="0.3"/>
+</svg>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <title>Robot Dance</title>
+  <style>
+    .robot {
+      fill: #4361ee;
+      stroke: #3a56d4;
+      stroke-width: 2;
+    }
+    .light {
+      fill: #ff9e00;
+      stroke: #fb8500;
+      stroke-width: 1;
+    }
+    .motion-path {
+      fill: none;
+      stroke: #f72585;
+      stroke-width: 2;
+      stroke-dasharray: 5,5;
+    }
+    .floor {
+      fill: #e9ecef;
+      stroke: #adb5bd;
+      stroke-width: 1;
+    }
+    .loop {
+      fill: none;
+      stroke: #f72585;
+      stroke-width: 2;
+      stroke-dasharray: 5,5;
+    }
+    .text {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      fill: #333;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="300" height="300" fill="#f5f7fa" />
+  
+  <!-- Floor -->
+  <rect class="floor" x="50" y="220" width="200" height="10" rx="2" />
+  <line x1="50" y1="220" x2="250" y2="220" stroke="#adb5bd" stroke-width="1" stroke-dasharray="5,5" />
+  
+  <!-- Robot in three positions to show motion -->
+  
+  <!-- Position 1: Spin -->
+  <g id="robot1" transform="translate(100, 170)">
+    <rect class="robot" x="-20" y="-40" width="40" height="60" rx="5" />
+    <circle fill="white" cx="-10" cy="-25" r="5" />
+    <circle fill="white" cx="10" cy="-25" r="5" />
+    <circle fill="black" cx="-10" cy="-25" r="2" />
+    <circle fill="black" cx="10" cy="-25" r="2" />
+    <rect fill="black" x="-7" y="-5" width="14" height="2" rx="1" />
+    <circle class="light" cx="0" cy="-45" r="5" />
+    
+    <!-- Arms -->
+    <rect class="robot" x="-30" y="-30" width="10" height="30" rx="3" />
+    <rect class="robot" x="20" y="-30" width="10" height="30" rx="3" />
+    
+    <!-- Legs -->
+    <rect class="robot" x="-15" y="20" width="10" height="30" rx="3" />
+    <rect class="robot" x="5" y="20" width="10" height="30" rx="3" />
+    
+    <!-- Spin motion path -->
+    <path class="motion-path" d="M0,-60 A20,20 0 1,1 0,-20 A20,20 0 1,1 0,-60" />
+  </g>
+  
+  <!-- Position 2: Jump -->
+  <g id="robot2" transform="translate(150, 150)">
+    <rect class="robot" x="-20" y="-40" width="40" height="60" rx="5" />
+    <circle fill="white" cx="-10" cy="-25" r="5" />
+    <circle fill="white" cx="10" cy="-25" r="5" />
+    <circle fill="black" cx="-10" cy="-25" r="2" />
+    <circle fill="black" cx="10" cy="-25" r="2" />
+    <rect fill="black" x="-7" y="-5" width="14" height="2" rx="1" />
+    <circle class="light" cx="0" cy="-45" r="5" />
+    
+    <!-- Arms - raised for jump -->
+    <rect class="robot" x="-30" y="-40" width="10" height="30" rx="3" transform="rotate(-45 -25 -25)" />
+    <rect class="robot" x="20" y="-40" width="10" height="30" rx="3" transform="rotate(45 25 -25)" />
+    
+    <!-- Legs - bent for jump -->
+    <rect class="robot" x="-15" y="20" width="10" height="25" rx="3" transform="rotate(-15 -10 20)" />
+    <rect class="robot" x="5" y="20" width="10" height="25" rx="3" transform="rotate(15 10 20)" />
+    
+    <!-- Jump motion path -->
+    <path class="motion-path" d="M0,0 C0,-20 0,-40 0,-20 C0,0 0,0 0,0" />
+  </g>
+  
+  <!-- Position 3: Wave -->
+  <g id="robot3" transform="translate(200, 170)">
+    <rect class="robot" x="-20" y="-40" width="40" height="60" rx="5" />
+    <circle fill="white" cx="-10" cy="-25" r="5" />
+    <circle fill="white" cx="10" cy="-25" r="5" />
+    <circle fill="black" cx="-10" cy="-25" r="2" />
+    <circle fill="black" cx="10" cy="-25" r="2" />
+    <rect fill="black" x="-7" y="-5" width="14" height="2" rx="1" />
+    <circle class="light" cx="0" cy="-45" r="5" />
+    
+    <!-- Arms - one raised for waving -->
+    <rect class="robot" x="-30" y="-30" width="10" height="30" rx="3" />
+    <rect class="robot" x="20" y="-30" width="10" height="30" rx="3" transform="rotate(-75 25 -25)" />
+    
+    <!-- Legs -->
+    <rect class="robot" x="-15" y="20" width="10" height="30" rx="3" />
+    <rect class="robot" x="5" y="20" width="10" height="30" rx="3" />
+    
+    <!-- Wave motion path -->
+    <path class="motion-path" d="M35,-45 C40,-40 40,-50 35,-45 C30,-40 30,-50 35,-45" />
+  </g>
+  
+  <!-- Loop indicators -->
+  <g id="loops">
+    <path class="loop" d="M50,100 h100 v-20 a50,50 0 0 0 -50,-50 a50,50 0 0 0 -50,50" />
+    <text x="100" y="90" class="text" text-anchor="middle" font-weight="bold">Repeat 3 times</text>
+    
+    <path class="loop" d="M150,100 h100 v-20 a50,50 0 0 0 -50,-50 a50,50 0 0 0 -50,50" />
+    <text x="200" y="90" class="text" text-anchor="middle" font-weight="bold">Repeat 2 times</text>
+  </g>
+  
+  <!-- Title and instructions -->
+  <text x="150" y="30" class="text" text-anchor="middle" font-weight="bold" font-size="16">Robot Dance</text>
+  <text x="150" y="250" class="text" text-anchor="middle">Program a complex dance routine</text>
+  <text x="150" y="270" class="text" text-anchor="middle">using nested loops:</text>
+  <text x="100" y="290" class="text" text-anchor="middle">3x Spin</text>
+  <text x="150" y="290" class="text" text-anchor="middle">+</text>
+  <text x="200" y="290" class="text" text-anchor="middle">2x (Jump + Wave)</text>
+</svg>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <title>Stack the Blocks</title>
+  <style>
+    .block {
+      fill: #4361ee;
+      stroke: #3a56d4;
+      stroke-width: 2;
+    }
+    .block-outline {
+      fill: none;
+      stroke: #3a56d4;
+      stroke-width: 2;
+      stroke-dasharray: 5,5;
+    }
+    .arrow {
+      fill: #f72585;
+      stroke: #f72585;
+      stroke-width: 2;
+    }
+    .text {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      fill: #333;
+    }
+    .hand {
+      fill: #ffb703;
+      stroke: #fb8500;
+      stroke-width: 1;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="300" height="300" fill="#f5f7fa" />
+  
+  <!-- Tower base -->
+  <rect x="110" y="270" width="80" height="10" fill="#8d99ae" />
+  
+  <!-- Blocks tower -->
+  <rect class="block" x="115" y="230" width="70" height="40" rx="2" />
+  <rect class="block" x="120" y="190" width="60" height="40" rx="2" />
+  <rect class="block" x="125" y="150" width="50" height="40" rx="2" />
+  <rect class="block" x="130" y="110" width="40" height="40" rx="2" />
+  
+  <!-- Outline blocks (to be added) -->
+  <rect class="block-outline" x="135" y="70" width="30" height="40" rx="2" />
+  <rect class="block-outline" x="140" y="30" width="20" height="40" rx="2" />
+  <rect class="block-outline" x="145" y="-10" width="10" height="40" rx="2" />
+  <rect class="block-outline" x="147.5" y="-50" width="5" height="40" rx="2" />
+  
+  <!-- Hand stacking blocks -->
+  <path class="hand" d="M215,90 C230,85 240,100 235,110 L220,120 C215,125 200,125 195,120 L185,110 C180,105 185,95 195,95 Z" />
+  <rect class="block" x="190" y="90" width="30" height="20" rx="2" />
+  
+  <!-- Labels -->
+  <text x="150" y="290" class="text" text-anchor="middle">Stack 8 Blocks Tower</text>
+  <text x="240" y="85" class="text" text-anchor="middle">Pick and Stack</text>
+  <text x="240" y="105" class="text" text-anchor="middle">8 Times</text>
+  
+  <!-- Arrows -->
+  <path class="arrow" d="M230,115 L200,140 L195,130 Z" />
+  <path class="arrow" d="M170,60 L150,30 L130,60 Z" transform="rotate(180 150 45)" />
+  
+  <text x="150" y="20" class="text" text-anchor="middle" font-weight="bold">Stack the Blocks</text>
+</svg>

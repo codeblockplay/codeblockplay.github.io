@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <title>Weather Checker</title>
+  <style>
+    .sun {
+      fill: #ffd60a;
+      stroke: #fb8500;
+      stroke-width: 2;
+    }
+    .cloud {
+      fill: #e9ecef;
+      stroke: #adb5bd;
+      stroke-width: 2;
+    }
+    .rain {
+      fill: none;
+      stroke: #4895ef;
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+    .tshirt {
+      fill: #6a994e;
+      stroke: #386641;
+      stroke-width: 1;
+    }
+    .raincoat {
+      fill: #4cc9f0;
+      stroke: #4361ee;
+      stroke-width: 1;
+    }
+    .ground {
+      fill: #52b788;
+      stroke: #40916c;
+      stroke-width: 1;
+    }
+    .if-box {
+      fill: rgba(240, 113, 103, 0.2);
+      stroke: #f07167;
+      stroke-width: 2;
+      stroke-dasharray: 5, 5;
+    }
+    .text {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      fill: #333;
+    }
+    .header {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+      fill: #333;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="300" height="300" fill="#f8f9fa" />
+  
+  <!-- Ground -->
+  <path class="ground" d="M0,240 C50,230 100,250 150,240 C200,230 250,250 300,240 L300,300 L0,300 Z" />
+  
+  <!-- Sunny Side -->
+  <g transform="translate(75, 100)">
+    <!-- If Sunny Box -->
+    <rect class="if-box" x="-60" y="-60" width="120" height="170" rx="10" />
+    <text x="0" y="-40" text-anchor="middle" class="header">If Sunny</text>
+    
+    <!-- Sun -->
+    <circle class="sun" cx="0" cy="-15" r="25" />
+    <path class="sun" d="M0,-50 L0,-35 M35,0 L50,0 M24,24 L34,34 M-24,24 L-34,34 M-35,0 L-50,0 M-24,-24 L-34,-34 M24,-24 L34,-34" />
+    
+    <!-- T-shirt -->
+    <path class="tshirt" d="M-20,40 H20 V60 H30 V90 H-30 V60 H-20 Z" />
+    <path class="tshirt" d="M0,40 V50" stroke="#386641" stroke-width="1" />
+    <text x="0" y="75" text-anchor="middle" class="text">Wear T-shirt</text>
+  </g>
+  
+  <!-- Rainy Side -->
+  <g transform="translate(225, 100)">
+    <!-- If Rainy Box -->
+    <rect class="if-box" x="-60" y="-60" width="120" height="170" rx="10" />
+    <text x="0" y="-40" text-anchor="middle" class="header">If Rainy</text>
+    
+    <!-- Cloud with Rain -->
+    <path class="cloud" d="M-25,-15 Q-35,-15 -35,-5 Q-35,5 -25,5 H25 Q35,5 35,-5 Q35,-15 25,-15 Q25,-25 15,-25 Q5,-25 5,-15 Q-5,-25 -15,-25 Q-25,-25 -25,-15" />
+    <line class="rain" x1="-20" y1="10" x2="-15" y2="20" />
+    <line class="rain" x1="-5" y1="10" x2="0" y2="20" />
+    <line class="rain" x1="10" y1="10" x2="15" y2="20" />
+    <line class="rain" x1="25" y1="10" x2="30" y2="20" />
+    
+    <!-- Raincoat -->
+    <path class="raincoat" d="M-25,70 L-5,40 L5,40 L25,70 Z" />
+    <circle class="raincoat" cx="0" cy="35" r="10" />
+    <text x="0" y="85" text-anchor="middle" class="text">Wear Raincoat</text>
+  </g>
+  
+  <!-- Title -->
+  <text x="150" y="30" text-anchor="middle" class="header">Weather Checker</text>
+  <text x="150" y="260" text-anchor="middle" class="text">Choose what to wear based on the weather</text>
+  <text x="150" y="280" text-anchor="middle" class="text">Use conditions to make smart decisions!</text>
+</svg>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title id="title">Make a Sandwich Puzzle Visual</title>
+  <desc id="desc">Mixed action cards appear in random order while a detailed final sandwich shows the correct color layers.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8fcff"/>
+      <stop offset="100%" stop-color="#eaf5ff"/>
+    </linearGradient>
+    <linearGradient id="titleBar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ff9b5f"/>
+      <stop offset="100%" stop-color="#ff6f91"/>
+    </linearGradient>
+    <linearGradient id="breadTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5d89d"/>
+      <stop offset="100%" stop-color="#ddb475"/>
+    </linearGradient>
+    <linearGradient id="breadBottom" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ebcb92"/>
+      <stop offset="100%" stop-color="#d3a96a"/>
+    </linearGradient>
+    <style>
+      text {
+        font-family: "Trebuchet MS", "Arial Rounded MT Bold", Arial, sans-serif;
+      }
+    </style>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect x="28" y="24" width="744" height="84" rx="20" fill="url(#titleBar)"/>
+  <text x="400" y="72" font-size="40" font-weight="900" text-anchor="middle" fill="#ffffff">Make a Sandwich</text>
+  <text x="400" y="95" font-size="18" font-weight="700" text-anchor="middle" fill="#ffedf5">Step cards are mixed. Use the final sandwich colors to solve.</text>
+
+  <!-- Left panel: mixed/random cards -->
+  <g transform="translate(36 132)">
+    <rect width="380" height="430" rx="18" fill="#ffffff" stroke="#2f5d95" stroke-width="4"/>
+    <rect x="0" y="0" width="380" height="56" rx="16" fill="#eaf2ff"/>
+    <text x="190" y="37" font-size="24" font-weight="900" text-anchor="middle" fill="#2b548a">Mixed Step Cards</text>
+
+    <!-- Random order cards -->
+    <g transform="translate(20 76)">
+      <!-- A -->
+      <g transform="translate(0 0)">
+        <rect width="160" height="94" rx="14" fill="#fff0f0" stroke="#e0a1a1" stroke-width="2.5"/>
+        <circle cx="24" cy="24" r="14" fill="#f45e5e"/>
+        <text x="24" y="30" font-size="17" font-weight="900" text-anchor="middle" fill="#ffffff">4</text>
+        <circle cx="53" cy="55" r="11" fill="#f05151" stroke="#a33838" stroke-width="2"/>
+        <text x="118" y="61" font-size="15" font-weight="900" text-anchor="middle" fill="#8a3030">Add Tomato</text>
+      </g>
+
+      <!-- B -->
+      <g transform="translate(180 0)">
+        <rect width="160" height="94" rx="14" fill="#edf6ff" stroke="#a9c4e8" stroke-width="2.5"/>
+        <circle cx="24" cy="24" r="14" fill="#5f9dee"/>
+        <text x="24" y="30" font-size="17" font-weight="900" text-anchor="middle" fill="#ffffff">6</text>
+        <line x1="42" y1="52" x2="62" y2="72" stroke="#5179a8" stroke-width="4"/>
+        <line x1="42" y1="72" x2="62" y2="52" stroke="#5179a8" stroke-width="4"/>
+        <text x="118" y="56" font-size="14" font-weight="900" text-anchor="middle" fill="#305b8f">
+          <tspan x="118" dy="0">Cut</tspan>
+          <tspan x="118" dy="15">in Half</tspan>
+        </text>
+      </g>
+
+      <!-- C -->
+      <g transform="translate(0 112)">
+        <rect width="160" height="94" rx="14" fill="#fffbe6" stroke="#e8d18b" stroke-width="2.5"/>
+        <circle cx="24" cy="24" r="14" fill="#ffbf45"/>
+        <text x="24" y="30" font-size="17" font-weight="900" text-anchor="middle" fill="#ffffff">2</text>
+        <rect x="42" y="49" width="36" height="11" rx="4" fill="#ffd85e" stroke="#cfaa2d" stroke-width="2"/>
+        <text x="118" y="61" font-size="15" font-weight="900" text-anchor="middle" fill="#80610f">Add Cheese</text>
+      </g>
+
+      <!-- D -->
+      <g transform="translate(180 112)">
+        <rect width="160" height="94" rx="14" fill="#e9f4ff" stroke="#9ec0ea" stroke-width="2.5"/>
+        <circle cx="24" cy="24" r="14" fill="#4f95ff"/>
+        <text x="24" y="30" font-size="17" font-weight="900" text-anchor="middle" fill="#ffffff">1</text>
+        <rect x="42" y="47" width="38" height="15" rx="5" fill="#efc987" stroke="#9f7d4e" stroke-width="2"/>
+        <text x="118" y="61" font-size="15" font-weight="900" text-anchor="middle" fill="#2f5d95">Place Bread</text>
+      </g>
+
+      <!-- E -->
+      <g transform="translate(0 224)">
+        <rect width="160" height="94" rx="14" fill="#ecffe8" stroke="#9dd28d" stroke-width="2.5"/>
+        <circle cx="24" cy="24" r="14" fill="#67be53"/>
+        <text x="24" y="30" font-size="17" font-weight="900" text-anchor="middle" fill="#ffffff">3</text>
+        <path d="M44 61 C58 43, 73 44, 87 61 C72 76, 57 76, 44 61 Z" fill="#95d364" stroke="#5e9b37" stroke-width="2"/>
+        <text x="118" y="61" font-size="15" font-weight="900" text-anchor="middle" fill="#2e7332">Add Lettuce</text>
+      </g>
+
+      <!-- F -->
+      <g transform="translate(180 224)">
+        <rect width="160" height="94" rx="14" fill="#fff6e7" stroke="#e1bc84" stroke-width="2.5"/>
+        <circle cx="24" cy="24" r="14" fill="#f2a03f"/>
+        <text x="24" y="30" font-size="17" font-weight="900" text-anchor="middle" fill="#ffffff">5</text>
+        <rect x="42" y="47" width="38" height="15" rx="5" fill="#efc987" stroke="#9f7d4e" stroke-width="2"/>
+        <text x="118" y="56" font-size="14" font-weight="900" text-anchor="middle" fill="#895d24">
+          <tspan x="118" dy="0">Add Top</tspan>
+          <tspan x="118" dy="15">Bread</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Right panel: detailed final sandwich -->
+  <g transform="translate(436 132)">
+    <rect width="328" height="430" rx="18" fill="#ffffff" stroke="#2f5d95" stroke-width="4"/>
+    <rect x="0" y="0" width="328" height="56" rx="16" fill="#ecfff3"/>
+    <text x="164" y="37" font-size="24" font-weight="900" text-anchor="middle" fill="#2f7d53">Final Sandwich Look</text>
+
+    <!-- Plate -->
+    <ellipse cx="164" cy="360" rx="110" ry="30" fill="#dcecff" stroke="#88aad9" stroke-width="4"/>
+    <ellipse cx="164" cy="356" rx="84" ry="17" fill="#f8fbff" stroke="#b9d0f2" stroke-width="3"/>
+
+    <!-- Sandwich body -->
+    <g transform="translate(58 168)">
+      <!-- Top bread -->
+      <path d="M0 46 C18 18, 70 2, 136 4 C198 6, 248 22, 270 46 L270 63 L0 63 Z"
+        fill="url(#breadTop)" stroke="#9f7d4e" stroke-width="3"/>
+
+      <!-- Cheese -->
+      <rect x="8" y="63" width="254" height="16" rx="4" fill="#ffd95d" stroke="#d3ab2f" stroke-width="2"/>
+      <!-- Lettuce -->
+      <path d="M8 79 C22 70, 40 89, 58 79 C76 70, 92 89, 110 79 C128 70, 144 89, 162 79 C180 70, 196 89, 214 79 C232 70, 246 88, 262 79 L262 95 L8 95 Z"
+        fill="#95d364" stroke="#5e9b37" stroke-width="2"/>
+      <!-- Tomato -->
+      <rect x="8" y="95" width="254" height="14" rx="4" fill="#f05151" stroke="#a33838" stroke-width="2"/>
+      <!-- Bottom bread -->
+      <rect x="0" y="109" width="270" height="30" rx="10" fill="url(#breadBottom)" stroke="#9f7d4e" stroke-width="3"/>
+
+      <!-- Cut line -->
+      <line x1="135" y1="32" x2="135" y2="145" stroke="#67462a" stroke-width="3" stroke-dasharray="8 6"/>
+      <polygon points="135,25 127,36 143,36" fill="#67462a"/>
+    </g>
+
+    <!-- Tiny separated halves preview -->
+    <g transform="translate(88 108)">
+      <path d="M0 52 L44 18 L88 52 Z" fill="#efc987" stroke="#9f7d4e" stroke-width="2.5"/>
+      <path d="M8 46 L44 22 L80 46 Z" fill="#ffd95d" stroke="#cfaa2d" stroke-width="1.8"/>
+      <path d="M10 49 L44 27 L78 49 Z" fill="#95d364" stroke="#5e9b37" stroke-width="1.8"/>
+      <path d="M12 52 L44 32 L76 52 Z" fill="#f05151" stroke="#a33838" stroke-width="1.8"/>
+    </g>
+    <g transform="translate(156 108)">
+      <path d="M0 52 L44 18 L88 52 Z" fill="#efc987" stroke="#9f7d4e" stroke-width="2.5"/>
+      <path d="M8 46 L44 22 L80 46 Z" fill="#ffd95d" stroke="#cfaa2d" stroke-width="1.8"/>
+      <path d="M10 49 L44 27 L78 49 Z" fill="#95d364" stroke="#5e9b37" stroke-width="1.8"/>
+      <path d="M12 52 L44 32 L76 52 Z" fill="#f05151" stroke="#a33838" stroke-width="1.8"/>
+    </g>
+
+    <text x="164" y="406" font-size="18" font-weight="900" text-anchor="middle" fill="#36659a">Layer colors: Bread, Cheese, Lettuce, Tomato, Bread</text>
+  </g>
+</svg>

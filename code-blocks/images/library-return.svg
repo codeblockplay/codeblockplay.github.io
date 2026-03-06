@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#FFF8E1"/>
+  
+  <!-- Library Building -->
+  <rect x="150" y="100" width="500" height="350" fill="#EFEBE9"/>
+  
+  <!-- Library Roof -->
+  <polygon points="150,100 650,100 625,50 175,50" fill="#A1887F"/>
+  
+  <!-- Library Columns -->
+  <rect x="200" y="120" width="40" height="330" fill="#D7CCC8"/>
+  <rect x="350" y="120" width="40" height="330" fill="#D7CCC8"/>
+  <rect x="500" y="120" width="40" height="330" fill="#D7CCC8"/>
+  
+  <!-- Library Steps -->
+  <rect x="150" y="450" width="500" height="20" fill="#BCAAA4"/>
+  <rect x="170" y="470" width="460" height="20" fill="#BCAAA4"/>
+  <rect x="190" y="490" width="420" height="20" fill="#BCAAA4"/>
+  
+  <!-- Library Entrance -->
+  <rect x="275" y="200" width="250" height="250" fill="#5D4037"/>
+  <rect x="290" y="215" width="220" height="220" fill="#8D6E63"/>
+  <path d="M290,325 L510,325" stroke="#5D4037" stroke-width="5"/>
+  
+  <!-- Library Sign -->
+  <rect x="275" y="150" width="250" height="40" rx="5" fill="#5D4037"/>
+  <text x="400" y="177" font-family="Arial" font-size="24" font-weight="bold" fill="#FFF8E1" text-anchor="middle">LIBRARY</text>
+  
+  <!-- Book Return Box -->
+  <g transform="translate(400, 400)">
+    <rect x="-50" y="-30" width="100" height="60" fill="#795548"/>
+    <rect x="-40" y="-20" width="80" height="10" fill="#3E2723"/>
+    <text x="0" y="20" font-family="Arial" font-size="14" fill="white" text-anchor="middle">RETURN</text>
+  </g>
+  
+  <!-- Books -->
+  <g transform="translate(160, 350)">
+    <!-- Book Stack -->
+    <rect x="0" y="0" width="30" height="100" fill="#F44336"/>
+    <rect x="30" y="10" width="25" height="90" fill="#2196F3"/>
+    <rect x="55" y="5" width="20" height="95" fill="#4CAF50"/>
+    <rect x="75" y="15" width="35" height="85" fill="#FFC107"/>
+    
+    <!-- Book Titles (just lines) -->
+    <line x1="5" y1="20" x2="25" y2="20" stroke="white" stroke-width="2"/>
+    <line x1="5" y1="30" x2="25" y2="30" stroke="white" stroke-width="2"/>
+    <line x1="35" y1="25" x2="50" y2="25" stroke="white" stroke-width="2"/>
+    <line x1="35" y1="35" x2="50" y2="35" stroke="white" stroke-width="2"/>
+    <line x1="60" y1="15" x2="70" y2="15" stroke="white" stroke-width="2"/>
+    <line x1="60" y1="25" x2="70" y2="25" stroke="white" stroke-width="2"/>
+    <line x1="80" y1="30" x2="100" y2="30" stroke="white" stroke-width="2"/>
+    <line x1="80" y1="40" x2="100" y2="40" stroke="white" stroke-width="2"/>
+  </g>
+  
+  <!-- Library Card -->
+  <g transform="translate(600, 350)">
+    <rect x="0" y="0" width="60" height="40" rx="3" fill="#BBDEFB"/>
+    <rect x="5" y="5" width="50" height="10" fill="white"/>
+    <rect x="5" y="20" width="30" height="5" fill="white"/>
+    <rect x="5" y="30" width="20" height="5" fill="white"/>
+  </g>
+  
+  <!-- Person with Book -->
+  <g transform="translate(500, 530)">
+    <!-- Person -->
+    <circle cx="0" cy="-70" r="20" fill="#FFCCBC"/>
+    <rect x="-15" y="-50" width="30" height="50" fill="#1976D2"/>
+    
+    <!-- Arms -->
+    <line x1="-15" y1="-35" x2="-40" y2="-20" stroke="#FFCCBC" stroke-width="8" stroke-linecap="round"/>
+    <line x1="15" y1="-35" x2="30" y2="-20" stroke="#FFCCBC" stroke-width="8" stroke-linecap="round"/>
+    
+    <!-- Legs -->
+    <rect x="-12" y="0" width="9" height="40" fill="#5D4037"/>
+    <rect x="3" y="0" width="9" height="40" fill="#5D4037"/>
+    
+    <!-- Book in Hand -->
+    <rect x="-40" y="-30" width="25" height="30" fill="#4CAF50"/>
+  </g>
+  
+  <!-- Calendar/Due Date -->
+  <g transform="translate(650, 200)">
+    <rect x="0" y="0" width="80" height="90" fill="white" stroke="#BDBDBD" stroke-width="2"/>
+    <rect x="0" y="0" width="80" height="20" fill="#F44336"/>
+    <text x="40" y="15" font-family="Arial" font-size="12" fill="white" text-anchor="middle">JUNE</text>
+    
+    <!-- Calendar Grid -->
+    <line x1="0" y1="40" x2="80" y2="40" stroke="#BDBDBD"/>
+    <line x1="0" y1="60" x2="80" y2="60" stroke="#BDBDBD"/>
+    <line x1="0" y1="80" x2="80" y2="80" stroke="#BDBDBD"/>
+    <line x1="20" y1="20" x2="20" y2="90" stroke="#BDBDBD"/>
+    <line x1="40" y1="20" x2="40" y2="90" stroke="#BDBDBD"/>
+    <line x1="60" y1="20" x2="60" y2="90" stroke="#BDBDBD"/>
+    
+    <!-- Highlighted Due Date -->
+    <circle cx="30" cy="50" r="8" fill="#F44336"/>
+    <text x="30" y="54" font-family="Arial" font-size="10" fill="white" text-anchor="middle">15</text>
+  </g>
+</svg>

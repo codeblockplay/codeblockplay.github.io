@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Test Page</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .image-container { margin: 20px 0; border: 1px solid #ccc; padding: 10px; }
+        img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+        h1, h2 { text-align: center; }
+    </style>
+</head>
+<body>
+    <h1>SVG Image Test Page</h1>
+    <p>This page tests if the SVG images load correctly</p>
+    
+    <div class="image-container">
+        <h2>Temperature Advisor</h2>
+        <img src="./images/temperature-advisor.svg" alt="Temperature Advisor" width="300" height="300">
+    </div>
+    
+    <div class="image-container">
+        <h2>Space Mission</h2>
+        <img src="./images/space-mission.svg" alt="Space Mission" width="300" height="300">
+    </div>
+    
+    <div class="image-container">
+        <h2>Space Mission (Optimized)</h2>
+        <img src="./images/space-mission-optimized.svg" alt="Space Mission Optimized" width="300" height="300">
+    </div>
+    
+    <script>
+        // Image load event listeners
+        document.querySelectorAll('img').forEach(img => {
+            img.onload = function() {
+                console.log('Image loaded successfully:', this.src);
+            };
+            img.onerror = function() {
+                console.error('Error loading image:', this.src);
+                this.style.border = '2px solid red';
+                this.style.padding = '10px';
+                this.alt = 'Image failed to load';
+                this.src = './images/image-error.svg';
+            };
+        });
+    </script>
+</body>
+</html>

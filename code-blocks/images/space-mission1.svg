@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+  <!-- Background - Space -->
+  <rect x="0" y="0" width="300" height="300" fill="#0d1117" />
+  
+  <!-- Stars -->
+  <g fill="#fff">
+    <circle cx="30" cy="20" r="1" />
+    <circle cx="50" cy="40" r="1" />
+    <circle cx="70" cy="30" r="1.5" />
+    <circle cx="100" cy="15" r="1" />
+    <circle cx="120" cy="35" r="1" />
+    <circle cx="150" cy="25" r="1" />
+    <circle cx="180" cy="15" r="1.5" />
+    <circle cx="200" cy="40" r="1" />
+    <circle cx="220" cy="25" r="1" />
+    <circle cx="240" cy="10" r="1" />
+    <circle cx="260" cy="30" r="1.5" />
+    <circle cx="280" cy="20" r="1" />
+    <circle cx="20" cy="60" r="1" />
+    <circle cx="40" cy="80" r="1.5" />
+    <circle cx="80" cy="70" r="1" />
+    <circle cx="110" cy="55" r="1" />
+    <circle cx="130" cy="75" r="1" />
+    <circle cx="160" cy="65" r="1.5" />
+    <circle cx="190" cy="55" r="1" />
+    <circle cx="210" cy="80" r="1" />
+    <circle cx="230" cy="65" r="1" />
+    <circle cx="270" cy="70" r="1.5" />
+    <circle cx="290" cy="60" r="1" />
+    <circle cx="30" cy="240" r="1.5" />
+    <circle cx="60" cy="260" r="1" />
+    <circle cx="90" cy="250" r="1" />
+    <circle cx="120" cy="270" r="1" />
+    <circle cx="150" cy="240" r="1.5" />
+    <circle cx="180" cy="260" r="1" />
+    <circle cx="210" cy="250" r="1" />
+    <circle cx="240" cy="270" r="1" />
+    <circle cx="270" cy="240" r="1.5" />
+  </g>
+  
+  <!-- Planets -->
+  <circle cx="50" cy="120" r="15" fill="#f44336" /> <!-- Red Planet -->
+  <path d="M40,112 Q50,105 60,112" fill="none" stroke="#ff8a80" stroke-width="2" />
+  
+  <circle cx="250" cy="180" r="25" fill="#4db6ac" /> <!-- Blue-Green Planet -->
+  <ellipse cx="250" cy="180" rx="25" ry="8" fill="none" stroke="#b2dfdb" stroke-width="1" />
+  <ellipse cx="250" cy="180" rx="20" ry="25" fill="none" stroke="#b2dfdb" stroke-width="1" />
+  
+  <!-- Space Probe -->
+  <g transform="translate(150, 150)">
+    <!-- Main Body -->
+    <rect x="-25" y="-15" width="50" height="30" rx="5" ry="5" fill="#9e9e9e" stroke="#333" stroke-width="1" />
+    
+    <!-- Solar Panels -->
+    <rect x="-60" y="-10" width="35" height="20" fill="#3f51b5" stroke="#333" stroke-width="1" />
+    <rect x="25" y="-10" width="35" height="20" fill="#3f51b5" stroke="#333" stroke-width="1" />
+    <line x1="-55" y1="-10" x2="-55" y2="10" stroke="#333" stroke-width="1" />
+    <line x1="-45" y1="-10" x2="-45" y2="10" stroke="#333" stroke-width="1" />
+    <line x1="-35" y1="-10" x2="-35" y2="10" stroke="#333" stroke-width="1" />
+    <line x1="35" y1="-10" x2="35" y2="10" stroke="#333" stroke-width="1" />
+    <line x1="45" y1="-10" x2="45" y2="10" stroke="#333" stroke-width="1" />
+    <line x1="55" y1="-10" x2="55" y2="10" stroke="#333" stroke-width="1" />
+    
+    <!-- Antenna -->
+    <line x1="0" y1="-15" x2="0" y2="-30" stroke="#333" stroke-width="1" />
+    <path d="M-5,-30 L5,-30 L0,-40 Z" fill="#9e9e9e" stroke="#333" stroke-width="1" />
+    
+    <!-- Sensors -->
+    <circle cx="-15" cy="0" r="5" fill="#f44336" stroke="#333" stroke-width="1" /> <!-- Rock Analyzer -->
+    <circle cx="0" cy="0" r="5" fill="#2196f3" stroke="#333" stroke-width="1" /> <!-- Water Analyzer -->
+    <circle cx="15" cy="0" r="5" fill="#4caf50" stroke="#333" stroke-width="1" /> <!-- Gas Analyzer -->
+    
+    <!-- Instrument Arm -->
+    <line x1="0" y1="15" x2="0" y2="30" stroke="#9e9e9e" stroke-width="3" />
+    <circle cx="0" cy="35" r="5" fill="#ffeb3b" stroke="#333" stroke-width="1" /> <!-- Sampling Tool -->
+  </g>
+  
+  <!-- Planetary Surfaces -->
+  <g transform="translate(0, 210)">
+    <!-- Rocky Surface -->
+    <path d="M20,40 L40,20 L60,30 L80,10 L100,35" fill="none" stroke="#795548" stroke-width="3" />
+    
+    <!-- Water Surface -->
+    <path d="M120,25 Q130,20 140,25 Q150,30 160,25 Q170,20 180,25" fill="none" stroke="#2196f3" stroke-width="3" />
+    
+    <!-- Gas Cloud -->
+    <path d="M200,20 Q210,10 220,20 Q230,30 240,20 Q250,10 260,20 Q270,30 280,20" fill="none" stroke="#9c27b0" stroke-width="3" fill="#9c27b0" fill-opacity="0.3" />
+  </g>
+  
+  <!-- Sample Collection Tools -->
+  <g transform="translate(0, 260)">
+    <!-- Rock Sample -->
+    <g transform="translate(60, 0)">
+      <path d="M-10,0 L0,-10 L10,0 L0,10 Z" fill="#795548" stroke="#333" stroke-width="1" />
+      <text x="0" y="25" font-family="Arial" font-size="10" text-anchor="middle" fill="#fff">Rock Sample</text>
+    </g>
+    
+    <!-- Water Sample -->
+    <g transform="translate(150, 0)">
+      <path d="M-5,-5 A10,10 0 1,0 5,-5 A5,5 0 0,1 -5,-5 Z" fill="#2196f3" fill-opacity="0.7" stroke="#333" stroke-width="1" />
+      <text x="0" y="25" font-family="Arial" font-size="10" text-anchor="middle" fill="#fff">Water Sample</text>
+    </g>
+    
+    <!-- Gas Sample -->
+    <g transform="translate(240, 0)">
+      <circle cx="0" cy="0" r="8" fill="#9c27b0" fill-opacity="0.3" stroke="#333" stroke-width="1" />
+      <path d="M-5,-5 Q0,-8 5,-5 M-6,0 Q0,-3 6,0 M-5,5 Q0,2 5,5" stroke="#fff" stroke-width="0.5" />
+      <text x="0" y="25" font-family="Arial" font-size="10" text-anchor="middle" fill="#fff">Gas Sample</text>
+    </g>
+  </g>
+</svg>

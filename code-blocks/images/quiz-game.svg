@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <!-- Background -->
+  <rect x="0" y="0" width="300" height="300" fill="#f5f5f5" />
+  
+  <!-- Quiz Game Board -->
+  <rect x="30" y="30" width="240" height="180" rx="10" ry="10" fill="#fff" stroke="#333" stroke-width="3" />
+  
+  <!-- Quiz Title -->
+  <text x="150" y="60" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle" fill="#333">QUIZ GAME</text>
+  
+  <!-- Question Display -->
+  <rect x="50" y="70" width="200" height="40" rx="5" ry="5" fill="#e3f2fd" stroke="#2196f3" stroke-width="2" />
+  <text x="150" y="95" font-family="Arial" font-size="16" text-anchor="middle" fill="#333">What is 5 + 3?</text>
+  
+  <!-- Answer Options -->
+  <g transform="translate(0, 120)">
+    <!-- Correct Answer -->
+    <rect x="50" y="10" width="60" height="30" rx="5" ry="5" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" />
+    <text x="80" y="30" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">8</text>
+    
+    <!-- Wrong Answer -->
+    <rect x="120" y="10" width="60" height="30" rx="5" ry="5" fill="#ffcdd2" stroke="#f44336" stroke-width="2" />
+    <text x="150" y="30" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">9</text>
+    
+    <!-- No Answer -->
+    <rect x="190" y="10" width="60" height="30" rx="5" ry="5" fill="#fff9c4" stroke="#ffc107" stroke-width="2" />
+    <text x="220" y="30" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">?</text>
+  </g>
+  
+  <!-- Feedback Display -->
+  <g transform="translate(0, 170)">
+    <!-- Congratulation -->
+    <rect x="50" y="0" width="200" height="30" rx="5" ry="5" fill="#4caf50" />
+    <text x="150" y="20" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#fff">Great job! That's correct!</text>
+  </g>
+  
+  <!-- Feedback Icons -->
+  <g transform="translate(0, 220)">
+    <!-- Trophy (Correct) -->
+    <circle cx="80" cy="25" r="15" fill="#ffd700" stroke="#333" stroke-width="1" />
+    <path d="M80,10 L75,25 L85,25 Z" fill="#fff" />
+    <rect x="75" y="25" width="10" height="10" fill="#ffd700" />
+    
+    <!-- Hint (Wrong) -->
+    <circle cx="150" cy="25" r="15" fill="#f44336" stroke="#333" stroke-width="1" />
+    <text x="150" y="30" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#fff">?</text>
+    
+    <!-- Reminder (No Answer) -->
+    <circle cx="220" cy="25" r="15" fill="#ffc107" stroke="#333" stroke-width="1" />
+    <text x="220" y="30" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#fff">!</text>
+  </g>
+  
+  <!-- Labels -->
+  <text x="80" y="255" font-family="Arial" font-size="10" text-anchor="middle" fill="#333">Congratulation</text>
+  <text x="150" y="255" font-family="Arial" font-size="10" text-anchor="middle" fill="#333">Hint</text>
+  <text x="220" y="255" font-family="Arial" font-size="10" text-anchor="middle" fill="#333">Reminder</text>
+</svg>

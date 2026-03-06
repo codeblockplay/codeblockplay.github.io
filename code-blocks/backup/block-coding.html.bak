@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Code Blocks Adventure</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./block-coding.css">
+</head>
+<body>
+    <header class="bg-primary text-white py-3">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="mb-0"><i class="fas fa-puzzle-piece"></i> Code Blocks Adventure</h1>
+                <nav>
+                    <a href="../index.html" class="btn btn-light btn-sm me-2"><i class="fas fa-home"></i></a>
+                    <a href="../code-activity/code-activity.html" class="btn btn-light btn-sm"><i class="fas fa-brain"></i> Brainy Blocks</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container my-4">
+        <div class="row">
+            <!-- Challenge selection sidebar -->
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0 fs-5">Challenges</h3>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush challenges-list">
+                            <li class="list-group-item list-group-item-action active" data-category="sequencing">
+                                <i class="fas fa-list-ol me-2"></i> Sequencing
+                            </li>
+                            <li class="list-group-item list-group-item-action" data-category="loops">
+                                <i class="fas fa-redo me-2"></i> Loops
+                            </li>
+                            <li class="list-group-item list-group-item-action" data-category="conditions">
+                                <i class="fas fa-code-branch me-2"></i> Conditions
+                            </li>
+                            <li class="list-group-item list-group-item-action" data-category="procedures">
+                                <i class="fas fa-cubes me-2"></i> Procedures
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card mt-3">
+                    <div class="card-header bg-success text-white">
+                        <h3 class="mb-0 fs-5">Levels</h3>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="list-group list-group-flush levels-list" style="max-height: 300px; overflow-y: auto;">
+                            <!-- Sequencing levels will be populated dynamically based on selected category -->
+                            <div class="sequencing-levels">
+                                <button class="list-group-item list-group-item-action active" data-level="1">Level 1: Morning Routine</button>
+                                <button class="list-group-item list-group-item-action" data-level="2">Level 2: Make a Sandwich</button>
+                                <button class="list-group-item list-group-item-action" data-level="3">Level 3: Build a Snowman</button>
+                                <button class="list-group-item list-group-item-action" data-level="4">Level 4: Plant a Flower</button>
+                                <button class="list-group-item list-group-item-action" data-level="5">Level 5: Robot Treasure</button>
+                                <button class="list-group-item list-group-item-action" data-level="6">Level 6: Pizza Time</button>
+                                <button class="list-group-item list-group-item-action" data-level="7">Level 7: Car Wash</button>
+                                <button class="list-group-item list-group-item-action" data-level="8">Level 8: Library Book</button>
+                                <button class="list-group-item list-group-item-action" data-level="9">Level 9: Science Experiment</button>
+                                <button class="list-group-item list-group-item-action" data-level="10">Level 10: Museum Adventure</button>
+                                <button class="list-group-item list-group-item-action" data-level="11">Level 11: Birthday Party</button>
+                                <button class="list-group-item list-group-item-action" data-level="12">Level 12: Robot Treasure Hunt</button>
+                                <button class="list-group-item list-group-item-action" data-level="13">Level 13: Camping Adventure</button>
+                                <button class="list-group-item list-group-item-action" data-level="14">Level 14: Space Launch</button>
+                                <button class="list-group-item list-group-item-action" data-level="15">Level 15: Weather Report</button>
+                            </div>
+                            <!-- Loops levels (initially hidden) -->
+                            <div class="loops-levels" style="display: none;">
+                                <button class="list-group-item list-group-item-action" data-level="1">Level 1: Paint a Fence</button>
+                                <button class="list-group-item list-group-item-action" data-level="2">Level 2: Dance Routine</button>
+                                <button class="list-group-item list-group-item-action" data-level="3">Level 3: Draw a Square</button>
+                                <button class="list-group-item list-group-item-action" data-level="4">Level 4: Water the Garden</button>
+                                <button class="list-group-item list-group-item-action" data-level="5">Level 5: Stack the Blocks</button>
+                                <button class="list-group-item list-group-item-action" data-level="6">Level 6: Robot Path</button>
+                                <button class="list-group-item list-group-item-action" data-level="7">Level 7: Count Apples</button>
+                                <button class="list-group-item list-group-item-action" data-level="8">Level 8: Star Pattern</button>
+                                <button class="list-group-item list-group-item-action" data-level="9">Level 9: Jumping Jacks</button>
+                                <button class="list-group-item list-group-item-action" data-level="10">Level 10: Music Beats</button>
+                                <button class="list-group-item list-group-item-action" data-level="11">Level 11: Rainbow Colors</button>
+                                <button class="list-group-item list-group-item-action" data-level="12">Level 12: Pizza Toppings</button>
+                                <button class="list-group-item list-group-item-action" data-level="13">Level 13: Robot Dance</button>
+                                <button class="list-group-item list-group-item-action" data-level="14">Level 14: Spiral Drawing</button>
+                                <button class="list-group-item list-group-item-action" data-level="15">Level 15: Obstacle Course</button>
+                                <button class="list-group-item list-group-item-action" data-level="16">Level 16: Music Composition</button>
+                                <button class="list-group-item list-group-item-action" data-level="17">Level 17: Space Mission</button>
+                                <button class="list-group-item list-group-item-action" data-level="18">Level 18: Flower Garden</button>
+                                <button class="list-group-item list-group-item-action" data-level="19">Level 19: Robot Maze Challenge</button>
+                                <button class="list-group-item list-group-item-action" data-level="20">Level 20: Pixel Art</button>
+                            </div>
+                            <!-- Conditions levels -->
+                            <div class="conditions-levels" style="display: none;">
+                                <button class="list-group-item list-group-item-action" data-level="1">Level 1: Weather Checker</button>
+                                <button class="list-group-item list-group-item-action" data-level="2">Level 2: Fruit Sorter</button>
+                                <button class="list-group-item list-group-item-action" data-level="3">Level 3: Robot Direction</button>
+                                <button class="list-group-item list-group-item-action" data-level="4">Level 4: Traffic Light</button>
+                                <button class="list-group-item list-group-item-action" data-level="5">Level 5: Pet Care</button>
+                                <button class="list-group-item list-group-item-action" data-level="6">Level 6: Shape Matcher</button>
+                                <button class="list-group-item list-group-item-action" data-level="7">Level 7: Number Sorter</button>
+                                <button class="list-group-item list-group-item-action" data-level="8">Level 8: Temperature Advisor</button>
+                                <button class="list-group-item list-group-item-action" data-level="9">Level 9: Quiz Game</button>
+                                <button class="list-group-item list-group-item-action" data-level="10">Level 10: Robot Obstacle Course</button>
+                                <button class="list-group-item list-group-item-action" data-level="11">Level 11: Color Mixer</button>
+                                <button class="list-group-item list-group-item-action" data-level="12">Level 12: Math Quiz</button>
+                                <button class="list-group-item list-group-item-action" data-level="13">Level 13: Plant Care</button>
+                                <button class="list-group-item list-group-item-action" data-level="14">Level 14: Weather Station</button>
+                                <button class="list-group-item list-group-item-action" data-level="15">Level 15: Recycling Sorter</button>
+                                <button class="list-group-item list-group-item-action" data-level="16">Level 16: Robot Sensing System</button>
+                                <button class="list-group-item list-group-item-action" data-level="17">Level 17: Space Mission</button>
+                                <button class="list-group-item list-group-item-action" data-level="18">Level 18: Smart Home</button>
+                                <button class="list-group-item list-group-item-action" data-level="19">Level 19: Gardening Robot</button>
+                                <button class="list-group-item list-group-item-action" data-level="20">Level 20: Autonomous Vehicle</button>
+                            </div>
+                            <!-- Procedures levels will go here when implemented -->
+                            <div class="procedures-levels" style="display: none;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main coding area -->
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header bg-warning text-dark d-flex justify-content-between align-items-center">
+                        <h2 class="mb-0"><span id="challenge-title">Sequencing Challenge</span></h2>
+                        <div>
+                            <button id="help-btn" class="btn btn-info btn-sm me-2">
+                                <i class="fas fa-question-circle"></i> Help
+                            </button>
+                            <button id="reset-btn" class="btn btn-secondary btn-sm">
+                                <i class="fas fa-redo"></i> Reset
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!-- Challenge description and visualization -->
+                        <div class="row mb-4">
+                            <div class="col-md-7">
+                                <div class="challenge-description p-3 border rounded bg-light">
+                                    <h3 id="task-title">Help the Robot Find Treasure</h3>
+                                    <p id="task-description" class="mb-3">Guide the robot through the maze to find the treasure by putting the right steps in order.</p>
+                                    <div class="goals-container">
+                                        <h5><i class="fas fa-bullseye"></i> Goal:</h5>
+                                        <p id="task-goal">Get the robot to the treasure chest using the right sequence of steps.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="challenge-visualization text-center">
+                                    <img id="challenge-image" src="./images/robot-maze.svg" alt="Challenge Visualization" 
+                                        class="img-fluid border rounded p-2 bg-white challenge-img" 
+                                        style="min-height: 250px; max-height: 300px; cursor: pointer;" 
+                                        data-bs-toggle="modal" data-bs-target="#imageModal">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Block palette and workspace -->
+                        <div class="row">
+                            <!-- Block palette -->
+                            <div class="col-md-4 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-header bg-primary text-white">
+                                        <h4 class="mb-0 fs-5"><i class="fas fa-cubes"></i> Blocks</h4>
+                                    </div>
+                                    <div class="card-body block-palette p-2" id="block-palette">
+                                        <!-- Blocks will be added here by JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Workspace -->
+                            <div class="col-md-8 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-header bg-success text-white">
+                                        <h4 class="mb-0 fs-5"><i class="fas fa-code"></i> Your Workspace</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="workspace p-2 border rounded bg-light" id="workspace">
+                                            <!-- Blocks will be placed here by the user -->
+                                            <div id="program-start" class="program-start">
+                                                <i class="fas fa-play-circle"></i> Start
+                                            </div>
+                                            <div id="blocks-container" class="blocks-container">
+                                                <!-- User's blocks will be placed here -->
+                                            </div>
+                                            <div id="program-end" class="program-end">
+                                                <i class="fas fa-flag-checkered"></i> End
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="feedback mt-3 p-3 rounded" id="feedback">
+                                            <!-- Feedback will appear here -->
+                                            <p>Drag blocks from the left panel and drop them here to build your program!</p>
+                                        </div>
+                                        
+                                        <div class="d-flex justify-content-between mt-3">
+                                            <button id="remove-block-btn" class="btn btn-outline-danger">
+                                                <i class="fas fa-times"></i> Remove Selected Block
+                                            </button>
+                                            <div>
+                                                <button id="run-btn" class="btn btn-warning me-2">
+                                                    <i class="fas fa-play"></i> Run Program
+                                                </button>
+                                                <button id="check-btn" class="btn btn-success">
+                                                    <i class="fas fa-check"></i> Check Solution
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Animation area -->
+                        <div class="card mt-3">
+                            <div class="card-header bg-info text-white">
+                                <h4 class="mb-0 fs-5"><i class="fas fa-tv"></i> Program Output</h4>
+                            </div>
+                            <div class="card-body p-2">
+                                <div class="animation-area p-3 border rounded" id="animation-area">
+                                    <div class="text-center text-muted">
+                                        <i class="fas fa-film fa-3x mb-2"></i>
+                                        <p>Your program's output will be shown here when you run it.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Progress tracking -->
+                        <div class="mt-3">
+                            <div class="progress mb-2">
+                                <div class="progress-bar bg-success" id="challenge-progress" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>Challenge Progress</span>
+                                <span id="progress-text">0 / 3 completed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer mt-5">
+        <div class="container text-center">
+            <p class="mb-0">© 2025 Code Blocks Adventure | Designed with <i class="fas fa-heart text-danger"></i> for creative minds</p>
+        </div>
+    </footer>
+
+    <!-- Image Modal for enlarged view -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel">Challenge Image</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="modal-challenge-image" src="" alt="Enlarged Challenge Image" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SortableJS - for drag and drop -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <!-- Sound Management -->
+    <script src="../sounds.js"></script>
+    <script src="../sounds/soundGenerator.js"></script>
+    <script src="./sounds.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="./block-coding.js"></script>
+    <!-- Modal Fix Script -->
+    <script src="./fixmodal.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <title>Count Apples</title>
+  <style>
+    .apple {
+      fill: #e63946;
+      stroke: #d62828;
+      stroke-width: 1;
+    }
+    .leaf {
+      fill: #2a9d8f;
+      stroke: #168aad;
+      stroke-width: 1;
+    }
+    .basket {
+      fill: #dda15e;
+      stroke: #bc6c25;
+      stroke-width: 2;
+    }
+    .number {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      font-weight: bold;
+      fill: white;
+    }
+    .text {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      fill: #333;
+    }
+    .counter {
+      fill: #4361ee;
+      stroke: #3a56d4;
+      stroke-width: 2;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="300" height="300" fill="#f5f7fa" />
+  
+  <!-- Basket -->
+  <path class="basket" d="M70,180 Q150,220 230,180 L210,250 Q150,280 90,250 Z" />
+  <path class="basket" d="M70,180 Q150,160 230,180" fill="none" />
+  
+  <!-- Apples with numbers -->
+  <g id="apple1">
+    <circle class="apple" cx="100" cy="190" r="15" />
+    <path class="leaf" d="M100,175 C105,170 110,173 108,178 C112,175 118,177 115,182" />
+    <text x="100" y="195" class="number" text-anchor="middle">1</text>
+  </g>
+  
+  <g id="apple2">
+    <circle class="apple" cx="130" cy="185" r="15" />
+    <path class="leaf" d="M130,170 C135,165 140,168 138,173 C142,170 148,172 145,177" />
+    <text x="130" y="190" class="number" text-anchor="middle">2</text>
+  </g>
+  
+  <g id="apple3">
+    <circle class="apple" cx="160" cy="190" r="15" />
+    <path class="leaf" d="M160,175 C165,170 170,173 168,178 C172,175 178,177 175,182" />
+    <text x="160" y="195" class="number" text-anchor="middle">3</text>
+  </g>
+  
+  <g id="apple4">
+    <circle class="apple" cx="190" cy="185" r="15" />
+    <path class="leaf" d="M190,170 C195,165 200,168 198,173 C202,170 208,172 205,177" />
+    <text x="190" y="190" class="number" text-anchor="middle">4</text>
+  </g>
+  
+  <g id="apple5">
+    <circle class="apple" cx="115" cy="215" r="15" />
+    <path class="leaf" d="M115,200 C120,195 125,198 123,203 C127,200 133,202 130,207" />
+    <text x="115" y="220" class="number" text-anchor="middle">5</text>
+  </g>
+  
+  <g id="apple6">
+    <circle class="apple" cx="145" cy="220" r="15" />
+    <path class="leaf" d="M145,205 C150,200 155,203 153,208 C157,205 163,207 160,212" />
+    <text x="145" y="225" class="number" text-anchor="middle">6</text>
+  </g>
+  
+  <g id="apple7">
+    <circle class="apple" cx="175" cy="215" r="15" />
+    <path class="leaf" d="M175,200 C180,195 185,198 183,203 C187,200 193,202 190,207" />
+    <text x="175" y="220" class="number" text-anchor="middle">7</text>
+  </g>
+  
+  <g id="apple8">
+    <circle class="apple" cx="130" cy="245" r="15" />
+    <path class="leaf" d="M130,230 C135,225 140,228 138,233 C142,230 148,232 145,237" />
+    <text x="130" y="250" class="number" text-anchor="middle">8</text>
+  </g>
+  
+  <g id="apple9">
+    <circle class="apple" cx="160" cy="245" r="15" />
+    <path class="leaf" d="M160,230 C165,225 170,228 168,233 C172,230 178,232 175,237" />
+    <text x="160" y="250" class="number" text-anchor="middle">9</text>
+  </g>
+  
+  <g id="apple10">
+    <circle class="apple" cx="145" cy="270" r="15" />
+    <path class="leaf" d="M145,255 C150,250 155,253 153,258 C157,255 163,257 160,262" />
+    <text x="145" y="275" class="number" text-anchor="middle">10</text>
+  </g>
+  
+  <!-- Counter display -->
+  <rect class="counter" x="75" y="70" width="150" height="60" rx="5" />
+  <text x="150" y="100" class="text" text-anchor="middle" fill="white" font-weight="bold" font-size="20">Count: 10 apples</text>
+  <text x="150" y="120" class="text" text-anchor="middle" fill="white">Use a loop to count all apples</text>
+  
+  <!-- Title -->
+  <text x="150" y="30" class="text" text-anchor="middle" font-weight="bold" font-size="18">Count Apples</text>
+  <text x="150" y="50" class="text" text-anchor="middle">Use a loop to count all 10 apples</text>
+</svg>
