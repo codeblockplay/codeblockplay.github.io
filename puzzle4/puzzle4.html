@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Journey</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="./puzzle4.css">
+</head>
+<body>
+    <header>
+        <h1>🎲 Number Journey 🚂</h1>
+        <nav>
+            <a href="../index.html" class="nav-btn"><i class="fas fa-home"></i></a>
+            <a href="../puzzle3/puzzle3.html" class="nav-btn"><i class="fas fa-calculator"></i> Math Sequence</a>
+            <a href="../word-hunt/wordhunt.html" class="nav-btn"><i class="fas fa-search"></i> Word Hunt</a>
+        </nav>
+    </header>
+
+    <main>
+        <div id="puzzle-container" class="puzzle-container active">
+            <div class="controls-container">
+                <button id="skip-level" class="skip-btn">Skip Puzzle</button>
+            </div>
+            
+            <!-- Sequence Puzzle -->
+            <div class="level" id="level1">
+                <h2>Complete the Number Train! 🚂</h2>
+                <p class="puzzle-description">What number comes next in the sequence?</p>
+                <div class="sequence-container">
+                    <div class="number-box">2</div>
+                    <div class="number-box">4</div>
+                    <div class="number-box">6</div>
+                    <div class="number-box">8</div>
+                    <div class="number-box answer-box">?</div>
+                </div>
+                <div class="options-container">
+                    <button class="option-btn">9</button>
+                    <button class="option-btn">10</button>
+                    <button class="option-btn">12</button>
+                </div>
+            </div>
+
+            <!-- Level 2: Simple Addition -->
+            <div class="level hidden" id="level2">
+                <h2>Add the Apples! 🍎</h2>
+                <p class="puzzle-description">Count the apples and find the total!</p>
+                <div class="addition-container">
+                    <div class="apple-group">
+                        <span class="apple">🍎</span>
+                        <span class="apple">🍎</span>
+                    </div>
+                    <span class="operator">+</span>
+                    <div class="apple-group">
+                        <span class="apple">🍎</span>
+                        <span class="apple">🍎</span>
+                        <span class="apple">🍎</span>
+                    </div>
+                    <span class="operator">=</span>
+                    <div class="answer-container answer-box">?</div>
+                </div>
+                <div class="options-container">
+                    <button class="option-btn">4</button>
+                    <button class="option-btn">5</button>
+                    <button class="option-btn">6</button>
+                </div>
+            </div>
+
+            <!-- Level 3: Missing Number -->
+            <div class="level hidden" id="level3">
+                <h2>Find the Missing Number! 🔍</h2>
+                <p class="puzzle-description">Which number makes this correct?</p>
+                <div class="equation-container">
+                    <div class="number-box">5</div>
+                    <span class="operator">+</span>
+                    <div class="number-box answer-box">?</div>
+                    <span class="operator">=</span>
+                    <div class="number-box">8</div>
+                </div>
+                <div class="options-container">
+                    <button class="option-btn">2</button>
+                    <button class="option-btn">3</button>
+                    <button class="option-btn">4</button>
+                </div>
+            </div>
+
+            <!-- Level 4: Pattern Grid -->
+            <div class="level hidden" id="level4">
+                <h2>Complete the Pattern Grid! 🎨</h2>
+                <p class="puzzle-description">What number belongs in the yellow box?</p>
+                <div class="grid-pattern">
+                    <div class="pattern-cell">2</div>
+                    <div class="pattern-cell">4</div>
+                    <div class="pattern-cell">6</div>
+                    <div class="pattern-cell">4</div>
+                    <div class="pattern-cell">6</div>
+                    <div class="pattern-cell">8</div>
+                    <div class="pattern-cell">6</div>
+                    <div class="pattern-cell">8</div>
+                    <div class="pattern-cell highlight">?</div>
+                </div>
+                <div class="options-container">
+                    <button class="option-btn">8</button>
+                    <button class="option-btn">10</button>
+                    <button class="option-btn">12</button>
+                </div>
+            </div>
+
+            <!-- Level 5: Magic Array -->
+            <div class="level hidden" id="level5">
+                <h2>Find the Magic Number! ✨</h2>
+                <p class="puzzle-description">Select a row and column. Add the numbers. What's special about each sum?</p>
+                <div class="magic-array">
+                    <div class="array-row">
+                        <div class="array-cell" data-value="2">2</div>
+                        <div class="array-cell" data-value="7">7</div>
+                        <div class="array-cell" data-value="6">6</div>
+                    </div>
+                    <div class="array-row">
+                        <div class="array-cell" data-value="9">9</div>
+                        <div class="array-cell" data-value="5">5</div>
+                        <div class="array-cell" data-value="1">1</div>
+                    </div>
+                    <div class="array-row">
+                        <div class="array-cell" data-value="4">4</div>
+                        <div class="array-cell" data-value="3">3</div>
+                        <div class="array-cell" data-value="8">8</div>
+                    </div>
+                </div>
+                <div class="options-container">
+                    <button class="option-btn">15</button>
+                    <button class="option-btn">16</button>
+                    <button class="option-btn">17</button>
+                </div>
+            </div>
+
+            <!-- Level 6: Shape Math -->
+            <div class="level hidden" id="level6">
+                <h2>Shape Math Challenge! 🔷</h2>
+                <p class="puzzle-description">Each shape has a value. Find the value of the star!</p>
+                <div class="shape-equations-container">
+                    <div class="shape-equations">
+                        <div class="shape-equation">
+                            <div class="shape circle">●</div>
+                            <div class="operator">+</div>
+                            <div class="shape circle">●</div>
+                            <div class="operator">=</div>
+                            <div class="number">8</div>
+                        </div>
+                        <div class="shape-equation">
+                            <div class="shape triangle">▲</div>
+                            <div class="operator">+</div>
+                            <div class="shape circle">●</div>
+                            <div class="operator">=</div>
+                            <div class="number">7</div>
+                        </div>
+                        <div class="shape-equation">
+                            <div class="shape star">★</div>
+                            <div class="operator">+</div>
+                            <div class="shape triangle">▲</div>
+                            <div class="operator">=</div>
+                            <div class="number">10</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="options-container">
+                    <button class="option-btn">6</button>
+                    <button class="option-btn">7</button>
+                    <button class="option-btn">8</button>
+                </div>
+            </div>
+
+            <!-- Level 7: Geometry Shapes -->
+            <div class="level hidden" id="level7">
+                <h2>Count the Angles! 📐</h2>
+                <p class="puzzle-description">How many angles does this shape have?</p>
+                <div class="geometry-container">
+                    <div class="shape-display">
+                        <svg width="200" height="200" viewBox="0 0 200 200">
+                            <polygon points="100,20 180,180 20,180" class="geometry-shape" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="options-container">
+                    <button class="option-btn">2</button>
+                    <button class="option-btn">3</button>
+                    <button class="option-btn">4</button>
+                </div>
+            </div>
+
+            <!-- Level 8: Number Pyramid -->
+            <div class="level hidden" id="level8">
+                <h2>Complete the Number Pyramid! 🔺</h2>
+                <p class="puzzle-description">Fill in the missing numbers. Each number is the sum of the two numbers below it!</p>
+                <div class="pyramid-container">
+                    <div class="pyramid-row">
+                        <div class="pyramid-cell answer-box highlight">?</div>
+                    </div>
+                    <div class="pyramid-row">
+                        <div class="pyramid-cell">5</div>
+                        <div class="pyramid-cell">7</div>
+                    </div>
+                    <div class="pyramid-row">
+                        <div class="pyramid-cell">2</div>
+                        <div class="pyramid-cell">3</div>
+                        <div class="pyramid-cell">4</div>
+                    </div>
+                </div>
+                <div class="options-container">
+                    <button class="option-btn">12</button>
+                    <button class="option-btn">13</button>
+                    <button class="option-btn">14</button>
+                </div>
+            </div>
+
+            <!-- New Puzzles -->
+            <!-- Triangle Count Puzzle -->
+            <div class="level hidden" id="level9">
+                <h2>Count the Triangles! 📐</h2>
+                <p class="puzzle-description">How many triangles can you find in this figure?</p>
+                <div class="shape-container">
+                    <svg width="250" height="250" viewBox="0 0 300 300">
+                        <!-- Large Triangle (1) -->
+                        <path d="M50,250 L150,50 L250,250 Z" 
+                              class="triangle-puzzle large" fill="none" stroke="#1565C0" stroke-width="2"/>
+                        
+                        <!-- Medium Triangles (2) -->
+                        <path d="M50,250 L150,150 L150,50 Z" 
+                              class="triangle-puzzle medium left" fill="none" stroke="#1565C0" stroke-width="2"/>
+                        <path d="M150,50 L250,250 L150,150 Z" 
+                              class="triangle-puzzle medium right" fill="none" stroke="#1565C0" stroke-width="2"/>
+                        
+                        <!-- Small Triangles (2) -->
+                        <path d="M100,250 L150,150 L150,250 Z" 
+                              class="triangle-puzzle small left" fill="none" stroke="#1565C0" stroke-width="2"/>
+                        <path d="M150,150 L200,250 L150,250 Z" 
+                              class="triangle-puzzle small right" fill="none" stroke="#1565C0" stroke-width="2"/>
+                        
+                        <!-- Middle Triangles (2) -->
+                        <path d="M150,150 L100,250 L150,250 Z" 
+                              class="triangle-puzzle middle left" fill="none" stroke="#1565C0" stroke-width="2"/>
+                        <path d="M150,150 L200,250 L150,250 Z" 
+                              class="triangle-puzzle middle right" fill="none" stroke="#1565C0" stroke-width="2"/>
+                    </svg>
+                </div>
+                <div class="options-container">
+                    <button class="option-btn">6</button>
+                    <button class="option-btn">7</button>
+                    <button class="option-btn">8</button>
+                </div>
+            </div>
+
+            <!-- Square Count Puzzle -->
+            <div class="level hidden" id="level10">
+                <h2>Count the Squares! ⬜</h2>
+                <p class="puzzle-description">How many squares can you find in this figure?</p>
+                <div class="grid-container">
+                    <svg width="250" height="250" viewBox="0 0 300 300">
+                        <g class="square-puzzle">
+                            <!-- 1 large square -->
+                            <rect x="50" y="50" width="200" height="200" class="square large" fill="none" stroke="#1565C0" stroke-width="2"/>
+                            <!-- 4 medium squares -->
+                            <rect x="50" y="50" width="100" height="100" class="square medium" fill="none" stroke="#1565C0" stroke-width="2"/>
+                            <rect x="150" y="50" width="100" height="100" class="square medium" fill="none" stroke="#1565C0" stroke-width="2"/>
+                            <rect x="50" y="150" width="100" height="100" class="square medium" fill="none" stroke="#1565C0" stroke-width="2"/>
+                            <rect x="150" y="150" width="100" height="100" class="square medium" fill="none" stroke="#1565C0" stroke-width="2"/>
+                            <!-- 4 small squares -->
+                            <rect x="100" y="100" width="50" height="50" class="square small" fill="none" stroke="#1565C0" stroke-width="2"/>
+                            <rect x="150" y="100" width="50" height="50" class="square small" fill="none" stroke="#1565C0" stroke-width="2"/>
+                            <rect x="100" y="150" width="50" height="50" class="square small" fill="none" stroke="#1565C0" stroke-width="2"/>
+                            <rect x="150" y="150" width="50" height="50" class="square small" fill="none" stroke="#1565C0" stroke-width="2"/>
+                        </g>
+                    </svg>
+                </div>
+                <div class="options-container">
+                    <button class="option-btn">8</button>
+                    <button class="option-btn">9</button>
+                    <button class="option-btn">10</button>
+                </div>
+            </div>
+
+
+
+            <div class="game-controls">
+                <div class="result-message"></div>
+                <div class="button-container">
+                    <button id="check-answer" class="check-btn">Check Answer</button>
+                    <button id="next-level" class="next-btn hidden">Next Puzzle</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../sounds/soundGenerator.js"></script>
+    <script src="../sounds.js"></script>
+    <script src="../feedback.js" defer></script>
+    <script src="./puzzle4.js"></script>
+</body>
+</html>

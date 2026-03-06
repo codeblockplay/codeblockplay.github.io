@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Hunt Puzzle (Improved)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="./wordhunt.css">
+    <link rel="stylesheet" href="./debug.css">
+</head>
+<body>
+    <header>
+        <h1>🎯 Word Hunt Puzzle 🔤</h1>
+        <nav>
+            <a href="../index.html" class="nav-btn"><i class="fas fa-home"></i></a>
+            <a href="../puzzle1/puzzle.html" class="nav-btn"><i class="fas fa-lock"></i> Secret Code</a>
+        </nav>
+    </header>
+
+    <main>
+        <div id="word-hunt-puzzle" class="puzzle-container active">
+            <h2>Find All The Words!</h2>
+            <div class="puzzle-description">
+                <p>The words are hidden in the grid below. Can you find them all?</p>
+                <p class="puzzle-counter">Puzzle <span id="current-puzzle">1</span> of <span id="total-puzzles">20</span></p>
+            </div>
+            
+            <div class="puzzle-content">
+                <div class="puzzle-layout">
+                    <div class="puzzle-left">
+                        <div id="letter-grid" class="letter-grid">
+                            <!-- Will be filled by JavaScript with letter grid -->
+                        </div>
+                    </div>
+                    
+                    <div class="puzzle-right">
+                        <div class="word-list-container">
+                            <h3>Words to Find:</h3>
+                            <div id="word-list" class="word-list">
+                                <!-- Will be filled by JavaScript with words to find -->
+                            </div>
+                        </div>
+                        
+                        <div class="controls">
+                            <button id="submit-answer" class="check-btn">Check Answers</button>
+                            <button id="skip-puzzle" class="skip-btn">Skip Puzzle</button>
+                        </div>
+                        
+                        <div id="result-message" class="result"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="../sounds/soundGenerator.js"></script>
+    <script src="../sounds.js"></script>
+    <script src="../feedback.js" defer></script>
+    <script src="./wordhunt_improved.js" defer></script>
+</body>
+</html>

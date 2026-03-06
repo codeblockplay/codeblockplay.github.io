@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Hunt Puzzle - Conflict Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(10, 30px);
+            gap: 2px;
+            margin: 20px 0;
+        }
+        .cell {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .horizontal {
+            background-color: rgba(0, 255, 0, 0.2);
+        }
+        .vertical {
+            background-color: rgba(0, 0, 255, 0.2);
+        }
+        .conflict {
+            background-color: rgba(255, 0, 0, 0.3);
+            border: 2px solid red;
+        }
+        .word-item {
+            margin: 5px 0;
+        }
+        .controls {
+            margin: 20px 0;
+        }
+        button {
+            padding: 8px 16px;
+            background: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background: #3a7bd5;
+        }
+        .log {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Word Hunt Puzzle - Placement Algorithm Test</h1>
+    
+    <div class="controls">
+        <button id="test-btn">Test Word Placement</button>
+        <button id="reset-btn">Reset</button>
+    </div>
+    
+    <div id="log" class="log"></div>
+    
+    <h2>Grid:</h2>
+    <div id="grid" class="grid-container"></div>
+    
+    <h2>Words:</h2>
+    <div id="words"></div>
+
+    <script>
+        // Test words
+        const wordSets = [
+            ['APPLE', 'BANANA', 'ORANGE', 'GRAPE', 'MELON'],
+            ['DOG', 'CAT', 'BIRD', 'FISH', 'MOUSE'],
+            ['RED', 'BLUE', 'GREEN', 'YELLOW', 'PINK']
+        ];
+        
+        // Log function
+        function log(message, type = 'info') {
+            const logContainer = document.getElementById('log');
+            const entry = document.createElement('div');
+            entry.textContent = message;
+            entry.style.color = type === 'error' ? 'red' : 
+                               type === 'success' ? 'green' : 'black';
+            logContainer.appendChild(entry);
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+        
+        // Clear log
+        function clearLog() {
+            document.getElementById('log').innerHTML = '';
+        }
+        
+        // Function to try placing a word without conflicts
+        function tryPlaceWordWithoutConflict(grid, word, direction, placedCells) {
+            const gridSize = 10;
+            let bestStartRow = -1;
+            let bestStartCol = -1;
+            let minConflicts = Infinity;
+            
+            // Calculate possible starting positions based on direction and word length
+            for (let startRow = 0; startRow < gridSize; startRow++) {
+                for (let startCol = 0; startCol < gridSize; startCol++) {
+                    // Check if word would fit from this position
+                    let fits = true;
+                    
+                    if (direction === 'horizontal' && startCol + word.length > gridSize) {
+                        fits = false;
+                    } else if (direction === 'vertical' && startRow + word.length > gridSize) {
+                        fits = false;
+                    }
+                    
+                    if (!fits) continue;
+                    
+                    // Count conflicts at this position
+                    let conflicts = 0;
+                    
+                    for (let i = 0; i < word.length; i++) {
+                        const row = direction === 'horizontal' ? startRow : startRow + i;
+                        const col = direction === 'horizontal' ? startCol + i : startCol;
+                        const cellKey = `${row},${col}`;
+                        
+                        if (placedCells[cellKey] && placedCells[cellKey].letter !== word.charAt(i)) {
+                            conflicts++;
+                        }
+                    }
+                    
+                    // Update best position if this has fewer conflicts
+                    if (conflicts < minConflicts) {
+                        minConflicts = conflicts;
+                        bestStartRow = startRow;
+                        bestStartCol = startCol;
+                        
+                        // If we found a position with no conflicts, we can stop searching
+                        if (conflicts === 0) {
+                            break;
+                        }
+                    }
+                }
+                
+                // Break early if we found a perfect position
+                if (minConflicts === 0) {
+                    break;
+                }
+            }
+            
+            // If we found a position with no conflicts, place the word
+            if (minConflicts === 0) {
+                // Place the word in the grid
+                for (let i = 0; i < word.length; i++) {
+                    const row = direction === 'horizontal' ? bestStartRow : bestStartRow + i;
+                    const col = direction === 'horizontal' ? bestStartCol + i : bestStartCol;
+                    
+                    // Place letter
+                    grid[row][col] = word.charAt(i);
+                    
+                    // Mark cell as occupied
+                    placedCells[`${row},${col}`] = {
+                        letter: word.charAt(i),
+                        word: word,
+                        direction
+                    };
+                }
+                
+                return {
+                    success: true,
+                    startRow: bestStartRow,
+                    startCol: bestStartCol,
+                    endRow: direction === 'horizontal' ? bestStartRow : bestStartRow + word.length - 1,
+                    endCol: direction === 'horizontal' ? bestStartCol + word.length - 1 : bestStartCol
+                };
+            }
+            
+            // Couldn't place word without conflicts
+            return {
+                success: false
+            };
+        }
+        
+        // Function to create and test a puzzle
+        function createPuzzle(words) {
+            // Start with empty grid
+            const grid = Array(10).fill().map(() => Array(10).fill('.'));
+            const wordPositions = [];
+            
+            // Track cell usage
+            const placedCells = {};
+            
+            // Step 1: Try to place first 3 words horizontally
+            log(`Placing words horizontally: ${words.slice(0, 3).join(', ')}`);
+            
+            for (let w = 0; w < Math.min(3, words.length); w++) {
+                const word = words[w];
+                
+                // Skip words that are too long
+                if (word.length > 10) {
+                    log(`Word "${word}" is too long to fit in the grid!`, 'error');
+                    continue;
+                }
+                
+                // Try to place horizontally without conflicts
+                const placement = tryPlaceWordWithoutConflict(grid, word, 'horizontal', placedCells);
+                
+                if (placement.success) {
+                    // Word placed successfully, record its position
+                    wordPositions.push({
+                        word,
+                        direction: 'horizontal',
+                        startRow: placement.startRow,
+                        startCol: placement.startCol,
+                        endRow: placement.endRow,
+                        endCol: placement.endCol
+                    });
+                    
+                    log(`✓ Placed "${word}" horizontally at row ${placement.startRow}, cols ${placement.startCol}-${placement.endCol}`, 'success');
+                } else {
+                    // If we couldn't place horizontally, try vertical as fallback
+                    log(`Could not place "${word}" horizontally, trying vertical...`, 'error');
+                    
+                    const verticalPlacement = tryPlaceWordWithoutConflict(grid, word, 'vertical', placedCells);
+                    
+                    if (verticalPlacement.success) {
+                        wordPositions.push({
+                            word,
+                            direction: 'vertical',
+                            startRow: verticalPlacement.startRow,
+                            startCol: verticalPlacement.startCol,
+                            endRow: verticalPlacement.endRow,
+                            endCol: verticalPlacement.endCol
+                        });
+                        
+                        log(`✓ Placed "${word}" vertically at column ${verticalPlacement.startCol}, rows ${verticalPlacement.startRow}-${verticalPlacement.endRow}`, 'success');
+                    } else {
+                        log(`Failed to place "${word}" in any direction!`, 'error');
+                    }
+                }
+            }
+            
+            // Step 2: Try to place remaining words vertically
+            log(`Placing words vertically: ${words.slice(3).join(', ')}`);
+            
+            for (let w = 3; w < words.length; w++) {
+                const word = words[w];
+                
+                // Skip words that are too long
+                if (word.length > 10) {
+                    log(`Word "${word}" is too long to fit in the grid!`, 'error');
+                    continue;
+                }
+                
+                // Try to place vertically without conflicts
+                const placement = tryPlaceWordWithoutConflict(grid, word, 'vertical', placedCells);
+                
+                if (placement.success) {
+                    // Word placed successfully, record its position
+                    wordPositions.push({
+                        word,
+                        direction: 'vertical',
+                        startRow: placement.startRow,
+                        startCol: placement.startCol,
+                        endRow: placement.endRow,
+                        endCol: placement.endCol
+                    });
+                    
+                    log(`✓ Placed "${word}" vertically at column ${placement.startCol}, rows ${placement.startRow}-${placement.endRow}`, 'success');
+                } else {
+                    // If we couldn't place vertically, try horizontal as fallback
+                    log(`Could not place "${word}" vertically, trying horizontal...`, 'error');
+                    
+                    const horizontalPlacement = tryPlaceWordWithoutConflict(grid, word, 'horizontal', placedCells);
+                    
+                    if (horizontalPlacement.success) {
+                        wordPositions.push({
+                            word,
+                            direction: 'horizontal',
+                            startRow: horizontalPlacement.startRow,
+                            startCol: horizontalPlacement.startCol,
+                            endRow: horizontalPlacement.endRow,
+                            endCol: horizontalPlacement.endCol
+                        });
+                        
+                        log(`✓ Placed "${word}" horizontally at row ${horizontalPlacement.startRow}, cols ${horizontalPlacement.startCol}-${horizontalPlacement.endCol}`, 'success');
+                    } else {
+                        log(`Failed to place "${word}" in any direction!`, 'error');
+                    }
+                }
+            }
+            
+            // Verify word placement
+            let allCorrect = true;
+            
+            log("Verifying word placement:");
+            for (const pos of wordPositions) {
+                let placedWord = '';
+                
+                if (pos.direction === 'horizontal') {
+                    for (let i = 0; i <= pos.endCol - pos.startCol; i++) {
+                        placedWord += grid[pos.startRow][pos.startCol + i];
+                    }
+                } else {
+                    for (let i = 0; i <= pos.endRow - pos.startRow; i++) {
+                        placedWord += grid[pos.startRow + i][pos.startCol];
+                    }
+                }
+                
+                if (placedWord !== pos.word) {
+                    log(`ERROR: Word "${pos.word}" was incorrectly placed as "${placedWord}"`, 'error');
+                    allCorrect = false;
+                } else {
+                    log(`✓ Word "${pos.word}" correctly placed as "${placedWord}"`, 'success');
+                }
+            }
+            
+            // Check for conflicts
+            const conflicts = [];
+            
+            for (const key in placedCells) {
+                const [row, col] = key.split(',').map(Number);
+                
+                // Get all words that use this cell
+                const wordsAtCell = Object.values(placedCells)
+                    .filter(cell => cell.cellKey === key)
+                    .map(cell => cell.word);
+                
+                if (wordsAtCell.length > 1) {
+                    conflicts.push({
+                        row,
+                        col,
+                        letter: grid[row][col],
+                        words: wordsAtCell
+                    });
+                }
+            }
+            
+            if (conflicts.length === 0) {
+                log("✓ No conflicts found in the grid!", 'success');
+            } else {
+                log(`Found ${conflicts.length} conflicts in the grid:`, 'error');
+                conflicts.forEach(conflict => {
+                    log(`  Cell [${conflict.row},${conflict.col}] with letter "${conflict.letter}" is used by words: ${conflict.words.join(', ')}`, 'error');
+                });
+            }
+            
+            // Fill remaining cells with random letters
+            log("Filling remaining cells with random letters...");
+            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            
+            for (let r = 0; r < 10; r++) {
+                for (let c = 0; c < 10; c++) {
+                    if (grid[r][c] === '.') {
+                        grid[r][c] = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                    }
+                }
+            }
+            
+            return {
+                grid,
+                words,
+                wordPositions,
+                allCorrect
+            };
+        }
+        
+        // Function to render the grid
+        function renderGrid(puzzle) {
+            const gridContainer = document.getElementById('grid');
+            gridContainer.innerHTML = '';
+            
+            // Create the grid cells
+            for (let row = 0; row < 10; row++) {
+                for (let col = 0; col < 10; col++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'cell';
+                    cell.textContent = puzzle.grid[row][col];
+                    
+                    // Determine if this cell is part of a word
+                    let isHorizontal = false;
+                    let isVertical = false;
+                    
+                    puzzle.wordPositions.forEach(pos => {
+                        if (pos.direction === 'horizontal' && 
+                            row === pos.startRow && 
+                            col >= pos.startCol && 
+                            col <= pos.endCol) {
+                            isHorizontal = true;
+                            cell.title = `Part of "${pos.word}" (horizontal)`;
+                        }
+                        
+                        if (pos.direction === 'vertical' && 
+                            col === pos.startCol && 
+                            row >= pos.startRow && 
+                            row <= pos.endRow) {
+                            isVertical = true;
+                            cell.title = `Part of "${pos.word}" (vertical)`;
+                        }
+                    });
+                    
+                    // Apply appropriate styling
+                    if (isHorizontal && isVertical) {
+                        cell.classList.add('conflict');
+                        cell.title = "CONFLICT: Cell is used by multiple words!";
+                    } else if (isHorizontal) {
+                        cell.classList.add('horizontal');
+                    } else if (isVertical) {
+                        cell.classList.add('vertical');
+                    }
+                    
+                    gridContainer.appendChild(cell);
+                }
+            }
+            
+            // Render word list
+            const wordsContainer = document.getElementById('words');
+            wordsContainer.innerHTML = '';
+            
+            puzzle.wordPositions.forEach(pos => {
+                const wordItem = document.createElement('div');
+                wordItem.className = 'word-item';
+                wordItem.innerHTML = `<b>${pos.word}</b> (${pos.direction}) - Start: [${pos.startRow},${pos.startCol}], End: [${pos.endRow},${pos.endCol}]`;
+                wordsContainer.appendChild(wordItem);
+            });
+        }
+        
+        // Test button handler
+        document.getElementById('test-btn').addEventListener('click', () => {
+            clearLog();
+            log("Starting word placement test...");
+            
+            // Use first word set
+            const wordSet = wordSets[0];
+            log(`Using words: ${wordSet.join(', ')}`);
+            
+            const puzzle = createPuzzle(wordSet);
+            renderGrid(puzzle);
+            
+            // Display the grid in the log
+            log("Final grid:");
+            for (let r = 0; r < 10; r++) {
+                log(puzzle.grid[r].join(' '));
+            }
+            
+            if (puzzle.wordPositions.length === wordSet.length) {
+                log(`✓ Successfully placed all ${wordSet.length} words!`, 'success');
+            } else {
+                log(`Placed ${puzzle.wordPositions.length} words out of ${wordSet.length}`, 'error');
+            }
+        });
+        
+        // Reset button handler
+        document.getElementById('reset-btn').addEventListener('click', () => {
+            clearLog();
+            document.getElementById('grid').innerHTML = '';
+            document.getElementById('words').innerHTML = '';
+            log("Grid cleared. Click 'Test Word Placement' to start a new test.");
+        });
+        
+        // Initialize
+        log("Word Hunt Puzzle - Placement Algorithm Test");
+        log("Click 'Test Word Placement' to start the test.");
+    </script>
+</body>
+</html>

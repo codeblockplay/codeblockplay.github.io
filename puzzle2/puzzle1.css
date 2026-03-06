@@ -1,0 +1,247 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e1f4ff 100%);
+    height: 100vh;
+    padding: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    color: #ff6b6b;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.nav-btn {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 25px;
+    background: #4ecdc4;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.nav-btn:hover {
+    transform: scale(1.05);
+    background: #45b7ae;
+}
+
+.nav-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.puzzle-container {
+    display: none;
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    overflow-y: auto;
+    max-height: calc(100vh - 150px);
+}
+
+.puzzle-container.active {
+    display: block;
+}
+
+h2 {
+    color: #4ecdc4;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.puzzle-description {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.symbols-guide {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    gap: 0.5rem;
+    margin: 1rem auto;
+    max-width: 800px;
+    padding: 0.5rem;
+    background: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-height: 265px;
+    overflow-y: auto;
+}
+
+.symbol {
+    font-size: 1rem;
+    font-family: monospace;
+    background: white;
+    padding: 8px 5px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    align-items: center;
+}
+
+.symbol:hover {
+    transform: scale(1.05);
+    background: #fff5f5;
+}
+
+.symbol-emoji {
+    font-size: 1.5rem;
+}
+
+.symbol-letter {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ff6b6b;
+}
+
+.secret-message {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+    background: #f8f9fa;
+    padding: 0.5rem;
+    border-radius: 15px;
+}
+
+.secret-message span {
+    font-size: 2rem;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.answer-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.letter-input {
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+    text-align: center;
+    border: 3px solid #4ecdc4;
+    border-radius: 12px;
+    text-transform: uppercase;
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.letter-input:focus {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    outline: none;
+    border-color: #ff6b6b;
+}
+
+.check-btn {
+    display: block;
+    margin: 0 auto;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.check-btn:hover {
+    transform: scale(1.05);
+    background: #ff5252;
+}
+
+.result {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    min-height: 2rem;
+}
+
+.result.success {
+    color: #2ecc71;
+}
+
+.result.error {
+    color: #e74c3c;
+}
+
+/* Celebration Animations */
+@keyframes celebrate {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+.puzzle-container.celebrate {
+    animation: celebrate 0.5s ease-in-out;
+}
+
+.puzzle-container.celebrate::before {
+    content: '✨';
+    position: absolute;
+    top: -20px;
+    left: 10%;
+    animation: sparkle 1s infinite;
+}
+
+.puzzle-container.celebrate::after {
+    content: '✨';
+    position: absolute;
+    bottom: -20px;
+    right: 10%;
+    animation: sparkle 1s infinite 0.5s;
+}
+
+/* Feedback Toast Animations */
+@keyframes slide-in {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern Addition</title>
+    <link rel="stylesheet" href="./puzzle4.css">
+</head>
+<body>
+    <header>
+        <h1>🔢 Math Sequence Quest 🎲</h1>
+        <nav>
+            <a href="../index.html" class="nav-btn"><i class="fas fa-home"></i></a>
+            <a href="../puzzle3/puzzle3.html" class="nav-btn"><i class="fas fa-calculator"></i> Hidden Sequence</a>
+            <a href="#" class="nav-btn disabled"><i class="fas fa-hourglass-half"></i> Coming Soon</a>
+        </nav>
+    </header>
+
+    <main>
+        <div id="number-puzzle" class="puzzle-container active">
+            <h2>Count and Match! 🌟</h2>
+            <div class="puzzle-description">
+                <p>Drag the right number of stars to match each number!</p>
+                <p>💫 Hint: Count carefully and have fun!</p>
+            </div>
+
+            <div class="number-cards">
+                <div class="number-card" data-number="3">
+                    <div class="number">3</div>
+                    <div class="drop-zone"></div>
+                </div>
+
+                <div class="number-card" data-number="5">
+                    <div class="number">5</div>
+                    <div class="drop-zone"></div>
+                </div>
+
+                <div class="number-card" data-number="4">
+                    <div class="number">4</div>
+                    <div class="drop-zone"></div>
+                </div>
+            </div>
+
+            <div class="star-container">
+                <div class="star" draggable="true">⭐</div>
+                <div class="star" draggable="true">⭐</div>
+                <div class="star" draggable="true">⭐</div>
+                <div class="star" draggable="true">⭐</div>
+                <div class="star" draggable="true">⭐</div>
+                <div class="star" draggable="true">⭐</div>
+                <div class="star" draggable="true">⭐</div>
+                <div class="star" draggable="true">⭐</div>
+                <div class="star" draggable="true">⭐</div>
+                <div class="star" draggable="true">⭐</div>
+            </div>
+
+            <div class="button-container">
+                <button id="check-answer" class="check-btn">Check Pattern</button>
+                <button id="clear-drawing" class="clear-btn">Clear Drawing</button>
+            </div>
+            <div id="result-message" class="result"></div>
+        </div>
+    </main>
+
+    <script src="../sounds/soundGenerator.js"></script>
+    <script src="../sounds.js"></script>
+    <script src="../feedback.js" defer></script>
+    <script src="./puzzle4.js" defer></script>
+</body>
+</html>

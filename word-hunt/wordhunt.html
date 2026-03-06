@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Word Hunt Quest | Code Blocks Playground</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../shared/shell.css">
+    <link rel="stylesheet" href="./wordhunt.css">
+</head>
+<body class="kp-shell-enabled" data-page="word-hunt" data-age="Word Challenge">
+    <header>
+        <h1>Word Hunt Quest</h1>
+    </header>
+
+    <main class="wh-main">
+        <section id="word-hunt-puzzle" class="wh-card" aria-label="Word Hunt Puzzle">
+            <div class="wh-title-row">
+                <div>
+                    <h1>Word Hunt Quest</h1>
+                    <p>Find the hidden words by selecting letters in a straight line.</p>
+                </div>
+                <p class="puzzle-counter">Puzzle <span id="current-puzzle">1</span> of <span id="total-puzzles">20</span></p>
+            </div>
+
+            <div class="quality-panel">
+                <div class="quality-row">
+                    <div class="mode-switch" id="age-mode-buttons" role="tablist" aria-label="Age modes">
+                        <button class="mode-btn" data-mode="easy" aria-selected="false">Age 5-6</button>
+                        <button class="mode-btn active" data-mode="medium" aria-selected="true">Age 7-8</button>
+                        <button class="mode-btn" data-mode="hard" aria-selected="false">Age 9-10</button>
+                    </div>
+                    <div class="score-strip" aria-live="polite">
+                        <span>Score: <strong id="score-value">0</strong></span>
+                        <span>Streak: <strong id="streak-value">0</strong></span>
+                        <span>Hints: <strong id="hints-value">0</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="play-area">
+                <div class="grid-panel">
+                    <div class="clue-wrap">
+                        <span class="clue-label"><i class="fas fa-magnifying-glass"></i> Goal</span>
+                        <p>Tap letters and build each word from the list. Words can be forward or backward.</p>
+                    </div>
+                    <div id="grid-stage" class="grid-stage">
+                        <div id="letter-grid" class="letter-grid" aria-label="Letter grid"></div>
+                    </div>
+                </div>
+
+                <aside class="side-panel" aria-label="Word hunt controls">
+                    <div class="top-actions">
+                        <button id="hint-btn" class="hint-btn" type="button" title="Get hint" aria-label="Get hint">
+                            <i class="fas fa-lightbulb"></i>
+                        </button>
+                        <button id="repeat-word-btn" class="speak-btn" type="button" title="Repeat last found word" aria-label="Repeat last found word" disabled>
+                            <i class="fas fa-volume-high"></i>
+                        </button>
+                    </div>
+                    <p id="hint-message" class="hint-message" aria-live="polite">Use hints when you get stuck.</p>
+
+                    <div class="word-list-container">
+                        <h2>Words to Find</h2>
+                        <div id="word-list" class="word-list"></div>
+                    </div>
+
+                    <div id="result-message" class="result" aria-live="polite"></div>
+
+                    <div class="controls" aria-label="Word hunt actions">
+                        <button id="submit-answer" class="action-btn action-check" type="button" title="Check selection" aria-label="Check selection">
+                            <i class="fas fa-check"></i>
+                        </button>
+                        <button id="skip-puzzle" class="action-btn action-skip" type="button" title="Next puzzle" aria-label="Next puzzle">
+                            <i class="fas fa-forward"></i>
+                        </button>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <script src="../sounds/soundGenerator.js"></script>
+    <script src="../sounds.js"></script>
+    <script src="../shared/shell.js" defer></script>
+    <script src="../feedback.js" defer></script>
+    <script src="./wordhunt.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brainy Blocks - Test Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        .test-result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .test-passed {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .test-failed {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .test-running {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Brainy Blocks - Test Page</h1>
+        <p>Use this page to test that each of the Brainy Blocks puzzles is working correctly.</p>
+        
+        <div class="test-section">
+            <h2>Binary Decoder Test</h2>
+            <p>Checking if the Binary Decoder puzzle loads and functions correctly.</p>
+            <button id="test-binary" class="btn btn-primary">Run Binary Decoder Test</button>
+            <div id="binary-result" class="test-result"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Grid Explorer Test</h2>
+            <p>Checking if the Grid Explorer puzzle loads and functions correctly.</p>
+            <button id="test-grid" class="btn btn-primary">Run Grid Explorer Test</button>
+            <div id="grid-result" class="test-result"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Pattern Sequencer Test</h2>
+            <p>Checking if the Pattern Sequencer puzzle loads and functions correctly.</p>
+            <button id="test-pattern" class="btn btn-primary">Run Pattern Sequencer Test</button>
+            <div id="pattern-result" class="test-result"></div>
+        </div>
+        
+        <div class="mt-4">
+            <button id="test-all" class="btn btn-success">Run All Tests</button>
+            <a href="index.html" class="btn btn-secondary me-2">Back to Home</a>
+            <a href="brainy-blocks/index.html" class="btn btn-primary">Go to Brainy Blocks</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Binary Decoder Test
+            document.getElementById('test-binary').addEventListener('click', function() {
+                runBinaryTest();
+            });
+            
+            // Grid Explorer Test
+            document.getElementById('test-grid').addEventListener('click', function() {
+                runGridTest();
+            });
+            
+            // Pattern Sequencer Test
+            document.getElementById('test-pattern').addEventListener('click', function() {
+                runPatternTest();
+            });
+            
+            // Run All Tests
+            document.getElementById('test-all').addEventListener('click', function() {
+                runBinaryTest();
+                setTimeout(runGridTest, 1000);
+                setTimeout(runPatternTest, 2000);
+            });
+            
+            // Test functions
+            function runBinaryTest() {
+                const resultElement = document.getElementById('binary-result');
+                resultElement.className = 'test-result test-running';
+                resultElement.textContent = 'Testing Binary Decoder...';
+                
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.src = 'binary-decoder/index.html';
+                document.body.appendChild(iframe);
+                
+                iframe.onload = function() {
+                    try {
+                        // Check if key elements exist in the iframe
+                        const binaryWordContainer = iframe.contentDocument.getElementById('current-binary-word');
+                        const answerBoxes = iframe.contentDocument.getElementById('answer-boxes');
+                        const binaryCheck = iframe.contentDocument.getElementById('binary-check');
+                        
+                        if (binaryWordContainer && answerBoxes && binaryCheck) {
+                            resultElement.className = 'test-result test-passed';
+                            resultElement.textContent = '✓ Binary Decoder test passed! All required elements are present.';
+                        } else {
+                            resultElement.className = 'test-result test-failed';
+                            resultElement.textContent = '✗ Binary Decoder test failed. Missing required elements.';
+                        }
+                    } catch (e) {
+                        resultElement.className = 'test-result test-failed';
+                        resultElement.textContent = '✗ Binary Decoder test failed with error: ' + e.message;
+                    }
+                    
+                    // Remove the iframe after testing
+                    setTimeout(() => {
+                        document.body.removeChild(iframe);
+                    }, 1000);
+                };
+            }
+            
+            function runGridTest() {
+                const resultElement = document.getElementById('grid-result');
+                resultElement.className = 'test-result test-running';
+                resultElement.textContent = 'Testing Grid Explorer...';
+                
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.src = 'grid-explorer/index.html';
+                document.body.appendChild(iframe);
+                
+                iframe.onload = function() {
+                    try {
+                        // Check if key elements exist in the iframe
+                        const gridContainer = iframe.contentDocument.querySelector('.grid-container');
+                        const gridCells = iframe.contentDocument.querySelectorAll('.grid-cell');
+                        const treasureClue = iframe.contentDocument.getElementById('treasure-clue');
+                        
+                        if (gridContainer && gridCells.length > 0 && treasureClue) {
+                            resultElement.className = 'test-result test-passed';
+                            resultElement.textContent = '✓ Grid Explorer test passed! All required elements are present.';
+                        } else {
+                            resultElement.className = 'test-result test-failed';
+                            resultElement.textContent = '✗ Grid Explorer test failed. Missing required elements.';
+                        }
+                    } catch (e) {
+                        resultElement.className = 'test-result test-failed';
+                        resultElement.textContent = '✗ Grid Explorer test failed with error: ' + e.message;
+                    }
+                    
+                    // Remove the iframe after testing
+                    setTimeout(() => {
+                        document.body.removeChild(iframe);
+                    }, 1000);
+                };
+            }
+            
+            function runPatternTest() {
+                const resultElement = document.getElementById('pattern-result');
+                resultElement.className = 'test-result test-running';
+                resultElement.textContent = 'Testing Pattern Sequencer...';
+                
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.src = 'pattern-sequencer/index.html';
+                document.body.appendChild(iframe);
+                
+                iframe.onload = function() {
+                    try {
+                        // Check if key elements exist in the iframe
+                        const patternSequence = iframe.contentDocument.getElementById('pattern-sequence');
+                        const patternChoices = iframe.contentDocument.getElementById('pattern-choices');
+                        const patternSolution = iframe.contentDocument.getElementById('pattern-solution');
+                        
+                        if (patternSequence && patternChoices && patternSolution) {
+                            resultElement.className = 'test-result test-passed';
+                            resultElement.textContent = '✓ Pattern Sequencer test passed! All required elements are present.';
+                        } else {
+                            resultElement.className = 'test-result test-failed';
+                            resultElement.textContent = '✗ Pattern Sequencer test failed. Missing required elements.';
+                        }
+                    } catch (e) {
+                        resultElement.className = 'test-result test-failed';
+                        resultElement.textContent = '✗ Pattern Sequencer test failed with error: ' + e.message;
+                    }
+                    
+                    // Remove the iframe after testing
+                    setTimeout(() => {
+                        document.body.removeChild(iframe);
+                    }, 1000);
+                };
+            }
+        });
+    </script>
+</body>
+</html>

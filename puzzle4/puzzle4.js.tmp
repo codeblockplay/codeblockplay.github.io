@@ -1,0 +1,203 @@
+document.addEventListener('DOMContentLoaded', () => {
+    let currentLevel = 1;
+    const maxLevel = 3;
+    const answers = {
+        1: '10', // Sequence: 2,4,6,8,10
+        2: '5',  // Addition: 2+3=5
+        3: '3'   // Missing number: 5+3=8
+    };
+
+    // Initialize sound system
+    const soundGen = new SoundGenerator();
+    
+    // Sound helper function
+    async function playSound(type) {
+        switch(type) {
+            case 'success':
+                await soundGen.generateSuccessSound();
+                break;
+            case 'error':
+                await soundGen.generateErrorSound();
+                break;
+            case 'click':
+                await soundGen.generateClickSound();
+                break;
+        }
+    }
+
+    const checkButton = document.getElementById('check-answer');
+    const nextButton = document.getElementById('next-level');
+    const resultMessage = document.querySelector('.result-message');
+
+    // Set up option buttons
+    document.querySelectorAll('.option-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove selected class from all options
+            document.querySelectorAll('.option-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            // Add selected class to clicked button
+            button.classList.add('selected');
+        });
+    });
+
+    // Check Answer
+    checkButton.addEventListener('click', async () => {
+        await playSound('click');
+        const selectedOption = document.querySelector('.option-btn.selected');
+        if (!selectedOption) {
+            showMessage('Please select an answer! 🤔', 'error');
+            await playSound('error');
+            createSoundWave('#f44336');
+            showHint();
+            return;
+        }
+
+        if (selectedOption.textContent === answers[currentLevel]) {
+            showMessage('Fantastic! You got it right! 🎉', 'success');
+            await playSound('success');
+            createSoundWave('#4caf50');
+            celebrate();
+            
+            if (currentLevel < maxLevel) {
+                nextButton.classList.remove('hidden');
+                checkButton.classList.add('hidden');
+            } else {
+                showMessage('Congratulations! You completed all levels! 🏆', 'success');
+                checkButton.classList.add('hidden');
+            }
+        } else {
+            showMessage('Not quite right, try again! 💪', 'error');
+            errorSound.play();
+            createSoundWave('#f44336');
+        }
+    });
+
+    function createSoundWave(color) {
+        const wave = document.createElement('div');
+        wave.className = 'sound-effect';
+        wave.style.background = color + '33'; // Add transparency
+        wave.style.left = '50%';
+        wave.style.top = '50%';
+        wave.style.transform = 'translate(-50%, -50%)';
+        document.body.appendChild(wave);
+        
+        setTimeout(() => wave.remove(), 500);
+    }
+
+    // Next Level
+    nextButton.addEventListener('click', async () => {
+        await playSound('click');
+        currentLevel++;
+        
+        // Hide current level
+        const currentLevelElement = document.querySelector('.level:not(.hidden)');
+        if (currentLevelElement) {
+            currentLevelElement.style.opacity = '0';
+            await new Promise(resolve => setTimeout(resolve, 500));
+            currentLevelElement.classList.add('hidden');
+        }
+        
+        // Show next level
+        const nextLevelElement = document.getElementById(`level${currentLevel}`);
+        if (nextLevelElement) {
+            nextLevelElement.classList.remove('hidden');
+            // Force reflow
+            nextLevelElement.offsetHeight;
+            nextLevelElement.style.opacity = '1';
+        
+        // Show current level with fade in effect
+        setTimeout(() => {
+            const currentLevelElement = document.getElementById(`level${currentLevel}`);
+            currentLevelElement.classList.remove('hidden');
+            setTimeout(() => {
+                currentLevelElement.style.opacity = '1';
+            }, 50);
+        }, 500);
+        
+        // Update level indicator with animation
+        const levelIndicator = document.querySelector('.level-indicator');
+        levelIndicator.style.transform = 'scale(1.2)';
+        levelIndicator.textContent = `Level ${currentLevel}`;
+        setTimeout(() => {
+            levelIndicator.style.transform = 'scale(1)';
+        }, 300);
+        
+        // Reset buttons
+        nextButton.classList.add('hidden');
+        checkButton.classList.remove('hidden');
+        
+        // Clear message and selected option
+        resultMessage.textContent = '';
+        document.querySelectorAll('.option-btn').forEach(btn => {
+            btn.classList.remove('selected');
+        });
+        
+        playSound('click');
+    });
+
+    function showMessage(text, type) {
+        resultMessage.textContent = text;
+        resultMessage.className = 'result-message ' + type;
+    }
+
+    function celebrate() {
+        const emojis = ['🎉', '⭐', '🌟', '✨', '💫'];
+        for (let i = 0; i < 10; i++) {
+            const celebration = document.createElement('div');
+            celebration.className = 'celebration';
+            celebration.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            celebration.style.left = Math.random() * 100 + 'vw';
+            celebration.style.top = Math.random() * 100 + 'vh';
+            document.body.appendChild(celebration);
+            
+            setTimeout(() => celebration.remove(), 3000);
+        }
+    }
+
+    function showHint() {
+        const hints = {
+            1: "Look carefully! The numbers are counting up by 2's: 2, 4, 6, 8... What comes next? 🤔",
+            2: "Count all the apples! First group has 2 apples 🍎🍎, second group has 3 apples 🍎🍎🍎",
+            3: "What number plus 5 equals 8? Try counting up from 5! ✨"
+        };
+        
+        const hintMessage = document.createElement('div');
+        hintMessage.className = 'hint-message';
+        hintMessage.textContent = hints[currentLevel];
+        hintMessage.style.animation = 'fadeIn 0.5s ease-in';
+        
+        const resultMessage = document.querySelector('.result-message');
+        resultMessage.appendChild(hintMessage);
+        
+        setTimeout(() => {
+            hintMessage.style.animation = 'fadeOut 0.5s ease-out';
+            setTimeout(() => hintMessage.remove(), 500);
+        }, 5000);
+    }
+
+    // Add hint styles to CSS
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(10px); }
+        }
+        
+        .hint-message {
+            color: #ff9800;
+            font-size: 1.1em;
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(255, 152, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+    `;
+    document.head.appendChild(style);
+});

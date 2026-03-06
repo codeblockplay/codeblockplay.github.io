@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap');
+
+:root {
+    --kp-ink: #2a4f86;
+    --kp-ink-soft: #47679b;
+    --kp-sky: #28c0ff;
+    --kp-purple: #5c2eff;
+    --kp-orange: #ff8b2d;
+    --kp-sun: #ffd34f;
+    --kp-bg-top: #d9f4ff;
+    --kp-bg-bottom: #f6f2ff;
+    --kp-surface: #ffffff;
+    --kp-shadow: 0 14px 28px rgba(33, 49, 84, 0.16);
+    --kp-shell-z: 1000;
+}
+
+body.kp-shell-enabled {
+    font-family: 'Fredoka', 'Baloo 2', 'Trebuchet MS', cursive;
+    background:
+        radial-gradient(circle at 14% -5%, rgba(255, 211, 79, 0.45), transparent 28%),
+        radial-gradient(circle at 88% 10%, rgba(40, 192, 255, 0.22), transparent 33%),
+        linear-gradient(180deg, var(--kp-bg-top) 0%, var(--kp-bg-bottom) 100%);
+    color: var(--kp-ink);
+    padding-top: 86px;
+    min-height: 100vh;
+    opacity: 1;
+    transition: opacity 0.18s ease-out;
+}
+
+body.kp-shell-enabled :where(h1, h2, h3, h4, h5, h6) {
+    font-family: 'Fredoka', 'Baloo 2', sans-serif;
+    font-weight: 700;
+    color: var(--kp-ink);
+    letter-spacing: 0.01em;
+}
+
+body.kp-shell-enabled :where(p, li, label, a, button, input, select, textarea) {
+    font-weight: 500;
+}
+
+body.kp-shell-enabled :where(strong, b) {
+    color: #22477d;
+    font-weight: 700;
+}
+
+body.kp-page-leaving {
+    opacity: 0;
+}
+
+body.kp-shell-enabled > header {
+    display: none !important;
+}
+
+body.kp-shell-enabled > footer,
+body.kp-shell-enabled > .footer {
+    display: none !important;
+}
+
+.kp-shell-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--kp-shell-z);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.92);
+    border-bottom: 1px solid rgba(33, 49, 84, 0.14);
+    box-shadow: 0 7px 20px rgba(33, 49, 84, 0.14);
+    backdrop-filter: blur(10px);
+}
+
+.kp-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--kp-ink);
+}
+
+.kp-brand img {
+    width: 38px;
+    height: 38px;
+}
+
+.kp-brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.kp-brand-title {
+    font-family: 'Fredoka', 'Baloo 2', sans-serif;
+    font-size: 1.02rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+.kp-brand-sub {
+    font-size: 0.72rem;
+    color: #53719d;
+    font-weight: 700;
+}
+
+.kp-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.kp-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.79rem;
+    font-weight: 700;
+    color: #2f4675;
+    background: #ecf5ff;
+    border: 1px solid #d2e8ff;
+    border-radius: 999px;
+    padding: 6px 12px;
+}
+
+.kp-menu-btn {
+    border: none;
+    color: #fff;
+    background: linear-gradient(135deg, var(--kp-purple) 0%, var(--kp-sky) 100%);
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 8px 10px;
+    min-width: 42px;
+    cursor: pointer;
+}
+
+.kp-menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(27, 32, 46, 0.34);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: calc(var(--kp-shell-z) - 2);
+}
+
+.kp-menu-drawer {
+    position: fixed;
+    top: 60px;
+    right: 16px;
+    width: min(360px, calc(100vw - 32px));
+    background: var(--kp-surface);
+    border-radius: 18px;
+    box-shadow: var(--kp-shadow);
+    padding: 14px;
+    transform: translateY(-10px) scale(0.98);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    z-index: calc(var(--kp-shell-z) - 1);
+}
+
+body.kp-menu-open .kp-menu-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+body.kp-menu-open .kp-menu-drawer {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.kp-menu-title {
+    font-family: 'Fredoka', 'Baloo 2', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 4px 0 12px;
+}
+
+.kp-menu-links {
+    display: grid;
+    gap: 8px;
+}
+
+.kp-menu-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    color: #355889;
+    text-decoration: none;
+    font-weight: 700;
+    background: #f4f8ff;
+    border: 1px solid #deebff;
+    transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.kp-menu-link:hover,
+.kp-menu-link:focus-visible {
+    transform: translateY(-1px);
+    background: #eaf3ff;
+}
+
+.kp-menu-link[data-active="true"] {
+    color: #fff;
+    background: linear-gradient(135deg, #1fb3ff 0%, #5c2eff 100%);
+    border-color: transparent;
+}
+
+.kp-shell-footer {
+    margin-top: 32px;
+    padding: 14px 16px 16px;
+    text-align: center;
+    font-size: 0.92rem;
+    color: var(--kp-ink-soft);
+}
+
+.kp-shell-footer strong {
+    color: #2e4673;
+}
+
+.kp-shell-footer-links {
+    margin-top: 6px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.kp-shell-footer-links a {
+    color: #3a5f97;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.kp-shell-footer-links a:hover,
+.kp-shell-footer-links a:focus-visible {
+    text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+    body.kp-shell-enabled {
+        padding-top: 80px;
+    }
+
+    .kp-brand-sub,
+    .kp-pill {
+        display: none;
+    }
+
+    .kp-shell-header {
+        padding: 10px 12px;
+    }
+}

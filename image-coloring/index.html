@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Color Splash Party | Code Blocks Playground</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../shared/shell.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body class="kp-shell-enabled" data-page="coloring" data-age="Color Studio">
+    <header>
+        <h1>Color Splash Party</h1>
+    </header>
+
+    <main class="cs-main">
+        <section class="cs-card" aria-label="Color Splash Party Game">
+            <div class="cs-title-row">
+                <h1>Color Splash Party</h1>
+                <div id="category-strip" class="category-strip category-strip-inline" aria-label="Color Splash categories"></div>
+                <p id="scene-counter" class="scene-counter" aria-live="polite">Page 1/2</p>
+            </div>
+
+            <div class="play-area">
+                <aside class="palette-panel" aria-label="Color options">
+                    <div id="color-palette" class="color-palette"></div>
+                </aside>
+
+                <div class="studio-panel">
+                    <div id="art-stage" class="art-stage" aria-label="Symmetry art stage">
+                        <div id="scene-container" class="scene-container"></div>
+                        <div id="sticker-layer" class="sticker-layer"></div>
+                    </div>
+                </div>
+
+                <aside class="controls-panel" aria-label="Page controls">
+                    <div class="controls controls-vertical">
+                        <button id="prev-btn" class="icon-btn" type="button" title="Previous page" aria-label="Previous page">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button id="clear-btn" class="icon-btn" type="button" title="Reset page" aria-label="Reset page">
+                            <i class="fas fa-rotate-left"></i>
+                        </button>
+                        <button id="next-btn" class="icon-btn" type="button" title="Next page" aria-label="Next page">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <script src="../sounds/soundGenerator.js"></script>
+    <script src="../sounds.js"></script>
+    <script src="../shared/shell.js" defer></script>
+    <script src="../feedback.js" defer></script>
+    <script src="./app.js" defer></script>
+</body>
+</html>

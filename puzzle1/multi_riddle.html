@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, height=device-height, viewport-fit=cover">
+    <title>Fun Riddles - Kids Fun Puzzles</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="./multi_riddle.css">
+    <link rel="stylesheet" href="../shared/shell.css">
+</head>
+<body class="kp-shell-enabled" data-page="riddles" data-age="Age 5-8">
+    <header>
+        <h1>🎮 Fun Riddles 🧩</h1>
+        <nav>
+            <a href="../index.html" class="nav-btn"><i class="fas fa-home"></i></a>
+            <a href="../word-hunt/wordhunt.html" class="nav-btn"><i class="fas fa-search"></i> Word Hunt</a>
+            <a href="../puzzle3/puzzle3.html" class="nav-btn"><i class="fas fa-calculator"></i> Math Sequence</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="puzzle-progress">
+            <div class="left-spacer"></div>
+            <h2 id="current-challenge-title">Secret Code Challenge</h2>
+            <button id="restart-game" class="reset-btn">↻ Reset</button>
+        </div>
+
+        <!-- Secret Code Puzzle (Level 1) -->
+        <div id="secret-code-puzzle" class="puzzle-container active" data-level="1">
+            <div class="puzzle-description">
+                <p>Decode the sparkle code and unlock the mystery word.</p>
+                <p class="puzzle-counter">Puzzle <span id="current-puzzle-1">1</span></p>
+            </div>
+            <div class="secret-hud" aria-live="polite">
+                <div class="hud-pill"><i class="fas fa-star"></i> Score <strong id="secret-score-1">0</strong></div>
+                <div class="hud-pill"><i class="fas fa-fire"></i> Streak <strong id="secret-streak-1">0</strong></div>
+                <div class="hud-pill"><i class="fas fa-heart"></i> Attempts <strong id="secret-attempts-1">3</strong></div>
+                <div class="hud-pill"><i class="fas fa-lightbulb"></i> Hints <strong id="secret-hints-1">2</strong></div>
+            </div>
+            <div class="secret-progress-track" aria-label="Secret challenge progress">
+                <div id="secret-progress-fill" class="secret-progress-fill"></div>
+            </div>
+            <div class="symbols-guide">
+                <!-- Will be filled by JavaScript with symbol mappings -->
+            </div>
+            <div class="puzzle-content">
+                <div class="secret-message">
+                    <!-- Will be filled by JavaScript with encoded message -->
+                </div>
+                <div class="answer-inputs">
+                    <!-- Will be filled by JavaScript with input boxes -->
+                </div>
+                <div id="letter-bank-1" class="letter-bank" aria-label="Letter bank"></div>
+                <div id="sparkle-zone-1" class="sparkle-zone" aria-hidden="true"></div>
+                <div class="controls-row">
+                    <button id="prev-puzzle-1" class="nav-puzzle-btn"><i class="fas fa-arrow-left"></i></button>
+                    <button id="hint-1" class="hint-code-btn" type="button" title="Use hint" aria-label="Use hint"><i class="fas fa-lightbulb"></i></button>
+                    <button id="check-answer-1" class="check-btn">Check Answer</button>
+                    <button id="repeat-word-1" class="repeat-btn" type="button" title="Hear word" aria-label="Hear word" disabled><i class="fas fa-volume-up"></i></button>
+                    <button id="next-puzzle-1" class="nav-puzzle-btn"><i class="fas fa-arrow-right"></i></button>
+                </div>
+                <div id="result-message-1" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Emoji Puzzle (Level 2) -->
+        <div id="emoji-puzzle" class="puzzle-container" data-level="2">
+            <div class="puzzle-description">
+                <p>Match the emojis with their secret letters!</p>
+                <p class="puzzle-counter">Puzzle <span id="current-puzzle-2">1</span> of <span id="total-puzzles-2">8</span></p>
+            </div>
+            <div class="symbols-guide">
+                <!-- Will be filled by JavaScript -->
+            </div>
+            <div class="puzzle-content">
+                <div class="secret-message">
+                    <!-- Will be filled by JavaScript -->
+                </div>
+                <div class="answer-inputs">
+                    <!-- Will be filled by JavaScript -->
+                </div>
+                <div class="controls-row">
+                    <button id="prev-puzzle-2" class="nav-puzzle-btn"><i class="fas fa-arrow-left"></i></button>
+                    <button id="check-answer-2" class="check-btn">Check Answer</button>
+                    <button id="next-puzzle-2" class="nav-puzzle-btn"><i class="fas fa-arrow-right"></i></button>
+                </div>
+                <div id="result-message-2" class="result"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../sounds/soundGenerator.js"></script>
+    <script src="../sounds.js"></script>
+    <script src="../shared/shell.js" defer></script>
+    <script src="../feedback.js" defer></script>
+    <script src="./multi_riddle.js" defer></script>
+</body>
+</html>

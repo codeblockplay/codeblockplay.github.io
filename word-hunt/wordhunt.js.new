@@ -1,0 +1,273 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // Function to create a 10x10 grid filled with random letters
+    function createRandomGrid() {
+        const grid = [];
+        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        
+        // Create 10 rows
+        for (let i = 0; i < 10; i++) {
+            const row = [];
+            // Create 10 columns
+            for (let j = 0; j < 10; j++) {
+                // Add random letter from alphabet
+                row.push(alphabet.charAt(Math.floor(Math.random() * alphabet.length)));
+            }
+            grid.push(row);
+        }
+        return grid;
+    }
+    
+    // Function to place a word in the grid
+    function placeWord(grid, word, startRow, startCol, direction) {
+        const directions = {
+            'horizontal': [0, 1],
+            'vertical': [1, 0],
+            'diagonal': [1, 1]
+        };
+        
+        const [rowStep, colStep] = directions[direction];
+        
+        // Place each letter of the word
+        for (let i = 0; i < word.length; i++) {
+            const row = startRow + (i * rowStep);
+            const col = startCol + (i * colStep);
+            
+            // Place the letter in the grid
+            if (row >= 0 && row < grid.length && col >= 0 && col < grid[0].length) {
+                grid[row][col] = word[i];
+            }
+        }
+        
+        return grid;
+    }
+    
+    // Function to check if a word can fit in the grid direction
+    function wordFits(grid, word, startRow, startCol, direction) {
+        const directions = {
+            'horizontal': [0, 1],
+            'vertical': [1, 0],
+            'diagonal': [1, 1]
+        };
+        
+        const [rowStep, colStep] = directions[direction];
+        
+        // Check if the word fits in the grid
+        for (let i = 0; i < word.length; i++) {
+            const row = startRow + (i * rowStep);
+            const col = startCol + (i * colStep);
+            
+            // Check if position is within grid bounds
+            if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+
+    // Define words for each puzzle
+    const wordSets = [
+        ['APPLE', 'BANANA', 'ORANGE', 'GRAPE', 'MELON'],
+        ['DOG', 'CAT', 'BIRD', 'FISH', 'MOUSE'],
+        ['RED', 'BLUE', 'GREEN', 'YELLOW', 'PINK'],
+        ['BOOK', 'LEARN', 'READ', 'STUDY', 'WRITE'],
+        ['SUN', 'MOON', 'STAR', 'EARTH', 'SPACE'],
+        ['JUMP', 'RUN', 'WALK', 'SWIM', 'SKIP'],
+        ['TREE', 'FLOWER', 'PLANT', 'GRASS', 'BUSH'],
+        ['MILK', 'WATER', 'JUICE', 'SODA', 'TEA'],
+        ['HAPPY', 'SAD', 'ANGRY', 'SILLY', 'CALM'],
+        ['SHIRT', 'PANTS', 'SOCKS', 'SHOES', 'HAT'],
+        ['PLAY', 'GAME', 'FUN', 'TOY', 'BALL'],
+        ['HOME', 'HOUSE', 'ROOF', 'DOOR', 'ROOM'],
+        ['CAKE', 'CANDY', 'SWEET', 'COOKIE', 'PIE'],
+        ['SMILE', 'LAUGH', 'GIGGLE', 'CHEER', 'JOY'],
+        ['BEACH', 'SAND', 'SEA', 'WAVE', 'SHELL'],
+        ['RAIN', 'SNOW', 'CLOUD', 'WIND', 'STORM'],
+        ['SLEEP', 'DREAM', 'BED', 'REST', 'NAP'],
+        ['GOOD', 'NICE', 'KIND', 'BRAVE', 'SMART'],
+        ['BIG', 'SMALL', 'LARGE', 'TINY', 'HUGE'],
+        ['LION', 'TIGER', 'BEAR', 'WOLF', 'FOX']
+    ];
+
+    // Generate all puzzles
+    const puzzles = [];
+    for (let i = 0; i < wordSets.length; i++) {
+        const puzzle = { 
+            grid: createRandomGrid(), 
+            words: wordSets[i] 
+        };
+        
+        // Try to place each word in the grid
+        for (const word of puzzle.words) {
+            let placed = false;
+            let attempts = 0;
+            const directions = ['horizontal', 'vertical', 'diagonal'];
+            
+            while (!placed && attempts < 100) {
+                const direction = directions[Math.floor(Math.random() * directions.length)];
+                const startRow = Math.floor(Math.random() * (10 - (direction === 'vertical' || direction === 'diagonal' ? word.length : 0)));
+                const startCol = Math.floor(Math.random() * (10 - (direction === 'horizontal' || direction === 'diagonal' ? word.length : 0)));
+                
+                if (wordFits(puzzle.grid, word, startRow, startCol, direction)) {
+                    placeWord(puzzle.grid, word, startRow, startCol, direction);
+                    placed = true;
+                }
+                
+                attempts++;
+            }
+        }
+        
+        puzzles.push(puzzle);
+    }
+
+    // Track current state
+    let currentPuzzleIndex = 0;
+    let selectedCells = [];
+    let foundWords = [];
+
+    // DOM Elements
+    const letterGrid = document.getElementById('letter-grid');
+    const wordList = document.getElementById('word-list');
+    const submitButton = document.getElementById('submit-answer');
+    const clearButton = document.getElementById('clear-selections');
+    const resultMessage = document.getElementById('result-message');
+    const currentPuzzleDisplay = document.getElementById('current-puzzle');
+    const totalPuzzlesDisplay = document.getElementById('total-puzzles');
+
+    // Update total puzzles display
+    totalPuzzlesDisplay.textContent = puzzles.length;
+
+    // Function to setup the current puzzle
+    function setupPuzzle() {
+        // Clear previous state
+        letterGrid.innerHTML = '';
+        wordList.innerHTML = '';
+        selectedCells = [];
+        foundWords = [];
+        resultMessage.textContent = '';
+        resultMessage.className = 'result';
+        
+        // Update current puzzle number
+        currentPuzzleDisplay.textContent = currentPuzzleIndex + 1;
+        
+        const currentPuzzle = puzzles[currentPuzzleIndex];
+        
+        // Create grid cells
+        for (let row = 0; row < currentPuzzle.grid.length; row++) {
+            for (let col = 0; col < currentPuzzle.grid[row].length; col++) {
+                const cell = document.createElement('div');
+                cell.className = 'grid-cell';
+                cell.dataset.row = row;
+                cell.dataset.col = col;
+                cell.textContent = currentPuzzle.grid[row][col];
+                
+                cell.addEventListener('click', () => toggleCellSelection(cell));
+                
+                letterGrid.appendChild(cell);
+            }
+        }
+        
+        // Create word list
+        currentPuzzle.words.forEach(word => {
+            const wordItem = document.createElement('div');
+            wordItem.className = 'word-item';
+            wordItem.textContent = word;
+            wordItem.dataset.word = word;
+            wordList.appendChild(wordItem);
+        });
+    }
+
+    // Toggle cell selection
+    function toggleCellSelection(cell) {
+        if (cell.classList.contains('selected')) {
+            // Deselect cell
+            cell.classList.remove('selected');
+            selectedCells = selectedCells.filter(selected => 
+                selected.dataset.row !== cell.dataset.row || 
+                selected.dataset.col !== cell.dataset.col
+            );
+        } else {
+            // Select cell
+            cell.classList.add('selected');
+            selectedCells.push(cell);
+            FeedbackSystem.showClick();
+        }
+    }
+
+    // Get word from selected cells
+    function getSelectedWord() {
+        return selectedCells
+            .map(cell => cell.textContent)
+            .join('');
+    }
+    
+    // Check if all words have been found
+    function allWordsFound() {
+        const currentPuzzle = puzzles[currentPuzzleIndex];
+        return foundWords.length === currentPuzzle.words.length;
+    }
+
+    // Submit answer button handler
+    submitButton.addEventListener('click', () => {
+        if (selectedCells.length === 0) {
+            FeedbackSystem.showError("Please select some letters first!");
+            return;
+        }
+        
+        const selectedWord = getSelectedWord();
+        const currentPuzzle = puzzles[currentPuzzleIndex];
+        
+        if (currentPuzzle.words.includes(selectedWord) && !foundWords.includes(selectedWord)) {
+            // Found a valid word
+            FeedbackSystem.showSuccess(`You found "${selectedWord}"!`);
+            foundWords.push(selectedWord);
+            
+            // Mark word as found in the list
+            const wordItem = document.querySelector(`.word-item[data-word="${selectedWord}"]`);
+            if (wordItem) {
+                wordItem.classList.add('found');
+            }
+            
+            // Clear selection
+            selectedCells.forEach(cell => cell.classList.remove('selected'));
+            selectedCells = [];
+            
+            // Check if all words found
+            if (allWordsFound()) {
+                resultMessage.textContent = "Correct! Well done! 🎉";
+                resultMessage.className = 'result success';
+                celebrate();
+                
+                // Move to next puzzle after delay
+                setTimeout(() => {
+                    currentPuzzleIndex = (currentPuzzleIndex + 1) % puzzles.length;
+                    setupPuzzle();
+                }, 3000);
+            }
+        } else {
+            // Invalid word
+            FeedbackSystem.showError("That's not one of the words. Try again!");
+            
+            // Clear selection
+            selectedCells.forEach(cell => cell.classList.remove('selected'));
+            selectedCells = [];
+        }
+    });
+
+    // Clear button handler
+    clearButton.addEventListener('click', () => {
+        selectedCells.forEach(cell => cell.classList.remove('selected'));
+        selectedCells = [];
+        FeedbackSystem.showClick();
+    });
+
+    // Function to create celebration effects
+    function celebrate() {
+        const puzzle = document.querySelector('.puzzle-container');
+        puzzle.classList.add('celebrate');
+        setTimeout(() => puzzle.classList.remove('celebrate'), 3000);
+    }
+
+    // Initialize first puzzle
+    setupPuzzle();
+});

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Math Sequence Galaxy | Code Blocks Playground</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../shared/shell.css">
+    <link rel="stylesheet" href="./puzzle3.css">
+</head>
+<body class="kp-shell-enabled" data-page="math-sequence" data-age="Math Challenge">
+    <header>
+        <h1>Math Sequence Galaxy</h1>
+    </header>
+
+    <main class="ms-main">
+        <section id="number-puzzle" class="ms-card" aria-label="Math Sequence Puzzle Game">
+            <div class="ms-title-row">
+                <div>
+                    <h1>Math Sequence Galaxy</h1>
+                    <p>Solve number patterns, unlock streaks, and level up your math brain.</p>
+                </div>
+                <p id="challenge-counter" class="challenge-counter" aria-live="polite">Challenge 1</p>
+            </div>
+
+            <div class="quality-panel">
+                <div class="quality-row">
+                    <div class="mode-switch" id="age-mode-buttons" role="tablist" aria-label="Age modes">
+                        <button class="mode-btn" data-mode="easy" aria-selected="false">Age 5-6</button>
+                        <button class="mode-btn active" data-mode="medium" aria-selected="true">Age 7-8</button>
+                        <button class="mode-btn" data-mode="hard" aria-selected="false">Age 9-10</button>
+                    </div>
+                    <div class="score-strip" aria-live="polite">
+                        <span>Score: <strong id="score-value">0</strong></span>
+                        <span>Level: <strong id="level-value">1</strong></span>
+                        <span>Streak: <strong id="streak-value">0</strong></span>
+                        <span>Hints Left: <strong id="hints-value">3</strong></span>
+                        <span>Attempts Left: <strong id="attempts-value">3</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="play-area">
+                <div class="stage-panel">
+                    <div class="clue-wrap">
+                        <span class="clue-label"><i class="fas fa-rocket"></i> Mission</span>
+                        <p id="hint-message" class="hint-message" aria-live="polite">Find the pattern and fill all missing numbers.</p>
+                    </div>
+
+                    <div class="sequence-stage" aria-label="Sequence challenge board">
+                        <div id="sequence-track" class="sequence-track"></div>
+                    </div>
+
+                    <div class="choice-stage" aria-label="Number choice bank">
+                        <div id="choice-pad" class="choice-pad"></div>
+                    </div>
+                </div>
+
+                <aside class="side-panel" aria-label="Math controls and feedback">
+                    <button id="hint-btn" class="hint-btn" type="button" title="Get hint" aria-label="Get hint">
+                        <i class="fas fa-lightbulb"></i>
+                    </button>
+
+                    <div id="result-message" class="result" aria-live="polite"></div>
+                    <div id="explanation-message" class="explanation" aria-live="polite"></div>
+
+                    <div class="controls" aria-label="Sequence controls">
+                        <button id="challenge-prev" class="icon-btn" type="button" title="Previous challenge" aria-label="Previous challenge">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button id="reset-answer" class="icon-btn" type="button" title="Reset answer" aria-label="Reset answer">
+                            <i class="fas fa-rotate-left"></i>
+                        </button>
+                        <button id="check-answer" class="icon-btn check-btn" type="button" title="Check answer" aria-label="Check answer">
+                            <i class="fas fa-check"></i>
+                        </button>
+                        <button id="challenge-next" class="icon-btn" type="button" title="Next challenge" aria-label="Next challenge">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <script src="../sounds/soundGenerator.js"></script>
+    <script src="../sounds.js"></script>
+    <script src="../shared/shell.js" defer></script>
+    <script src="../feedback.js" defer></script>
+    <script src="./puzzle3.js" defer></script>
+</body>
+</html>

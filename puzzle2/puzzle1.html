@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Riddles - Kids Fun Puzzles</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="./puzzle1.css">
+</head>
+<body>
+    <header>
+        <h1>🎮 Fun Riddles 🧩</h1>
+        <nav>
+            <a href="../index.html" class="nav-btn"><i class="fas fa-home"></i></a>
+            <a href="../puzzle1/puzzle.html" class="nav-btn"><i class="fas fa-lock"></i> Secret Code</a>
+            <a href="../puzzle3/puzzle3.html" class="nav-btn"><i class="fas fa-calculator"></i> Math Sequence</a>
+        </nav>
+    </header>
+
+    <main>
+        <div id="riddle-puzzle" class="puzzle-container active">
+            <h2>Emoji Letter Puzzle</h2>
+            <div class="puzzle-description">
+                <p>Match the emojis with their secret letters!</p>
+                <p>Type the letters that you think match each emoji.</p>
+            </div>
+            <div class="symbols-guide">
+                <!-- Will be filled by JavaScript -->
+            </div>
+            <div class="puzzle-content">
+                <div class="secret-message">
+                    <!-- Will be filled by JavaScript -->
+                </div>
+                <div class="answer-inputs">
+                    <!-- Will be filled by JavaScript -->
+                </div>
+                <button id="check-answer" class="check-btn">Check Answer!</button>
+                <div id="result-message" class="result"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../sounds/soundGenerator.js"></script>
+    <script src="../sounds.js"></script>
+    <script src="../feedback.js" defer></script>
+    <script src="./puzzle1.js" defer></script>
+</body>
+</html>

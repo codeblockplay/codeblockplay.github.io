@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Hunt Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        
+        .test-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(10, 40px);
+            gap: 2px;
+            margin: 20px 0;
+        }
+        
+        .cell {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+        
+        .horizontal {
+            background-color: #ffeecc;
+        }
+        
+        .vertical {
+            background-color: #ccf2ff;
+        }
+        
+        .overlap {
+            background-color: #ffcccc !important;
+            border: 2px solid red;
+        }
+        
+        .words-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .word {
+            padding: 5px 10px;
+            background-color: #eee;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        
+        .word.horizontal {
+            border-left: 4px solid orange;
+        }
+        
+        .word.vertical {
+            border-left: 4px solid blue;
+        }
+        
+        .results {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #efefef;
+            border-radius: 4px;
+        }
+        
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+        
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+        
+        button {
+            padding: 10px 15px;
+            background-color: #4b8bf0;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        
+        button:hover {
+            background-color: #3a7ad9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Word Hunt Algorithm Test Page</h1>
+    
+    <div class="test-controls">
+        <button id="run-test">Run Algorithm Test</button>
+        <button id="verify-test">Verify No Conflicts</button>
+        <button id="toggle-debug">Toggle Cell Highlighting</button>
+        <button id="load-real">Load Real Game</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test Results</h2>
+        <div id="results" class="results">
+            Press "Run Algorithm Test" to start...
+        </div>
+        
+        <h3>Word Set</h3>
+        <div id="words-list" class="words-list"></div>
+        
+        <h3>Grid (Highlighted)</h3>
+        <div id="visual-grid" class="grid"></div>
+        
+        <h3>Overlap Check</h3>
+        <div id="overlap-results"></div>
+    </div>
+
+    <script>
+        // Test word sets
+        const wordSets = [
+            ['APPLE', 'BANANA', 'ORANGE', 'GRAPE', 'MELON'],
+            ['DOG', 'CAT', 'BIRD', 'FISH', 'MOUSE'],
+            ['RED', 'BLUE', 'GREEN', 'YELLOW', 'PINK']
+        ];
+        
+        // Create an empty 10x10 grid
+        function createEmptyGrid() {
+            return Array(10).fill().map(() => Array(10).fill('.'));
+        }
+        
+        // Helper function to check if a cell is already occupied with a different letter
+        function hasConflict(grid, row, col, letter) {
+            // If outside the grid, it's a conflict
+            if (row < 0 || row >= 10 || col < 0 || col >= 10) {
+                return true;
+            }
+            
+            // If the cell is empty (.) or already contains the same letter, no conflict
+            return grid[row][col] !== '.' && grid[row][col] !== letter;
+        }
+        
+        // Try to place a word in the grid in the given direction
+        function tryPlaceWord(grid, word, direction, startRow, startCol) {
+            // Make a copy of the grid to test placement without modifying the original
+            const testGrid = grid.map(row => [...row]);
+            
+            // Check if the word fits and doesn't conflict with existing letters
+            for (let i = 0; i < word.length; i++) {
+                const letter = word[i];
+                const row = direction === 'horizontal' ? startRow : startRow + i;
+                const col = direction === 'horizontal' ? startCol + i : startCol;
+                
+                if (hasConflict(testGrid, row, col, letter)) {
+                    return false; // Conflict found
+                }
+            }
+            
+            // No conflicts, place the word in the test grid
+            for (let i = 0; i < word.length; i++) {
+                const letter = word[i];
+                const row = direction === 'horizontal' ? startRow : startRow + i;
+                const col = direction === 'horizontal' ? startCol + i : startCol;
+                testGrid[row][col] = letter;
+            }
+            
+            return testGrid; // Return the updated grid if successful
+        }
+        
+        // Find all possible placements for a word in the given direction
+        function findAllPossiblePlacements(grid, word, direction) {
+            const placements = [];
+            const gridSize = 10;
+            
+            for (let row = 0; row < gridSize; row++) {
+                for (let col = 0; col < gridSize; col++) {
+                    // Check if word fits in the grid from this position
+                    if ((direction === 'horizontal' && col + word.length > gridSize) || 
+                        (direction === 'vertical' && row + word.length > gridSize)) {
+                        continue;
+                    }
+                    
+                    const updatedGrid = tryPlaceWord(grid, word, direction, row, col);
+                    if (updatedGrid) {
+                        placements.push({
+                            grid: updatedGrid,
+                            startRow: row,
+                            startCol: col,
+                            endRow: direction === 'horizontal' ? row : row + word.length - 1,
+                            endCol: direction === 'horizontal' ? col + word.length - 1 : col,
+                            direction
+                        });
+                    }
+                }
+            }
+            
+            return placements;
+        }
+        
+        // Create a puzzle by carefully placing words to avoid conflicts
+        function createPuzzleWithoutConflicts(words) {
+            // Create an empty grid
+            let grid = createEmptyGrid();
+            const wordPositions = [];
+            const placedWords = [];
+            
+            console.log("Creating puzzle with words:", words.join(", "));
+            
+            // First attempt to place 3 words horizontally
+            const horizontalWords = words.slice(0, 3);
+            for (const word of horizontalWords) {
+                // Skip if word is too long
+                if (word.length > 10) {
+                    console.warn(`Word "${word}" is too long for the grid, skipping`);
+                    continue;
+                }
+                
+                // Find all possible horizontal placements
+                const horizontalPlacements = findAllPossiblePlacements(grid, word, 'horizontal');
+                
+                if (horizontalPlacements.length > 0) {
+                    // Choose a random placement from the viable options
+                    const placement = horizontalPlacements[Math.floor(Math.random() * horizontalPlacements.length)];
+                    
+                    // Update the grid with the chosen placement
+                    grid = placement.grid;
+                    
+                    // Record the word position
+                    wordPositions.push({
+                        word,
+                        direction: 'horizontal',
+                        startRow: placement.startRow,
+                        startCol: placement.startCol,
+                        endRow: placement.endRow,
+                        endCol: placement.endCol
+                    });
+                    
+                    placedWords.push(word);
+                    console.log(`Successfully placed "${word}" horizontally at row ${placement.startRow}, cols ${placement.startCol}-${placement.endCol}`);
+                } else {
+                    console.warn(`Could not place "${word}" horizontally without conflicts, skipping`);
+                }
+            }
+            
+            // Then attempt to place remaining words vertically
+            const verticalWords = words.slice(3);
+            for (const word of verticalWords) {
+                // Skip if word is too long
+                if (word.length > 10) {
+                    console.warn(`Word "${word}" is too long for the grid, skipping`);
+                    continue;
+                }
+                
+                // Find all possible vertical placements
+                const verticalPlacements = findAllPossiblePlacements(grid, word, 'vertical');
+                
+                if (verticalPlacements.length > 0) {
+                    // Choose a random placement from the viable options
+                    const placement = verticalPlacements[Math.floor(Math.random() * verticalPlacements.length)];
+                    
+                    // Update the grid with the chosen placement
+                    grid = placement.grid;
+                    
+                    // Record the word position
+                    wordPositions.push({
+                        word,
+                        direction: 'vertical',
+                        startRow: placement.startRow,
+                        startCol: placement.startCol,
+                        endRow: placement.endRow,
+                        endCol: placement.endCol
+                    });
+                    
+                    placedWords.push(word);
+                    console.log(`Successfully placed "${word}" vertically at column ${placement.startCol}, rows ${placement.startRow}-${placement.endRow}`);
+                } else {
+                    // Try horizontal as fallback if vertical placement fails
+                    const horizontalPlacements = findAllPossiblePlacements(grid, word, 'horizontal');
+                    
+                    if (horizontalPlacements.length > 0) {
+                        // Choose a random placement from the viable options
+                        const placement = horizontalPlacements[Math.floor(Math.random() * horizontalPlacements.length)];
+                        
+                        // Update the grid with the chosen placement
+                        grid = placement.grid;
+                        
+                        // Record the word position
+                        wordPositions.push({
+                            word,
+                            direction: 'horizontal',
+                            startRow: placement.startRow,
+                            startCol: placement.startCol,
+                            endRow: placement.endRow,
+                            endCol: placement.endCol
+                        });
+                        
+                        placedWords.push(word);
+                        console.log(`Successfully placed "${word}" horizontally (as fallback) at row ${placement.startRow}, cols ${placement.startCol}-${placement.endCol}`);
+                    } else {
+                        console.warn(`Could not place "${word}" in any direction without conflicts, skipping`);
+                    }
+                }
+            }
+            
+            // Verify all word placements before filling in random letters
+            let allPlacementsCorrect = true;
+            console.log("Verifying word placements before filling random letters:");
+            
+            for (const pos of wordPositions) {
+                let placedWord = '';
+                if (pos.direction === 'horizontal') {
+                    for (let c = pos.startCol; c <= pos.endCol; c++) {
+                        placedWord += grid[pos.startRow][c];
+                    }
+                } else {
+                    for (let r = pos.startRow; r <= pos.endRow; r++) {
+                        placedWord += grid[r][pos.startCol];
+                    }
+                }
+                
+                if (placedWord !== pos.word) {
+                    console.error(`VERIFICATION ERROR: Word "${pos.word}" was placed incorrectly as "${placedWord}"`);
+                    allPlacementsCorrect = false;
+                } else {
+                    console.log(`Verified word "${pos.word}" correctly placed as "${placedWord}"`);
+                }
+            }
+            
+            // Fill in random letters for any remaining empty cells
+            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            for (let row = 0; row < 10; row++) {
+                for (let col = 0; col < 10; col++) {
+                    if (grid[row][col] === '.') {
+                        grid[row][col] = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                    }
+                }
+            }
+            
+            return {
+                grid,
+                words: placedWords,
+                wordPositions
+            };
+        }
+        
+        // Function to visually display the grid with placed words
+        function displayGrid(puzzle, showHighlighting = true) {
+            const visualGrid = document.getElementById('visual-grid');
+            visualGrid.innerHTML = ''; // Clear previous content
+            
+            // Create a mapping of cell positions to their words for highlighting
+            const cellMap = {};
+            
+            if (showHighlighting) {
+                for (const pos of puzzle.wordPositions) {
+                    if (pos.direction === 'horizontal') {
+                        for (let c = pos.startCol; c <= pos.endCol; c++) {
+                            const key = `${pos.startRow},${c}`;
+                            if (!cellMap[key]) {
+                                cellMap[key] = { words: [], direction: pos.direction };
+                            }
+                            cellMap[key].words.push(pos.word);
+                        }
+                    } else {
+                        for (let r = pos.startRow; r <= pos.endRow; r++) {
+                            const key = `${r},${pos.startCol}`;
+                            if (!cellMap[key]) {
+                                cellMap[key] = { words: [], direction: pos.direction };
+                            }
+                            cellMap[key].words.push(pos.word);
+                        }
+                    }
+                }
+            }
+            
+            // Build the visual grid
+            for (let row = 0; row < puzzle.grid.length; row++) {
+                for (let col = 0; col < puzzle.grid[row].length; col++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'cell';
+                    cell.textContent = puzzle.grid[row][col];
+                    
+                    // Add highlighting if enabled
+                    if (showHighlighting) {
+                        const key = `${row},${col}`;
+                        if (cellMap[key]) {
+                            cell.classList.add(cellMap[key].direction);
+                            
+                            // Check for overlaps
+                            if (cellMap[key].words.length > 1) {
+                                cell.classList.add('overlap');
+                                cell.setAttribute('title', `Overlap: ${cellMap[key].words.join(', ')}`);
+                            } else {
+                                cell.setAttribute('title', cellMap[key].words[0]);
+                            }
+                        }
+                    }
+                    
+                    visualGrid.appendChild(cell);
+                }
+            }
+        }
+        
+        // Function to display the word list
+        function displayWordList(puzzle) {
+            const wordsList = document.getElementById('words-list');
+            wordsList.innerHTML = '';
+            
+            for (const pos of puzzle.wordPositions) {
+                const wordElement = document.createElement('div');
+                wordElement.className = `word ${pos.direction}`;
+                wordElement.textContent = pos.word;
+                wordElement.setAttribute('title', `${pos.direction} (${pos.startRow},${pos.startCol}) to (${pos.endRow},${pos.endCol})`);
+                wordsList.appendChild(wordElement);
+            }
+        }
+        
+        // Function to check for overlaps and conflicts
+        function checkForOverlaps(puzzle) {
+            const overlapResults = document.getElementById('overlap-results');
+            overlapResults.innerHTML = '';
+            
+            const cellMap = {};
+            let overlapsFound = false;
+            let conflictsFound = false;
+            
+            for (const pos of puzzle.wordPositions) {
+                if (pos.direction === 'horizontal') {
+                    for (let c = pos.startCol; c <= pos.endCol; c++) {
+                        const key = `${pos.startRow},${c}`;
+                        const letter = puzzle.grid[pos.startRow][c];
+                        
+                        if (!cellMap[key]) {
+                            cellMap[key] = { words: [], letters: [] };
+                        }
+                        cellMap[key].words.push({
+                            word: pos.word,
+                            letter: letter,
+                            index: c - pos.startCol
+                        });
+                    }
+                } else {
+                    for (let r = pos.startRow; r <= pos.endRow; r++) {
+                        const key = `${r},${pos.startCol}`;
+                        const letter = puzzle.grid[r][pos.startCol];
+                        
+                        if (!cellMap[key]) {
+                            cellMap[key] = { words: [], letters: [] };
+                        }
+                        cellMap[key].words.push({
+                            word: pos.word,
+                            letter: letter,
+                            index: r - pos.startRow
+                        });
+                    }
+                }
+            }
+            
+            // Check each cell for overlaps
+            for (const key in cellMap) {
+                const cell = cellMap[key];
+                
+                if (cell.words.length > 1) {
+                    overlapsFound = true;
+                    
+                    // Check if all words have the same letter at this position
+                    const letters = new Set(cell.words.map(w => w.letter));
+                    
+                    if (letters.size > 1) {
+                        conflictsFound = true;
+                        const [row, col] = key.split(',').map(Number);
+                        
+                        const error = document.createElement('p');
+                        error.className = 'error';
+                        error.textContent = `CONFLICT at (${row},${col}): Different letters in cell: `;
+                        
+                        cell.words.forEach(w => {
+                            error.textContent += `"${w.word}" has "${w.letter}" at index ${w.index}, `;
+                        });
+                        
+                        overlapResults.appendChild(error);
+                    } else {
+                        const [row, col] = key.split(',').map(Number);
+                        
+                        const info = document.createElement('p');
+                        info.textContent = `Overlap at (${row},${col}): Words share letter "${cell.words[0].letter}": `;
+                        cell.words.forEach(w => {
+                            info.textContent += `${w.word}, `;
+                        });
+                        
+                        overlapResults.appendChild(info);
+                    }
+                }
+            }
+            
+            if (!overlapsFound) {
+                const success = document.createElement('p');
+                success.className = 'success';
+                success.textContent = 'No overlaps found. All words are placed without conflicts!';
+                overlapResults.appendChild(success);
+            } else if (!conflictsFound) {
+                const success = document.createElement('p');
+                success.className = 'success';
+                success.textContent = 'Overlaps found, but all overlapping cells have matching letters. No conflicts!';
+                overlapResults.appendChild(success);
+            }
+            
+            return !conflictsFound;
+        }
+        
+        // Run algorithm test button handler
+        document.getElementById('run-test').addEventListener('click', () => {
+            const results = document.getElementById('results');
+            results.innerHTML = '<p>Running algorithm test...</p>';
+            
+            // Choose a random word set
+            const wordSetIndex = Math.floor(Math.random() * wordSets.length);
+            const wordSet = wordSets[wordSetIndex];
+            
+            results.innerHTML += `<p>Selected word set ${wordSetIndex + 1}: ${wordSet.join(', ')}</p>`;
+            
+            // Create a puzzle with these words
+            const puzzle = createPuzzleWithoutConflicts(wordSet);
+            
+            // Display results
+            results.innerHTML += `<p>Successfully placed ${puzzle.wordPositions.length} out of ${wordSet.length} words.</p>`;
+            
+            // Display the word list
+            displayWordList(puzzle);
+            
+            // Display the grid
+            displayGrid(puzzle, true);
+            
+            // Check for overlaps and conflicts
+            const noConflicts = checkForOverlaps(puzzle);
+            
+            if (noConflicts) {
+                results.innerHTML += `<p class="success">Test passed! No conflicts in word placement.</p>`;
+            } else {
+                results.innerHTML += `<p class="error">Test failed! Conflicts detected in word placement.</p>`;
+            }
+        });
+        
+        // Verify button handler
+        document.getElementById('verify-test').addEventListener('click', () => {
+            let allTestsPassed = true;
+            const results = document.getElementById('results');
+            results.innerHTML = '<h3>Running verification on all word sets...</h3>';
+            
+            for (let i = 0; i < wordSets.length; i++) {
+                const wordSet = wordSets[i];
+                results.innerHTML += `<p>Testing word set ${i + 1}: ${wordSet.join(', ')}</p>`;
+                
+                // Create a puzzle with these words
+                const puzzle = createPuzzleWithoutConflicts(wordSet);
+                
+                // Check for conflicts
+                const conflict = puzzle.wordPositions.some((pos1, idx1) => {
+                    return puzzle.wordPositions.some((pos2, idx2) => {
+                        if (idx1 === idx2) return false; // Skip comparing to self
+                        
+                        // Check for overlaps between words
+                        if (pos1.direction === 'horizontal' && pos2.direction === 'vertical') {
+                            // For each horizontal cell, check if it overlaps with vertical
+                            for (let c = pos1.startCol; c <= pos1.endCol; c++) {
+                                // If vertical word is in this column
+                                if (c === pos2.startCol) {
+                                    // Check if horizontal row is between vertical start and end
+                                    if (pos1.startRow >= pos2.startRow && pos1.startRow <= pos2.endRow) {
+                                        // Overlap position
+                                        const overlapRow = pos1.startRow;
+                                        const overlapCol = c;
+                                        
+                                        // Get the respective letters from each word
+                                        const hLetter = pos1.word.charAt(c - pos1.startCol);
+                                        const vLetter = pos2.word.charAt(overlapRow - pos2.startRow);
+                                        
+                                        // If letters don't match, it's a conflict
+                                        if (hLetter !== vLetter) {
+                                            results.innerHTML += `<p class="error">Conflict detected between "${pos1.word}" (horizontal) and "${pos2.word}" (vertical) at position (${overlapRow},${overlapCol}). Letters: "${hLetter}" vs "${vLetter}"</p>`;
+                                            return true;
+                                        }
+                                    }
+                                }
+                            }
+                        } else if (pos1.direction === 'vertical' && pos2.direction === 'horizontal') {
+                            // For each vertical cell, check if it overlaps with horizontal
+                            for (let r = pos1.startRow; r <= pos1.endRow; r++) {
+                                // If horizontal word is in this row
+                                if (r === pos2.startRow) {
+                                    // Check if vertical column is between horizontal start and end
+                                    if (pos1.startCol >= pos2.startCol && pos1.startCol <= pos2.endCol) {
+                                        // Overlap position
+                                        const overlapRow = r;
+                                        const overlapCol = pos1.startCol;
+                                        
+                                        // Get the respective letters from each word
+                                        const vLetter = pos1.word.charAt(r - pos1.startRow);
+                                        const hLetter = pos2.word.charAt(overlapCol - pos2.startCol);
+                                        
+                                        // If letters don't match, it's a conflict
+                                        if (vLetter !== hLetter) {
+                                            results.innerHTML += `<p class="error">Conflict detected between "${pos1.word}" (vertical) and "${pos2.word}" (horizontal) at position (${overlapRow},${overlapCol}). Letters: "${vLetter}" vs "${hLetter}"</p>`;
+                                            return true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        return false;
+                    });
+                });
+                
+                if (conflict) {
+                    allTestsPassed = false;
+                    results.innerHTML += `<p class="error">Word set ${i + 1} FAILED the conflict test.</p>`;
+                } else {
+                    results.innerHTML += `<p class="success">Word set ${i + 1} PASSED the conflict test.</p>`;
+                }
+            }
+            
+            if (allTestsPassed) {
+                results.innerHTML += `<h3 class="success">ALL TESTS PASSED! The algorithm successfully prevents conflicts.</h3>`;
+            } else {
+                results.innerHTML += `<h3 class="error">TESTS FAILED! The algorithm needs improvement.</h3>`;
+            }
+        });
+        
+        // Toggle debug button handler
+        let debugEnabled = true;
+        document.getElementById('toggle-debug').addEventListener('click', () => {
+            debugEnabled = !debugEnabled;
+            
+            // Re-display the grid with or without highlighting
+            const wordsList = document.getElementById('words-list');
+            if (wordsList.children.length > 0) {
+                // Re-generate the last displayed puzzle
+                const words = [...wordsList.children].map(el => el.textContent);
+                const puzzle = createPuzzleWithoutConflicts(words);
+                displayGrid(puzzle, debugEnabled);
+            }
+        });
+        
+        // Load real game button handler
+        document.getElementById('load-real').addEventListener('click', () => {
+            window.location.href = '../word-hunt/wordhunt.html';
+        });
+        
+        // Run a test on load
+        document.getElementById('run-test').click();
+    </script>
+</body>
+</html>

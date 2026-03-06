@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Blocks Playground | Code While Playing</title>
+    <link rel="icon" type="image/svg+xml" href="./shared/favicon.svg">
+    <link rel="shortcut icon" href="./shared/favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./shared/shell.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body class="home-page">
+    <div class="kp-shell-header kp-shell-header--home">
+        <a class="kp-brand" href="./index.html" aria-label="Go to Code Blocks Playground home">
+            <img src="./shared/logo.svg" alt="Code Blocks logo" loading="lazy">
+            <span class="kp-brand-text">
+                <span class="kp-brand-title">Code Blocks Playground</span>
+                <span class="kp-brand-sub">Code While Playing</span>
+            </span>
+        </a>
+        <div class="home-header-links">
+            <a href="#game-catalog"><i class="fas fa-compass"></i> Explore</a>
+            <a href="#color-match"><i class="fas fa-palette"></i> Color Match</a>
+            <a href="./code-blocks/block-coding.html"><i class="fas fa-puzzle-piece"></i> Block Coding</a>
+            <a href="./brainy-blocks/index.html"><i class="fas fa-brain"></i> Brainy Puzzles</a>
+        </div>
+    </div>
+
+    <main class="home-main">
+        <section class="hero-card">
+            <div class="hero-copy">
+                <h2>Build Logic, Solve Puzzles, Have Fun.</h2>
+                <p class="hero-subtitle">A smoother, brighter game hub for kids with drag-drop play, coding blocks, and colorful puzzle activities.</p>
+                <div class="hero-actions">
+                    <a class="hero-btn hero-btn-primary" href="./code-blocks/block-coding.html">
+                        <i class="fas fa-play"></i> Start Block Coding
+                    </a>
+                    <a class="hero-btn hero-btn-secondary" href="#game-catalog">
+                        <i class="fas fa-layer-group"></i> Browse Games
+                    </a>
+                </div>
+            </div>
+            <div class="hero-logo-wrap">
+                <img src="./shared/logo.svg" alt="Code Blocks mascot logo">
+                <p>Code While Playing</p>
+                <span>Kids can jump from fun colors to advanced drag-drop puzzles.</span>
+            </div>
+        </section>
+
+        <section class="filter-panel" id="game-catalog">
+            <div class="filter-title-wrap">
+                <h2>Choose By Age Group</h2>
+            </div>
+            <div class="age-filter" role="tablist" aria-label="Age filters">
+                <button class="age-chip active" data-age="all" aria-selected="true">All Ages (5-10)</button>
+                <button class="age-chip" data-age="5-6" aria-selected="false">Age 5-6</button>
+                <button class="age-chip" data-age="7-8" aria-selected="false">Age 7-8</button>
+                <button class="age-chip" data-age="9-10" aria-selected="false">Age 9-10</button>
+            </div>
+        </section>
+
+        <section class="color-lab-panel" id="color-match" aria-label="Funny color match game">
+            <div class="color-lab-head">
+                <h2><i class="fas fa-star"></i> Funny Color Match Time</h2>
+                <p>Tap the same color as the target. Win streaks and keep the fun going.</p>
+            </div>
+            <div class="color-lab-board">
+                <div class="target-card">
+                    <span class="target-label">Target Color</span>
+                    <span id="target-name" class="target-name">Sky Blue</span>
+                    <span id="target-swatch" class="target-swatch"></span>
+                </div>
+                <div id="color-options" class="color-options">
+                    <button class="color-choice" data-color="Sky Blue" data-hex="#45c6ff">Sky Blue</button>
+                    <button class="color-choice" data-color="Sunny Yellow" data-hex="#ffd84d">Sunny Yellow</button>
+                    <button class="color-choice" data-color="Candy Pink" data-hex="#ff6fae">Candy Pink</button>
+                    <button class="color-choice" data-color="Leaf Green" data-hex="#58d06d">Leaf Green</button>
+                    <button class="color-choice" data-color="Orange Pop" data-hex="#ff9a3d">Orange Pop</button>
+                    <button class="color-choice" data-color="Berry Purple" data-hex="#925dff">Berry Purple</button>
+                </div>
+            </div>
+            <div class="color-lab-footer">
+                <p id="color-result" class="color-result" aria-live="polite">Pick the matching color to start.</p>
+            </div>
+            <div id="color-celebration-layer" class="color-celebration-layer" aria-hidden="true"></div>
+        </section>
+
+        <section class="games-grid" aria-label="Game catalog">
+            <a href="./image-coloring/index.html" class="game-card card-color" data-age="5-6 7-8" data-category="Activities">
+                <span class="game-logo">🎨</span>
+                <span class="game-badge">Activities</span>
+                <h3>Color Splash Party</h3>
+            </a>
+
+            <a href="./puzzle1/multi_riddle.html" class="game-card card-riddle" data-age="5-6 7-8" data-category="Brainy Puzzles">
+                <span class="game-logo">🔐</span>
+                <span class="game-badge">Brainy Puzzles</span>
+                <h3>Fun Riddles</h3>
+            </a>
+
+            <a href="./puzzle3/puzzle3.html" class="game-card card-math" data-age="5-6 7-8" data-category="Brainy Puzzles">
+                <span class="game-logo">🔢</span>
+                <span class="game-badge">Brainy Puzzles</span>
+                <h3>Math Sequence Quest</h3>
+            </a>
+
+            <a href="./word-hunt/wordhunt.html" class="game-card card-word" data-age="7-8 9-10" data-category="Brainy Puzzles">
+                <span class="game-logo">🔍</span>
+                <span class="game-badge">Brainy Puzzles</span>
+                <h3>Word Hunt</h3>
+            </a>
+
+            <a href="./grid-explorer/index.html" class="game-card card-grid" data-age="7-8 9-10" data-category="High-End Games">
+                <span class="game-logo">🗺️</span>
+                <span class="game-badge">High-End Games</span>
+                <h3>Grid Explorer</h3>
+            </a>
+
+            <a href="./pattern-sequencer/index.html" class="game-card card-pattern" data-age="7-8 9-10" data-category="High-End Games">
+                <span class="game-logo">🧠</span>
+                <span class="game-badge">High-End Games</span>
+                <h3>Pattern Sequencer</h3>
+            </a>
+
+            <a href="./binary-decoder/index.html" class="game-card card-binary" data-age="9-10" data-category="High-End Games">
+                <span class="game-logo">💻</span>
+                <span class="game-badge">High-End Games</span>
+                <h3>Binary Decoder</h3>
+            </a>
+
+            <a href="./brainy-blocks/index.html" class="game-card card-brainy" data-age="7-8 9-10" data-category="Brainy Puzzles">
+                <span class="game-logo">🧠</span>
+                <span class="game-badge">Brainy Puzzles</span>
+                <h3>Brainy Blocks Hub</h3>
+            </a>
+
+            <a href="./code-blocks/block-coding.html" class="game-card card-block" data-age="7-8 9-10" data-category="Block Coding">
+                <span class="game-logo">🧩</span>
+                <span class="game-badge">Block Coding</span>
+                <h3>Code Blocks Adventure</h3>
+            </a>
+        </section>
+
+        <section class="track-panel" aria-label="Suggested learning tracks">
+            <h2>Suggested Play Tracks</h2>
+            <div class="track-grid">
+                <article class="track-card">
+                    <h3>Starter Track</h3>
+                    <div class="track-links">
+                        <a href="./image-coloring/index.html">1. Color Splash Party</a>
+                        <a href="./puzzle1/multi_riddle.html">2. Fun Riddles</a>
+                        <a href="./puzzle3/puzzle3.html">3. Math Sequence Quest</a>
+                    </div>
+                    <a class="track-start-btn" href="./image-coloring/index.html">Start Starter Track</a>
+                </article>
+                <article class="track-card">
+                    <h3>Builder Track</h3>
+                    <div class="track-links">
+                        <a href="./word-hunt/wordhunt.html">1. Word Hunt</a>
+                        <a href="./grid-explorer/index.html">2. Grid Explorer</a>
+                        <a href="./pattern-sequencer/index.html">3. Pattern Sequencer</a>
+                    </div>
+                    <a class="track-start-btn" href="./word-hunt/wordhunt.html">Start Builder Track</a>
+                </article>
+                <article class="track-card">
+                    <h3>Advanced Track</h3>
+                    <div class="track-links">
+                        <a href="./binary-decoder/index.html">1. Binary Decoder</a>
+                        <a href="./brainy-blocks/index.html">2. Brainy Blocks Hub</a>
+                        <a href="./code-blocks/block-coding.html">3. Code Blocks Adventure</a>
+                    </div>
+                    <a class="track-start-btn" href="./binary-decoder/index.html">Start Advanced Track</a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <div class="kp-shell-footer">
+        <strong>Code Blocks Playground</strong> • Code While Playing
+        <div class="kp-shell-footer-links">
+            <a href="./code-blocks/block-coding.html">Block Coding</a>
+            <a href="./brainy-blocks/index.html">Brainy Puzzles</a>
+            <a href="./image-coloring/index.html">Activities</a>
+        </div>
+    </div>
+
+    <script src="sounds/soundGenerator.js"></script>
+    <script src="sounds.js"></script>
+    <script src="feedback.js" defer></script>
+    <script src="index.js" defer></script>
+</body>
+</html>
