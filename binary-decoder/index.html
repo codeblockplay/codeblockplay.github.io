@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Binary Decoder Quest | Code Blocks Playground</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../shared/shell.css">
+    <link rel="stylesheet" href="./binary-decoder.css">
+</head>
+<body class="kp-shell-enabled" data-page="brainy-puzzles" data-age="Binary Challenge">
+    <header>
+        <h1>Binary Decoder Quest</h1>
+    </header>
+
+    <main class="decoder-main">
+        <section class="decoder-card" aria-label="Binary Decoder Puzzle Game">
+            <div class="decoder-title-row">
+                <div>
+                    <h1>Binary Decoder Quest</h1>
+                    <p>Decode 0s and 1s into words. Think, check, and hear the answer.</p>
+                </div>
+                <p id="word-counter" class="word-counter" aria-live="polite">Word 1</p>
+            </div>
+
+            <div class="quality-panel">
+                <div class="quality-row">
+                    <div class="mode-switch" id="age-mode-buttons" role="tablist" aria-label="Age modes">
+                        <button class="mode-btn" data-mode="easy" aria-selected="false">Age 5-6</button>
+                        <button class="mode-btn active" data-mode="medium" aria-selected="true">Age 7-8</button>
+                        <button class="mode-btn" data-mode="hard" aria-selected="false">Age 9-10</button>
+                    </div>
+                    <div class="score-strip" aria-live="polite">
+                        <span>Score: <strong id="score-value">0</strong></span>
+                        <span>Level: <strong id="level-value">1</strong></span>
+                        <span>Solved: <strong id="solved-value">0</strong></span>
+                        <span>Streak: <strong id="streak-value">0</strong></span>
+                        <span>Hints: <strong id="hints-value">0</strong></span>
+                        <span>Attempts Left: <strong id="attempts-value">3</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="play-area">
+                <div class="decode-stage">
+                    <div class="clue-wrap" aria-live="polite">
+                        <span class="clue-label"><i class="fas fa-code"></i> Clue</span>
+                        <p id="word-clue" class="word-clue"></p>
+                    </div>
+
+                    <div id="binary-word" class="binary-word" aria-label="Binary word puzzle"></div>
+
+                    <div class="answer-wrap" aria-label="Answer area">
+                        <div id="answer-boxes" class="answer-boxes"></div>
+                        <div id="letter-bank" class="letter-bank"></div>
+                    </div>
+
+                    <div class="reference-wrap">
+                        <div class="reference-title-row">
+                            <h2>Binary Quick Key</h2>
+                            <button id="toggle-reference" type="button" class="toggle-reference-btn">
+                                <i class="fas fa-table"></i>
+                                <span>Show Full A-Z</span>
+                            </button>
+                        </div>
+                        <div id="reference-grid" class="reference-grid" aria-label="Binary reference table"></div>
+                    </div>
+                </div>
+
+                <aside class="side-panel" aria-label="Game controls and feedback">
+                    <div class="hint-controls">
+                        <button id="hint-btn" class="hint-btn" type="button" title="Get hint" aria-label="Get hint">
+                            <i class="fas fa-lightbulb"></i>
+                        </button>
+                        <button id="speak-btn" class="speak-btn" type="button" title="Speak word" aria-label="Speak word" disabled>
+                            <i class="fas fa-volume-high"></i>
+                        </button>
+                    </div>
+
+                    <p id="hint-message" class="hint-message" aria-live="polite">Use hint if you get stuck.</p>
+
+                    <div id="decoder-result" class="result-message" aria-live="polite"></div>
+                    <div id="decoder-explanation" class="explanation-message" aria-live="polite"></div>
+
+                    <div class="control-row" aria-label="Word navigation controls">
+                        <button id="decoder-prev" class="icon-btn" type="button" title="Previous word" aria-label="Previous word">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button id="decoder-reset" class="icon-btn" type="button" title="Reset answer" aria-label="Reset answer">
+                            <i class="fas fa-rotate-left"></i>
+                        </button>
+                        <button id="decoder-check" class="icon-btn check-btn" type="button" title="Check answer" aria-label="Check answer">
+                            <i class="fas fa-check"></i>
+                        </button>
+                        <button id="decoder-next" class="icon-btn" type="button" title="Next word" aria-label="Next word">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <script src="../shared/shell.js" defer></script>
+    <script src="./binary-decoder.js" defer></script>
+</body>
+</html>
