@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     { id: 'roll-medium-ball', type: 'motion', text: 'Roll Medium Ball', icon: 'circle-dot' },
                     { id: 'roll-small-ball', type: 'motion', text: 'Roll Small Ball', icon: 'bullseye' },
                     { id: 'add-eyes', type: 'motion', text: 'Add Eyes', icon: 'eye' },
-                    { id: 'add-nose', type: 'motion', text: 'Add Carrot Nose', icon: 'carrot' },
+                    { id: 'add-nose', type: 'motion', text: 'Carrot Nose', icon: 'carrot' },
                     { id: 'add-hat', type: 'motion', text: 'Add Hat', icon: 'hat-wizard' }
                 ],
                 solution: ['roll-large-ball', 'roll-medium-ball', 'roll-small-ball', 'add-eyes', 'add-nose', 'add-hat']
@@ -369,310 +369,439 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         },
         loops: {
-            // Level 1 - Paint a Fence (Very basic loop for ages 5-6)
             1: {
-                title: "Paint a Fence",
-                description: "Use a loop to paint all 5 fence posts without repeating the same command.",
-                goal: "Paint all 5 fence posts using the fewest blocks possible.",
-                image: "./images/fence.svg",
+                title: "Frozen Shortcut",
+                description: "Learn loops on the ice map with one repeat.",
+                goal: "Repeat North, then pick up treasure.",
+                image: "./images/robot-maze-improved.svg",
+                storyBoard: {
+                    cols: 8,
+                    rows: 7,
+                    blocked: [
+                        { col: 0, row: 0 }, { col: 7, row: 0 }, { col: 0, row: 6 }, { col: 7, row: 6 },
+                        { col: 1, row: 2 }, { col: 6, row: 2 }, { col: 1, row: 4 }, { col: 6, row: 4 }
+                    ],
+                    cracked: []
+                },
+                storyStartCell: { col: 3, row: 5 },
+                storyTargetCell: { col: 3, row: 3 },
                 blocks: [
-                    { id: 'repeat-5', type: 'loop', text: 'Repeat 5 times', icon: 'redo' },
-                    { id: 'paint-post', type: 'motion', text: 'Paint Post', icon: 'paint-brush' }
+                    { id: 'repeat-custom', type: 'loop', text: 'Repeat', icon: 'redo', defaultRepeat: 2 },
+                    { id: 'move-north', type: 'motion', text: 'North', icon: 'arrow-up' },
+                    { id: 'move-south', type: 'motion', text: 'South', icon: 'arrow-down' },
+                    { id: 'move-east', type: 'motion', text: 'East', icon: 'arrow-right' },
+                    { id: 'move-west', type: 'motion', text: 'West', icon: 'arrow-left' },
+                    { id: 'pick-up', type: 'motion', text: 'Pick Up Treasure', icon: 'gem' }
                 ],
-                solution: ['repeat-5', 'paint-post'],
-                isNested: true
+                solution: ['repeat-custom-2', 'move-north', 'pick-up']
             },
-            // Level 2 - Dance Routine (Simple repeated actions)
             2: {
-                title: "Dance Routine",
-                description: "Create a dance routine with 3 spins and 2 jumps using loops.",
-                goal: "Make the dancer perform 3 spins followed by 2 jumps using loops.",
-                image: "./images/dance.svg",
+                title: "Crystal Corridor",
+                description: "Move through a corridor using repeat for faster steps.",
+                goal: "Reach treasure with repeat moves and pick up.",
+                image: "./images/robot-maze-improved.svg",
+                storyBoard: {
+                    cols: 8,
+                    rows: 7,
+                    blocked: [
+                        { col: 0, row: 0 }, { col: 7, row: 0 }, { col: 0, row: 6 }, { col: 7, row: 6 },
+                        { col: 2, row: 1 }, { col: 3, row: 1 }, { col: 5, row: 2 },
+                        { col: 1, row: 3 }, { col: 4, row: 3 }, { col: 6, row: 4 }, { col: 2, row: 5 }
+                    ],
+                    cracked: []
+                },
+                storyStartCell: { col: 1, row: 5 },
+                storyTargetCell: { col: 5, row: 5 },
                 blocks: [
-                    { id: 'repeat-3', type: 'loop', text: 'Repeat 3 times', icon: 'redo' },
-                    { id: 'repeat-2', type: 'loop', text: 'Repeat 2 times', icon: 'redo' },
-                    { id: 'spin', type: 'motion', text: 'Spin', icon: 'sync' },
-                    { id: 'jump', type: 'motion', text: 'Jump', icon: 'arrow-up' }
+                    { id: 'repeat-custom', type: 'loop', text: 'Repeat', icon: 'redo', defaultRepeat: 2 },
+                    { id: 'move-north', type: 'motion', text: 'North', icon: 'arrow-up' },
+                    { id: 'move-south', type: 'motion', text: 'South', icon: 'arrow-down' },
+                    { id: 'move-east', type: 'motion', text: 'East', icon: 'arrow-right' },
+                    { id: 'move-west', type: 'motion', text: 'West', icon: 'arrow-left' },
+                    { id: 'pick-up', type: 'motion', text: 'Pick Up Treasure', icon: 'gem' }
                 ],
-                solution: ['repeat-3', 'spin', 'repeat-2', 'jump'],
-                isNested: true
+                solution: ['move-north', 'repeat-custom-2', 'move-east', 'move-south', 'repeat-custom-2', 'move-east', 'pick-up']
             },
-            // Level 3 - Draw a Square (Simple geometric pattern)
             3: {
-                title: "Draw a Square",
-                description: "Use loops to draw a square without repeating commands.",
-                goal: "Draw a perfect square using a loop to repeat the sides.",
-                image: "./images/square.svg",
+                title: "Moon Tunnel",
+                description: "Longer moon route that needs multiple repeat choices.",
+                goal: "Use repeat smartly and pick up at the end.",
+                image: "./images/robot-maze-improved.svg",
+                storyBoard: {
+                    cols: 8,
+                    rows: 7,
+                    blocked: [
+                        { col: 0, row: 0 }, { col: 7, row: 0 }, { col: 0, row: 6 }, { col: 7, row: 6 },
+                        { col: 2, row: 1 }, { col: 3, row: 1 }, { col: 4, row: 2 },
+                        { col: 1, row: 3 }, { col: 2, row: 3 }, { col: 6, row: 4 },
+                        { col: 5, row: 4 }, { col: 5, row: 5 }
+                    ],
+                    cracked: []
+                },
+                storyStartCell: { col: 6, row: 1 },
+                storyTargetCell: { col: 1, row: 5 },
                 blocks: [
-                    { id: 'repeat-4', type: 'loop', text: 'Repeat 4 times', icon: 'redo' },
-                    { id: 'draw-line', type: 'motion', text: 'Draw Line', icon: 'pen' },
-                    { id: 'turn-right-90', type: 'motion', text: 'Turn Right 90°', icon: 'arrow-right' }
+                    { id: 'repeat-custom', type: 'loop', text: 'Repeat', icon: 'redo', defaultRepeat: 2 },
+                    { id: 'move-north', type: 'motion', text: 'North', icon: 'arrow-up' },
+                    { id: 'move-south', type: 'motion', text: 'South', icon: 'arrow-down' },
+                    { id: 'move-east', type: 'motion', text: 'East', icon: 'arrow-right' },
+                    { id: 'move-west', type: 'motion', text: 'West', icon: 'arrow-left' },
+                    { id: 'pick-up', type: 'motion', text: 'Pick Up Treasure', icon: 'gem' }
                 ],
-                solution: ['repeat-4', 'draw-line', 'turn-right-90'],
-                isNested: true
+                solution: ['repeat-custom-2', 'move-south', 'repeat-custom-2', 'move-west', 'move-south', 'move-west', 'move-south', 'repeat-custom-2', 'move-west', 'pick-up']
             },
-            // Level 4 - Water the Garden (Simple natural sequence)
             4: {
-                title: "Water the Garden",
-                description: "Help water 6 plants in the garden using a loop.",
-                goal: "Water all 6 plants efficiently using a loop.",
-                image: "./images/flower.svg",
+                title: "Star Harbor Rescue",
+                description: "Reach the rescue tile with shorter loop-based moves.",
+                goal: "Guide robot to rescue tile, then pick up.",
+                image: "./images/robot-maze-improved.svg",
+                storyItemName: "rescue tile",
+                storyBoard: {
+                    cols: 8,
+                    rows: 7,
+                    blocked: [
+                        { col: 0, row: 0 }, { col: 7, row: 0 }, { col: 0, row: 6 }, { col: 7, row: 6 },
+                        { col: 2, row: 5 }, { col: 2, row: 4 }, { col: 2, row: 3 },
+                        { col: 4, row: 1 }, { col: 4, row: 2 },
+                        { col: 4, row: 4 }, { col: 5, row: 4 }, { col: 6, row: 4 },
+                        { col: 1, row: 1 }
+                    ],
+                    cracked: []
+                },
+                storyStartCell: { col: 1, row: 5 },
+                storyTargetCell: { col: 6, row: 2 },
                 blocks: [
-                    { id: 'repeat-6', type: 'loop', text: 'Repeat 6 times', icon: 'redo' },
-                    { id: 'water-plant', type: 'motion', text: 'Water Plant', icon: 'tint' },
-                    { id: 'move-next', type: 'motion', text: 'Move to Next Plant', icon: 'arrow-right' }
+                    { id: 'repeat-custom', type: 'loop', text: 'Repeat', icon: 'redo', defaultRepeat: 3 },
+                    { id: 'move-north', type: 'motion', text: 'North', icon: 'arrow-up' },
+                    { id: 'move-south', type: 'motion', text: 'South', icon: 'arrow-down' },
+                    { id: 'move-east', type: 'motion', text: 'East', icon: 'arrow-right' },
+                    { id: 'move-west', type: 'motion', text: 'West', icon: 'arrow-left' },
+                    { id: 'pick-up', type: 'motion', text: 'Pick Up', icon: 'gem' }
                 ],
-                solution: ['repeat-6', 'water-plant', 'move-next'],
-                isNested: true
+                solution: ['repeat-custom-3', 'move-north', 'repeat-custom-2', 'move-east', 'move-south', 'repeat-custom-3', 'move-east', 'move-north', 'pick-up']
             },
-            // Level 5 - Stack the Blocks (Building activity)
             5: {
-                title: "Stack the Blocks",
-                description: "Stack 8 blocks to build a tower using a loop.",
-                goal: "Build a tower by stacking 8 blocks with an efficient loop.",
-                image: "./images/stack-blocks.svg",
-                blocks: [
-                    { id: 'repeat-8', type: 'loop', text: 'Repeat 8 times', icon: 'redo' },
-                    { id: 'pick-block', type: 'motion', text: 'Pick Up Block', icon: 'cube' },
-                    { id: 'stack-block', type: 'motion', text: 'Stack Block', icon: 'arrow-up' }
+                title: "Rover Sample Run",
+                description: "Collect Sample 1, then Sample 2, then dock.",
+                goal: "Use loops and finish all objectives in order.",
+                image: "./images/robot-maze-improved.svg",
+                storyItemName: "mission point",
+                storyBoard: {
+                    cols: 8,
+                    rows: 7,
+                    blocked: [
+                        { col: 0, row: 0 }, { col: 7, row: 0 }, { col: 0, row: 6 }, { col: 7, row: 6 },
+                        { col: 1, row: 1 }, { col: 2, row: 4 }, { col: 3, row: 3 },
+                        { col: 3, row: 5 }, { col: 4, row: 1 }, { col: 4, row: 3 },
+                        { col: 6, row: 2 }
+                    ],
+                    cracked: []
+                },
+                storyStartCell: { col: 1, row: 5 },
+                storyObjectives: [
+                    { cell: { col: 2, row: 3 }, label: 'Sample 1', icon: 'flask', action: 'pick-up', actionLabel: 'Collect' },
+                    { cell: { col: 5, row: 2 }, label: 'Sample 2', icon: 'flask', action: 'pick-up', actionLabel: 'Collect' },
+                    { cell: { col: 6, row: 5 }, label: 'Dock', icon: 'rocket', action: 'drop-off', actionLabel: 'Dock' }
                 ],
-                solution: ['repeat-8', 'pick-block', 'stack-block'],
-                isNested: true
+                blocks: [
+                    { id: 'repeat-custom', type: 'loop', text: 'Repeat', icon: 'redo', defaultRepeat: 2 },
+                    { id: 'move-north', type: 'motion', text: 'North', icon: 'arrow-up' },
+                    { id: 'move-south', type: 'motion', text: 'South', icon: 'arrow-down' },
+                    { id: 'move-east', type: 'motion', text: 'East', icon: 'arrow-right' },
+                    { id: 'move-west', type: 'motion', text: 'West', icon: 'arrow-left' },
+                    { id: 'pick-up', type: 'motion', text: 'Collect Sample', icon: 'flask' },
+                    { id: 'drop-off', type: 'motion', text: 'Dock Rover', icon: 'rocket' }
+                ],
+                solution: ['repeat-custom-2', 'move-north', 'move-east', 'pick-up', 'move-north', 'repeat-custom-3', 'move-east', 'pick-up', 'repeat-custom-2', 'move-south', 'move-east', 'move-south', 'drop-off']
             },
-            // Level 6 - Robot Path (Simple maze navigation with loops)
             6: {
-                title: "Robot Path",
-                description: "Help the robot navigate the zigzag path by using loops for repeated movements.",
-                goal: "Guide the robot to the finish point using loops to make the code more efficient.",
-                image: "./images/robot-path.svg",
-                blocks: [
-                    { id: 'repeat-3', type: 'loop', text: 'Repeat 3 times', icon: 'redo' },
-                    { id: 'move-forward', type: 'motion', text: 'Move Forward', icon: 'arrow-up' },
-                    { id: 'turn-right', type: 'motion', text: 'Turn Right', icon: 'arrow-right' },
-                    { id: 'move-forward', type: 'motion', text: 'Move Forward', icon: 'arrow-up' },
-                    { id: 'turn-left', type: 'motion', text: 'Turn Left', icon: 'arrow-left' }
+                title: "School Bus Route",
+                description: "Pick kids from two stops and drop at school in order.",
+                goal: "Use loops for route segments and complete pick/drop sequence.",
+                image: "./images/robot-maze-improved.svg",
+                storyItemName: "route stop",
+                storyBoard: {
+                    cols: 8,
+                    rows: 7,
+                    blocked: [
+                        { col: 0, row: 0 }, { col: 7, row: 0 }, { col: 0, row: 6 }, { col: 7, row: 6 },
+                        { col: 1, row: 4 }, { col: 0, row: 5 }, { col: 0, row: 4 }, { col: 0, row: 3 },
+                        { col: 2, row: 1 }, { col: 3, row: 1 }, { col: 4, row: 2 }, { col: 4, row: 4 },
+                        { col: 3, row: 5 }, { col: 4, row: 5 }, { col: 6, row: 5 }, { col: 6, row: 3 }, { col: 6, row: 4 }
+                    ],
+                    cracked: []
+                },
+                storyStartCell: { col: 1, row: 5 },
+                storyObjectives: [
+                    { cell: { col: 1, row: 2 }, label: 'Stop 1', icon: 'users', action: 'pick-up' },
+                    { cell: { col: 5, row: 4 }, label: 'Stop 2', icon: 'users', action: 'pick-up' },
+                    { cell: { col: 6, row: 1 }, label: 'School', icon: 'school', action: 'drop-off' }
                 ],
-                solution: ['repeat-3', 'move-forward', 'turn-right', 'move-forward', 'turn-left'],
-                isNested: true
+                blocks: [
+                    { id: 'repeat-custom', type: 'loop', text: 'Repeat', icon: 'redo', defaultRepeat: 2 },
+                    { id: 'move-north', type: 'motion', text: 'North', icon: 'arrow-up' },
+                    { id: 'move-south', type: 'motion', text: 'South', icon: 'arrow-down' },
+                    { id: 'move-east', type: 'motion', text: 'East', icon: 'arrow-right' },
+                    { id: 'move-west', type: 'motion', text: 'West', icon: 'arrow-left' },
+                    { id: 'pick-up', type: 'motion', text: 'Pick Kids', icon: 'users' },
+                    { id: 'drop-off', type: 'motion', text: 'Drop at School', icon: 'school' }
+                ],
+                solution: ['move-east', 'repeat-custom-2', 'move-north', 'move-west', 'move-north', 'pick-up', 'repeat-custom-2', 'move-east', 'move-south', 'repeat-custom-2', 'move-east', 'move-south', 'pick-up', 'repeat-custom-2', 'move-north', 'move-east', 'move-north', 'drop-off']
             },
-            // Level 7 - Count Apples (Counting with loops)
             7: {
-                title: "Count Apples",
-                description: "Count 10 apples in the basket using a loop.",
-                goal: "Count all 10 apples efficiently using a loop structure.",
-                image: "./images/count-apples.svg",
-                blocks: [
-                    { id: 'repeat-10', type: 'loop', text: 'Repeat 10 times', icon: 'redo' },
-                    { id: 'pick-apple', type: 'motion', text: 'Pick Apple', icon: 'apple-alt' },
-                    { id: 'count-apple', type: 'motion', text: 'Count Apple', icon: 'plus' }
+                title: "Triple Stop Relay",
+                description: "Collect two checkpoints and dock with loop shortcuts.",
+                goal: "Collect Stop A, Stop B, then Dock.",
+                image: "./images/robot-maze-improved.svg",
+                storyItemName: "checkpoint",
+                storyBoard: {
+                    cols: 8,
+                    rows: 7,
+                    blocked: [
+                        { col: 0, row: 0 }, { col: 7, row: 0 }, { col: 0, row: 6 }, { col: 7, row: 6 },
+                        { col: 1, row: 2 }, { col: 6, row: 2 }, { col: 1, row: 4 }, { col: 6, row: 4 }
+                    ],
+                    cracked: []
+                },
+                storyStartCell: { col: 2, row: 5 },
+                storyObjectives: [
+                    { cell: { col: 5, row: 5 }, label: 'Stop A', icon: 'flask', action: 'pick-up', actionLabel: 'Collect' },
+                    { cell: { col: 5, row: 2 }, label: 'Stop B', icon: 'flask', action: 'pick-up', actionLabel: 'Collect' },
+                    { cell: { col: 2, row: 2 }, label: 'Dock', icon: 'rocket', action: 'drop-off', actionLabel: 'Dock' }
                 ],
-                solution: ['repeat-10', 'pick-apple', 'count-apple'],
-                isNested: true
+                blocks: [
+                    { id: 'repeat-custom', type: 'loop', text: 'Repeat', icon: 'redo', defaultRepeat: 3 },
+                    { id: 'move-north', type: 'motion', text: 'North', icon: 'arrow-up' },
+                    { id: 'move-south', type: 'motion', text: 'South', icon: 'arrow-down' },
+                    { id: 'move-east', type: 'motion', text: 'East', icon: 'arrow-right' },
+                    { id: 'move-west', type: 'motion', text: 'West', icon: 'arrow-left' },
+                    { id: 'pick-up', type: 'motion', text: 'Collect', icon: 'flask' },
+                    { id: 'drop-off', type: 'motion', text: 'Dock', icon: 'rocket' }
+                ],
+                solution: ['repeat-custom-3', 'move-east', 'pick-up', 'repeat-custom-3', 'move-north', 'pick-up', 'repeat-custom-3', 'move-west', 'drop-off']
             },
-            // Level 8 - Star Pattern (Geometric pattern)
             8: {
-                title: "Star Pattern",
-                description: "Draw a 5-pointed star using loops for repeated lines and turns.",
-                goal: "Create a perfect star with loops for efficiency.",
-                image: "./images/star-pattern.svg",
-                blocks: [
-                    { id: 'repeat-5', type: 'loop', text: 'Repeat 5 times', icon: 'redo' },
-                    { id: 'draw-line', type: 'motion', text: 'Draw Line', icon: 'pen' },
-                    { id: 'turn-right-144', type: 'motion', text: 'Turn Right 144°', icon: 'arrow-right' }
+                title: "Final Relay",
+                description: "Final mission with collect-collect-dock order and loops.",
+                goal: "Collect Point 1, collect Point 2, then dock.",
+                image: "./images/robot-maze-improved.svg",
+                storyItemName: "checkpoint",
+                storyBoard: {
+                    cols: 8,
+                    rows: 7,
+                    blocked: [
+                        { col: 0, row: 0 }, { col: 7, row: 0 }, { col: 0, row: 6 }, { col: 7, row: 6 },
+                        { col: 1, row: 2 }, { col: 6, row: 2 }, { col: 1, row: 4 }, { col: 6, row: 4 }
+                    ],
+                    cracked: []
+                },
+                storyStartCell: { col: 2, row: 5 },
+                storyObjectives: [
+                    { cell: { col: 2, row: 3 }, label: 'Point 1', icon: 'flask', action: 'pick-up', actionLabel: 'Collect' },
+                    { cell: { col: 5, row: 3 }, label: 'Point 2', icon: 'flask', action: 'pick-up', actionLabel: 'Collect' },
+                    { cell: { col: 5, row: 5 }, label: 'Dock', icon: 'rocket', action: 'drop-off', actionLabel: 'Dock' }
                 ],
-                solution: ['repeat-5', 'draw-line', 'turn-right-144'],
-                isNested: true
+                blocks: [
+                    { id: 'repeat-custom', type: 'loop', text: 'Repeat', icon: 'redo', defaultRepeat: 2 },
+                    { id: 'move-north', type: 'motion', text: 'North', icon: 'arrow-up' },
+                    { id: 'move-south', type: 'motion', text: 'South', icon: 'arrow-down' },
+                    { id: 'move-east', type: 'motion', text: 'East', icon: 'arrow-right' },
+                    { id: 'move-west', type: 'motion', text: 'West', icon: 'arrow-left' },
+                    { id: 'pick-up', type: 'motion', text: 'Collect', icon: 'flask' },
+                    { id: 'drop-off', type: 'motion', text: 'Dock', icon: 'rocket' }
+                ],
+                solution: ['repeat-custom-2', 'move-north', 'pick-up', 'repeat-custom-3', 'move-east', 'pick-up', 'repeat-custom-2', 'move-south', 'drop-off']
             },
-            // Level 9 - Jumping Jacks (Exercise routine)
             9: {
-                title: "Jumping Jacks",
-                description: "Program a fitness routine with jumping jacks using loops.",
-                goal: "Complete 12 jumping jacks using an efficient loop.",
-                image: "./images/jumping-jacks.svg",
+                title: "Robo Loop: Zigzag Ice Run",
+                description: "Zigzag through the ice path and reach the gem.",
+                goal: "Use repeating North + East style moves, then pick up the gem.",
+                image: "./images/robot-maze-improved.svg",
+                storyItemName: "zigzag gem",
+                storyBoard: {
+                    cols: 8,
+                    rows: 7,
+                    blocked: [
+                        { col: 0, row: 0 }, { col: 7, row: 0 }, { col: 0, row: 6 }, { col: 7, row: 6 },
+                        { col: 2, row: 5 }, { col: 4, row: 5 }, { col: 6, row: 5 },
+                        { col: 1, row: 3 }, { col: 4, row: 3 }, { col: 6, row: 3 },
+                        { col: 2, row: 1 }, { col: 6, row: 1 }
+                    ],
+                    cracked: []
+                },
+                storyStartCell: { col: 1, row: 5 },
+                storyTargetCell: { col: 5, row: 1 },
                 blocks: [
-                    { id: 'repeat-12', type: 'loop', text: 'Repeat 12 times', icon: 'redo' },
-                    { id: 'jump-out', type: 'motion', text: 'Jump Out', icon: 'arrows-alt-h' },
-                    { id: 'jump-in', type: 'motion', text: 'Jump In', icon: 'compress' },
-                    { id: 'count', type: 'motion', text: 'Count', icon: 'plus' }
+                    { id: 'repeat-custom', type: 'loop', text: 'Repeat', icon: 'redo', defaultRepeat: 2 },
+                    { id: 'move-north', type: 'motion', text: 'North', icon: 'arrow-up' },
+                    { id: 'move-south', type: 'motion', text: 'South', icon: 'arrow-down' },
+                    { id: 'move-east', type: 'motion', text: 'East', icon: 'arrow-right' },
+                    { id: 'move-west', type: 'motion', text: 'West', icon: 'arrow-left' },
+                    { id: 'pick-up', type: 'motion', text: 'Pick Up Treasure', icon: 'gem' }
                 ],
-                solution: ['repeat-12', 'jump-out', 'jump-in', 'count'],
-                isNested: true
+                solution: ['move-north', 'repeat-custom-4', 'move-east', 'repeat-custom-3', 'move-north', 'pick-up']
             },
-            // Level 10 - Music Beats (Audio pattern)
             10: {
-                title: "Music Beats",
-                description: "Create a drum beat pattern using loops for musical repetition.",
-                goal: "Program a rhythmic drum pattern with loops for efficiency.",
-                image: "./images/music-beats.svg",
+                title: "Robo Loop: Broken Bridge Patrol",
+                description: "Cross the broken bridge lanes and reach the patrol gem.",
+                goal: "Use loop segments with one correction turn, then pick up.",
+                image: "./images/robot-maze-improved.svg",
+                storyItemName: "patrol gem",
+                storyBoard: {
+                    cols: 8,
+                    rows: 7,
+                    blocked: [
+                        { col: 0, row: 0 }, { col: 7, row: 0 }, { col: 0, row: 6 }, { col: 7, row: 6 },
+                        { col: 1, row: 1 }, { col: 2, row: 1 }, { col: 4, row: 1 },
+                        { col: 1, row: 2 }, { col: 6, row: 2 },
+                        { col: 2, row: 4 }, { col: 4, row: 4 }, { col: 5, row: 4 },
+                        { col: 5, row: 5 }
+                    ],
+                    cracked: []
+                },
+                storyStartCell: { col: 1, row: 5 },
+                storyTargetCell: { col: 6, row: 1 },
                 blocks: [
-                    { id: 'repeat-4', type: 'loop', text: 'Repeat 4 times', icon: 'redo' },
-                    { id: 'drum-loud', type: 'motion', text: 'Loud Beat', icon: 'drum' },
-                    { id: 'repeat-2', type: 'loop', text: 'Repeat 2 times', icon: 'redo' },
-                    { id: 'drum-soft', type: 'motion', text: 'Soft Beat', icon: 'music' }
+                    { id: 'repeat-custom', type: 'loop', text: 'Repeat', icon: 'redo', defaultRepeat: 2 },
+                    { id: 'move-north', type: 'motion', text: 'North', icon: 'arrow-up' },
+                    { id: 'move-south', type: 'motion', text: 'South', icon: 'arrow-down' },
+                    { id: 'move-east', type: 'motion', text: 'East', icon: 'arrow-right' },
+                    { id: 'move-west', type: 'motion', text: 'West', icon: 'arrow-left' },
+                    { id: 'pick-up', type: 'motion', text: 'Pick Up Treasure', icon: 'gem' }
                 ],
-                solution: ['repeat-4', 'drum-loud', 'repeat-2', 'drum-soft'],
-                isNested: true
+                solution: ['repeat-custom-2', 'move-east', 'repeat-custom-3', 'move-north', 'repeat-custom-2', 'move-east', 'move-north', 'move-east', 'pick-up']
             },
-            // Level 11 - Rainbow Colors (Art sequence)
             11: {
-                title: "Rainbow Colors",
-                description: "Draw a rainbow by repeating the color painting process with a loop.",
-                goal: "Paint all 7 colors of the rainbow using an efficient loop.",
-                image: "./images/rainbow-colors.svg",
-                blocks: [
-                    { id: 'repeat-7', type: 'loop', text: 'Repeat 7 times', icon: 'redo' },
-                    { id: 'choose-color', type: 'motion', text: 'Choose Next Color', icon: 'palette' },
-                    { id: 'paint-arc', type: 'motion', text: 'Paint Arc', icon: 'paint-brush' }
+                title: "Robo Loop: Twin Crystal Pickup",
+                description: "Collect Crystal 1, then Crystal 2 in order.",
+                goal: "Use two loop sections and collect both crystals in sequence.",
+                image: "./images/robot-maze-improved.svg",
+                storyItemName: "crystal point",
+                storyBoard: {
+                    cols: 8,
+                    rows: 7,
+                    blocked: [
+                        { col: 0, row: 0 }, { col: 7, row: 0 }, { col: 0, row: 6 }, { col: 7, row: 6 },
+                        { col: 1, row: 1 }, { col: 2, row: 1 }, { col: 5, row: 1 },
+                        { col: 4, row: 3 }
+                    ],
+                    cracked: []
+                },
+                storyStartCell: { col: 1, row: 5 },
+                storyObjectives: [
+                    { cell: { col: 3, row: 4 }, label: 'Crystal 1', icon: 'gem', action: 'pick-up', actionLabel: 'Pick' },
+                    { cell: { col: 6, row: 2 }, label: 'Crystal 2', icon: 'gem', action: 'pick-up', actionLabel: 'Pick' }
                 ],
-                solution: ['repeat-7', 'choose-color', 'paint-arc'],
-                isNested: true
+                blocks: [
+                    { id: 'repeat-custom', type: 'loop', text: 'Repeat', icon: 'redo', defaultRepeat: 2 },
+                    { id: 'move-north', type: 'motion', text: 'North', icon: 'arrow-up' },
+                    { id: 'move-south', type: 'motion', text: 'South', icon: 'arrow-down' },
+                    { id: 'move-east', type: 'motion', text: 'East', icon: 'arrow-right' },
+                    { id: 'move-west', type: 'motion', text: 'West', icon: 'arrow-left' },
+                    { id: 'pick-up', type: 'motion', text: 'Pick Crystal', icon: 'gem' }
+                ],
+                solution: ['repeat-custom-2', 'move-east', 'move-north', 'pick-up', 'repeat-custom-3', 'move-east', 'repeat-custom-2', 'move-north', 'pick-up']
             },
-            // Level 12 - Pizza Toppings (Food preparation)
             12: {
-                title: "Pizza Toppings",
-                description: "Place toppings on a pizza using loops to place multiple of each type.",
-                goal: "Prepare a pizza with properly arranged toppings using loops.",
-                image: "./images/pizza-time.svg",
+                title: "Robo Loop: Moon Crater Detour",
+                description: "Avoid crater lanes and reach the moon gem.",
+                goal: "Use exact repeat counts to clear the detour path and pick up.",
+                image: "./images/robot-maze-improved.svg",
+                storyItemName: "moon gem",
+                storyBoard: {
+                    cols: 8,
+                    rows: 7,
+                    blocked: [
+                        { col: 0, row: 0 }, { col: 7, row: 0 }, { col: 0, row: 6 }, { col: 7, row: 6 },
+                        { col: 3, row: 1 }, { col: 4, row: 1 }, { col: 5, row: 1 },
+                        { col: 3, row: 2 }, { col: 5, row: 2 }, { col: 6, row: 2 },
+                        { col: 3, row: 3 }, { col: 4, row: 3 }, { col: 6, row: 3 },
+                        { col: 3, row: 4 }, { col: 6, row: 4 }
+                    ],
+                    cracked: []
+                },
+                storyStartCell: { col: 6, row: 5 },
+                storyTargetCell: { col: 1, row: 1 },
                 blocks: [
-                    { id: 'repeat-8', type: 'loop', text: 'Repeat 8 times', icon: 'redo' },
-                    { id: 'add-pepperoni', type: 'motion', text: 'Add Pepperoni', icon: 'circle' },
-                    { id: 'repeat-6', type: 'loop', text: 'Repeat 6 times', icon: 'redo' },
-                    { id: 'add-olive', type: 'motion', text: 'Add Olive', icon: 'dot-circle' }
+                    { id: 'repeat-custom', type: 'loop', text: 'Repeat', icon: 'redo', defaultRepeat: 2 },
+                    { id: 'move-north', type: 'motion', text: 'North', icon: 'arrow-up' },
+                    { id: 'move-south', type: 'motion', text: 'South', icon: 'arrow-down' },
+                    { id: 'move-east', type: 'motion', text: 'East', icon: 'arrow-right' },
+                    { id: 'move-west', type: 'motion', text: 'West', icon: 'arrow-left' },
+                    { id: 'pick-up', type: 'motion', text: 'Pick Up Treasure', icon: 'gem' }
                 ],
-                solution: ['repeat-8', 'add-pepperoni', 'repeat-6', 'add-olive'],
-                isNested: true
+                solution: ['repeat-custom-5', 'move-west', 'repeat-custom-4', 'move-north', 'pick-up']
             },
-            // Level 13 - Robot Dance (Complex dance routine)
             13: {
-                title: "Robot Dance",
-                description: "Program a robot dance with multiple repeated moves using nested loops.",
-                goal: "Create a complex dance routine using nested loops for efficiency.",
-                image: "./images/robot-dance.svg",
-                blocks: [
-                    { id: 'repeat-3', type: 'loop', text: 'Repeat 3 times', icon: 'redo' },
-                    { id: 'spin', type: 'motion', text: 'Spin', icon: 'sync' },
-                    { id: 'repeat-2', type: 'loop', text: 'Repeat 2 times', icon: 'redo' },
-                    { id: 'jump', type: 'motion', text: 'Jump', icon: 'arrow-up' },
-                    { id: 'wave', type: 'motion', text: 'Wave Arms', icon: 'hands' }
+                title: "Robo Loop: Shuttle Stop Relay",
+                description: "Reach Stop 1, Stop 2, then Dock through relay lanes.",
+                goal: "Pick from both shuttle stops in order, then dock.",
+                image: "./images/robot-maze-improved.svg",
+                storyItemName: "shuttle point",
+                storyBoard: {
+                    cols: 8,
+                    rows: 7,
+                    blocked: [
+                        { col: 0, row: 0 }, { col: 7, row: 0 }, { col: 0, row: 6 }, { col: 7, row: 6 },
+                        { col: 1, row: 1 }, { col: 2, row: 1 }, { col: 4, row: 1 },
+                        { col: 6, row: 1 }, { col: 1, row: 2 },
+                        { col: 1, row: 3 }, { col: 6, row: 3 },
+                        { col: 4, row: 4 }, { col: 5, row: 4 }
+                    ],
+                    cracked: []
+                },
+                storyStartCell: { col: 1, row: 5 },
+                storyObjectives: [
+                    { cell: { col: 3, row: 5 }, label: 'Stop 1', icon: 'users', action: 'pick-up', actionLabel: 'Pick' },
+                    { cell: { col: 3, row: 2 }, label: 'Stop 2', icon: 'users', action: 'pick-up', actionLabel: 'Pick' },
+                    { cell: { col: 6, row: 2 }, label: 'Dock', icon: 'rocket', action: 'drop-off', actionLabel: 'Dock' }
                 ],
-                solution: ['repeat-3', 'spin', 'repeat-2', 'jump', 'wave'],
-                isNested: true
+                blocks: [
+                    { id: 'repeat-custom', type: 'loop', text: 'Repeat', icon: 'redo', defaultRepeat: 3 },
+                    { id: 'move-north', type: 'motion', text: 'North', icon: 'arrow-up' },
+                    { id: 'move-south', type: 'motion', text: 'South', icon: 'arrow-down' },
+                    { id: 'move-east', type: 'motion', text: 'East', icon: 'arrow-right' },
+                    { id: 'move-west', type: 'motion', text: 'West', icon: 'arrow-left' },
+                    { id: 'pick-up', type: 'motion', text: 'Pick', icon: 'users' },
+                    { id: 'drop-off', type: 'motion', text: 'Dock', icon: 'rocket' }
+                ],
+                solution: ['repeat-custom-2', 'move-east', 'pick-up', 'repeat-custom-3', 'move-north', 'pick-up', 'repeat-custom-3', 'move-east', 'drop-off']
             },
-            // Level 14 - Spiral Drawing (Complex geometric pattern)
             14: {
-                title: "Spiral Drawing",
-                description: "Draw a spiral using loops with increasing line lengths.",
-                goal: "Create a perfect spiral using loops and varying line lengths.",
-                image: "./images/spiral.svg",
-                blocks: [
-                    { id: 'repeat-10', type: 'loop', text: 'Repeat 10 times', icon: 'redo' },
-                    { id: 'draw-line', type: 'motion', text: 'Draw Line', icon: 'pen' },
-                    { id: 'turn-right-90', type: 'motion', text: 'Turn Right 90°', icon: 'arrow-right' },
-                    { id: 'increase-length', type: 'motion', text: 'Increase Length', icon: 'arrow-up' }
+                title: "Robo Loop: Mega Rescue Grid",
+                description: "Hard map with two gems and final dock objective.",
+                goal: "Collect Gem 1, collect Gem 2, then dock using smart loops.",
+                image: "./images/robot-maze-improved.svg",
+                storyItemName: "rescue point",
+                storyBoard: {
+                    cols: 8,
+                    rows: 7,
+                    blocked: [
+                        { col: 0, row: 0 }, { col: 7, row: 0 }, { col: 0, row: 6 }, { col: 7, row: 6 },
+                        { col: 1, row: 1 }, { col: 3, row: 1 }, { col: 6, row: 1 },
+                        { col: 6, row: 2 },
+                        { col: 3, row: 3 }, { col: 6, row: 3 },
+                        { col: 3, row: 4 }, { col: 6, row: 4 },
+                        { col: 4, row: 5 }
+                    ],
+                    cracked: []
+                },
+                storyStartCell: { col: 1, row: 5 },
+                storyObjectives: [
+                    { cell: { col: 2, row: 2 }, label: 'Gem 1', icon: 'gem', action: 'pick-up', actionLabel: 'Pick' },
+                    { cell: { col: 5, row: 2 }, label: 'Gem 2', icon: 'gem', action: 'pick-up', actionLabel: 'Pick' },
+                    { cell: { col: 6, row: 5 }, label: 'Dock', icon: 'rocket', action: 'drop-off', actionLabel: 'Dock' }
                 ],
-                solution: ['repeat-10', 'draw-line', 'turn-right-90', 'increase-length'],
-                isNested: true
-            },
-            // Level 15 - Obstacle Course (Advanced navigation)
-            15: {
-                title: "Obstacle Course",
-                description: "Guide the robot through an obstacle course using nested loops for efficient navigation.",
-                goal: "Complete the obstacle course with the most efficient nested loops possible.",
-                image: "./images/robot-treasure-hunt.svg",
                 blocks: [
-                    { id: 'repeat-3', type: 'loop', text: 'Repeat 3 times', icon: 'redo' },
-                    { id: 'move-forward', type: 'motion', text: 'Move Forward', icon: 'arrow-up' },
-                    { id: 'repeat-2', type: 'loop', text: 'Repeat 2 times', icon: 'redo' },
-                    { id: 'jump-obstacle', type: 'motion', text: 'Jump Obstacle', icon: 'running' },
-                    { id: 'turn-right', type: 'motion', text: 'Turn Right', icon: 'arrow-right' },
-                    { id: 'turn-left', type: 'motion', text: 'Turn Left', icon: 'arrow-left' }
+                    { id: 'repeat-custom', type: 'loop', text: 'Repeat', icon: 'redo', defaultRepeat: 3 },
+                    { id: 'move-north', type: 'motion', text: 'North', icon: 'arrow-up' },
+                    { id: 'move-south', type: 'motion', text: 'South', icon: 'arrow-down' },
+                    { id: 'move-east', type: 'motion', text: 'East', icon: 'arrow-right' },
+                    { id: 'move-west', type: 'motion', text: 'West', icon: 'arrow-left' },
+                    { id: 'pick-up', type: 'motion', text: 'Pick Gem', icon: 'gem' },
+                    { id: 'drop-off', type: 'motion', text: 'Dock', icon: 'rocket' }
                 ],
-                solution: ['repeat-3', 'move-forward', 'repeat-2', 'jump-obstacle', 'turn-right', 'turn-left'],
-                isNested: true
-            },
-            // Level 16 - Music Composition (Advanced audio pattern)
-            16: {
-                title: "Music Composition",
-                description: "Create a complex music pattern with nested loops for different instruments.",
-                goal: "Compose a musical sequence using efficient nested loops.",
-                image: "./images/music-composition.svg",
-                blocks: [
-                    { id: 'repeat-4', type: 'loop', text: 'Repeat 4 times', icon: 'redo' },
-                    { id: 'play-drum', type: 'motion', text: 'Play Drum', icon: 'drum' },
-                    { id: 'repeat-2', type: 'loop', text: 'Repeat 2 times', icon: 'redo' },
-                    { id: 'play-piano', type: 'motion', text: 'Play Piano', icon: 'music' },
-                    { id: 'repeat-3', type: 'loop', text: 'Repeat 3 times', icon: 'redo' },
-                    { id: 'play-guitar', type: 'motion', text: 'Play Guitar', icon: 'guitar' }
-                ],
-                solution: ['repeat-4', 'play-drum', 'repeat-2', 'play-piano', 'repeat-3', 'play-guitar'],
-                isNested: true
-            },
-            // Level 17 - Space Mission (Advanced technical sequence)
-            17: {
-                title: "Space Mission",
-                description: "Program a complex space mission with multiple repeated operations using nested loops.",
-                goal: "Complete the space mission with the most efficient loop structure.",
-                image: "./images/space-launch.svg",
-                blocks: [
-                    { id: 'repeat-5', type: 'loop', text: 'Repeat 5 times', icon: 'redo' },
-                    { id: 'scan-planet', type: 'motion', text: 'Scan Planet', icon: 'search' },
-                    { id: 'repeat-3', type: 'loop', text: 'Repeat 3 times', icon: 'redo' },
-                    { id: 'collect-sample', type: 'motion', text: 'Collect Sample', icon: 'vial' },
-                    { id: 'analyze-data', type: 'motion', text: 'Analyze Data', icon: 'microscope' }
-                ],
-                solution: ['repeat-5', 'scan-planet', 'repeat-3', 'collect-sample', 'analyze-data'],
-                isNested: true
-            },
-            // Level 18 - Flower Garden (Advanced pattern)
-            18: {
-                title: "Flower Garden",
-                description: "Plant a garden with different types of flowers using nested loops for pattern creation.",
-                goal: "Create a beautiful garden pattern with efficient nested loops.",
-                image: "./images/flower.svg",
-                blocks: [
-                    { id: 'repeat-4', type: 'loop', text: 'Repeat 4 times', icon: 'redo' },
-                    { id: 'plant-rose', type: 'motion', text: 'Plant Rose', icon: 'seedling' },
-                    { id: 'repeat-3', type: 'loop', text: 'Repeat 3 times', icon: 'redo' },
-                    { id: 'plant-tulip', type: 'motion', text: 'Plant Tulip', icon: 'leaf' },
-                    { id: 'move-position', type: 'motion', text: 'Move Position', icon: 'arrows-alt' }
-                ],
-                solution: ['repeat-4', 'plant-rose', 'repeat-3', 'plant-tulip', 'move-position'],
-                isNested: true
-            },
-            // Level 19 - Robot Maze Challenge (Advanced navigation with multiple nested loops)
-            19: {
-                title: "Robot Maze Challenge",
-                description: "Navigate a complex maze using multiple nested loops for efficient movement.",
-                goal: "Guide the robot through the maze with the most efficient loop structures.",
-                image: "./images/robot-treasure-hunt.svg",
-                blocks: [
-                    { id: 'repeat-3', type: 'loop', text: 'Repeat 3 times', icon: 'redo' },
-                    { id: 'move-forward', type: 'motion', text: 'Move Forward', icon: 'arrow-up' },
-                    { id: 'turn-right', type: 'motion', text: 'Turn Right', icon: 'arrow-right' },
-                    { id: 'repeat-2', type: 'loop', text: 'Repeat 2 times', icon: 'redo' },
-                    { id: 'turn-left', type: 'motion', text: 'Turn Left', icon: 'arrow-left' },
-                    { id: 'move-twice', type: 'motion', text: 'Move Twice', icon: 'forward' },
-                    { id: 'pick-up', type: 'motion', text: 'Pick Up Treasure', icon: 'box' }
-                ],
-                solution: ['repeat-3', 'move-forward', 'turn-right', 'repeat-2', 'turn-left', 'move-twice', 'pick-up'],
-                isNested: true
-            },
-            // Level 20 - Pixel Art (Most advanced pattern)
-            20: {
-                title: "Pixel Art",
-                description: "Create a pixel art masterpiece using complex nested loops for color patterns.",
-                goal: "Draw a complete pixel image with the most efficient loop structures.",
-                image: "./images/pixel-art.svg",
-                blocks: [
-                    { id: 'repeat-8', type: 'loop', text: 'Repeat 8 times', icon: 'redo' },
-                    { id: 'change-row', type: 'motion', text: 'Change Row', icon: 'arrow-down' },
-                    { id: 'repeat-8', type: 'loop', text: 'Repeat 8 times', icon: 'redo' },
-                    { id: 'set-pixel', type: 'motion', text: 'Set Pixel', icon: 'square' },
-                    { id: 'change-column', type: 'motion', text: 'Change Column', icon: 'arrow-right' },
-                    { id: 'change-color', type: 'motion', text: 'Change Color', icon: 'palette' }
-                ],
-                solution: ['repeat-8', 'change-row', 'repeat-8', 'set-pixel', 'change-column', 'change-color'],
-                isNested: true
+                solution: ['repeat-custom-3', 'move-north', 'move-east', 'pick-up', 'repeat-custom-3', 'move-east', 'pick-up', 'repeat-custom-3', 'move-south', 'move-east', 'drop-off']
             }
         },
         conditions: {
@@ -1398,6 +1527,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const missionHintsEl = document.getElementById('mission-hints');
     const missionTriesEl = document.getElementById('mission-tries');
     const categorySelect = document.getElementById('challenge-category-select');
+    const blocksToggleBtn = document.getElementById('blocks-toggle-btn');
     const trackPicker = document.getElementById('track-picker');
     const trackPickerBtn = document.getElementById('track-picker-btn');
     const trackPickerLabel = document.getElementById('track-picker-label');
@@ -1435,7 +1565,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let outputModalInstance = null;
     let resultModalInstance = null;
     let runReadyForCheck = false;
-    const MISSION_STORY_PILOT = { category: 'sequencing', levels: new Set([6, 7, 8, 9, 10, 11]) };
+    let blocksCollapsed = true;
+    const MISSION_STORY_PILOT = {
+        sequencing: new Set([6, 7, 8, 9, 10, 11]),
+        loops: new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14])
+    };
+    const SEQUENCING_GEM_PICKUP_LEVELS = new Set([6, 7, 8, 9]);
     const missionStoryState = {
         enabled: false,
         board: { cols: 8, rows: 7 },
@@ -1535,6 +1670,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             initTrackPicker();
+            initBlocksToggle();
 
             if (levelsToggleBtn) {
                 levelsToggleBtn.addEventListener('click', () => {
@@ -1581,6 +1717,7 @@ document.addEventListener('DOMContentLoaded', () => {
         blocksContainer.innerHTML = '';
         userBlocks = [];
         updateWorkspacePlaceholder();
+        refreshLoopVisualGroups();
         
         // Clear any existing highlighting
         document.querySelectorAll('.block').forEach(blockEl => {
@@ -1729,6 +1866,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function applyBlocksCollapsedState() {
+        document.body.classList.toggle('blocks-expanded', !blocksCollapsed);
+        if (!blocksToggleBtn) return;
+
+        blocksToggleBtn.setAttribute('aria-expanded', String(!blocksCollapsed));
+        blocksToggleBtn.setAttribute('aria-label', blocksCollapsed ? 'Show block text' : 'Hide block text');
+        blocksToggleBtn.setAttribute('title', blocksCollapsed ? 'Show block text' : 'Hide block text');
+
+        const icon = blocksToggleBtn.querySelector('i');
+        if (icon) {
+            icon.classList.toggle('fa-chevron-right', blocksCollapsed);
+            icon.classList.toggle('fa-chevron-left', !blocksCollapsed);
+        }
+    }
+
+    function initBlocksToggle() {
+        if (!blocksToggleBtn) return;
+
+        try {
+            const saved = localStorage.getItem('kp_blocks_collapsed');
+            if (saved === '0') {
+                blocksCollapsed = false;
+            }
+        } catch (error) {
+            blocksCollapsed = true;
+        }
+
+        applyBlocksCollapsedState();
+
+        blocksToggleBtn.addEventListener('click', () => {
+            blocksCollapsed = !blocksCollapsed;
+            applyBlocksCollapsedState();
+            try {
+                localStorage.setItem('kp_blocks_collapsed', blocksCollapsed ? '1' : '0');
+            } catch (error) {
+                // Ignore local storage failures.
+            }
+        });
+    }
+
     function resetLevelMissionStats() {
         missionState.hintsLeft = MAX_HINTS_PER_LEVEL;
         missionState.triesLeft = MAX_TRIES_PER_LEVEL;
@@ -1791,19 +1968,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function isMissionStoryPilotActive(challenge = getCurrentChallenge()) {
-        return Boolean(
-            challenge &&
-            currentCategory === MISSION_STORY_PILOT.category &&
-            MISSION_STORY_PILOT.levels.has(currentLevel)
-        );
+        return Boolean(challenge && MISSION_STORY_PILOT[currentCategory]?.has(currentLevel));
     }
 
     function isDirectionPaletteChallenge(challenge = getCurrentChallenge()) {
-        return Boolean(
-            challenge &&
-            currentCategory === 'sequencing' &&
-            isMissionStoryPilotActive(challenge)
-        );
+        return Boolean(challenge && isMissionStoryPilotActive(challenge));
     }
 
     function getMissionStoryFallbackPath() {
@@ -2037,6 +2206,7 @@ document.addEventListener('DOMContentLoaded', () => {
             : String(blockOrId?.textContent || '');
         const source = `${id} ${text}`.toLowerCase();
 
+        if (getMissionRepeatCount(id) > 0) return 'repeat';
         if (id === 'move-north') return 'move-north';
         if (id === 'move-south') return 'move-south';
         if (id === 'move-east') return 'move-east';
@@ -2055,7 +2225,26 @@ document.addEventListener('DOMContentLoaded', () => {
         if (source.includes('move-forward') || source.includes('move forward') || source.includes('forward')) return 'move-north';
         if (source.includes('pick-up') || source.includes('pick up') || source.includes('treasure')) return 'pick-up';
         if (source.includes('drop-off') || source.includes('drop off') || source.includes('drop')) return 'drop-off';
+        if (source.includes('repeat') || source.includes('loop')) return 'repeat';
         return 'other';
+    }
+
+    function getMissionRepeatCount(blockOrId) {
+        if (typeof blockOrId !== 'string') {
+            const fromDataset = Number(blockOrId?.dataset?.repeatCount || 0);
+            if (Number.isFinite(fromDataset) && fromDataset > 0) {
+                return Math.max(1, Math.min(12, Math.floor(fromDataset)));
+            }
+        }
+
+        const id = typeof blockOrId === 'string'
+            ? blockOrId
+            : String(blockOrId?.dataset?.id || '');
+        const match = id.match(/^repeat(?:-custom)?-(\d+)$/);
+        if (!match) return 0;
+        const count = Number(match[1]);
+        if (!Number.isFinite(count)) return 0;
+        return Math.max(0, Math.min(12, Math.floor(count)));
     }
 
     function moveMissionCellForward(cell, direction, board, blockedSet) {
@@ -2221,10 +2410,27 @@ document.addEventListener('DOMContentLoaded', () => {
             storyItemName
         };
 
-        (programBlocks || []).forEach((blockId) => {
+        for (let index = 0; index < (programBlocks || []).length; index += 1) {
+            const blockId = programBlocks[index];
+            const repeatCount = getMissionRepeatCount(blockId);
+            if (repeatCount > 0) {
+                const nextBlockId = programBlocks[index + 1];
+                const nextCommand = parseMissionCommand(nextBlockId);
+                if (nextBlockId && nextCommand !== 'other' && nextCommand !== 'repeat') {
+                    for (let repeatIndex = 0; repeatIndex < repeatCount; repeatIndex += 1) {
+                        applyMissionCommand(runtime, nextCommand, board, blockedSet, targetCell);
+                    }
+                    index += 1;
+                    continue;
+                }
+            }
+
             const command = parseMissionCommand(blockId);
+            if (command === 'repeat') {
+                continue;
+            }
             applyMissionCommand(runtime, command, board, blockedSet, targetCell);
-        });
+        }
 
         if (runtime.hasTreasure) {
             return {
@@ -2456,7 +2662,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resetMissionStoryVisualState();
     }
 
-    function markMissionStoryStep(execIndex, blockId, challenge) {
+    function markMissionStoryStep(execIndex, blockId, challenge, displayLabel = '') {
         if (!missionStoryState.enabled || !missionStepTrack) return;
         resetMissionStoryVisualState();
 
@@ -2469,13 +2675,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        if (parseMissionCommand(blockId) !== 'pick-up') {
-            const chipText = getBlockLabelById(challenge, blockId);
+        const command = parseMissionCommand(blockId);
+        if (command !== 'pick-up' && command !== 'drop-off' && command !== 'repeat') {
+            const chipText = displayLabel || getBlockLabelById(challenge, blockId);
             setMissionStoryStatus(chipText);
         }
     }
 
-    function animateMissionStoryStep(execIndex, blockInput, challenge) {
+    function animateMissionStoryStep(execIndex, blockInput, challenge, displayLabel = '') {
         if (!missionStoryState.enabled || !missionMascot) return;
         missionStoryState.currentIndex = execIndex;
         const blockId = typeof blockInput === 'string' ? blockInput : String(blockInput?.dataset?.id || '');
@@ -2483,7 +2690,7 @@ document.addEventListener('DOMContentLoaded', () => {
         positionMissionMarker(missionMascot, pathPoint, false);
         missionMascot.classList.add('running');
         setTimeout(() => missionMascot.classList.remove('running'), 260);
-        markMissionStoryStep(execIndex, blockId, challenge);
+        markMissionStoryStep(execIndex, blockId, challenge, displayLabel);
     }
 
     function completeMissionStoryRun(challenge) {
@@ -3151,6 +3358,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function resolveBlockIcon(block) {
+        if (
+            block?.id === 'pick-up' &&
+            currentCategory === 'sequencing' &&
+            SEQUENCING_GEM_PICKUP_LEVELS.has(currentLevel)
+        ) {
+            return 'gem';
+        }
+
         const explicitIcon = pickSupportedIcon(block?.icon);
         if (explicitIcon) {
             return explicitIcon;
@@ -3231,11 +3446,149 @@ document.addEventListener('DOMContentLoaded', () => {
         return typeFallback[block.type] || 'puzzle-piece';
     }
 
+    function isRepeatBlockIdentifier(blockId) {
+        const id = String(blockId || '');
+        return id === 'repeat-custom' || /^repeat(?:-custom)?-\d+$/.test(id);
+    }
+
+    function getRepeatCountFromId(blockId) {
+        const id = String(blockId || '');
+        const match = id.match(/^repeat(?:-custom)?-(\d+)$/);
+        if (!match) return 0;
+        const count = Number(match[1]);
+        if (!Number.isFinite(count)) return 0;
+        return Math.max(1, Math.min(12, Math.floor(count)));
+    }
+
+    function buildRepeatExecutionId(count) {
+        const safeCount = Math.max(1, Math.min(12, Math.floor(Number(count) || 2)));
+        return `repeat-custom-${safeCount}`;
+    }
+
+    function setRepeatBlockCount(blockElement, repeatCount, updateLabel = true) {
+        if (!blockElement || !isRepeatBlockIdentifier(blockElement.dataset.baseId || blockElement.dataset.id)) {
+            return;
+        }
+
+        const safeCount = Math.max(1, Math.min(12, Math.floor(Number(repeatCount) || 2)));
+        blockElement.dataset.repeatCount = String(safeCount);
+        blockElement.dataset.id = buildRepeatExecutionId(safeCount);
+
+        if (updateLabel) {
+            const labelEl = blockElement.querySelector('.block-label');
+            if (labelEl) {
+                labelEl.textContent = `Repeat ${safeCount}`;
+            }
+        }
+    }
+
+    function ensureRepeatCountControl(blockElement) {
+        if (!blockElement || !isRepeatBlockIdentifier(blockElement.dataset.baseId || blockElement.dataset.id)) {
+            return;
+        }
+
+        const startingCount = Number(blockElement.dataset.repeatCount || getRepeatCountFromId(blockElement.dataset.id) || 2);
+        setRepeatBlockCount(blockElement, startingCount, true);
+
+        if (blockElement.querySelector('.repeat-count-select')) {
+            return;
+        }
+
+        const controlWrap = document.createElement('span');
+        controlWrap.className = 'repeat-count-wrap';
+
+        const countSelect = document.createElement('select');
+        countSelect.className = 'repeat-count-select';
+        countSelect.setAttribute('aria-label', 'Repeat count');
+
+        for (let count = 1; count <= 12; count += 1) {
+            const option = document.createElement('option');
+            option.value = String(count);
+            option.textContent = String(count);
+            countSelect.appendChild(option);
+        }
+
+        countSelect.value = String(Math.max(1, Math.min(12, startingCount)));
+
+        const swallow = (event) => {
+            event.stopPropagation();
+        };
+        countSelect.addEventListener('pointerdown', swallow);
+        countSelect.addEventListener('mousedown', swallow);
+        countSelect.addEventListener('touchstart', swallow, { passive: true });
+        countSelect.addEventListener('click', swallow);
+
+        countSelect.addEventListener('change', () => {
+            setRepeatBlockCount(blockElement, Number(countSelect.value), true);
+            userBlocks = Array.from(blocksContainer.querySelectorAll('.block')).map(getExecutionBlockIdFromElement);
+            resetFeedback();
+        });
+
+        controlWrap.appendChild(countSelect);
+        blockElement.appendChild(controlWrap);
+    }
+
+    function getExecutionBlockIdFromElement(blockElement) {
+        if (!blockElement) return '';
+        const baseId = String(blockElement.dataset.baseId || blockElement.dataset.id || '');
+        if (isRepeatBlockIdentifier(baseId)) {
+            const repeatCount = Number(blockElement.dataset.repeatCount || getRepeatCountFromId(blockElement.dataset.id) || 2);
+            return buildRepeatExecutionId(repeatCount);
+        }
+        return String(blockElement.dataset.id || baseId);
+    }
+
+    function enhanceWorkspaceBlock(blockElement) {
+        if (!blockElement) return;
+        if (isRepeatBlockIdentifier(blockElement.dataset.baseId || blockElement.dataset.id)) {
+            const defaultRepeat = Number(blockElement.dataset.defaultRepeat || 2);
+            if (!blockElement.dataset.repeatCount) {
+                blockElement.dataset.repeatCount = String(Math.max(1, Math.min(12, Math.floor(defaultRepeat))));
+            }
+            ensureRepeatCountControl(blockElement);
+            setRepeatBlockCount(blockElement, Number(blockElement.dataset.repeatCount || 2), true);
+        }
+    }
+
+    function refreshLoopVisualGroups() {
+        if (!blocksContainer) return;
+        const workspaceBlocks = Array.from(blocksContainer.querySelectorAll('.block'));
+
+        workspaceBlocks.forEach((blockEl) => {
+            blockEl.classList.remove('loop-visual-start', 'loop-visual-body');
+            const endPill = blockEl.querySelector('.loop-end-pill');
+            if (endPill) {
+                endPill.remove();
+            }
+        });
+
+        if (currentCategory !== 'loops') {
+            return;
+        }
+
+        workspaceBlocks.forEach((blockEl, index) => {
+            const executionId = getExecutionBlockIdFromElement(blockEl);
+            const repeatCount = getMissionRepeatCount(executionId);
+            if (repeatCount <= 0) return;
+
+            blockEl.classList.add('loop-visual-start');
+            const nextBlock = workspaceBlocks[index + 1];
+            if (!nextBlock) return;
+
+            nextBlock.classList.add('loop-visual-body');
+            const endPill = document.createElement('span');
+            endPill.className = 'loop-end-pill';
+            endPill.textContent = 'End Loop';
+            nextBlock.appendChild(endPill);
+        });
+    }
+
     function createBlockElement(block, options = {}) {
-        const { compactPalette = false } = options;
+        const { compactPalette = false, workspaceMode = false } = options;
         const blockElement = document.createElement('div');
         blockElement.className = `block block-${block.type} block-kid`;
         blockElement.dataset.id = block.id;
+        blockElement.dataset.baseId = block.id;
         blockElement.draggable = true;
         blockElement.setAttribute('title', block.text);
         blockElement.setAttribute('aria-label', block.text);
@@ -3255,6 +3608,18 @@ document.addEventListener('DOMContentLoaded', () => {
         label.className = 'block-label';
         label.textContent = block.text;
         blockElement.appendChild(label);
+
+        if (isRepeatBlockIdentifier(block.id)) {
+            const defaultCount = Number(block.defaultRepeat || getRepeatCountFromId(block.id) || 2);
+            blockElement.dataset.defaultRepeat = String(Math.max(1, Math.min(12, Math.floor(defaultCount))));
+            if (workspaceMode) {
+                setRepeatBlockCount(blockElement, defaultCount, true);
+                ensureRepeatCountControl(blockElement);
+            } else {
+                blockElement.dataset.id = 'repeat-custom';
+                label.textContent = 'Repeat';
+            }
+        }
         
         // Add click handler for easier mobile use
         blockElement.addEventListener('click', () => {
@@ -3268,12 +3633,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function addBlockToWorkspace(block) {
-        const blockElement = createBlockElement(block);
+        const blockElement = createBlockElement(block, { workspaceMode: true });
         blocksContainer.appendChild(blockElement);
-        userBlocks.push(block.id);
+        userBlocks.push(getExecutionBlockIdFromElement(blockElement));
         
         // If this is a nested block (like a loop), add a container for nested blocks
-        if (block.type === 'loop' || block.type === 'conditions' || block.type === 'procedure') {
+        if (block.type === 'conditions' || block.type === 'procedure') {
             const containerElement = document.createElement('div');
             containerElement.className = 'block-container';
             containerElement.dataset.parentId = block.id;
@@ -3283,6 +3648,7 @@ document.addEventListener('DOMContentLoaded', () => {
         playSound('click');
         resetFeedback();
         updateWorkspacePlaceholder();
+        refreshLoopVisualGroups();
         // Keep the latest added block visible when workspace gets long.
         const scroller = blocksContainer || workspace;
         scroller.scrollTop = scroller.scrollHeight;
@@ -3301,9 +3667,14 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const syncWorkspaceBlocks = (playDropSound = false) => {
-            userBlocks = Array.from(blocksContainer.querySelectorAll('.block')).map((el) => el.dataset.id);
+            const workspaceBlocks = Array.from(blocksContainer.querySelectorAll('.block'));
+            workspaceBlocks.forEach((blockEl) => {
+                enhanceWorkspaceBlock(blockEl);
+            });
+            userBlocks = workspaceBlocks.map(getExecutionBlockIdFromElement);
             resetFeedback();
             updateWorkspacePlaceholder();
+            refreshLoopVisualGroups();
             triggerDropReplaceEffect();
             if (playDropSound) {
                 playSound('click');
@@ -3363,9 +3734,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     const removedBlock = event.item;
                     addBlockToDustbin(removedBlock);
                     removedBlock.remove();
-                    userBlocks = Array.from(blocksContainer.querySelectorAll('.block')).map((el) => el.dataset.id);
+                    userBlocks = Array.from(blocksContainer.querySelectorAll('.block')).map(getExecutionBlockIdFromElement);
                     resetFeedback();
                     updateWorkspacePlaceholder();
+                    refreshLoopVisualGroups();
                     playSound('click');
                 },
                 onMove: () => {
@@ -3597,50 +3969,98 @@ document.addEventListener('DOMContentLoaded', () => {
             checkSolution();
         });
     }
+
+    function buildExecutionQueue(challenge) {
+        const queue = [];
+        const blockIds = userBlocks.slice();
+
+        for (let index = 0; index < blockIds.length; index += 1) {
+            const blockId = blockIds[index];
+            const repeatCount = getMissionRepeatCount(blockId);
+            const nextBlockId = blockIds[index + 1];
+            const nextCommand = parseMissionCommand(nextBlockId);
+
+            if (repeatCount > 0 && nextBlockId && nextCommand !== 'other' && nextCommand !== 'repeat') {
+                queue.push({
+                    sourceIndex: index,
+                    blockId,
+                    label: getBlockLabelById(challenge, blockId)
+                });
+                for (let repeatStep = 1; repeatStep <= repeatCount; repeatStep += 1) {
+                    queue.push({
+                        sourceIndex: index + 1,
+                        blockId: nextBlockId,
+                        label: `${getBlockLabelById(challenge, nextBlockId)} (${repeatStep}/${repeatCount})`
+                    });
+                }
+                index += 1;
+                continue;
+            }
+
+            queue.push({
+                sourceIndex: index,
+                blockId,
+                label: getBlockLabelById(challenge, blockId)
+            });
+        }
+
+        return queue;
+    }
     
     function animateExecution(onComplete) {
         const challenge = getCurrentChallenge();
-        const blocks = blocksContainer.querySelectorAll('.block');
+        const blocks = Array.from(blocksContainer.querySelectorAll('.block'));
+        const executionQueue = buildExecutionQueue(challenge);
+        const stepDelay = currentCategory === 'loops' ? 780 : 640;
         
         // Create animation area content
         animationArea.innerHTML = '';
         const animationTitle = document.createElement('h5');
         animationTitle.textContent = 'Program Output:';
         animationArea.appendChild(animationTitle);
-        
-        // Run through each block and create animation steps
-        blocks.forEach((block, index) => {
-            setTimeout(() => {
-                // Highlight current block
-                blocks.forEach(b => b.classList.remove('block-running'));
-                block.classList.add('block-running');
-                
-                // Add step to animation area
-                const step = document.createElement('div');
-                step.className = 'animation-step';
-                step.innerHTML = `<i class="fas fa-${block.querySelector('.icon').className.split('fa-')[1]}"></i> ${block.textContent.trim()}`;
-                animationArea.appendChild(step);
-                animationArea.scrollTop = animationArea.scrollHeight;
 
-                // Pilot mission story animation in the image area
-                animateMissionStoryStep(index, block, challenge);
-                
-                // Play sound
-                playSound('click');
-                
-                // Last step - show completion
-                if (index === blocks.length - 1) {
-                    setTimeout(() => {
-                        blocks.forEach(b => b.classList.remove('block-running'));
-                        completeMissionStoryRun(challenge);
-                        setFeedback('Program completed! Now check your solution.', 'success');
-                        if (typeof onComplete === 'function') {
-                            onComplete();
-                        }
-                    }, 1000);
+        if (!executionQueue.length) {
+            setFeedback('Program completed! Now check your solution.', 'success');
+            if (typeof onComplete === 'function') {
+                onComplete();
+            }
+            return;
+        }
+
+        const runStep = (queueIndex) => {
+            if (queueIndex >= executionQueue.length) {
+                blocks.forEach((block) => block.classList.remove('block-running'));
+                completeMissionStoryRun(challenge);
+                setFeedback('Program completed! Now check your solution.', 'success');
+                if (typeof onComplete === 'function') {
+                    onComplete();
                 }
-            }, index * 1000);
-        });
+                return;
+            }
+
+            const currentStep = executionQueue[queueIndex];
+            const sourceBlock = blocks[currentStep.sourceIndex];
+
+            blocks.forEach((block) => block.classList.remove('block-running'));
+            if (sourceBlock) {
+                sourceBlock.classList.add('block-running');
+            }
+
+            const iconClass = sourceBlock?.querySelector('.icon')?.className || 'fas fa-play';
+            const iconName = iconClass.split('fa-').pop();
+            const step = document.createElement('div');
+            step.className = 'animation-step';
+            step.innerHTML = `<i class="fas fa-${iconName}"></i> ${currentStep.label}`;
+            animationArea.appendChild(step);
+            animationArea.scrollTop = animationArea.scrollHeight;
+
+            animateMissionStoryStep(currentStep.sourceIndex, currentStep.blockId, challenge, currentStep.label);
+            playSound('click');
+
+            setTimeout(() => runStep(queueIndex + 1), stepDelay);
+        };
+
+        runStep(0);
     }
 
     function celebrateWorkspace() {
@@ -3651,8 +4071,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function getBlockLabelById(challenge, blockId) {
-        const match = challenge?.blocks?.find((block) => block.id === blockId);
-        return match?.text || blockId;
+        const id = String(blockId || '');
+        const repeatCount = getRepeatCountFromId(id);
+        if (repeatCount > 0) {
+            return `Repeat ${repeatCount}`;
+        }
+
+        const match = challenge?.blocks?.find((block) => block.id === id);
+        if (match?.text) {
+            return match.text;
+        }
+
+        const baseId = id.replace(/^repeat-custom-\d+$/, 'repeat-custom');
+        const fallback = challenge?.blocks?.find((block) => block.id === baseId);
+        return fallback?.text || blockId;
     }
 
     function showQuickHint() {
@@ -3914,6 +4346,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resetFeedback();
         resetAnimationArea();
         updateWorkspacePlaceholder();
+        refreshLoopVisualGroups();
         renderMissionStoryPanel(getCurrentChallenge());
         playSound('click');
     }
@@ -4141,49 +4574,111 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (currentCategory === 'loops') {
             let generalLoopsHelp = `
                 <h5>Understanding Loops:</h5>
-                <p>Loops are special blocks that let you repeat actions without writing them over and over again!</p>
+                <p>Loops let you repeat the next block so you can write shorter code.</p>
                 <ul>
-                    <li>A loop block (pink color) tells the computer to repeat something multiple times</li>
-                    <li>The blocks that come after the loop are the actions that will be repeated</li>
-                    <li>Loops help make your code shorter and more efficient</li>
+                    <li><strong>Repeat 2 / 3 / 4</strong> repeats the next block that many times</li>
+                    <li>Use North, South, East, West to move one tile each step</li>
+                    <li>Use Pick/Drop only when robot is on the correct objective tile</li>
                 </ul>
             `;
             
             // Add level-specific help
             const loopsHelpTexts = {
                 1: `
-                    <h5>Paint a Fence Help:</h5>
-                    <p>In this challenge, you need to paint 5 fence posts.</p>
+                    <h5>Frozen Shortcut Help:</h5>
+                    <p>Start with the repeat block, then North.</p>
                     <ol>
-                        <li>Use the "Repeat 5 times" block to create a loop</li>
-                        <li>Add the "Paint Post" action after it</li>
-                        <li>This tells the computer: "Paint a post, then do it again 4 more times!"</li>
+                        <li>Use <strong>Repeat 2</strong> then <strong>North</strong></li>
+                        <li>After moving, use <strong>Pick Up Treasure</strong></li>
                     </ol>
                 `,
-                3: `
-                    <h5>Draw a Square Help:</h5>
-                    <p>A square has 4 equal sides and 4 right angles.</p>
+                4: `
+                    <h5>Star Harbor Rescue Help:</h5>
+                    <p>Try grouping same-direction moves with one repeat.</p>
                     <ol>
-                        <li>Add the "Repeat 4 times" loop block first</li>
-                        <li>Then add the "Draw Line" action</li>
-                        <li>Finally add "Turn Right 90°" to make a corner</li>
-                        <li>When repeated 4 times, this creates all four sides of a square!</li>
+                        <li>Use repeat for longer North or East runs</li>
+                        <li>Avoid blocked tiles and finish with Pick Up</li>
+                    </ol>
+                `,
+                5: `
+                    <h5>Rover Sample Run Help:</h5>
+                    <p>Collect objectives in order, then dock.</p>
+                    <ol>
+                        <li>Reach <strong>Sample 1</strong>, then use Collect</li>
+                        <li>Then collect <strong>Sample 2</strong></li>
+                        <li>Finish at <strong>Dock</strong> and use Dock action</li>
                     </ol>
                 `,
                 6: `
-                    <h5>Robot Path Help:</h5>
-                    <p>The robot needs to navigate a zigzag path with repeated movements.</p>
+                    <h5>School Bus Route Help:</h5>
+                    <p>Pick in order, then drop at school.</p>
                     <ol>
-                        <li>Use "Repeat 3 times" to create a loop for the zigzag pattern</li>
-                        <li>Inside this loop, add these actions in order:</li>
-                        <ul>
-                            <li>Move Forward (moves horizontally)</li>
-                            <li>Turn Right (changes direction downward)</li>
-                            <li>Move Forward (moves downward)</li>
-                            <li>Turn Left (changes direction horizontally again)</li>
-                        </ul>
+                        <li>Pick at <strong>Stop 1</strong></li>
+                        <li>Pick at <strong>Stop 2</strong></li>
+                        <li>Drop at <strong>School</strong></li>
                     </ol>
-                    <p>This creates a perfect zigzag pattern to reach the finish!</p>
+                `,
+                8: `
+                    <h5>Final Relay Help:</h5>
+                    <p>This level has ordered objectives with loop shortcuts.</p>
+                    <ol>
+                        <li>Collect <strong>Point 1</strong>, then <strong>Point 2</strong></li>
+                        <li>Finally dock at <strong>Dock</strong> with Drop action</li>
+                    </ol>
+                `,
+                9: `
+                    <h5>Zigzag Ice Run Help:</h5>
+                    <p>Use repeat blocks for long move runs.</p>
+                    <ol>
+                        <li>Group up-moves with one repeat</li>
+                        <li>Group right-moves with one repeat</li>
+                        <li>Finish on gem tile, then Pick Up</li>
+                    </ol>
+                `,
+                10: `
+                    <h5>Broken Bridge Patrol Help:</h5>
+                    <p>This map needs loop segments plus one correction step.</p>
+                    <ol>
+                        <li>Cross first with repeated East</li>
+                        <li>Climb with repeated North</li>
+                        <li>Use Pick Up only on patrol gem</li>
+                    </ol>
+                `,
+                11: `
+                    <h5>Twin Crystal Pickup Help:</h5>
+                    <p>Order matters: Crystal 1 first, then Crystal 2.</p>
+                    <ol>
+                        <li>Reach Crystal 1 and Pick</li>
+                        <li>Then move to Crystal 2 and Pick</li>
+                        <li>Use repeats for long East/North runs</li>
+                    </ol>
+                `,
+                12: `
+                    <h5>Moon Crater Detour Help:</h5>
+                    <p>Exact repeat count is important here.</p>
+                    <ol>
+                        <li>Use one long West repeat</li>
+                        <li>Then one long North repeat</li>
+                        <li>Pick Up only at moon gem</li>
+                    </ol>
+                `,
+                13: `
+                    <h5>Shuttle Stop Relay Help:</h5>
+                    <p>Complete all stops in order.</p>
+                    <ol>
+                        <li>Pick at Stop 1</li>
+                        <li>Pick at Stop 2</li>
+                        <li>Dock at final point with Dock action</li>
+                    </ol>
+                `,
+                14: `
+                    <h5>Mega Rescue Grid Help:</h5>
+                    <p>Hard mission with three ordered objectives.</p>
+                    <ol>
+                        <li>Pick <strong>Gem 1</strong></li>
+                        <li>Pick <strong>Gem 2</strong></li>
+                        <li>Reach <strong>Dock</strong> and use Drop action</li>
+                    </ol>
                 `
             };
             
