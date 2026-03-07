@@ -2,7 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // --- DATA DEFINITIONS ---
-    const IMAGE_CACHE_VERSION = '20260301o';
+    const IMAGE_CACHE_VERSION = '20260308d';
     const SAFE_BLOCK_ICONS = new Set([
         'arrow-up', 'arrow-down', 'arrow-left', 'arrow-right', 'redo', 'rotate',
         'code-branch', 'cubes', 'play', 'hand', 'gem', 'robot', 'school',
@@ -16,7 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
         'scissors', 'circle-play', 'wind', 'calendar', 'building', 'id-card',
         'receipt', 'glasses', 'fire', 'campground', 'database', 'satellite',
         'laptop-code', 'tv', 'users', 'envelope', 'birthday-cake', 'door-open',
-        'circle', 'circle-dot', 'bullseye', 'carrot', 'hat-wizard', 'shovel'
+        'circle', 'circle-dot', 'bullseye', 'carrot', 'hat-wizard', 'shovel', 'umbrella',
+        'basket-shopping'
+    ]);
+    const TRAFFIC_LIGHT_LEVEL_BLOCK_IDS = new Set([
+        'if-green-light', 'if-yellow-light', 'if-red-light', 'drive', 'wait', 'stop'
     ]);
     
     // Challenges organized by category and level
@@ -805,342 +809,313 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         },
         conditions: {
-            // Level 1 - Weather Checker (Very basic condition for ages 5-6)
+            // Level 1 - Weather Dress Code
             1: {
-                title: "Weather Checker",
-                description: "Check the weather and decide what to wear.",
-                goal: "Create a program that picks the right clothes based on the weather.",
-                image: "./images/weather-checker.svg", // Updated to a proper image
+                title: "Weather Dress Code",
+                description: "Match each weather condition with the correct clothing choice.",
+                goal: "Build correct IF-THEN rules for sunny and rainy weather.",
+                image: "./images-real/conditions-1.png",
                 blocks: [
                     { id: 'if-sunny', type: 'conditions', text: 'If Sunny', icon: 'sun' },
                     { id: 'if-rainy', type: 'conditions', text: 'If Rainy', icon: 'cloud-rain' },
                     { id: 'wear-tshirt', type: 'motion', text: 'Wear T-shirt', icon: 'tshirt' },
-                    { id: 'wear-raincoat', type: 'motion', text: 'Wear Raincoat', icon: 'umbrella' },
+                    { id: 'wear-raincoat', type: 'motion', text: 'Wear Raincoat', icon: 'raincoat-image' }
                 ],
                 solution: ['if-sunny', 'wear-tshirt', 'if-rainy', 'wear-raincoat'],
+                conditionRules: [
+                    { condition: 'if-sunny', action: 'wear-tshirt' },
+                    { condition: 'if-rainy', action: 'wear-raincoat' }
+                ],
+                enforceConditionOrder: true,
                 isNested: true
             },
-            // Level 2 - Fruit Sorter (Basic condition)
+            // Level 2 - Fruit Basket Match
             2: {
-                title: "Fruit Sorter",
-                description: "Sort different fruits into their correct baskets.",
-                goal: "Create a program that puts each type of fruit in the right basket.",
-                image: "./images/count-apples.svg",
+                title: "Fruit Basket Match",
+                description: "Use IF rules to place each fruit in the right basket.",
+                goal: "Write correct IF-THEN pairs for apple and banana.",
+                image: "./images-real/fruitbasket.png",
                 blocks: [
                     { id: 'if-apple', type: 'conditions', text: 'If Apple', icon: 'apple-alt' },
-                    { id: 'if-banana', type: 'conditions', text: 'If Banana', icon: 'carrot' },
-                    { id: 'put-in-red-basket', type: 'motion', text: 'Put in Red Basket', icon: 'shopping-basket' },
-                    { id: 'put-in-yellow-basket', type: 'motion', text: 'Put in Yellow Basket', icon: 'shopping-basket' }
+                    { id: 'if-banana', type: 'conditions', text: 'If Banana', icon: 'banana-emoji' },
+                    { id: 'put-in-red-basket', type: 'motion', text: 'Red Basket', icon: 'basket-shopping' },
+                    { id: 'put-in-yellow-basket', type: 'motion', text: 'Yellow Basket', icon: 'basket-shopping' }
                 ],
                 solution: ['if-apple', 'put-in-red-basket', 'if-banana', 'put-in-yellow-basket'],
+                conditionRules: [
+                    { condition: 'if-apple', action: 'put-in-red-basket' },
+                    { condition: 'if-banana', action: 'put-in-yellow-basket' }
+                ],
+                enforceConditionOrder: true,
                 isNested: true
             },
-            // Level 3 - Robot Direction (Basic condition)
+            // Level 3 - Traffic Light Coach
             3: {
-                title: "Robot Direction",
-                description: "Help the robot choose which way to go based on signs.",
-                goal: "Program the robot to follow the correct path signs.",
-                image: "./images/robot-path.svg",
+                title: "Traffic Light Coach",
+                description: "Set safety rules for how a car reacts to traffic lights.",
+                goal: "Use IF rules so red means stop, yellow means wait, and green means drive.",
+                image: "./images-real/traffic_light.png",
                 blocks: [
-                    { id: 'if-arrow-right', type: 'conditions', text: 'If Arrow Points Right', icon: 'arrow-right' },
-                    { id: 'if-arrow-left', type: 'conditions', text: 'If Arrow Points Left', icon: 'arrow-left' },
-                    { id: 'go-right', type: 'motion', text: 'Go Right', icon: 'arrow-right' },
-                    { id: 'go-left', type: 'motion', text: 'Go Left', icon: 'arrow-left' }
+                    { id: 'if-green-light', type: 'conditions', text: 'If Green Light', icon: 'traffic-green' },
+                    { id: 'drive', type: 'motion', text: 'Drive', icon: 'car' },
+                    { id: 'if-yellow-light', type: 'conditions', text: 'If Yellow Light', icon: 'traffic-yellow' },
+                    { id: 'wait', type: 'motion', text: 'Wait', icon: 'wait-timer' },
+                    { id: 'if-red-light', type: 'conditions', text: 'If Red Light', icon: 'traffic-red' },
+                    { id: 'stop', type: 'motion', text: 'Stop', icon: 'stop-hand' }
                 ],
-                solution: ['if-arrow-right', 'go-right', 'if-arrow-left', 'go-left'],
+                solution: ['if-red-light', 'stop', 'if-yellow-light', 'wait', 'if-green-light', 'drive'],
+                conditionRules: [
+                    { condition: 'if-red-light', action: 'stop' },
+                    { condition: 'if-yellow-light', action: 'wait' },
+                    { condition: 'if-green-light', action: 'drive' }
+                ],
+                enforceConditionOrder: true,
                 isNested: true
             },
-            // Level 4 - Traffic Light (Basic condition)
+            // Level 4 - Number Sorter
             4: {
-                title: "Traffic Light",
-                description: "Program a car to respond correctly to traffic light signals.",
-                goal: "Make the car stop or go depending on the traffic light color.",
-                image: "./images/traffic-light.svg", // Updated to a proper image
-                blocks: [
-                    { id: 'if-green-light', type: 'conditions', text: 'If Green Light', icon: 'circle' },
-                    { id: 'if-red-light', type: 'conditions', text: 'If Red Light', icon: 'circle' },
-                    { id: 'drive-forward', type: 'motion', text: 'Drive Forward', icon: 'car-side' },
-                    { id: 'stop-car', type: 'motion', text: 'Stop Car', icon: 'hand-paper' }
-                ],
-                solution: ['if-green-light', 'drive-forward', 'if-red-light', 'stop-car'],
-                isNested: true
-            },
-            // Level 5 - Pet Care (Basic condition)
-            5: {
-                title: "Pet Care",
-                description: "Take care of different pets with their specific needs.",
-                goal: "Give each pet what they need based on the type of animal.",
-                image: "./images/pet-care.svg", // Updated to a proper image
-                blocks: [
-                    { id: 'if-dog', type: 'conditions', text: 'If Dog', icon: 'dog' },
-                    { id: 'if-fish', type: 'conditions', text: 'If Fish', icon: 'fish' },
-                    { id: 'give-bone', type: 'motion', text: 'Give Bone', icon: 'bone' },
-                    { id: 'add-water', type: 'motion', text: 'Add Water', icon: 'water' }
-                ],
-                solution: ['if-dog', 'give-bone', 'if-fish', 'add-water'],
-                isNested: true
-            },
-            // Level 6 - Shape Matcher (Intermediate condition)
-            6: {
-                title: "Shape Matcher",
-                description: "Sort different shapes into their matching containers.",
-                goal: "Put each shape in its correctly shaped container.",
-                image: "./images/shape-sorter.svg", // Updated to a proper image
-                blocks: [
-                    { id: 'if-square', type: 'conditions', text: 'If Square', icon: 'square' },
-                    { id: 'if-circle', type: 'conditions', text: 'If Circle', icon: 'circle' },
-                    { id: 'if-triangle', type: 'conditions', text: 'If Triangle', icon: 'play' },
-                    { id: 'put-in-square-hole', type: 'motion', text: 'Put in Square Hole', icon: 'square' },
-                    { id: 'put-in-circle-hole', type: 'motion', text: 'Put in Circle Hole', icon: 'circle' },
-                    { id: 'put-in-triangle-hole', type: 'motion', text: 'Put in Triangle Hole', icon: 'play' }
-                ],
-                solution: ['if-square', 'put-in-square-hole', 'if-circle', 'put-in-circle-hole', 'if-triangle', 'put-in-triangle-hole'],
-                isNested: true
-            },
-            // Level 7 - Number Sorter (Intermediate condition)
-            7: {
                 title: "Number Sorter",
-                description: "Sort numbers into categories: odd, even, or zero.",
-                goal: "Correctly identify and categorize each number.",
-                image: "./images/number-sorter.svg", // Updated to a proper image
+                description: "Sort numbers into correct baskets using IF rules.",
+                goal: "Build 3 ordered IF-THEN rules: even, odd, and zero.",
+                image: "./images/number-sorter.svg",
                 blocks: [
-                    { id: 'if-even', type: 'conditions', text: 'If Even Number', icon: 'hashtag' },
-                    { id: 'if-odd', type: 'conditions', text: 'If Odd Number', icon: 'hashtag' },
-                    { id: 'if-zero', type: 'conditions', text: 'If Zero', icon: '0' },
-                    { id: 'put-in-even-group', type: 'motion', text: 'Put in Even Group', icon: 'layer-group' },
-                    { id: 'put-in-odd-group', type: 'motion', text: 'Put in Odd Group', icon: 'layer-group' },
-                    { id: 'put-in-special-group', type: 'motion', text: 'Put in Special Group', icon: 'star' }
+                    { id: 'if-even', type: 'conditions', text: 'If Even Number', icon: 'circle' },
+                    { id: 'if-odd', type: 'conditions', text: 'If Odd Number', icon: 'circle-dot' },
+                    { id: 'if-zero', type: 'conditions', text: 'If Zero', icon: 'bullseye' },
+                    { id: 'put-in-even-group', type: 'motion', text: 'Even Basket', icon: 'basket-shopping' },
+                    { id: 'put-in-odd-group', type: 'motion', text: 'Odd Basket', icon: 'basket-shopping' },
+                    { id: 'put-in-special-group', type: 'motion', text: 'Zero Basket', icon: 'basket-shopping' }
                 ],
                 solution: ['if-even', 'put-in-even-group', 'if-odd', 'put-in-odd-group', 'if-zero', 'put-in-special-group'],
+                conditionRules: [
+                    { condition: 'if-even', action: 'put-in-even-group' },
+                    { condition: 'if-odd', action: 'put-in-odd-group' },
+                    { condition: 'if-zero', action: 'put-in-special-group' }
+                ],
+                enforceConditionOrder: true,
                 isNested: true
             },
-            // Level 8 - Temperature Advisor (Intermediate condition)
+            // Batch 2 starts here (Levels 5-9): multi-condition + order
+            5: {
+                title: "Weather Pack Planner",
+                description: "Pack items using one IF-ELSE weather decision.",
+                goal: "Build IF rain, ELSE sunny with correct items.",
+                image: "./images-real/conditions-5.png",
+                conditionMode: 'branch-chain',
+                blocks: [
+                    { id: 'if-rain-alert', type: 'conditions', text: 'If Rain Alert', icon: 'cloud-rain' },
+                    { id: 'pack-raincoat', type: 'motion', text: 'Pack Raincoat', icon: 'raincoat-image' },
+                    { id: 'else-sun-alert', type: 'conditions', text: 'Else (Sun Alert)', icon: 'sun' },
+                    { id: 'pack-cap', type: 'motion', text: 'Pack Cap', icon: 'hat-wizard' }
+                ],
+                solution: ['if-rain-alert', 'pack-raincoat', 'else-sun-alert', 'pack-cap'],
+                isNested: true
+            },
+            6: {
+                title: "Lunch Box Logic",
+                description: "Pick lunch using one IF-ELSE decision.",
+                goal: "Build IF sports day, ELSE regular day with correct item.",
+                image: "./images-real/conditions-6.png",
+                conditionMode: 'branch-chain',
+                blocks: [
+                    { id: 'if-sports-day', type: 'conditions', text: 'If Sports Day', icon: 'calendar' },
+                    { id: 'add-water-bottle', type: 'motion', text: 'Add Water Bottle', icon: 'droplet' },
+                    { id: 'else-regular-day', type: 'conditions', text: 'Else (Regular Day)', icon: 'calendar' },
+                    { id: 'add-sandwich', type: 'motion', text: 'Add Sandwich', icon: 'bread-slice' }
+                ],
+                solution: ['if-sports-day', 'add-water-bottle', 'else-regular-day', 'add-sandwich'],
+                isNested: true
+            },
+            7: {
+                title: "School Bus Safety Chain",
+                description: "Use an IF-ELSE IF-ELSE safety chain for the bus ride.",
+                goal: "Build IF stop sign, ELSE IF bus arrives, ELSE seat-belt sign.",
+                image: "./images-real/conditions-7.png",
+                conditionMode: 'branch-chain',
+                blocks: [
+                    { id: 'if-stop-sign', type: 'conditions', text: 'If Stop Sign', icon: 'traffic-red' },
+                    { id: 'wait-at-line', type: 'motion', text: 'Wait at Line', icon: 'stop-hand' },
+                    { id: 'else-if-bus-arrives', type: 'conditions', text: 'Else If Bus Arrives', icon: 'car' },
+                    { id: 'board-bus', type: 'motion', text: 'Board Bus', icon: 'car' },
+                    { id: 'else-seat-belt-sign', type: 'conditions', text: 'Else (Seat-Belt Sign)', icon: 'id-card' },
+                    { id: 'buckle-up', type: 'motion', text: 'Buckle Up', icon: 'id-card' }
+                ],
+                solution: ['if-stop-sign', 'wait-at-line', 'else-if-bus-arrives', 'board-bus', 'else-seat-belt-sign', 'buckle-up'],
+                isNested: true
+            },
             8: {
-                title: "Temperature Advisor",
-                description: "Give advice based on the temperature outside.",
-                goal: "Provide the right clothing recommendation for different temperatures.",
-                image: "./images/temperature-advisor.svg", // Updated to a proper image
+                title: "Science Lab Alerts",
+                description: "Use an IF-ELSE IF-ELSE safety chain in the lab.",
+                goal: "Build IF goggles sign, ELSE IF spill alert, ELSE fire sign.",
+                image: "./images-real/conditions-8.png",
+                conditionMode: 'branch-chain',
                 blocks: [
-                    { id: 'if-hot', type: 'conditions', text: 'If Hot (> 30°C)', icon: 'temperature-high' },
-                    { id: 'if-warm', type: 'conditions', text: 'If Warm (15-30°C)', icon: 'temperature-high' },
-                    { id: 'if-cold', type: 'conditions', text: 'If Cold (< 15°C)', icon: 'temperature-low' },
-                    { id: 'wear-light-clothes', type: 'motion', text: 'Wear Light Clothes', icon: 'tshirt' },
-                    { id: 'wear-normal-clothes', type: 'motion', text: 'Wear Regular Clothes', icon: 'tshirt' },
-                    { id: 'wear-jacket', type: 'motion', text: 'Wear Jacket', icon: 'user' }
+                    { id: 'if-goggles-sign', type: 'conditions', text: 'If Goggles Sign', icon: 'eye' },
+                    { id: 'wear-goggles', type: 'motion', text: 'Wear Goggles', icon: 'glasses' },
+                    { id: 'else-if-spill-alert', type: 'conditions', text: 'Else If Spill Alert', icon: 'droplet' },
+                    { id: 'wipe-spill', type: 'motion', text: 'Wipe Spill', icon: 'broom' },
+                    { id: 'else-fire-sign', type: 'conditions', text: 'Else (Fire Sign)', icon: 'fire' },
+                    { id: 'call-teacher', type: 'motion', text: 'Call Teacher', icon: 'users' }
                 ],
-                solution: ['if-hot', 'wear-light-clothes', 'if-warm', 'wear-normal-clothes', 'if-cold', 'wear-jacket'],
+                solution: ['if-goggles-sign', 'wear-goggles', 'else-if-spill-alert', 'wipe-spill', 'else-fire-sign', 'call-teacher'],
                 isNested: true
             },
-            // Level 9 - Quiz Game (Intermediate condition)
             9: {
-                title: "Quiz Game",
-                description: "Create a quiz game that responds to correct and incorrect answers.",
-                goal: "Give appropriate feedback based on the answer given.",
-                image: "./images/quiz-game.svg", // Updated to a proper image
+                title: "Robo Rescue Console",
+                description: "Use an IF-ELSE IF-ELSE IF-ELSE rescue chain.",
+                goal: "Build IF battery low, ELSE IF obstacle, ELSE IF target, ELSE safe path.",
+                image: "./images-real/conditions-9.png",
+                conditionMode: 'branch-chain',
                 blocks: [
-                    { id: 'if-correct-answer', type: 'conditions', text: 'If Answer Correct', icon: 'check' },
-                    { id: 'if-wrong-answer', type: 'conditions', text: 'If Answer Wrong', icon: 'times' },
-                    { id: 'if-no-answer', type: 'conditions', text: 'If No Answer', icon: 'question' },
-                    { id: 'show-congratulation', type: 'motion', text: 'Show Congratulation', icon: 'trophy' },
-                    { id: 'show-hint', type: 'motion', text: 'Show Hint', icon: 'lightbulb' },
-                    { id: 'show-reminder', type: 'motion', text: 'Show Reminder', icon: 'bell' }
+                    { id: 'if-battery-low', type: 'conditions', text: 'If Battery Low', icon: 'bolt' },
+                    { id: 'charge-bot', type: 'motion', text: 'Charge Bot', icon: 'bolt' },
+                    { id: 'else-if-obstacle-ahead', type: 'conditions', text: 'Else If Obstacle Ahead', icon: 'map' },
+                    { id: 'turn-right-safe', type: 'motion', text: 'Turn Right', icon: 'arrow-right' },
+                    { id: 'else-if-target-found', type: 'conditions', text: 'Else If Target Found', icon: 'gem' },
+                    { id: 'pick-signal', type: 'motion', text: 'Pick Signal', icon: 'hand' },
+                    { id: 'else-safe-path', type: 'conditions', text: 'Else (Safe Path)', icon: 'check-circle' },
+                    { id: 'move-forward-safe', type: 'motion', text: 'Move Forward', icon: 'arrow-up' }
                 ],
-                solution: ['if-correct-answer', 'show-congratulation', 'if-wrong-answer', 'show-hint', 'if-no-answer', 'show-reminder'],
+                solution: [
+                    'if-battery-low', 'charge-bot',
+                    'else-if-obstacle-ahead', 'turn-right-safe',
+                    'else-if-target-found', 'pick-signal',
+                    'else-safe-path', 'move-forward-safe'
+                ],
                 isNested: true
             },
-            // Level 10 - Robot Obstacle Course (Advanced condition)
             10: {
-                title: "Robot Obstacle Course",
-                description: "Program a robot to navigate through different obstacles.",
-                goal: "Help the robot avoid obstacles and reach the finish line.",
-                image: "./images/robot-obstacle.svg",
+                title: "Jungle Bridge Rescue",
+                description: "Use nested IF-ELSE logic to choose bridge or detour.",
+                goal: "If obstacle: if bridge open cross bridge, else take detour; else move forward.",
+                image: "./images-real/conditions-10.svg",
+                conditionMode: 'nested-if-else',
                 blocks: [
-                    { id: 'if-wall-ahead', type: 'conditions', text: 'If Wall Ahead', icon: 'ban' },
-                    { id: 'if-water-ahead', type: 'conditions', text: 'If Water Ahead', icon: 'water' },
-                    { id: 'if-finish-line', type: 'conditions', text: 'If Finish Line', icon: 'flag-checkered' },
-                    { id: 'turn-around', type: 'motion', text: 'Turn Around', icon: 'undo' },
-                    { id: 'jump-over', type: 'motion', text: 'Jump Over', icon: 'running' },
-                    { id: 'celebrate-finish', type: 'motion', text: 'Celebrate', icon: 'star' }
+                    { id: 'if-obstacle', type: 'conditions', text: 'If Obstacle', icon: 'map' },
+                    { id: 'if-bridge-open', type: 'conditions', text: 'If Bridge Open', icon: 'check-circle' },
+                    { id: 'cross-bridge', type: 'motion', text: 'Cross Bridge', icon: 'arrow-right' },
+                    { id: 'else-bridge-closed', type: 'conditions', text: 'Else Bridge Closed', icon: 'circle-xmark' },
+                    { id: 'take-detour', type: 'motion', text: 'Take Detour', icon: 'map' },
+                    { id: 'else-path-clear', type: 'conditions', text: 'Else Path Clear', icon: 'check-circle' },
+                    { id: 'move-forward', type: 'motion', text: 'Move Forward', icon: 'arrow-up' }
                 ],
-                solution: ['if-wall-ahead', 'turn-around', 'if-water-ahead', 'jump-over', 'if-finish-line', 'celebrate-finish'],
+                solution: [
+                    'if-obstacle',
+                    'if-bridge-open',
+                    'cross-bridge',
+                    'else-bridge-closed',
+                    'take-detour',
+                    'else-path-clear',
+                    'move-forward'
+                ],
                 isNested: true
             },
-            // Level 11 - Color Mixer (Advanced condition)
             11: {
-                title: "Color Mixer",
-                description: "Create different colors by mixing primary colors based on conditions.",
-                goal: "Mix the right colors based on what's needed for each painting.",
-                image: "./images/color-mixer.svg",
+                title: "Space Suit Selector",
+                description: "Pick the right space suit based on planet temperature.",
+                goal: "If cold -> thermal, else if hot -> cooling, else -> explorer suit.",
+                image: "./images-real/conditions-11.png",
+                conditionMode: 'if-else-if-else',
                 blocks: [
-                    { id: 'if-need-orange', type: 'conditions', text: 'If Need Orange', icon: 'palette' },
-                    { id: 'if-need-purple', type: 'conditions', text: 'If Need Purple', icon: 'palette' },
-                    { id: 'if-need-green', type: 'conditions', text: 'If Need Green', icon: 'palette' },
-                    { id: 'mix-red-yellow', type: 'motion', text: 'Mix Red & Yellow', icon: 'fill-drip' },
-                    { id: 'mix-red-blue', type: 'motion', text: 'Mix Red & Blue', icon: 'fill-drip' },
-                    { id: 'mix-blue-yellow', type: 'motion', text: 'Mix Blue & Yellow', icon: 'fill-drip' }
+                    { id: 'if-cold', type: 'conditions', text: 'If Cold', icon: 'snowflake' },
+                    { id: 'wear-thermal-suit', type: 'motion', text: 'Wear Thermal Suit', icon: 'shirt' },
+                    { id: 'else-if-hot', type: 'conditions', text: 'Else If Hot', icon: 'fire' },
+                    { id: 'wear-cooling-suit', type: 'motion', text: 'Wear Cooling Suit', icon: 'shirt' },
+                    { id: 'else-normal', type: 'conditions', text: 'Else Normal', icon: 'sun' },
+                    { id: 'wear-explorer-suit', type: 'motion', text: 'Wear Explorer Suit', icon: 'shirt' }
                 ],
-                solution: ['if-need-orange', 'mix-red-yellow', 'if-need-purple', 'mix-red-blue', 'if-need-green', 'mix-blue-yellow'],
+                solution: [
+                    'if-cold', 'wear-thermal-suit',
+                    'else-if-hot', 'wear-cooling-suit',
+                    'else-normal', 'wear-explorer-suit'
+                ],
                 isNested: true
             },
-            // Level 12 - Math Quiz (Advanced condition)
             12: {
-                title: "Math Quiz",
-                description: "Create a math quiz that checks answers to different types of problems.",
-                goal: "Provide the correct response based on the type of math question.",
-                image: "./images/math-quiz.svg",
+                title: "Candy Factory Line",
+                description: "Sort candy by shape, then finish packaging logic.",
+                goal: "First shape chain, then wrapped check to finish output.",
+                image: "./images-real/conditions-12.png",
+                conditionMode: 'nested-plus-else-if',
                 blocks: [
-                    { id: 'if-addition', type: 'conditions', text: 'If Addition Question', icon: 'plus' },
-                    { id: 'if-subtraction', type: 'conditions', text: 'If Subtraction Question', icon: 'minus' },
-                    { id: 'if-multiplication', type: 'conditions', text: 'If Multiplication Question', icon: 'times' },
-                    { id: 'use-counting', type: 'motion', text: 'Use Counting', icon: 'sort-numeric-up' },
-                    { id: 'use-number-line', type: 'motion', text: 'Use Number Line', icon: 'ruler-horizontal' },
-                    { id: 'use-grouping', type: 'motion', text: 'Use Grouping', icon: 'th' }
+                    { id: 'if-round', type: 'conditions', text: 'If Round', icon: 'circle' },
+                    { id: 'send-round-belt', type: 'motion', text: 'Send Round Belt', icon: 'arrow-right' },
+                    { id: 'else-if-square', type: 'conditions', text: 'Else If Square', icon: 'circle-dot' },
+                    { id: 'send-square-belt', type: 'motion', text: 'Send Square Belt', icon: 'arrow-right' },
+                    { id: 'else-triangle', type: 'conditions', text: 'Else Triangle', icon: 'play' },
+                    { id: 'send-triangle-belt', type: 'motion', text: 'Send Triangle Belt', icon: 'arrow-right' },
+                    { id: 'if-not-wrapped', type: 'conditions', text: 'If Not Wrapped', icon: 'circle-xmark' },
+                    { id: 'wrap-candy', type: 'motion', text: 'Wrap Candy', icon: 'box' },
+                    { id: 'else-wrapped', type: 'conditions', text: 'Else Wrapped', icon: 'check-circle' },
+                    { id: 'stamp-ready', type: 'motion', text: 'Stamp Ready', icon: 'check-circle' }
                 ],
-                solution: ['if-addition', 'use-counting', 'if-subtraction', 'use-number-line', 'if-multiplication', 'use-grouping'],
+                solution: [
+                    'if-round', 'send-round-belt',
+                    'else-if-square', 'send-square-belt',
+                    'else-triangle', 'send-triangle-belt',
+                    'if-not-wrapped', 'wrap-candy',
+                    'else-wrapped', 'stamp-ready'
+                ],
                 isNested: true
             },
-            // Level 13 - Plant Care (Advanced condition)
             13: {
-                title: "Plant Care",
-                description: "Take care of different plants based on their specific needs.",
-                goal: "Give each plant the proper care it needs to grow healthy.",
-                image: "./images/plant-care.svg",
+                title: "Dino Park Safety Bot",
+                description: "Choose the right safety response based on dino mood.",
+                goal: "If angry, else if hungry, else if sleepy, else playful.",
+                image: "./images-real/conditions-13.png",
+                conditionMode: 'if-else-if-else-if-else',
                 blocks: [
-                    { id: 'if-cactus', type: 'conditions', text: 'If Cactus', icon: 'seedling' },
-                    { id: 'if-flower', type: 'conditions', text: 'If Flower', icon: 'spa' },
-                    { id: 'if-fern', type: 'conditions', text: 'If Fern', icon: 'leaf' },
-                    { id: 'little-water', type: 'motion', text: 'Give Little Water', icon: 'tint' },
-                    { id: 'plenty-water', type: 'motion', text: 'Give Plenty Water', icon: 'tint-slash' },
-                    { id: 'medium-water', type: 'motion', text: 'Give Medium Water', icon: 'fill' }
+                    { id: 'if-angry', type: 'conditions', text: 'If Angry', icon: 'fire' },
+                    { id: 'raise-fence', type: 'motion', text: 'Raise Fence', icon: 'map' },
+                    { id: 'else-if-hungry', type: 'conditions', text: 'Else If Hungry', icon: 'utensils' },
+                    { id: 'drop-food', type: 'motion', text: 'Drop Food', icon: 'utensils' },
+                    { id: 'else-if-sleepy', type: 'conditions', text: 'Else If Sleepy', icon: 'eye' },
+                    { id: 'dim-lights', type: 'motion', text: 'Dim Lights', icon: 'lightbulb' },
+                    { id: 'else-playful', type: 'conditions', text: 'Else Playful', icon: 'music' },
+                    { id: 'open-play-zone', type: 'motion', text: 'Open Play Zone', icon: 'door-open' }
                 ],
-                solution: ['if-cactus', 'little-water', 'if-flower', 'plenty-water', 'if-fern', 'medium-water'],
+                solution: [
+                    'if-angry', 'raise-fence',
+                    'else-if-hungry', 'drop-food',
+                    'else-if-sleepy', 'dim-lights',
+                    'else-playful', 'open-play-zone'
+                ],
                 isNested: true
             },
-            // Level 14 - Weather Station (Advanced condition)
             14: {
-                title: "Weather Station",
-                description: "Build a weather station that responds to different weather conditions.",
-                goal: "Collect appropriate data based on the current weather conditions.",
-                image: "./images/weather-station.svg",
+                title: "Crystal Cave Boss Quest",
+                description: "Run a multi-step nested decision flow in the cave.",
+                goal: "Resolve path+key logic first, then resolve energy logic.",
+                image: "./images-real/conditions-14.png",
+                conditionMode: 'multi-nested-boss',
                 blocks: [
-                    { id: 'if-temperature-drops', type: 'conditions', text: 'If Temperature Drops', icon: 'temperature-low' },
-                    { id: 'if-wind-increases', type: 'conditions', text: 'If Wind Increases', icon: 'wind' },
-                    { id: 'if-humidity-rises', type: 'conditions', text: 'If Humidity Rises', icon: 'cloud-rain' },
-                    { id: 'record-frost-warning', type: 'motion', text: 'Record Frost Warning', icon: 'snowflake' },
-                    { id: 'record-wind-advisory', type: 'motion', text: 'Record Wind Advisory', icon: 'flag' },
-                    { id: 'record-rain-forecast', type: 'motion', text: 'Record Rain Forecast', icon: 'cloud-showers-heavy' }
+                    { id: 'if-path-blocked', type: 'conditions', text: 'If Path Blocked', icon: 'map' },
+                    { id: 'if-has-key', type: 'conditions', text: 'If Has Key', icon: 'check-circle' },
+                    { id: 'unlock-gate', type: 'motion', text: 'Unlock Gate', icon: 'door-open' },
+                    { id: 'else-no-key', type: 'conditions', text: 'Else No Key', icon: 'circle-xmark' },
+                    { id: 'find-key', type: 'motion', text: 'Find Key', icon: 'map' },
+                    { id: 'else-path-open', type: 'conditions', text: 'Else Path Open', icon: 'check-circle' },
+                    { id: 'move-forward', type: 'motion', text: 'Move Forward', icon: 'arrow-up' },
+                    { id: 'if-energy-low', type: 'conditions', text: 'If Energy Low', icon: 'bolt' },
+                    { id: 'use-energy-pack', type: 'motion', text: 'Use Energy Pack', icon: 'bolt' },
+                    { id: 'else-energy-ok', type: 'conditions', text: 'Else Energy OK', icon: 'check-circle' },
+                    { id: 'collect-crystal', type: 'motion', text: 'Collect Crystal', icon: 'gem' }
                 ],
-                solution: ['if-temperature-drops', 'record-frost-warning', 'if-wind-increases', 'record-wind-advisory', 'if-humidity-rises', 'record-rain-forecast'],
-                isNested: true
-            },
-            // Level 15 - Recycling Sorter (Advanced condition)
-            15: {
-                title: "Recycling Sorter",
-                description: "Sort different materials into the correct recycling bins.",
-                goal: "Ensure each item goes into its proper recycling category.",
-                image: "./images/recycling-sorter.svg",
-                blocks: [
-                    { id: 'if-paper', type: 'conditions', text: 'If Paper', icon: 'newspaper' },
-                    { id: 'if-plastic', type: 'conditions', text: 'If Plastic', icon: 'bottle-water' },
-                    { id: 'if-glass', type: 'conditions', text: 'If Glass', icon: 'glass-martini' },
-                    { id: 'put-in-blue-bin', type: 'motion', text: 'Put in Blue Bin', icon: 'trash-alt' },
-                    { id: 'put-in-green-bin', type: 'motion', text: 'Put in Green Bin', icon: 'trash-alt' },
-                    { id: 'put-in-clear-bin', type: 'motion', text: 'Put in Clear Bin', icon: 'trash-alt' }
+                solution: [
+                    'if-path-blocked',
+                    'if-has-key',
+                    'unlock-gate',
+                    'else-no-key',
+                    'find-key',
+                    'else-path-open',
+                    'move-forward',
+                    'if-energy-low',
+                    'use-energy-pack',
+                    'else-energy-ok',
+                    'collect-crystal'
                 ],
-                solution: ['if-paper', 'put-in-blue-bin', 'if-plastic', 'put-in-green-bin', 'if-glass', 'put-in-clear-bin'],
                 isNested: true
-            },
-            // Level 16 - Robot Sensing System (Complex condition)
-            16: {
-                title: "Robot Sensing System",
-                description: "Program a robot's sensors to detect different environmental conditions.",
-                goal: "Make the robot respond appropriately to its sensor readings.",
-                image: "./images/robot-sensor.svg",
-                blocks: [
-                    { id: 'if-light-detected', type: 'conditions', text: 'If Light Detected', icon: 'lightbulb' },
-                    { id: 'if-sound-detected', type: 'conditions', text: 'If Sound Detected', icon: 'volume-up' },
-                    { id: 'if-motion-detected', type: 'conditions', text: 'If Motion Detected', icon: 'running' },
-                    { id: 'activate-camera', type: 'motion', text: 'Activate Camera', icon: 'camera' },
-                    { id: 'record-audio', type: 'motion', text: 'Record Audio', icon: 'microphone' },
-                    { id: 'track-movement', type: 'motion', text: 'Track Movement', icon: 'location-arrow' }
-                ],
-                solution: ['if-light-detected', 'activate-camera', 'if-sound-detected', 'record-audio', 'if-motion-detected', 'track-movement'],
-                isNested: true
-            },
-            // Level 17 - Space Mission (Complex condition)
-            17: {
-                title: "Space Mission",
-                description: "Control a space probe to respond to different planetary conditions.",
-                goal: "Program the probe to collect the right data based on its environment.",
-                image: "./images/space-mission.svg", // Fixed SVG path
-                blocks: [
-                    { id: 'if-rocky-surface', type: 'conditions', text: 'If Rocky Surface', icon: 'mountain' },
-                    { id: 'if-liquid-water', type: 'conditions', text: 'If Liquid Water', icon: 'water' },
-                    { id: 'if-methane-gas', type: 'conditions', text: 'If Methane Gas', icon: 'smog' },
-                    { id: 'collect-rock-sample', type: 'motion', text: 'Collect Rock Sample', icon: 'hammer' },
-                    { id: 'analyze-water', type: 'motion', text: 'Analyze Water', icon: 'microscope' },
-                    { id: 'measure-atmosphere', type: 'motion', text: 'Measure Atmosphere', icon: 'flask' }
-                ],
-                solution: ['if-rocky-surface', 'collect-rock-sample', 'if-liquid-water', 'analyze-water', 'if-methane-gas', 'measure-atmosphere'],
-                isNested: true
-            },
-            // Level 18 - Smart Home (Complex condition)
-            18: {
-                title: "Smart Home",
-                description: "Program a smart home system to respond to different conditions.",
-                goal: "Automate the home to respond to environmental changes and time of day.",
-                image: "./images/smart-home.svg",
-                blocks: [
-                    { id: 'if-nighttime', type: 'conditions', text: 'If Nighttime', icon: 'moon' },
-                    { id: 'if-temperature-above-25', type: 'conditions', text: 'If Temp > 25°C', icon: 'temperature-high' },
-                    { id: 'if-raining', type: 'conditions', text: 'If Raining', icon: 'cloud-showers-heavy' },
-                    { id: 'turn-on-lights', type: 'motion', text: 'Turn On Lights', icon: 'lightbulb' },
-                    { id: 'activate-ac', type: 'motion', text: 'Activate A/C', icon: 'snowflake' },
-                    { id: 'close-windows', type: 'motion', text: 'Close Windows', icon: 'window-close' }
-                ],
-                solution: ['if-nighttime', 'turn-on-lights', 'if-temperature-above-25', 'activate-ac', 'if-raining', 'close-windows'],
-                isNested: true
-            },
-            // Level 19 - Gardening Robot (Complex condition)
-            19: {
-                title: "Gardening Robot",
-                description: "Program a robot to take care of different plants in a garden.",
-                goal: "Make the robot perform the right gardening tasks based on conditions.",
-                image: "./images/gardening-robot.svg",
-                blocks: [
-                    { id: 'if-soil-dry', type: 'conditions', text: 'If Soil Dry', icon: 'vial' },
-                    { id: 'if-weeds-present', type: 'conditions', text: 'If Weeds Present', icon: 'seedling' },
-                    { id: 'if-fruits-ripe', type: 'conditions', text: 'If Fruits Ripe', icon: 'apple-alt' },
-                    { id: 'water-plants', type: 'motion', text: 'Water Plants', icon: 'shower' },
-                    { id: 'remove-weeds', type: 'motion', text: 'Remove Weeds', icon: 'cut' },
-                    { id: 'harvest-fruits', type: 'motion', text: 'Harvest Fruits', icon: 'shopping-basket' }
-                ],
-                solution: ['if-soil-dry', 'water-plants', 'if-weeds-present', 'remove-weeds', 'if-fruits-ripe', 'harvest-fruits'],
-                isNested: true
-            },
-            // Level 20 - Autonomous Vehicle (Complex condition)
-            20: {
-                title: "Autonomous Vehicle",
-                description: "Program a self-driving car to respond to different road conditions and signs.",
-                goal: "Ensure the car follows traffic rules and drives safely.",
-                image: "./images/autonomous-car.svg",
-                blocks: [
-                    { id: 'if-red-light', type: 'conditions', text: 'If Red Light', icon: 'traffic-light' },
-                    { id: 'if-green-light', type: 'conditions', text: 'If Green Light', icon: 'traffic-light' },
-                    { id: 'if-pedestrian', type: 'conditions', text: 'If Pedestrian', icon: 'walking' },
-                    { id: 'if-car-ahead', type: 'conditions', text: 'If Car Ahead', icon: 'car' },
-                    { id: 'if-lane-ending', type: 'conditions', text: 'If Lane Ending', icon: 'road' },
-                    { id: 'if-emergency-vehicle', type: 'conditions', text: 'If Emergency Vehicle', icon: 'ambulance' },
-                    { id: 'stop-car', type: 'motion', text: 'Stop Car', icon: 'hand-paper' },
-                    { id: 'yield-to-pedestrian', type: 'motion', text: 'Yield to Pedestrian', icon: 'user-check' },
-                    { id: 'slow-down', type: 'motion', text: 'Slow Down', icon: 'tachometer-alt' },
-                    { id: 'proceed-forward', type: 'motion', text: 'Proceed Forward', icon: 'arrow-circle-right' },
-                    { id: 'change-lanes', type: 'motion', text: 'Change Lanes', icon: 'exchange-alt' },
-                    { id: 'pull-over', type: 'motion', text: 'Pull Over', icon: 'parking' }
-                ],
-                solution: ['if-red-light', 'stop-car', 'if-green-light', 'proceed-forward', 'if-pedestrian', 'yield-to-pedestrian', 'if-car-ahead', 'slow-down', 'if-lane-ending', 'change-lanes', 'if-emergency-vehicle', 'pull-over'],
-                isNested: true
-            },
+            }
         },
         procedures: {
             // Level 1 - Simple Dance Procedure (Very basic for ages 5-6)
@@ -1482,19 +1457,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     
-    // Log challenges data to verify it's loaded
-    console.log('Procedures challenges count:', Object.keys(challenges.procedures).length);
-    console.log('First procedure challenge:', challenges.procedures[1]);
-    
     // --- STATE VARIABLES ---
+    const ACTIVE_CATEGORIES = new Set(['sequencing', 'loops', 'conditions']);
     let currentCategory = 'sequencing';
     let currentLevel = 1;
     let userBlocks = [];
     let completedChallenges = {
         sequencing: [],
         loops: [],
-        conditions: [],
-        procedures: []
+        conditions: []
     };
     const MAX_HINTS_PER_LEVEL = 3;
     const MAX_TRIES_PER_LEVEL = 3;
@@ -1588,37 +1559,34 @@ document.addEventListener('DOMContentLoaded', () => {
         stepOrder: [],
         currentIndex: -1
     };
+
+    function normalizeCategory(category) {
+        const value = String(category || '').trim();
+        return ACTIVE_CATEGORIES.has(value) ? value : 'sequencing';
+    }
     
     // --- INITIALIZATION ---
     function init() {
         console.log('Initializing Code Blocks Adventure...');
         
         try {
-            // Generate level buttons for procedures
-            generateProcedureLevels();
-            
             // Set up challenge selection listeners
             document.querySelectorAll('.challenges-list .list-group-item').forEach(item => {
                 console.log('Setting up click handler for category:', item.dataset.category);
                 item.addEventListener('click', () => {
-                    console.log('Category clicked:', item.dataset.category);
+                    const selectedCategory = normalizeCategory(item.dataset.category);
+                    console.log('Category clicked:', selectedCategory);
                     document.querySelectorAll('.challenges-list .list-group-item').forEach(i => i.classList.remove('active'));
                     item.classList.add('active');
-                    currentCategory = item.dataset.category;
+                    currentCategory = selectedCategory;
                     currentLevel = 1; // Reset level when changing categories
-                    
-                    // If switching to procedures, ensure levels are generated
-                    if (currentCategory === 'procedures') {
-                        generateProcedureLevels();
-                    }
-                    
                     loadChallenge();
                     updateUI();
                 });
             });
     
             // Set up level selection listeners for all categories
-            document.querySelectorAll('.sequencing-levels .list-group-item, .loops-levels .list-group-item, .conditions-levels .list-group-item, .procedures-levels .list-group-item').forEach(item => {
+            document.querySelectorAll('.sequencing-levels .list-group-item, .loops-levels .list-group-item, .conditions-levels .list-group-item').forEach(item => {
                 item.addEventListener('click', () => {
                     console.log('Level clicked:', item.dataset.level);
                     // Only remove active class from levels in the current category
@@ -1662,7 +1630,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (categorySelect) {
                 categorySelect.addEventListener('change', () => {
-                    currentCategory = categorySelect.value;
+                    currentCategory = normalizeCategory(categorySelect.value);
                     currentLevel = 1;
                     loadChallenge();
                     updateUI();
@@ -1781,6 +1749,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function getCurrentChallenge() {
+        currentCategory = normalizeCategory(currentCategory);
         if (!challenges[currentCategory] || !challenges[currentCategory][currentLevel]) {
             console.warn(`Challenge not found for category: ${currentCategory}, level: ${currentLevel}`);
             return null;
@@ -1800,7 +1769,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         // Hide all level groups first
-        document.querySelectorAll('.sequencing-levels, .loops-levels, .conditions-levels, .procedures-levels').forEach(group => {
+        document.querySelectorAll('.sequencing-levels, .loops-levels, .conditions-levels').forEach(group => {
             group.style.display = 'none';
         });
         
@@ -1840,7 +1809,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         trackOptions.forEach((option) => {
             option.addEventListener('click', () => {
-                const nextCategory = option.dataset.value;
+                const nextCategory = normalizeCategory(option.dataset.value);
                 if (!nextCategory || nextCategory === currentCategory) {
                     closeTrackPicker();
                     return;
@@ -1936,21 +1905,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderChallengeSummary(challenge) {
         const missionStoryPilot = isMissionStoryPilotActive(challenge);
-        const isSequencingTrack = currentCategory === 'sequencing';
         taskDescription.textContent = toTwoLineText(challenge.description, 128);
         taskGoal.textContent = `Goal: ${toTwoLineText(challenge.goal, 110)}`;
         if (visualOverlay) {
-            if (missionStoryPilot || isSequencingTrack) {
-                visualOverlay.textContent = '';
-                visualOverlay.style.display = 'none';
-            } else {
-                const preview = (challenge.blocks || [])
-                    .slice(0, 3)
-                    .map((block) => block.text)
-                    .join(' -> ');
-                visualOverlay.textContent = preview ? `Mission Path: ${preview}` : '';
-                visualOverlay.style.display = '';
-            }
+            visualOverlay.textContent = '';
+            visualOverlay.style.display = 'none';
         }
         if (!imageHintStrip) return;
 
@@ -2567,7 +2526,8 @@ document.addEventListener('DOMContentLoaded', () => {
         missionStoryState.runtime = null;
 
         if (visualOverlay) {
-            visualOverlay.style.display = (enabled || currentCategory === 'sequencing') ? 'none' : '';
+            visualOverlay.textContent = '';
+            visualOverlay.style.display = 'none';
         }
         challengeImage.classList.toggle('mission-story-bg-hidden', enabled);
 
@@ -3304,6 +3264,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function getNextAvailableLevel(category, current) {
+        if (!challenges[category]) {
+            return null;
+        }
+
+        const levelNumbers = Object.keys(challenges[category])
+            .map((value) => Number(value))
+            .filter((value) => Number.isFinite(value))
+            .sort((a, b) => a - b);
+
+        const currentIndex = levelNumbers.indexOf(Number(current));
+        if (currentIndex === -1 || currentIndex >= levelNumbers.length - 1) {
+            return null;
+        }
+
+        return levelNumbers[currentIndex + 1];
+    }
+
     function getBlockPalette(type) {
         const palettes = {
             motion: { top: '#58b8ff', bottom: '#3f82ff', border: '#2f61cc' },
@@ -3327,6 +3305,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const aliases = {
             tshirt: 'shirt',
             'hand-paper': 'hand',
+            'umbrella-alt': 'umbrella',
+            raincoat: 'umbrella',
+            'shopping-basket': 'basket-shopping',
+            basket: 'basket-shopping',
             tint: 'droplet',
             running: 'person-running',
             'ticket-alt': 'ticket',
@@ -3599,9 +3581,28 @@ document.addEventListener('DOMContentLoaded', () => {
         blockElement.style.setProperty('--block-top', palette.top);
         blockElement.style.setProperty('--block-bottom', palette.bottom);
         blockElement.style.setProperty('--block-border', palette.border);
+        const isTrafficCoachLevel = currentCategory === 'conditions' && currentLevel === 3;
+        if (isTrafficCoachLevel && TRAFFIC_LIGHT_LEVEL_BLOCK_IDS.has(block.id)) {
+            blockElement.classList.add('block-traffic-coach');
+            const isIfBlock = block.id.startsWith('if-');
+            if (isIfBlock) {
+                blockElement.style.setProperty('--block-top', '#ffbb61');
+                blockElement.style.setProperty('--block-bottom', '#713209');
+                blockElement.style.setProperty('--block-border', '#dc7f22');
+            } else {
+                blockElement.style.setProperty('--block-top', '#64aff2');
+                blockElement.style.setProperty('--block-bottom', '#4b84ee');
+                blockElement.style.setProperty('--block-border', '#3167cb');
+            }
+        }
+        if (block.id === 'wear-raincoat') {
+            blockElement.classList.add('block-weather-raincoat');
+            blockElement.style.setProperty('--block-top', '#73c8ff');
+            blockElement.style.setProperty('--block-bottom', '#4186f3');
+            blockElement.style.setProperty('--block-border', '#2b61bf');
+        }
 
-        const icon = document.createElement('span');
-        icon.className = `icon fas fa-${resolveBlockIcon(block)}`;
+        const icon = createBlockIconElement(block);
         blockElement.appendChild(icon);
 
         const label = document.createElement('span');
@@ -3630,6 +3631,77 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         return blockElement;
+    }
+
+    function createBlockIconElement(block) {
+        const comboIcon = String(block?.icon || '').trim().toLowerCase();
+        if (comboIcon === 'wait-timer') {
+            const waitIcon = document.createElement('span');
+            waitIcon.className = 'icon fas fa-hourglass-half';
+            waitIcon.setAttribute('aria-hidden', 'true');
+            return waitIcon;
+        }
+
+        if (comboIcon === 'stop-hand') {
+            const stopIcon = document.createElement('span');
+            stopIcon.className = 'icon fas fa-hand';
+            stopIcon.setAttribute('aria-hidden', 'true');
+            return stopIcon;
+        }
+
+        if (comboIcon === 'traffic-red' || comboIcon === 'traffic-yellow' || comboIcon === 'traffic-green') {
+            const lightIcon = document.createElement('span');
+            lightIcon.className = 'icon fas fa-circle';
+            lightIcon.setAttribute('aria-hidden', 'true');
+            if (comboIcon === 'traffic-red') {
+                lightIcon.style.color = '#ff4d4f';
+            } else if (comboIcon === 'traffic-yellow') {
+                lightIcon.style.color = '#ffc53d';
+            } else {
+                lightIcon.style.color = '#52c41a';
+            }
+            return lightIcon;
+        }
+
+        if (comboIcon === 'banana-emoji') {
+            const bananaIcon = document.createElement('span');
+            bananaIcon.className = 'icon icon-emoji';
+            bananaIcon.setAttribute('aria-hidden', 'true');
+            bananaIcon.textContent = '🍌';
+            return bananaIcon;
+        }
+
+        if (comboIcon === 'raincoat-image') {
+            const imageIcon = document.createElement('img');
+            const raincoatImage = './images-real/raincoat.png';
+            const joiner = raincoatImage.includes('?') ? '&' : '?';
+            imageIcon.src = `${raincoatImage}${joiner}v=${IMAGE_CACHE_VERSION}`;
+            imageIcon.alt = '';
+            imageIcon.className = 'icon icon-image icon-raincoat';
+            imageIcon.setAttribute('aria-hidden', 'true');
+            imageIcon.draggable = false;
+            return imageIcon;
+        }
+
+        if (comboIcon === 'rain-shirt') {
+            const stack = document.createElement('span');
+            stack.className = 'icon fa-stack';
+            stack.setAttribute('aria-hidden', 'true');
+
+            const base = document.createElement('i');
+            base.className = 'fas fa-cloud-rain fa-stack-2x';
+
+            const top = document.createElement('i');
+            top.className = 'fas fa-shirt fa-stack-1x fa-inverse';
+
+            stack.appendChild(base);
+            stack.appendChild(top);
+            return stack;
+        }
+
+        const icon = document.createElement('span');
+        icon.className = `icon fas fa-${resolveBlockIcon(block)}`;
+        return icon;
     }
     
     function addBlockToWorkspace(block) {
@@ -4145,13 +4217,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const missionResult = missionStoryPilot
             ? evaluateMissionStoryProgram(userBlocks, challenge)
             : null;
+        const conditionResult = currentCategory === 'conditions'
+            ? evaluateConditionsProgram(challenge, userBlocks)
+            : null;
         let isCorrect = false;
 
         if (missionStoryPilot) {
             isCorrect = Boolean(missionResult?.isCorrect);
-        } else if (currentCategory === 'procedures') {
-            // For procedure challenges, we need special handling
-            isCorrect = checkProcedureSolution(challenge, userBlocks);
+        } else if (currentCategory === 'conditions') {
+            isCorrect = Boolean(conditionResult?.isCorrect);
         } else if (challenge.isNested && currentCategory === 'loops') {
             // For loop challenges, we need special handling to check nested blocks
             isCorrect = checkLoopSolution(solution, userBlocks);
@@ -4193,13 +4267,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             const actions = [{ label: 'Keep Playing', className: 'btn btn-primary', icon: 'heart' }];
-            if (challenges[currentCategory][currentLevel + 1]) {
+            const nextLevel = getNextAvailableLevel(currentCategory, currentLevel);
+            if (nextLevel !== null) {
                 actions.push({
                     label: 'Next Level',
                     className: 'btn btn-success',
                     icon: 'arrow-right',
                     onClick: () => {
-                        currentLevel++;
+                        currentLevel = nextLevel;
                         loadChallenge();
                         updateUI();
                     }
@@ -4229,6 +4304,20 @@ document.addEventListener('DOMContentLoaded', () => {
             if (missionStoryPilot) {
                 feedbackMessage = `
                     <p class="mb-2">${missionResult?.message || 'Try again.'}</p>
+                    <p class="mb-0"><strong>Tries left:</strong> ${missionState.triesLeft}</p>
+                `;
+            } else if (currentCategory === 'conditions') {
+                const blockElements = document.querySelectorAll('#blocks-container .block');
+                blockElements.forEach((blockEl, index) => {
+                    const blockId = blockEl.dataset.id;
+                    if (index < solution.length && blockId === solution[index]) {
+                        blockEl.classList.add('block-correct');
+                    } else {
+                        blockEl.classList.add('block-incorrect');
+                    }
+                });
+                feedbackMessage = `
+                    <p class="mb-2">${conditionResult?.message || 'Check your IF and action pairs again.'}</p>
                     <p class="mb-0"><strong>Tries left:</strong> ${missionState.triesLeft}</p>
                 `;
             } else {
@@ -4316,17 +4405,202 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
+    function getConditionRules(challenge) {
+        if (Array.isArray(challenge?.conditionRules) && challenge.conditionRules.length) {
+            return challenge.conditionRules
+                .map((rule) => ({
+                    condition: String(rule?.condition || ''),
+                    action: String(rule?.action || '')
+                }))
+                .filter((rule) => rule.condition && rule.action);
+        }
+
+        const derived = [];
+        const solution = Array.isArray(challenge?.solution) ? challenge.solution : [];
+        for (let i = 0; i < solution.length - 1; i += 2) {
+            const condition = String(solution[i] || '');
+            const action = String(solution[i + 1] || '');
+            if (condition && action) {
+                derived.push({ condition, action });
+            }
+        }
+        return derived;
+    }
+
+    function evaluateConditionsProgram(challenge, programBlocks) {
+        const sequence = Array.isArray(programBlocks) ? programBlocks : [];
+
+        const chainModes = new Set([
+            'if-else-chain',
+            'branch-chain',
+            'nested-if-else',
+            'if-else-if-else',
+            'nested-plus-else-if',
+            'if-else-if-else-if-else',
+            'multi-nested-boss'
+        ]);
+
+        if (chainModes.has(String(challenge?.conditionMode || ''))) {
+            const expected = Array.isArray(challenge?.solution) ? challenge.solution : [];
+            if (sequence.length < expected.length) {
+                return {
+                    isCorrect: false,
+                    message: challenge?.conditionMode === 'nested-if-else'
+                        ? 'Complete the full nested IF flow in order.'
+                        : 'Complete the full IF/ELSE chain in order.'
+                };
+            }
+            if (sequence.length > expected.length) {
+                return {
+                    isCorrect: false,
+                    message: `Keep only the ${expected.length} chain blocks for this puzzle.`
+                };
+            }
+
+            for (let i = 0; i < expected.length; i += 1) {
+                if (sequence[i] !== expected[i]) {
+                    return {
+                        isCorrect: false,
+                        message: `Step ${i + 1} should be ${getBlockLabelById(challenge, expected[i])}.`
+                    };
+                }
+            }
+
+            return {
+                isCorrect: true,
+                message: challenge?.conditionMode === 'nested-if-else'
+                    ? 'Awesome. Your nested IF-ELSE logic is correct.'
+                    : 'Awesome. Your IF-ELSE chain is correct.'
+            };
+        }
+
+        if (challenge?.conditionMode === 'single-rule-blocks') {
+            const expected = Array.isArray(challenge?.solution) ? challenge.solution : [];
+            if (sequence.length < expected.length) {
+                return {
+                    isCorrect: false,
+                    message: `Add all ${expected.length} traffic rule blocks in order.`
+                };
+            }
+            if (sequence.length > expected.length) {
+                return {
+                    isCorrect: false,
+                    message: 'Keep only the 3 traffic rule blocks.'
+                };
+            }
+            if (!arraysEqual(sequence, expected)) {
+                return {
+                    isCorrect: false,
+                    message: 'Order should be Red Stop, then Yellow Wait, then Green Drive.'
+                };
+            }
+            return {
+                isCorrect: true,
+                message: 'Great job. Your traffic light logic is correct.'
+            };
+        }
+
+        const rules = getConditionRules(challenge);
+        if (!rules.length) {
+            return {
+                isCorrect: arraysEqual(sequence, challenge?.solution || []),
+                message: 'Arrange IF blocks with their matching actions.'
+            };
+        }
+
+        const conditionIds = new Set(
+            (challenge?.blocks || [])
+                .filter((block) => block.type === 'conditions')
+                .map((block) => String(block.id))
+        );
+        const actionIds = new Set(
+            (challenge?.blocks || [])
+                .filter((block) => block.type !== 'conditions')
+                .map((block) => String(block.id))
+        );
+
+        const pairs = [];
+        for (let i = 0; i < sequence.length; i += 1) {
+            const current = String(sequence[i] || '');
+            if (!current) continue;
+
+            if (!conditionIds.has(current)) {
+                return {
+                    isCorrect: false,
+                    message: 'Start each rule with an IF block, then add its action.'
+                };
+            }
+
+            const next = String(sequence[i + 1] || '');
+            if (!next || !actionIds.has(next)) {
+                return {
+                    isCorrect: false,
+                    message: `Add an action block right after ${getBlockLabelById(challenge, current)}.`
+                };
+            }
+
+            pairs.push({ condition: current, action: next });
+            i += 1;
+        }
+
+        if (pairs.length < rules.length) {
+            return {
+                isCorrect: false,
+                message: `You need ${rules.length} complete IF-THEN rules.`
+            };
+        }
+
+        if (pairs.length > rules.length) {
+            return {
+                isCorrect: false,
+                message: 'You added extra rules. Keep only the needed IF-THEN pairs.'
+            };
+        }
+
+        const usedPairIndexes = new Set();
+        const enforceOrder = challenge?.enforceConditionOrder !== false;
+        for (let ruleIndex = 0; ruleIndex < rules.length; ruleIndex += 1) {
+            const rule = rules[ruleIndex];
+            const pairIndex = pairs.findIndex(
+                (pair, idx) => !usedPairIndexes.has(idx) && pair.condition === rule.condition
+            );
+
+            if (pairIndex === -1) {
+                return {
+                    isCorrect: false,
+                    message: `Missing rule: ${getBlockLabelById(challenge, rule.condition)}.`
+                };
+            }
+
+            const pair = pairs[pairIndex];
+            if (pair.action !== rule.action) {
+                return {
+                    isCorrect: false,
+                    message: `${getBlockLabelById(challenge, rule.condition)} should use ${getBlockLabelById(challenge, rule.action)}.`
+                };
+            }
+
+            if (enforceOrder && pairIndex !== ruleIndex) {
+                return {
+                    isCorrect: false,
+                    message: 'Correct match, but rule order is wrong. Follow the mission order.'
+                };
+            }
+
+            usedPairIndexes.add(pairIndex);
+        }
+
+        return {
+            isCorrect: true,
+            message: 'Great logic. All IF rules match the right actions.'
+        };
+    }
+
     // Special function to check loop-based solutions
     function checkLoopSolution(solution, userBlocks) {
         // For loop challenges, we still use direct array comparison for now
         // but this function can be expanded for more complex loop validation
         return arraysEqual(userBlocks, solution);
-    }
-    
-    // Special function to check procedure-based solutions
-    function checkProcedureSolution(challenge, userBlocks) {
-        // For procedures, we simply compare the array of block IDs with the solution
-        return arraysEqual(userBlocks, challenge.solution);
     }
     
     // --- HELPER FUNCTIONS ---
@@ -4460,44 +4734,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // Function to generate procedure level buttons
-    function generateProcedureLevels() {
-        const procedureLevelsContainer = document.querySelector('.procedures-levels');
-        if (!procedureLevelsContainer) return;
-        
-        // Clear any existing levels
-        procedureLevelsContainer.innerHTML = '';
-        
-        // Count how many procedure levels we have
-        const procedureLevels = Object.keys(challenges.procedures).length;
-        console.log(`Generating ${procedureLevels} procedure level buttons`);
-        
-        // Create a button for each level
-        for (let i = 1; i <= procedureLevels; i++) {
-            const challenge = challenges.procedures[i];
-            if (!challenge) continue;
-            
-            const levelButton = document.createElement('button');
-            levelButton.className = 'list-group-item list-group-item-action';
-            levelButton.dataset.level = i;
-            levelButton.textContent = `Level ${i}: ${challenge.title}`;
-            
-            // Add click event listener
-            levelButton.addEventListener('click', () => {
-                console.log('Procedure level clicked:', i);
-                // Only remove active class from levels in the current category
-                document.querySelectorAll('.procedures-levels .list-group-item').forEach(btn => btn.classList.remove('active'));
-                levelButton.classList.add('active');
-                currentCategory = 'procedures';
-                currentLevel = i;
-                loadChallenge();
-                updateUI();
-            });
-            
-            procedureLevelsContainer.appendChild(levelButton);
-        }
-    }
-    
     // Function to get level-specific help
     function getLevelSpecificHelp() {
         const challenge = getCurrentChallenge();
@@ -4518,53 +4754,135 @@ document.addEventListener('DOMContentLoaded', () => {
             // Add level-specific help for logic challenges
             const logicHelpTexts = {
                 1: `
-                    <h5>Weather Checker Help:</h5>
-                    <p>In this challenge, you need to choose what to wear based on the weather.</p>
+                    <h5>Weather Dress Code Help:</h5>
+                    <p>Match each weather condition to the correct clothing action.</p>
                     <ol>
-                        <li>Use "If Sunny" condition followed by "Wear T-shirt" action</li>
-                        <li>Then use "If Rainy" condition followed by "Wear Raincoat" action</li>
-                        <li>This way, the program will make the right clothing choice for each type of weather!</li>
+                        <li><strong>If Sunny</strong> should pair with <strong>Wear T-shirt</strong></li>
+                        <li><strong>If Rainy</strong> should pair with <strong>Wear Raincoat</strong></li>
+                        <li>Each IF block must be followed immediately by its action block</li>
                     </ol>
                 `,
                 2: `
-                    <h5>Fruit Sorter Help:</h5>
-                    <p>In this challenge, you need to sort fruits into the correct baskets.</p>
+                    <h5>Fruit Basket Match Help:</h5>
+                    <p>Build clear IF-THEN rules for each fruit.</p>
                     <ol>
-                        <li>Use "If Apple" condition followed by "Put in Red Basket" action</li>
-                        <li>Then use "If Banana" condition followed by "Put in Yellow Basket" action</li>
-                        <li>This ensures each fruit gets sorted into the right colored basket!</li>
+                        <li><strong>If Apple</strong> -> <strong>Red Basket</strong></li>
+                        <li><strong>If Banana</strong> -> <strong>Yellow Basket</strong></li>
+                        <li>Do not add extra IF-THEN pairs</li>
+                    </ol>
+                `,
+                3: `
+                    <h5>Traffic Light Coach Help:</h5>
+                    <p>Match each light condition with the correct action.</p>
+                    <ol>
+                        <li><strong>If Red Light</strong> -> <strong>Stop</strong></li>
+                        <li><strong>If Yellow Light</strong> -> <strong>Wait</strong></li>
+                        <li><strong>If Green Light</strong> -> <strong>Drive</strong></li>
+                    </ol>
+                `,
+                4: `
+                    <h5>Number Sorter Help:</h5>
+                    <p>Keep each IF paired with the right basket action.</p>
+                    <ol>
+                        <li><strong>If Even Number</strong> -> <strong>Even Basket</strong></li>
+                        <li><strong>If Odd Number</strong> -> <strong>Odd Basket</strong></li>
+                        <li><strong>If Zero</strong> -> <strong>Zero Basket</strong></li>
+                    </ol>
+                `,
+                5: `
+                    <h5>Weather Pack Planner Help:</h5>
+                    <p>This level uses one IF-ELSE chain.</p>
+                    <ol>
+                        <li><strong>If Rain Alert</strong> -> <strong>Pack Raincoat</strong></li>
+                        <li><strong>Else (Sun Alert)</strong> -> <strong>Pack Cap</strong></li>
                     </ol>
                 `,
                 6: `
-                    <h5>Shape Matcher Help:</h5>
-                    <p>For this challenge, you need to match shapes to their correct containers.</p>
+                    <h5>Lunch Box Logic Help:</h5>
+                    <p>This level also uses one IF-ELSE chain.</p>
                     <ol>
-                        <li>Start with "If Square" condition followed by "Put in Square Hole" action</li>
-                        <li>Then add "If Circle" condition followed by "Put in Circle Hole" action</li>
-                        <li>Finally, add "If Triangle" condition followed by "Put in Triangle Hole" action</li>
-                        <li>This ensures each shape goes into its matching hole!</li>
+                        <li><strong>If Sports Day</strong> -> <strong>Add Water Bottle</strong></li>
+                        <li><strong>Else (Regular Day)</strong> -> <strong>Add Sandwich</strong></li>
+                    </ol>
+                `,
+                7: `
+                    <h5>School Bus Safety Chain Help:</h5>
+                    <p>This level uses IF-ELSE IF-ELSE pattern.</p>
+                    <ol>
+                        <li><strong>If Stop Sign</strong> -> <strong>Wait at Line</strong></li>
+                        <li><strong>Else If Bus Arrives</strong> -> <strong>Board Bus</strong></li>
+                        <li><strong>Else (Seat-Belt Sign)</strong> -> <strong>Buckle Up</strong></li>
+                    </ol>
+                `,
+                8: `
+                    <h5>Science Lab Alerts Help:</h5>
+                    <p>This level uses IF-ELSE IF-ELSE pattern.</p>
+                    <ol>
+                        <li><strong>If Goggles Sign</strong> -> <strong>Wear Goggles</strong></li>
+                        <li><strong>Else If Spill Alert</strong> -> <strong>Wipe Spill</strong></li>
+                        <li><strong>Else (Fire Sign)</strong> -> <strong>Call Teacher</strong></li>
+                    </ol>
+                `,
+                9: `
+                    <h5>Robo Rescue Console Help:</h5>
+                    <p>This level uses IF-ELSE IF-ELSE IF-ELSE pattern.</p>
+                    <ol>
+                        <li><strong>If Battery Low</strong> -> <strong>Charge Bot</strong></li>
+                        <li><strong>Else If Obstacle Ahead</strong> -> <strong>Turn Right</strong></li>
+                        <li><strong>Else If Target Found</strong> -> <strong>Pick Signal</strong></li>
+                        <li><strong>Else (Safe Path)</strong> -> <strong>Move Forward</strong></li>
                     </ol>
                 `,
                 10: `
-                    <h5>Robot Obstacle Course Help:</h5>
-                    <p>In this challenge, you need to program the robot to respond to different obstacles.</p>
+                    <h5>Jungle Bridge Rescue Help:</h5>
+                    <p>This level uses nested IF inside another IF.</p>
                     <ol>
-                        <li>Use "If Wall Ahead" condition followed by "Turn Around" action</li>
-                        <li>Then use "If Gap in Path" condition followed by "Jump Over" action</li>
-                        <li>Finally, use "If Finish Line" condition followed by "Celebrate" action</li>
-                        <li>This helps the robot successfully navigate through all obstacles!</li>
+                        <li><strong>If Obstacle</strong></li>
+                        <li><strong>If Bridge Open</strong> -> <strong>Cross Bridge</strong></li>
+                        <li><strong>Else Bridge Closed</strong> -> <strong>Take Detour</strong></li>
+                        <li><strong>Else Path Clear</strong> -> <strong>Move Forward</strong></li>
                     </ol>
                 `,
-                20: `
-                    <h5>Autonomous Vehicle Help:</h5>
-                    <p>For this advanced challenge, you need to program a self-driving car to respond to different road situations.</p>
+                11: `
+                    <h5>Space Suit Selector Help:</h5>
+                    <p>Use IF-ELSE IF-ELSE pattern in this exact order.</p>
                     <ol>
-                        <li>Program responses for traffic lights: "If Red Light" → "Stop Car", "If Green Light" → "Proceed Forward"</li>
-                        <li>Handle pedestrians: "If Pedestrian Crossing" → "Yield to Pedestrian"</li>
-                        <li>Respond to other vehicles: "If Car Ahead Slowing" → "Slow Down"</li>
-                        <li>Navigate road conditions: "If Lane Ending" → "Change Lanes"</li>
-                        <li>Respond to emergencies: "If Emergency Vehicle" → "Pull Over"</li>
-                        <li>Remember to place conditions in a logical order for safe driving!</li>
+                        <li><strong>If Cold</strong> -> <strong>Wear Thermal Suit</strong></li>
+                        <li><strong>Else If Hot</strong> -> <strong>Wear Cooling Suit</strong></li>
+                        <li><strong>Else Normal</strong> -> <strong>Wear Explorer Suit</strong></li>
+                    </ol>
+                `,
+                12: `
+                    <h5>Candy Factory Line Help:</h5>
+                    <p>First complete shape routing, then packaging check.</p>
+                    <ol>
+                        <li><strong>If Round</strong> -> <strong>Send Round Belt</strong></li>
+                        <li><strong>Else If Square</strong> -> <strong>Send Square Belt</strong></li>
+                        <li><strong>Else Triangle</strong> -> <strong>Send Triangle Belt</strong></li>
+                        <li><strong>If Not Wrapped</strong> -> <strong>Wrap Candy</strong></li>
+                        <li><strong>Else Wrapped</strong> -> <strong>Stamp Ready</strong></li>
+                    </ol>
+                `,
+                13: `
+                    <h5>Dino Park Safety Bot Help:</h5>
+                    <p>Use IF-ELSE IF-ELSE IF-ELSE in mood order.</p>
+                    <ol>
+                        <li><strong>If Angry</strong> -> <strong>Raise Fence</strong></li>
+                        <li><strong>Else If Hungry</strong> -> <strong>Drop Food</strong></li>
+                        <li><strong>Else If Sleepy</strong> -> <strong>Dim Lights</strong></li>
+                        <li><strong>Else Playful</strong> -> <strong>Open Play Zone</strong></li>
+                    </ol>
+                `,
+                14: `
+                    <h5>Crystal Cave Boss Quest Help:</h5>
+                    <p>Solve path/key logic first, then energy logic.</p>
+                    <ol>
+                        <li><strong>If Path Blocked</strong></li>
+                        <li><strong>If Has Key</strong> -> <strong>Unlock Gate</strong></li>
+                        <li><strong>Else No Key</strong> -> <strong>Find Key</strong></li>
+                        <li><strong>Else Path Open</strong> -> <strong>Move Forward</strong></li>
+                        <li><strong>If Energy Low</strong> -> <strong>Use Energy Pack</strong></li>
+                        <li><strong>Else Energy OK</strong> -> <strong>Collect Crystal</strong></li>
                     </ol>
                 `
             };
@@ -4794,8 +5112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const names = {
             sequencing: 'Sequence',
             loops: 'Loops',
-            conditions: 'Conditions',
-            procedures: 'Procedures'
+            conditions: 'Conditions'
         };
         return names[category] || capitalizeFirstLetter(category);
     }
@@ -4848,7 +5165,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Category selection
         document.querySelectorAll('.challenges-list .list-group-item').forEach(item => {
             item.addEventListener('click', function() {
-                console.log('Category clicked:', this.dataset.category);
+                const selectedCategory = normalizeCategory(this.dataset.category);
+                console.log('Category clicked:', selectedCategory);
                 // Remove active class from all items
                 document.querySelectorAll('.challenges-list .list-group-item').forEach(el => {
                     el.classList.remove('active');
@@ -4858,11 +5176,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.classList.add('active');
                 
                 // Update current category and reset level
-                currentCategory = this.dataset.category;
+                currentCategory = selectedCategory;
                 currentLevel = 1; // Reset to first level when changing categories
                 
                 // Show the corresponding level group and hide others
-                document.querySelectorAll('.sequencing-levels, .loops-levels, .conditions-levels, .procedures-levels').forEach(group => {
+                document.querySelectorAll('.sequencing-levels, .loops-levels, .conditions-levels').forEach(group => {
                     group.style.display = 'none';
                 });
                 document.querySelector(`.${currentCategory}-levels`).style.display = 'block';

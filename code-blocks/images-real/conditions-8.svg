@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f4edff"/>
+      <stop offset="100%" stop-color="#fbf9ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+
+  <!-- Lab table -->
+  <rect x="120" y="480" width="1040" height="140" rx="24" fill="#d9d2ef"/>
+
+  <!-- Goggles -->
+  <g transform="translate(250,280)">
+    <rect x="-100" y="-55" width="200" height="110" rx="30" fill="#d7f1ff" stroke="#4a89b4" stroke-width="8"/>
+    <circle cx="-45" cy="0" r="34" fill="#bfe7ff" stroke="#4a89b4" stroke-width="7"/>
+    <circle cx="45" cy="0" r="34" fill="#bfe7ff" stroke="#4a89b4" stroke-width="7"/>
+    <line x1="-11" y1="0" x2="11" y2="0" stroke="#4a89b4" stroke-width="6"/>
+  </g>
+
+  <!-- Spill -->
+  <path d="M610 360 C580 315 600 265 650 265 C700 265 720 315 690 360 C670 392 630 392 610 360 Z" fill="#86c8ff" stroke="#3f85c2" stroke-width="8"/>
+  <ellipse cx="650" cy="420" rx="80" ry="28" fill="#a8d8ff"/>
+
+  <!-- Fire -->
+  <path d="M980 430 C935 390 940 325 985 290 C985 335 1020 330 1022 365 C1025 397 1008 426 980 430 Z" fill="#ff8f3f"/>
+  <path d="M975 430 C950 400 958 360 980 338 C982 362 1000 360 1004 382 C1008 404 995 424 975 430 Z" fill="#ff5d3d"/>
+
+  <g stroke="#6f53bf" stroke-width="8" stroke-linecap="round">
+    <line x1="360" y1="280" x2="520" y2="280"/>
+    <line x1="780" y1="360" x2="890" y2="360"/>
+  </g>
+  <polygon points="520,280 497,268 497,292" fill="#6f53bf"/>
+  <polygon points="890,360 867,348 867,372" fill="#6f53bf"/>
+</svg>

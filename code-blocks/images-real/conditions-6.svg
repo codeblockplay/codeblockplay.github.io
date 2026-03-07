@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e9fff3"/>
+      <stop offset="100%" stop-color="#f8fff9"/>
+    </linearGradient>
+    <filter id="s" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#205a3b22"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+
+  <g filter="url(#s)">
+    <rect x="110" y="120" width="330" height="470" rx="26" fill="#c9f0d6" stroke="#5bb178" stroke-width="6"/>
+    <rect x="475" y="120" width="330" height="470" rx="26" fill="#d8f7e3" stroke="#69bd89" stroke-width="6"/>
+    <rect x="840" y="120" width="330" height="470" rx="26" fill="#e8fff0" stroke="#7cc79b" stroke-width="6"/>
+  </g>
+
+  <!-- Sports day: ball + bottle -->
+  <circle cx="275" cy="230" r="70" fill="#6ec3ff" stroke="#337fb8" stroke-width="8"/>
+  <path d="M245 230 Q275 200 305 230 Q275 260 245 230" fill="none" stroke="#ffffff" stroke-width="6"/>
+  <rect x="235" y="340" width="80" height="170" rx="20" fill="#4ea7f2" stroke="#2d73ad" stroke-width="6"/>
+  <rect x="250" y="316" width="50" height="30" rx="10" fill="#8ed0ff" stroke="#2d73ad" stroke-width="6"/>
+
+  <!-- Regular day: sandwich -->
+  <rect x="540" y="340" width="200" height="42" rx="20" fill="#f6c56a" stroke="#cf9a39" stroke-width="6"/>
+  <rect x="550" y="382" width="180" height="24" rx="12" fill="#86d47e"/>
+  <rect x="550" y="410" width="180" height="24" rx="12" fill="#f06d5f"/>
+  <rect x="540" y="436" width="200" height="42" rx="20" fill="#f6c56a" stroke="#cf9a39" stroke-width="6"/>
+
+  <!-- Day icons -->
+  <circle cx="640" cy="230" r="46" fill="#ffd84a" stroke="#dea920" stroke-width="6"/>
+  <g stroke="#dea920" stroke-width="6" stroke-linecap="round">
+    <line x1="640" y1="150" x2="640" y2="125"/>
+    <line x1="640" y1="310" x2="640" y2="335"/>
+    <line x1="560" y1="230" x2="535" y2="230"/>
+    <line x1="720" y1="230" x2="745" y2="230"/>
+  </g>
+
+  <!-- Fruit card: apple -->
+  <circle cx="1005" cy="390" r="70" fill="#ff6464" stroke="#c84545" stroke-width="8"/>
+  <ellipse cx="1030" cy="312" rx="16" ry="10" fill="#7dc05b"/>
+  <path d="M1003 326 C1008 306 1024 302 1032 286" stroke="#7a5020" stroke-width="6" fill="none"/>
+</svg>

@@ -83,6 +83,21 @@ body :where(h1, h2, h3, h4, h5, h6) {
     font-size: 1rem;
 }
 
+.block .icon.icon-emoji {
+    font-size: 1.15rem;
+    line-height: 1;
+}
+
+.block .icon.icon-image {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.22);
+    padding: 1px;
+}
+
 /* Block types */
 .block-motion {
     background-color: #4361ee;
@@ -778,6 +793,7 @@ body :where(h1, h2, h3, h4, h5, h6) {
 }
 
 .visual-overlay {
+    display: none !important;
     position: absolute;
     left: 8px;
     right: 8px;
@@ -982,11 +998,22 @@ body:not(.blocks-expanded) #block-palette .block .icon {
     font-size: 1.5rem !important;
 }
 
+body:not(.blocks-expanded) #block-palette .block .icon.icon-image {
+    width: 32px;
+    height: 32px;
+}
+
 body.blocks-expanded #block-palette .block {
     justify-content: flex-start;
     width: 186px;
     min-width: 186px;
     max-width: 186px;
+}
+
+body.blocks-expanded #block-palette .block .icon.icon-image {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px !important;
 }
 
 body.blocks-expanded #block-palette {
@@ -1511,6 +1538,18 @@ body:not(.blocks-expanded) #blocks-container .repeat-count-wrap {
     min-height: 54px;
     font-size: 1.05rem;
     font-weight: 500;
+}
+
+.block.block-weather-raincoat {
+    background: linear-gradient(145deg, #73c8ff 0%, #4186f3 100%) !important;
+    border-color: #2b61bf !important;
+    box-shadow: 0 5px 11px rgba(32, 93, 181, 0.28);
+}
+
+.block.block-weather-raincoat .icon.icon-raincoat {
+    border-color: rgba(255, 255, 255, 0.95);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.18));
+    padding: 2px;
 }
 
 .palette-card,
