@@ -135,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
-    const wordCounter = document.getElementById('word-counter');
     const wordClue = document.getElementById('word-clue');
     const binaryWord = document.getElementById('binary-word');
     const answerBoxes = document.getElementById('answer-boxes');
@@ -653,10 +652,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (streakValue) streakValue.textContent = String(game.streak);
         if (hintsValue) hintsValue.textContent = String(game.hintsUsed);
         if (attemptsValue) attemptsValue.textContent = String(Math.max(0, MAX_ATTEMPTS - round.attempts));
-
-        if (wordCounter) {
-            wordCounter.textContent = `Word ${game.currentIndex + 1}`;
-        }
 
         if (prevButton) {
             prevButton.disabled = game.currentIndex === 0;
