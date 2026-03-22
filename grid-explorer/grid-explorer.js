@@ -10,8 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const gridBoard = document.getElementById('grid-board');
     const clueElement = document.getElementById('treasure-clue');
-    const mapCounter = document.getElementById('map-counter');
-
     const scoreValue = document.getElementById('score-value');
     const levelValue = document.getElementById('level-value');
     const solvedValue = document.getElementById('solved-value');
@@ -297,10 +295,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const attemptsLeft = Math.max(0, MAX_ATTEMPTS - map.attempts);
         if (attemptsValue) attemptsValue.textContent = String(attemptsLeft);
-
-        if (mapCounter) {
-            mapCounter.textContent = `Map ${game.currentIndex + 1}`;
-        }
 
         if (prevButton) {
             prevButton.disabled = game.currentIndex === 0;

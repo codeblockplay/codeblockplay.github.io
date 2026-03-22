@@ -521,7 +521,6 @@ body.home-page :where(strong, b) {
 .card-binary { background: linear-gradient(135deg, #3a4a7c 0%, #5f74ad 100%); }
 .card-grid { background: linear-gradient(135deg, #00a0a8 0%, #00c8b0 100%); }
 .card-pattern { background: linear-gradient(135deg, #8a4dff 0%, #4fb8ff 100%); }
-
 .track-grid {
     display: grid;
     gap: 12px;

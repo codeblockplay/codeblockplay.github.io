@@ -595,7 +595,10 @@ C ${(cx + size * 1.04).toFixed(2)} ${(cy - size * 0.25).toFixed(2)}, ${(cx + siz
     }
 
     const IMPORTED_COLORING_SCENES = [
-        { file: 'deer.svg', label: 'Deer Coloring', category: 'rainbow-rangers' }
+        { file: 'deer.svg', label: 'Deer Coloring', category: 'rainbow-rangers' },
+        { file: '1.svg', label: 'Rainbow Rangers 1', category: 'rainbow-rangers' },
+        { file: '2.svg', label: 'Rainbow Rangers 2', category: 'rainbow-rangers' },
+        { file: '3.svg', label: 'Rainbow Rangers 3', category: 'rainbow-rangers' }
     ];
 
     async function initializeScenes() {
@@ -606,10 +609,6 @@ C ${(cx + size * 1.04).toFixed(2)} ${(cy - size * 0.25).toFixed(2)}, ${(cx + siz
                 sceneDeck.push(sceneDef(importedScene, scene.category, scene.label));
             }
         }
-
-        sceneDeck.push(
-            sceneDef(buildHexFlamingoScene(), 'rainbow-rangers', 'Flamingo Mosaic')
-        );
 
         sceneDeck.push(...SYMMETRY_PATTERNS.map((pattern) => sceneDef(
             buildSymmetryScene(pattern),

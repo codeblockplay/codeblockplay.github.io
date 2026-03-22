@@ -12,10 +12,12 @@
     --kp-surface: #ffffff;
     --kp-shadow: 0 14px 28px rgba(33, 49, 84, 0.16);
     --kp-shell-z: 1000;
+    --kp-title-font: 'Fredoka', 'Baloo 2', sans-serif;
+    --kp-body-font: 'Fredoka', 'Baloo 2', 'Trebuchet MS', cursive;
 }
 
 body.kp-shell-enabled {
-    font-family: 'Fredoka', 'Baloo 2', 'Trebuchet MS', cursive;
+    font-family: var(--kp-body-font);
     background:
         radial-gradient(circle at 14% -5%, rgba(255, 211, 79, 0.45), transparent 28%),
         radial-gradient(circle at 88% 10%, rgba(40, 192, 255, 0.22), transparent 33%),
@@ -28,19 +30,20 @@ body.kp-shell-enabled {
 }
 
 body.kp-shell-enabled :where(h1, h2, h3, h4, h5, h6) {
-    font-family: 'Fredoka', 'Baloo 2', sans-serif;
-    font-weight: 700;
-    color: var(--kp-ink);
+    font-family: var(--kp-title-font);
+    font-weight: 600;
+    color: #23406d;
     letter-spacing: 0.01em;
 }
 
 body.kp-shell-enabled :where(p, li, label, a, button, input, select, textarea) {
+    font-family: var(--kp-body-font);
     font-weight: 500;
 }
 
 body.kp-shell-enabled :where(strong, b) {
     color: #22477d;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 body.kp-page-leaving {
@@ -92,16 +95,17 @@ body.kp-shell-enabled > .footer {
 }
 
 .kp-brand-title {
-    font-family: 'Fredoka', 'Baloo 2', sans-serif;
+    font-family: var(--kp-title-font);
     font-size: 1.02rem;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 0.01em;
 }
 
 .kp-brand-sub {
     font-size: 0.72rem;
     color: #53719d;
-    font-weight: 700;
+    font-family: var(--kp-title-font);
+    font-weight: 500;
 }
 
 .kp-header-actions {
@@ -115,7 +119,8 @@ body.kp-shell-enabled > .footer {
     align-items: center;
     gap: 6px;
     font-size: 0.79rem;
-    font-weight: 700;
+    font-family: var(--kp-title-font);
+    font-weight: 500;
     color: #2f4675;
     background: #ecf5ff;
     border: 1px solid #d2e8ff;
@@ -129,7 +134,8 @@ body.kp-shell-enabled > .footer {
     background: linear-gradient(135deg, var(--kp-purple) 0%, var(--kp-sky) 100%);
     border-radius: 10px;
     font-size: 0.9rem;
-    font-weight: 700;
+    font-family: var(--kp-title-font);
+    font-weight: 600;
     padding: 8px 10px;
     min-width: 42px;
     cursor: pointer;
@@ -173,9 +179,9 @@ body.kp-menu-open .kp-menu-drawer {
 }
 
 .kp-menu-title {
-    font-family: 'Fredoka', 'Baloo 2', sans-serif;
+    font-family: var(--kp-title-font);
     font-size: 1.05rem;
-    font-weight: 700;
+    font-weight: 600;
     margin: 4px 0 12px;
 }
 
@@ -193,7 +199,8 @@ body.kp-menu-open .kp-menu-drawer {
     border-radius: 12px;
     color: #355889;
     text-decoration: none;
-    font-weight: 700;
+    font-family: var(--kp-title-font);
+    font-weight: 500;
     background: #f4f8ff;
     border: 1px solid #deebff;
     transition: transform 0.15s ease, background-color 0.15s ease;
@@ -217,10 +224,12 @@ body.kp-menu-open .kp-menu-drawer {
     text-align: center;
     font-size: 0.92rem;
     color: var(--kp-ink-soft);
+    font-family: var(--kp-title-font);
 }
 
 .kp-shell-footer strong {
     color: #2e4673;
+    font-family: var(--kp-title-font);
 }
 
 .kp-shell-footer-links {
@@ -233,7 +242,8 @@ body.kp-menu-open .kp-menu-drawer {
 
 .kp-shell-footer-links a {
     color: #3a5f97;
-    font-weight: 700;
+    font-family: var(--kp-title-font);
+    font-weight: 500;
     text-decoration: none;
 }
 

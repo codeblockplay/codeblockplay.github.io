@@ -25,7 +25,7 @@
     const links = [
         { key: 'home', label: 'Home', href: '../index.html', icon: 'fa-home' },
         { key: 'block-coding', label: 'Block Coding', href: '../code-blocks/block-coding.html', icon: 'fa-puzzle-piece' },
-        { key: 'brainy-puzzles', label: 'Brainy Hub', href: '../brainy-blocks/index.html', icon: 'fa-brain' },
+        { key: 'brainy-puzzles', label: 'Puzzle Hub', href: '../brainy-blocks/index.html', icon: 'fa-brain' },
         { key: 'riddles', label: 'Fun Riddles', href: '../puzzle1/multi_riddle.html', icon: 'fa-question-circle' },
         { key: 'word-hunt', label: 'Word Hunt', href: '../word-hunt/wordhunt.html', icon: 'fa-search' },
         { key: 'math-sequence', label: 'Math Sequence', href: '../puzzle3/puzzle3.html', icon: 'fa-calculator' },
@@ -89,7 +89,7 @@
         <div class="kp-shell-footer-links">
             <a href="../index.html">Home</a>
             <a href="../code-blocks/block-coding.html">Block Coding</a>
-            <a href="../brainy-blocks/index.html">Brainy Hub</a>
+            <a href="../brainy-blocks/index.html">Puzzle Hub</a>
         </div>
     `;
 
@@ -125,6 +125,14 @@
             closeMenu();
         }
     });
+
+    function clearLeavingState() {
+        body.classList.remove('kp-page-leaving');
+    }
+
+    window.addEventListener('pageshow', clearLeavingState);
+    window.addEventListener('popstate', clearLeavingState);
+    clearLeavingState();
 
     document.querySelectorAll('a[href]').forEach((anchor) => {
         anchor.addEventListener('click', (event) => {

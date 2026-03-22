@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matchstick Shapes | Code Blocks Playground</title>
+    <link rel="stylesheet" href="../shared/shell.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="kp-shell-enabled" data-page="brainy-puzzles" data-age="Shape Logic">
+    <header>
+        <h1>Matchstick Shapes</h1>
+    </header>
+
+    <main class="ms-main">
+        <section class="ms-panel" aria-label="Matchstick Shapes starter puzzle">
+            <div class="ms-topbar">
+                <div>
+                    <h1>Matchstick Shapes</h1>
+                </div>
+                <a href="../brainy-blocks/index.html" class="ms-back-btn">Back to Puzzle Hub</a>
+            </div>
+
+            <div class="ms-status-row">
+                <div class="ms-badge"><span>Puzzle</span><strong id="puzzle-count">1 / 2</strong></div>
+                <div class="ms-badge"><span id="moves-label">Moves</span><strong id="moves-count">0 / 2</strong></div>
+                <div class="ms-badge"><span>Squares</span><strong id="squares-count">5 / 6</strong></div>
+            </div>
+
+            <div class="ms-board-wrap">
+                <div class="ms-instruction" id="instruction-text">Move up to 2 matchstick to make 6 squares.</div>
+                <div class="ms-board" id="matchstick-board" role="img" aria-label="Matchstick puzzle board">
+                    <div class="ms-scene" id="matchstick-scene"></div>
+                    <div class="ms-celebration-layer" id="celebration-layer" aria-hidden="true"></div>
+                </div>
+            </div>
+
+            <div class="ms-actions">
+                <button type="button" id="prev-btn" class="ms-action-btn ms-action-btn-secondary">Previous</button>
+                <button type="button" id="reset-btn" class="ms-action-btn">Reset</button>
+                <button type="button" id="next-btn" class="ms-action-btn ms-action-btn-secondary">Next</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="../shared/shell.js" defer></script>
+    <script src="./app.js" defer></script>
+</body>
+</html>
