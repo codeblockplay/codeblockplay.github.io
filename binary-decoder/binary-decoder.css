@@ -77,39 +77,36 @@ header {
         radial-gradient(circle at 92% 100%, rgba(255, 164, 76, 0.15), transparent 36%),
         linear-gradient(140deg, #ffffff 0%, #f8fbff 100%);
     box-shadow: var(--bd-card-shadow);
-    padding: 14px;
+    padding: 12px;
     display: grid;
     grid-template-rows: auto auto 1fr;
-    gap: 10px;
+    gap: 8px;
     overflow: hidden;
 }
 
 .decoder-title-row {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     gap: 10px;
+}
+
+.decoder-title-copy {
+    min-width: 0;
 }
 
 .decoder-title-actions {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    flex-direction: row;
+    align-items: center;
     gap: 8px;
 }
 
 .decoder-title-row h1 {
     margin: 0;
     font-family: 'Fredoka', 'Baloo 2', sans-serif;
-    font-size: clamp(1.3rem, 2.6vw, 2.05rem);
+    font-size: clamp(1.7rem, 3.8vw, 2.6rem);
     line-height: 1;
-}
-
-.decoder-title-row p {
-    margin: 5px 0 0;
-    color: #4f6894;
-    font-size: 0.95rem;
-    font-weight: 700;
 }
 
 .parent-hub-btn {
@@ -138,9 +135,9 @@ header {
 
 .quality-panel {
     border: 1px solid var(--bd-soft-border);
-    background: #f7fbff;
-    border-radius: 14px;
-    padding: 9px 10px;
+    background: #f9fbff;
+    border-radius: 16px;
+    padding: 8px 10px;
 }
 
 .quality-row {
@@ -194,14 +191,14 @@ header {
     background: #fff;
     border: 1px solid #d7e7ff;
     border-radius: 999px;
-    padding: 4px 9px;
+    padding: 5px 10px;
 }
 
 .play-area {
     min-height: 0;
     display: grid;
-    grid-template-columns: 1.56fr 1fr;
-    gap: 12px;
+    grid-template-columns: minmax(0, 2.35fr) minmax(220px, 0.55fr);
+    gap: 10px;
 }
 
 .decode-stage,
@@ -213,93 +210,101 @@ header {
 }
 
 .decode-stage {
-    padding: 11px;
+    padding: 12px;
     display: grid;
-    grid-template-rows: auto auto auto 1fr;
-    gap: 9px;
+    grid-template-rows: auto auto auto;
+    gap: 10px;
     overflow: hidden;
+    background:
+        radial-gradient(circle at 14% 0%, rgba(255, 220, 112, 0.12), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
 }
 
 .clue-wrap {
-    border: 1px dashed #b8d7ff;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #f2f9ff 0%, #fff7e8 100%);
-    padding: 8px 10px;
+    border: 1px solid #d7e8ff;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #fef5da 0%, #fffdf6 100%);
+    padding: 12px 14px;
 }
 
 .clue-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     color: #2c4e86;
-    font-size: 0.78rem;
+    font-size: 0.82rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     font-weight: 800;
 }
 
 .word-clue {
-    margin: 4px 0 0;
+    margin: 6px 0 0;
     color: #314f80;
-    font-size: 0.96rem;
-    font-weight: 700;
+    font-size: clamp(1.15rem, 2vw, 1.45rem);
+    font-weight: 800;
     line-height: 1.2;
 }
 
 .binary-word {
     display: flex;
-    gap: 7px;
+    gap: 9px;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    align-content: flex-start;
     flex-wrap: wrap;
-    min-height: 74px;
+    min-height: 116px;
     border: 1px solid #d8e8ff;
-    border-radius: 12px;
-    padding: 7px;
-    background: linear-gradient(180deg, #f5faff 0%, #ffffff 100%);
+    border-radius: 18px;
+    padding: 12px;
+    background: linear-gradient(180deg, #f6faff 0%, #ffffff 100%);
 }
 
 .binary-card {
     border: 1px solid #bed8ff;
-    border-radius: 10px;
+    border-radius: 16px;
     background: #fff;
-    padding: 6px;
-    min-width: 100px;
+    padding: 7px 8px;
+    min-width: 84px;
+    box-shadow: 0 10px 18px rgba(60, 104, 176, 0.08);
 }
 
 .binary-index {
     display: block;
     text-align: center;
     color: #5471a0;
-    font-size: 0.74rem;
+    font-size: 0.72rem;
     font-weight: 800;
-    margin-bottom: 4px;
+    margin-bottom: 5px;
 }
 
 .binary-value {
     display: flex;
     justify-content: center;
-    gap: 3px;
+    gap: 4px;
 }
 
 .binary-bit {
-    width: 16px;
-    height: 16px;
-    border-radius: 5px;
+    width: 18px;
+    height: 18px;
+    border-radius: 6px;
     border: 1px solid #d3e5ff;
     background: #eef5ff;
     color: #2f5c96;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.72rem;
+    font-size: 0.74rem;
     font-weight: 800;
 }
 
 .answer-wrap {
     border: 1px solid #d8e8ff;
-    border-radius: 12px;
+    border-radius: 18px;
     background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
-    padding: 8px;
+    padding: 12px;
     display: grid;
-    gap: 8px;
+    gap: 10px;
 }
 
 .answer-boxes {
@@ -311,13 +316,13 @@ header {
 }
 
 .answer-box {
-    width: 44px;
-    height: 44px;
+    width: 54px;
+    height: 54px;
     border: 2px solid #bdd8ff;
-    border-radius: 11px;
+    border-radius: 15px;
     background: #fff;
     text-align: center;
-    font-size: 1.28rem;
+    font-size: 1.5rem;
     font-weight: 800;
     color: #2d4f88;
     text-transform: uppercase;
@@ -349,16 +354,16 @@ header {
 
 .letter-bank {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(38px, 1fr));
-    gap: 6px;
+    grid-template-columns: repeat(auto-fit, minmax(46px, 1fr));
+    gap: 8px;
 }
 
 .letter-chip {
     border: 1px solid #cce0ff;
     background: #ffffff;
-    border-radius: 10px;
-    min-height: 34px;
-    font-size: 0.92rem;
+    border-radius: 13px;
+    min-height: 42px;
+    font-size: 1.05rem;
     font-weight: 800;
     color: #2d4f88;
     cursor: pointer;
@@ -379,56 +384,21 @@ header {
 
 .reference-wrap {
     border: 1px solid #d8e8ff;
-    border-radius: 12px;
+    border-radius: 16px;
     background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
     padding: 8px;
-    min-height: 0;
-    display: grid;
-    grid-template-rows: auto 1fr;
-    gap: 7px;
-}
-
-.reference-title-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-}
-
-.reference-title-row h2 {
-    margin: 0;
-    font-size: 0.92rem;
-    color: #2e4f85;
-}
-
-.toggle-reference-btn {
-    border: 1px solid #c9deff;
-    background: #ffffff;
-    border-radius: 999px;
-    padding: 4px 10px;
-    color: #31558f;
-    font-size: 0.76rem;
-    font-weight: 800;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
 }
 
 .reference-grid {
-    min-height: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(102px, 1fr));
-    gap: 6px;
-    align-content: start;
-    overflow: auto;
-    padding-right: 2px;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 5px;
 }
 
 .reference-item {
     border: 1px solid #d4e5ff;
     border-radius: 9px;
-    padding: 5px;
+    padding: 4px 3px;
     background: #fff;
     text-align: center;
 }
@@ -436,39 +406,80 @@ header {
 .reference-binary {
     display: block;
     color: #2f5d98;
-    font-size: 0.72rem;
+    font-size: 0.62rem;
     font-weight: 800;
     font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 .reference-letter {
     display: block;
-    font-size: 0.9rem;
+    font-size: 0.78rem;
     font-weight: 800;
     color: #244470;
 }
 
 .side-panel {
-    padding: 10px;
-    display: grid;
-    grid-template-rows: auto auto auto 1fr auto;
-    gap: 8px;
-    overflow: hidden;
+    position: relative;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    overflow: visible;
+    background:
+        radial-gradient(circle at 100% 0%, rgba(255, 225, 146, 0.14), transparent 30%),
+        #ffffff;
 }
 
 .hint-controls {
+    position: relative;
+    z-index: 2;
     display: flex;
+    justify-content: flex-start;
     gap: 8px;
 }
 
 .hint-btn,
 .speak-btn {
+    position: relative;
     border: 0;
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
-    font-size: 1rem;
+    width: 54px;
+    height: 54px;
+    border-radius: 16px;
+    font-size: 1.15rem;
     cursor: pointer;
+}
+
+.hint-btn::after,
+.speak-btn::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 8px);
+    transform: translateX(-50%) translateY(4px);
+    padding: 5px 9px;
+    border-radius: 10px;
+    background: rgba(31, 49, 88, 0.92);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 800;
+    line-height: 1;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.16s ease, transform 0.16s ease;
+    box-shadow: 0 10px 18px rgba(31, 49, 88, 0.18);
+}
+
+.hint-btn:hover::after,
+.hint-btn:focus-visible::after,
+.speak-btn:hover::after,
+.speak-btn:focus-visible::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.speak-btn:disabled::after {
+    display: none;
 }
 
 .hint-btn {
@@ -493,12 +504,53 @@ header {
     margin: 0;
     min-height: 38px;
     border: 1px solid #d7e8ff;
-    border-radius: 10px;
-    padding: 8px;
+    border-radius: 14px;
+    padding: 9px 10px;
     color: #4f6994;
     background: #f7fbff;
-    font-size: 0.86rem;
+    font-size: 0.92rem;
     font-weight: 700;
+}
+
+.decoder-stamp {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    align-items: center;
+    justify-content: center;
+    width: 108px;
+    height: 108px;
+    margin: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 999px;
+    font-size: 3.8rem;
+    font-weight: 900;
+    line-height: 1;
+    box-shadow: 0 16px 28px rgba(31, 49, 88, 0.14);
+    border: 8px solid rgba(255, 255, 255, 0.75);
+    pointer-events: none;
+}
+
+.decoder-stamp.show {
+    display: flex;
+}
+
+.decoder-stamp.success {
+    background: radial-gradient(circle at 35% 28%, #8ef1a4 0%, #63d57e 28%, #37a85b 100%);
+    color: #ffffff;
+}
+
+.decoder-stamp.error {
+    background: radial-gradient(circle at 35% 28%, #ff9ab2 0%, #f16084 28%, #d73c65 100%);
+    color: #ffffff;
+}
+
+.hint-message:empty,
+.result-message:empty,
+.explanation-message:empty {
+    display: none;
 }
 
 .hint-message.good {
@@ -515,12 +567,12 @@ header {
 
 .result-message,
 .explanation-message {
-    border-radius: 10px;
-    padding: 9px;
-    font-size: 0.92rem;
+    border-radius: 14px;
+    padding: 9px 10px;
+    font-size: 0.9rem;
     font-weight: 700;
     line-height: 1.2;
-    min-height: 50px;
+    min-height: 42px;
 }
 
 .result-message {
@@ -545,6 +597,7 @@ header {
     border: 1px dashed #bdd6fb;
     background: linear-gradient(180deg, #f3f8ff 0%, #fff 100%);
     color: #3a5f98;
+    min-height: 180px;
     overflow: auto;
 }
 
@@ -552,6 +605,7 @@ header {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 6px;
+    margin-top: auto;
 }
 
 .icon-btn {
@@ -601,23 +655,26 @@ header {
         gap: 8px;
     }
 
-    .side-panel {
-        grid-template-rows: auto auto auto auto auto;
+    .decoder-title-row {
+        align-items: flex-start;
+        flex-direction: column;
     }
 
     .decoder-title-row h1 {
-        font-size: 1.18rem;
-    }
-
-    .decoder-title-row p {
-        font-size: 0.82rem;
+        font-size: 1.5rem;
     }
 
     .decoder-title-actions {
         width: 100%;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .challenge-banner {
+        padding: 10px 12px;
+    }
+
+    .challenge-banner h2 {
+        font-size: 1.12rem;
     }
 
     .score-strip {
@@ -630,13 +687,13 @@ header {
     }
 
     .binary-card {
-        min-width: 84px;
+        min-width: 76px;
     }
 
     .binary-bit {
-        width: 14px;
-        height: 14px;
-        font-size: 0.66rem;
+        width: 12px;
+        height: 12px;
+        font-size: 0.58rem;
     }
 
     .answer-box {
@@ -646,7 +703,7 @@ header {
     }
 
     .reference-grid {
-        grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
     .result-message,
@@ -661,6 +718,13 @@ header {
         min-height: 38px;
         height: 38px;
         width: 38px;
+    }
+
+    .decoder-stamp {
+        width: 88px;
+        height: 88px;
+        font-size: 3rem;
+        border-width: 6px;
     }
 
     .kp-shell-footer {
@@ -691,22 +755,22 @@ header {
     }
 
     .word-clue {
-        font-size: 0.84rem;
+        font-size: 1rem;
     }
 
     .binary-word {
-        min-height: 58px;
+        min-height: 110px;
     }
 
     .binary-card {
-        min-width: 74px;
+        min-width: 66px;
         padding: 5px;
     }
 
     .binary-bit {
-        width: 12px;
-        height: 12px;
-        font-size: 0.61rem;
+        width: 11px;
+        height: 11px;
+        font-size: 0.56rem;
         border-radius: 4px;
     }
 

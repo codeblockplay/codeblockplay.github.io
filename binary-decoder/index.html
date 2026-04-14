@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Binary Decoder Quest | Code Blocks Playground</title>
+    <title>Binary Decoder Quest | Brainy Puzzle Hub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../shared/shell.css">
     <link rel="stylesheet" href="./binary-decoder.css">
 </head>
-<body class="kp-shell-enabled" data-page="brainy-puzzles" data-age="Binary Challenge">
+<body class="kp-shell-enabled" data-page="brainy-puzzles" data-age="Binary Decoder Quest">
     <header>
         <h1>Binary Decoder Quest</h1>
     </header>
@@ -16,9 +16,8 @@
     <main class="decoder-main">
         <section class="decoder-card" aria-label="Binary Decoder Puzzle Game">
             <div class="decoder-title-row">
-                <div>
+                <div class="decoder-title-copy">
                     <h1>Binary Decoder Quest</h1>
-                    <p>Decode 0s and 1s into words. Think, check, and hear the answer.</p>
                 </div>
                 <div class="decoder-title-actions">
                     <a href="../brainy-blocks/index.html" class="parent-hub-btn">
@@ -48,11 +47,6 @@
 
             <div class="play-area">
                 <div class="decode-stage">
-                    <div class="clue-wrap" aria-live="polite">
-                        <span class="clue-label"><i class="fas fa-code"></i> Clue</span>
-                        <p id="word-clue" class="word-clue"></p>
-                    </div>
-
                     <div id="binary-word" class="binary-word" aria-label="Binary word puzzle"></div>
 
                     <div class="answer-wrap" aria-label="Answer area">
@@ -60,29 +54,23 @@
                         <div id="letter-bank" class="letter-bank"></div>
                     </div>
 
-                    <div class="reference-wrap">
-                        <div class="reference-title-row">
-                            <h2>Binary Quick Key</h2>
-                            <button id="toggle-reference" type="button" class="toggle-reference-btn">
-                                <i class="fas fa-table"></i>
-                                <span>Show Full A-Z</span>
-                            </button>
-                        </div>
+                    <div class="reference-wrap" id="reference-wrap">
                         <div id="reference-grid" class="reference-grid" aria-label="Binary reference table"></div>
                     </div>
                 </div>
 
                 <aside class="side-panel" aria-label="Game controls and feedback">
                     <div class="hint-controls">
-                        <button id="hint-btn" class="hint-btn" type="button" title="Get hint" aria-label="Get hint">
+                        <button id="hint-btn" class="hint-btn" type="button" title="Get hint" aria-label="Get hint" data-tooltip="Hint">
                             <i class="fas fa-lightbulb"></i>
                         </button>
-                        <button id="speak-btn" class="speak-btn" type="button" title="Speak word" aria-label="Speak word" disabled>
+                        <button id="speak-btn" class="speak-btn" type="button" title="Speak word" aria-label="Speak word" data-tooltip="Sound" disabled>
                             <i class="fas fa-volume-high"></i>
                         </button>
                     </div>
 
-                    <p id="hint-message" class="hint-message" aria-live="polite">Use hint if you get stuck.</p>
+                    <div id="decoder-stamp" class="decoder-stamp" aria-hidden="true"></div>
+                    <p id="hint-message" class="hint-message" aria-live="polite"></p>
 
                     <div id="decoder-result" class="result-message" aria-live="polite"></div>
                     <div id="decoder-explanation" class="explanation-message" aria-live="polite"></div>

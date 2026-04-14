@@ -1,9 +1,10 @@
 :root {
-    --bb-ink: #223a67;
-    --bb-soft: #647da7;
-    --bb-border: #d9e6ff;
-    --bb-shadow: 0 10px 20px rgba(36, 56, 98, 0.08);
-    --bb-title-font: 'Fredoka', 'Baloo 2', sans-serif;
+    --bb-ink: #1f3a5f;
+    --bb-soft: #5b6b7f;
+    --bb-border: #dbe7f8;
+    --bb-shadow: 0 12px 24px rgba(31, 58, 95, 0.08);
+    --bb-title-font: 'Baloo 2', 'Fredoka', sans-serif;
+    --bb-body-font: 'Nunito', 'Fredoka', sans-serif;
 }
 
 * {
@@ -19,7 +20,10 @@ body {
 }
 
 body.kp-shell-enabled {
-    background: linear-gradient(180deg, #fff9ef 0%, #fffdf8 52%, #eef5ff 100%);
+    background:
+        radial-gradient(circle at 12% 0%, rgba(255, 217, 61, 0.24), transparent 24%),
+        radial-gradient(circle at 88% 10%, rgba(46, 196, 182, 0.12), transparent 28%),
+        linear-gradient(180deg, #eaf6ff 0%, #fff8e7 100%);
     color: var(--bb-ink);
     overflow: hidden;
 }
@@ -37,11 +41,11 @@ header {
 
 .bb-panel {
     height: 100%;
-    border-radius: 18px;
+    border-radius: 24px;
     border: 1px solid var(--bb-border);
-    background: rgba(255, 255, 255, 0.96);
+    background: rgba(255, 255, 255, 0.98);
     box-shadow: var(--bb-shadow);
-    padding: 16px;
+    padding: 20px;
     display: grid;
     grid-template-rows: auto 1fr;
     gap: 14px;
@@ -59,73 +63,57 @@ header {
     font-family: var(--bb-title-font);
     font-size: clamp(1.4rem, 2.3vw, 1.9rem);
     font-weight: 600;
-    color: #23406d;
+    color: var(--bb-ink);
 }
 
 .bb-topbar p {
     margin: 8px 0 0;
     color: var(--bb-soft);
-    font-family: var(--bb-title-font);
-    font-size: clamp(0.94rem, 1.35vw, 1.02rem);
-    font-weight: 500;
-    line-height: 1.35;
+    font-family: var(--bb-body-font);
+    font-size: clamp(0.98rem, 1.35vw, 1.06rem);
+    font-weight: 700;
+    line-height: 1.5;
     max-width: 420px;
-}
-
-.bb-home-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    min-height: 40px;
-    padding: 0 14px;
-    border-radius: 999px;
-    background: #eef5ff;
-    border: 1px solid #d7e6ff;
-    color: #35598f;
-    text-decoration: none;
-    font-family: var(--bb-title-font);
-    font-weight: 600;
-    white-space: nowrap;
 }
 
 .bb-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 14px;
     align-content: start;
 }
 
 .bb-card {
-    border-radius: 16px;
-    border: 1px solid #dce7ff;
+    border-radius: 20px;
+    border: 1px solid #dbe7f8;
     background: #fff;
-    box-shadow: 0 8px 16px rgba(48, 75, 122, 0.06);
-    padding: 16px 14px;
+    box-shadow: 0 10px 22px rgba(31, 58, 95, 0.08);
+    padding: 18px 16px;
     text-decoration: none;
     color: var(--bb-ink);
     display: grid;
     align-content: start;
     justify-items: start;
     gap: 10px;
-    min-height: 146px;
+    min-height: 162px;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .bb-card:hover,
 .bb-card:focus-visible {
-    transform: translateY(-1px);
-    box-shadow: 0 12px 18px rgba(48, 75, 122, 0.1);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 26px rgba(31, 58, 95, 0.12);
 }
 
 .bb-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 14px;
+    width: 56px;
+    height: 56px;
+    border-radius: 18px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     color: #fff;
-    font-size: 1.15rem;
+    font-size: 1.2rem;
 }
 
 .bb-icon-grid {
@@ -148,22 +136,21 @@ header {
     background: linear-gradient(135deg, #2ec5ff 0%, #16a34a 100%);
 }
 
-
 .bb-card h2 {
     margin: 0;
     font-family: var(--bb-title-font);
-    font-size: 1.1rem;
+    font-size: 1.18rem;
     font-weight: 600;
-    color: #23406d;
+    color: var(--bb-ink);
 }
 
 .bb-card p {
     margin: 0;
     color: var(--bb-soft);
-    font-family: var(--bb-title-font);
-    font-size: 0.9rem;
-    line-height: 1.35;
-    font-weight: 500;
+    font-family: var(--bb-body-font);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    font-weight: 700;
 }
 
 @media (max-width: 760px) {

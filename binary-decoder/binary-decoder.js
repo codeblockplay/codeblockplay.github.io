@@ -151,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const hintMessage = document.getElementById('hint-message');
     const resultMessage = document.getElementById('decoder-result');
     const explanationMessage = document.getElementById('decoder-explanation');
+    const decoderStamp = document.getElementById('decoder-stamp');
 
     const hintButton = document.getElementById('hint-btn');
     const speakButton = document.getElementById('speak-btn');
@@ -158,7 +159,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const resetButton = document.getElementById('decoder-reset');
     const checkButton = document.getElementById('decoder-check');
     const nextButton = document.getElementById('decoder-next');
-    const toggleReferenceButton = document.getElementById('toggle-reference');
     const modeButtons = Array.from(document.querySelectorAll('.mode-btn'));
 
     const game = {
@@ -169,7 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
         score: 0,
         streak: 0,
         hintsUsed: 0,
-        showFullReference: false,
         usedByMode: {
             easy: new Set(),
             medium: new Set(),
@@ -183,10 +182,11 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function playSound(type) {
+        const version = 'v1';
         const pathMap = {
-            success: '../sounds/success.mp3',
-            error: '../sounds/error.mp3',
-            click: '../sounds/click.mp3'
+            success: `../sounds/tick.mp3?${version}`,
+            error: `../sounds/cross.mp3?${version}`,
+            click: `../sounds/click.mp3?${version}`
         };
 
         const src = pathMap[type];
@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
             revealed: false,
             counted: false,
             spoken: false,
-            hintText: 'Use hint if you get stuck.',
+            hintText: '',
             resultText: '',
             resultType: '',
             explanationText: ''
@@ -457,7 +457,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderReference() {
         if (!referenceGrid) return;
 
-        const lettersToShow = game.showFullReference ? ALPHABET : ALPHABET.slice(0, 8);
+        const lettersToShow = ALPHABET;
         referenceGrid.innerHTML = '';
 
         lettersToShow.forEach((letter) => {
@@ -477,12 +477,6 @@ document.addEventListener('DOMContentLoaded', () => {
             referenceGrid.appendChild(item);
         });
 
-        if (toggleReferenceButton) {
-            const label = toggleReferenceButton.querySelector('span');
-            if (label) {
-                label.textContent = game.showFullReference ? 'Show A-H' : 'Show Full A-Z';
-            }
-        }
     }
 
     function renderBinaryWord() {
@@ -612,7 +606,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (hintMessage) {
-            hintMessage.textContent = round.hintText || 'Use hint if you get stuck.';
+            hintMessage.textContent = round.hintText || '';
             hintMessage.className = 'hint-message';
             if (round.hintText && round.hintText.toLowerCase().includes('great')) {
                 hintMessage.classList.add('good');
@@ -622,8 +616,23 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        if (decoderStamp) {
+            decoderStamp.className = 'decoder-stamp';
+            decoderStamp.textContent = '';
+
+            if (round.resultType === 'success') {
+                decoderStamp.classList.add('show', 'success');
+                decoderStamp.textContent = '✓';
+            }
+
+            if (round.resultType === 'error') {
+                decoderStamp.classList.add('show', 'error');
+                decoderStamp.textContent = '✕';
+            }
+        }
+
         if (resultMessage) {
-            resultMessage.textContent = round.resultText || 'Fill the letters and press check.';
+            resultMessage.textContent = round.resultText || '';
             resultMessage.className = 'result-message';
 
             if (round.resultType === 'success') {
@@ -636,7 +645,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (explanationMessage) {
-            explanationMessage.textContent = round.explanationText || 'Explanation appears after solve or after 3 tries.';
+            explanationMessage.textContent = round.explanationText || '';
         }
     }
 
@@ -677,10 +686,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const answer = answerString(round);
         const hasEmptyInput = round.inputLetters.some((letter) => !letter);
         if (answer.length !== round.word.length || hasEmptyInput) {
-            round.resultText = 'Fill all letter boxes first.';
+            round.resultText = 'Buzz';
             round.resultType = 'error';
             round.explanationText = '';
-            round.hintText = 'Complete every box, then check again.';
+            round.hintText = '';
             playSound('error');
             renderMessages();
             return;
@@ -698,10 +707,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 game.score += earnedPoints;
             }
 
-            round.resultText = `Great decode! The word is ${round.word}. +${earnedPoints} points.`;
+            round.resultText = '';
             round.resultType = 'success';
-            round.explanationText = createExplanation(round.word);
-            round.hintText = 'Great solve. Listen to the word or go Next.';
+            round.explanationText = '';
+            round.hintText = '';
 
             playSound('success');
             if (speakWord(round.word)) {
@@ -718,18 +727,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if (round.attempts >= MAX_ATTEMPTS) {
                 round.revealed = true;
                 round.inputLetters = round.word.split('');
-                round.resultText = `3 tries used. Correct word: ${round.word}.`;
+                round.resultText = '';
                 round.resultType = 'error';
-                round.explanationText = createExplanation(round.word);
-                round.hintText = 'Read why this answer is correct. Use Next when ready.';
+                round.explanationText = '';
+                round.hintText = '';
                 playSound('error');
                 renderAnswerBoxes();
             } else {
-                const left = MAX_ATTEMPTS - round.attempts;
-                round.resultText = `Not correct yet. Try again.`;
+                round.resultText = '';
                 round.resultType = 'error';
                 round.explanationText = '';
-                round.hintText = `Attempts left: ${left}.`;
+                round.hintText = '';
                 playSound('error');
             }
         }
@@ -745,13 +753,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (round.solved || round.revealed) {
-            round.hintText = 'This word is complete. Use Next for another word.';
+            round.hintText = '';
             renderMessages();
             return;
         }
 
         if (round.hintStep >= MAX_HINT_STEPS) {
-            round.hintText = 'No more hints on this word.';
+            round.hintText = 'No more hints.';
             renderMessages();
             return;
         }
@@ -778,7 +786,7 @@ document.addEventListener('DOMContentLoaded', () => {
             round.activeIndex = Math.min(revealIndex + 1, round.word.length - 1);
             round.hintText = `Hint: letter ${revealIndex + 1} is ${revealedLetter}.`;
         } else {
-            round.hintText = `Final hint: this word has ${round.word.length} letters and means: ${round.clue}`;
+            round.hintText = `Final hint: ${round.word.length} letters. ${round.clue}`;
         }
 
         playSound('click');
@@ -794,17 +802,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (round.solved || round.revealed) {
-            round.hintText = 'Word already finished. Use Next for a fresh word.';
+            round.hintText = '';
             renderMessages();
             return;
         }
 
         round.inputLetters = Array(round.word.length).fill('');
         round.activeIndex = 0;
-        round.resultText = 'Answer reset.';
+        round.resultText = '';
         round.resultType = '';
         round.explanationText = '';
-        round.hintText = 'Try decoding again.';
+        round.hintText = '';
 
         clearInputHighlight();
         playSound('click');
@@ -890,14 +898,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (nextButton) {
         nextButton.addEventListener('click', () => {
             goToRound(game.currentIndex + 1);
-        });
-    }
-
-    if (toggleReferenceButton) {
-        toggleReferenceButton.addEventListener('click', () => {
-            game.showFullReference = !game.showFullReference;
-            renderReference();
-            playSound('click');
         });
     }
 
