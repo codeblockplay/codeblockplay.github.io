@@ -65,6 +65,9 @@
         ${brand}
         <div class="kp-header-actions">
             <span class="kp-pill"><i class="fas fa-layer-group"></i> ${ageBand}</span>
+            <a class="kp-home-btn" href="../index.html" aria-label="Go to Home">
+                <i class="fas fa-home"></i>
+            </a>
             <button class="kp-menu-btn" type="button" aria-label="Open game menu" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>

@@ -196,7 +196,7 @@ header {
 .stage-panel {
     padding: 11px;
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto 1fr auto auto;
     gap: 9px;
     overflow: hidden;
 }
@@ -251,6 +251,75 @@ header {
     flex-wrap: wrap;
     gap: 8px;
     min-height: 74px;
+}
+
+.feedback-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 132px;
+}
+
+.feedback-stamp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0.5);
+    min-width: 116px;
+    min-height: 116px;
+}
+
+.feedback-stamp.show {
+    visibility: visible;
+    opacity: 1;
+    animation: ms-stamp-pop 380ms ease forwards;
+}
+
+.feedback-stamp::before {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 116px;
+    height: 116px;
+    border-radius: 999px;
+    font-family: 'Fredoka', 'Baloo 2', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    box-shadow: 0 16px 26px rgba(31, 58, 95, 0.16);
+}
+
+.feedback-stamp.success::before {
+    content: '✓';
+    color: #ffffff;
+    background: radial-gradient(circle at 30% 30%, #7ff7a8 0%, #2bb673 48%, #159658 100%);
+    border: 4px solid rgba(255, 255, 255, 0.78);
+}
+
+.feedback-stamp.error::before {
+    content: '✕';
+    color: #ffffff;
+    background: radial-gradient(circle at 30% 30%, #ff9fba 0%, #ff5d7f 48%, #e13b5e 100%);
+    border: 4px solid rgba(255, 255, 255, 0.78);
+}
+
+@keyframes ms-stamp-pop {
+    0% {
+        opacity: 0;
+        transform: scale(0.45) rotate(-8deg);
+    }
+    45% {
+        opacity: 1;
+        transform: scale(1.08) rotate(4deg);
+    }
+    72% {
+        transform: scale(0.95) rotate(-2deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
 }
 
 .seq-cell {
@@ -472,6 +541,22 @@ header {
         font-size: 1rem;
     }
 
+    .feedback-bar {
+        min-height: 104px;
+    }
+
+    .feedback-stamp::before {
+        width: 92px;
+        height: 92px;
+        font-size: 3.2rem;
+        border-width: 4px;
+    }
+
+    .feedback-stamp {
+        min-width: 92px;
+        min-height: 92px;
+    }
+
     .result,
     .explanation {
         min-height: 38px;
@@ -525,6 +610,22 @@ header {
         height: 38px;
         font-size: 0.92rem;
         border-radius: 10px;
+    }
+
+    .feedback-bar {
+        min-height: 90px;
+    }
+
+    .feedback-stamp::before {
+        width: 82px;
+        height: 82px;
+        font-size: 2.8rem;
+        border-width: 3px;
+    }
+
+    .feedback-stamp {
+        min-width: 82px;
+        min-height: 82px;
     }
 
     .choice-btn {

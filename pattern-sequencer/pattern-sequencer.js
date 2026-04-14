@@ -28,16 +28,18 @@ document.addEventListener('DOMContentLoaded', () => {
         usedSignatures: new Set()
     };
 
+    const audioVersion = Date.now();
+
     function playSound(type) {
         try {
             const map = {
-                success: '../sounds/success.mp3',
-                error: '../sounds/error.mp3',
+                success: '../sounds/tick.mp3',
+                error: '../sounds/cross.mp3',
                 click: '../sounds/click.mp3'
             };
             const src = map[type];
             if (!src) return;
-            const audio = new Audio(src);
+            const audio = new Audio(`${src}?v=${audioVersion}`);
             audio.volume = 0.7;
             audio.play().catch(() => {});
         } catch (_) {}

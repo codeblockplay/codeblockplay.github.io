@@ -48,10 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    const audioVersion = Date.now();
+
     function playSound(type) {
         const pathMap = {
-            success: '../sounds/success.mp3',
-            error: '../sounds/error.mp3',
+            success: '../sounds/tick.mp3',
+            error: '../sounds/cross.mp3',
             click: '../sounds/click.mp3'
         };
 
@@ -61,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const audio = new Audio(src);
+            const audio = new Audio(`${src}?v=${audioVersion}`);
             audio.volume = 0.7;
             audio.play().catch(() => {});
         } catch (_) {

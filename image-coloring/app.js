@@ -549,11 +549,6 @@ C ${(cx + size * 1.04).toFixed(2)} ${(cy - size * 0.25).toFixed(2)}, ${(cx + siz
 
     let SCENES = [];
 
-    const CATEGORY_GROUPS = [
-        { key: 'rainbow-rangers', label: 'Rainbow Rangers' },
-        { key: 'mirror-magic', label: 'Mirror Magic' }
-    ];
-
     function sceneDef(markup, category, label) {
         return { markup, category, label };
     }
@@ -598,7 +593,8 @@ C ${(cx + size * 1.04).toFixed(2)} ${(cy - size * 0.25).toFixed(2)}, ${(cx + siz
         { file: 'deer.svg', label: 'Deer Coloring', category: 'rainbow-rangers' },
         { file: '1.svg', label: 'Rainbow Rangers 1', category: 'rainbow-rangers' },
         { file: '2.svg', label: 'Rainbow Rangers 2', category: 'rainbow-rangers' },
-        { file: '3.svg', label: 'Rainbow Rangers 3', category: 'rainbow-rangers' }
+        { file: '3.svg', label: 'Rainbow Rangers 3', category: 'rainbow-rangers' },
+        { file: '5.svg', label: 'Rainbow Rangers 5', category: 'rainbow-rangers' }
     ];
 
     async function initializeScenes() {
@@ -667,7 +663,6 @@ C ${(cx + size * 1.04).toFixed(2)} ${(cy - size * 0.25).toFixed(2)}, ${(cx + siz
     };
 
     const sceneCounter = document.getElementById('scene-counter');
-    const categoryStrip = document.getElementById('category-strip');
     const scoreValue = document.getElementById('score-value');
     const levelValue = document.getElementById('level-value');
     const streakValue = document.getElementById('streak-value');
@@ -695,7 +690,6 @@ C ${(cx + size * 1.04).toFixed(2)} ${(cy - size * 0.25).toFixed(2)}, ${(cx + siz
 
     const game = {
         mode: 'medium',
-        activeCategory: CATEGORY_GROUPS[0].key,
         sceneIndex: 0,
         score: 0,
         streak: 0,
@@ -874,42 +868,8 @@ C ${(cx + size * 1.04).toFixed(2)} ${(cy - size * 0.25).toFixed(2)}, ${(cx + siz
         return game.sceneState;
     }
 
-    function categoryLabel(categoryKey) {
-        return CATEGORY_GROUPS.find((group) => group.key === categoryKey)?.label || categoryKey;
-    }
-
     function visibleScenes() {
-        return SCENES.filter((scene) => scene.category === game.activeCategory);
-    }
-
-    function renderCategoryStrip() {
-        if (!categoryStrip) {
-            return;
-        }
-
-        categoryStrip.innerHTML = '';
-
-        CATEGORY_GROUPS.forEach((group) => {
-            const button = document.createElement('button');
-            button.type = 'button';
-            button.className = `category-chip${group.key === game.activeCategory ? ' active' : ''}`;
-            button.textContent = group.label;
-            button.setAttribute('aria-label', group.label);
-
-            button.addEventListener('click', () => {
-                if (group.key === game.activeCategory) {
-                    return;
-                }
-
-                game.activeCategory = group.key;
-                game.sceneIndex = 0;
-                renderCategoryStrip();
-                setupScene();
-                playSound('click');
-            });
-
-            categoryStrip.appendChild(button);
-        });
+        return SCENES;
     }
 
     function setMissionText(text, state = '') {
@@ -1445,10 +1405,10 @@ C ${(cx + size * 1.04).toFixed(2)} ${(cy - size * 0.25).toFixed(2)}, ${(cx + siz
 
         if (scenes.length === 0) {
             game.sceneState = null;
-            sceneContainer.innerHTML = `<div class="scene-empty dark">${categoryLabel(game.activeCategory)} is waiting for your SVG pages.</div>`;
+            sceneContainer.innerHTML = `<div class="scene-empty dark">Add SVG pages to build your coloring gallery.</div>`;
             setStickerToolsEnabled(false);
-            setMissionText('Category ready. Add SVG pages to start coloring here.', '');
-            setResult('Upload SVGs for this category and I will wire them in.', '');
+            setMissionText('Gallery ready. Add SVG pages to start coloring here.', '');
+            setResult('Upload SVGs and I will add them to this party.', '');
             updateHud();
             return;
         }
@@ -1570,7 +1530,6 @@ C ${(cx + size * 1.04).toFixed(2)} ${(cy - size * 0.25).toFixed(2)}, ${(cx + siz
         game.sceneIndex = 0;
 
         updateModeButtons();
-        renderCategoryStrip();
         setupScene();
     }
 
@@ -1613,7 +1572,6 @@ C ${(cx + size * 1.04).toFixed(2)} ${(cy - size * 0.25).toFixed(2)}, ${(cx + siz
         renderPalette();
         renderShapePicker();
         await initializeScenes();
-        renderCategoryStrip();
         switchMode('medium');
     }
 

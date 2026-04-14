@@ -32,6 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const challengeCounter = document.getElementById('challenge-counter');
     const sequenceTrack = document.getElementById('sequence-track');
     const choicePad = document.getElementById('choice-pad');
+    const feedbackBar = document.getElementById('feedback-bar');
+    const feedbackStamp = document.getElementById('feedback-stamp');
 
     const scoreValue = document.getElementById('score-value');
     const levelValue = document.getElementById('level-value');
@@ -69,24 +71,66 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    let feedbackTimer = null;
+    const audioVersion = Date.now();
+
+    function playAudioFile(src, volume = 0.82) {
+        try {
+            const audio = new Audio(`${src}?v=${audioVersion}`);
+            audio.volume = volume;
+            audio.play().catch(() => {});
+        } catch (_) {
+            // Audio is optional.
+        }
+    }
+
     function playSound(type) {
-        if (!window.SoundEffects) {
+        if (type === 'success') {
+            playAudioFile('../sounds/tick.mp3', 0.92);
             return;
         }
 
-        if (type === 'success' && typeof window.SoundEffects.playSuccessSound === 'function') {
-            window.SoundEffects.playSuccessSound();
+        if (type === 'error') {
+            playAudioFile('../sounds/cross.mp3', 0.9);
             return;
         }
 
-        if (type === 'error' && typeof window.SoundEffects.playErrorSound === 'function') {
-            window.SoundEffects.playErrorSound();
-            return;
-        }
-
-        if (typeof window.SoundEffects.playClickSound === 'function') {
+        if (window.SoundEffects && typeof window.SoundEffects.playClickSound === 'function') {
             window.SoundEffects.playClickSound();
+            return;
         }
+
+        playAudioFile('../sounds/click.mp3', 0.5);
+    }
+
+    function clearFeedback() {
+        if (!feedbackStamp || !feedbackBar) {
+            return;
+        }
+        if (feedbackTimer) {
+            window.clearTimeout(feedbackTimer);
+            feedbackTimer = null;
+        }
+        feedbackStamp.className = 'feedback-stamp';
+        feedbackBar.classList.remove('has-feedback');
+    }
+
+    function showFeedback(type) {
+        if (!feedbackStamp || !feedbackBar) {
+            return;
+        }
+
+        feedbackStamp.className = `feedback-stamp ${type}`;
+        feedbackBar.classList.add('has-feedback');
+        void feedbackStamp.offsetWidth;
+        feedbackStamp.classList.add('show');
+
+        if (feedbackTimer) {
+            window.clearTimeout(feedbackTimer);
+        }
+        feedbackTimer = window.setTimeout(() => {
+            clearFeedback();
+        }, 2400);
     }
 
     function randomInt(min, max) {
@@ -396,6 +440,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (!cell.disabled) {
                     cell.addEventListener('click', () => {
+                        clearFeedback();
                         challenge.activeBlank = index;
                         playSound('click');
                         renderSequence();
@@ -414,6 +459,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!challenge || challenge.solved || challenge.revealed) {
             return;
         }
+
+        clearFeedback();
 
         if (challenge.activeBlank === null || challenge.activeBlank === undefined) {
             challenge.activeBlank = challenge.blankIndexes[0];
@@ -436,6 +483,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!challenge || challenge.solved || challenge.revealed) {
             return;
         }
+
+        clearFeedback();
 
         if (challenge.activeBlank === null || challenge.activeBlank === undefined) {
             challenge.activeBlank = challenge.blankIndexes[0];
@@ -546,12 +595,15 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        clearFeedback();
+
         const hasUnfilled = challenge.blankIndexes.some((idx) => challenge.selections[idx] === undefined);
         if (hasUnfilled) {
             challenge.resultText = 'Fill all missing numbers first.';
             challenge.resultType = 'error';
             challenge.extraExplanation = '';
             updateMessages();
+            showFeedback('error');
             playSound('error');
             return;
         }
@@ -577,6 +629,7 @@ document.addEventListener('DOMContentLoaded', () => {
             challenge.resultType = 'success';
             challenge.extraExplanation = challenge.explanation;
             challenge.clue = 'Great job. Use Next for a new challenge.';
+            showFeedback('success');
             playSound('success');
 
             challenge.blankIndexes.forEach((idx) => {
@@ -597,12 +650,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 challenge.resultType = 'error';
                 challenge.extraExplanation = challenge.explanation;
                 challenge.clue = 'Read the explanation, then use Next.';
+                showFeedback('error');
                 playSound('error');
             } else {
                 const left = currentConfig().maxAttempts - challenge.attempts;
                 challenge.resultText = `Not correct yet. Try again. Attempts left: ${left}.`;
                 challenge.resultType = 'error';
                 challenge.extraExplanation = '';
+                showFeedback('error');
                 playSound('error');
                 window.setTimeout(() => {
                     clearWrongMarks();
@@ -618,6 +673,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const challenge = currentChallenge();
         if (!challenge || challenge.solved || challenge.revealed) {
             if (challenge) {
+                clearFeedback();
                 challenge.clue = 'This challenge is complete. Use Next for another one.';
                 updateMessages();
             }
@@ -626,12 +682,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const maxHints = currentConfig().maxHints;
         if (challenge.hintStep >= maxHints) {
+            clearFeedback();
             challenge.clue = 'No hints left on this challenge.';
             updateMessages();
             playSound('error');
             return;
         }
 
+        clearFeedback();
         challenge.hintStep += 1;
 
         if (challenge.hintStep === 1) {
@@ -664,11 +722,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (challenge.solved || challenge.revealed) {
+            clearFeedback();
             challenge.clue = 'Challenge already complete. Use Next for a new one.';
             updateMessages();
             return;
         }
 
+        clearFeedback();
         challenge.selections = {};
         challenge.activeBlank = challenge.blankIndexes[0];
         challenge.wrongIndexes.clear();
@@ -721,12 +781,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (prevButton) {
         prevButton.addEventListener('click', () => {
+            clearFeedback();
             goToChallenge(game.currentIndex - 1);
         });
     }
 
     if (nextButton) {
         nextButton.addEventListener('click', () => {
+            clearFeedback();
             goToChallenge(game.currentIndex + 1);
         });
     }

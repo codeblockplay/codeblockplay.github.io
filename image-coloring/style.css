@@ -117,51 +117,6 @@ header {
     white-space: nowrap;
 }
 
-.category-strip {
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    padding: 2px 2px 4px;
-    scrollbar-width: thin;
-}
-
-.category-strip-inline {
-    margin-left: auto;
-    padding: 0;
-    overflow: visible;
-}
-
-.category-chip {
-    border: 1px solid #cfe4ff;
-    background: #ffffff;
-    color: #2f5695;
-    border-radius: 999px;
-    padding: 6px 12px;
-    font-size: 0.8rem;
-    font-weight: 800;
-    white-space: nowrap;
-    cursor: pointer;
-    transition: transform 0.14s ease, box-shadow 0.14s ease, border-color 0.14s ease;
-}
-
-.category-strip-inline .category-chip {
-    padding: 5px 11px;
-    font-size: 0.76rem;
-}
-
-.category-chip:hover,
-.category-chip:focus-visible {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 10px rgba(58, 95, 152, 0.18);
-    border-color: #9fc8ff;
-}
-
-.category-chip.active {
-    color: #ffffff;
-    border-color: transparent;
-    background: linear-gradient(135deg, #54cbff 0%, #4f86ff 100%);
-}
-
 .play-area {
     min-height: 0;
     display: grid;
@@ -237,10 +192,7 @@ header {
     min-height: 0;
     border: 1px solid #d8e8ff;
     border-radius: 14px;
-    background:
-        radial-gradient(circle at 20% 16%, rgba(255, 241, 189, 0.35), transparent 30%),
-        radial-gradient(circle at 80% 20%, rgba(183, 235, 255, 0.3), transparent 30%),
-        linear-gradient(180deg, #f5faff 0%, #ffffff 100%);
+    background: #ffffff;
     padding: 6px;
     position: relative;
     overflow: hidden;

@@ -1,9 +1,9 @@
 :root {
     --ms-bg: linear-gradient(180deg, #fff8ef 0%, #fffdf8 48%, #eef5ff 100%);
-    --ms-ink: #23406d;
-    --ms-soft: #6b83aa;
-    --ms-border: #d8e7ff;
-    --ms-shadow: 0 14px 28px rgba(34, 51, 91, 0.08);
+    --ms-ink: #1f3a5f;
+    --ms-soft: #5b6b7f;
+    --ms-border: #dbe7f8;
+    --ms-shadow: 0 12px 24px rgba(31, 58, 95, 0.08);
     --ms-success: #14975e;
     --ms-dash: #d6deef;
     --ms-dash-active: #8db7ff;
@@ -36,6 +36,16 @@ body.kp-shell-enabled .kp-shell-footer {
     display: none;
 }
 
+body[data-embedded='true'] {
+    padding-top: 0;
+}
+
+body[data-embedded='true'] .kp-shell-header,
+body[data-embedded='true'] .kp-shell-footer,
+body[data-embedded='true'] .ms-topbar {
+    display: none !important;
+}
+
 header {
     display: none;
 }
@@ -47,9 +57,15 @@ header {
     padding: 12px 0 0;
 }
 
+body[data-embedded='true'] .ms-main {
+    width: 100%;
+    height: 100vh;
+    padding: 0;
+}
+
 .ms-panel {
     height: 100%;
-    border-radius: 22px;
+    border-radius: 24px;
     border: 1px solid var(--ms-border);
     background: rgba(255, 255, 255, 0.98);
     box-shadow: var(--ms-shadow);
@@ -57,6 +73,13 @@ header {
     display: grid;
     grid-template-rows: auto auto 1fr auto;
     gap: 12px;
+}
+
+body[data-embedded='true'] .ms-panel {
+    border: 0;
+    border-radius: 24px;
+    box-shadow: none;
+    padding: 0;
 }
 
 .ms-topbar {
@@ -68,7 +91,7 @@ header {
 
 .ms-topbar h1 {
     margin: 0;
-    font-family: 'Fredoka', 'Baloo 2', sans-serif;
+    font-family: 'Baloo 2', 'Fredoka', sans-serif;
     font-size: clamp(1.45rem, 2.6vw, 2rem);
 }
 
@@ -76,7 +99,8 @@ header {
     margin: 6px 0 0;
     color: var(--ms-soft);
     font-size: 0.96rem;
-    font-weight: 600;
+    font-weight: 700;
+    font-family: 'Nunito', 'Fredoka', sans-serif;
 }
 
 .ms-back-btn {
@@ -90,8 +114,10 @@ header {
     border: 1px solid #d7e6ff;
     color: #35598f;
     text-decoration: none;
-    font-weight: 700;
+    font-family: 'Nunito', 'Fredoka', sans-serif;
+    font-weight: 800;
     white-space: nowrap;
+    box-shadow: 0 8px 16px rgba(31, 58, 95, 0.06);
 }
 
 .ms-status-row {
@@ -115,18 +141,20 @@ header {
 .ms-badge span {
     color: var(--ms-soft);
     font-size: 0.92rem;
-    font-weight: 700;
+    font-weight: 800;
+    font-family: 'Nunito', 'Fredoka', sans-serif;
 }
 
 .ms-badge strong {
     color: var(--ms-ink);
     font-size: 1rem;
+    font-family: 'Nunito', 'Fredoka', sans-serif;
 }
 
 .ms-board-wrap {
     border-radius: 20px;
     border: 1px solid #e2eaf8;
-    background: linear-gradient(180deg, #1e2a42 0%, #121c2e 100%);
+    background: linear-gradient(180deg, #263a54 0%, #1d2c42 100%);
     padding: 14px;
     display: grid;
     grid-template-rows: auto 1fr;
@@ -135,7 +163,7 @@ header {
 }
 
 .ms-instruction {
-    font-family: 'Fredoka', 'Baloo 2', sans-serif;
+    font-family: 'Baloo 2', 'Fredoka', sans-serif;
     font-size: clamp(1.12rem, 1.7vw, 1.35rem);
     text-align: center;
     font-weight: 500;
